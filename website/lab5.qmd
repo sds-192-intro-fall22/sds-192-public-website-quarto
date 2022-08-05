@@ -52,59 +52,57 @@ In 1968, the Supreme Court case Terry v. Ohio ruled that a police officer could 
 
 In the early 1990s, stop, question, and frisk became a widely prevalent tactic in policing in NYC. Every time an officer stops a civilian in NYC, the officer is supposed to complete a UF-250 form (see image below) outlining the details of the stop.
 
-[![UF250 Side 1, Dan Nguyen's Blog](http://blog.danwin.com/files/images/uf250-2011-side-1.png){fig-alt="UF250 Side 1" fig-align="center" width="400"}](http://blog.danwin.com/request-nypd-form-uf250/)
+[![UF250 Side 1, Dan Nguyen\'s Blog](http://blog.danwin.com/files/images/uf250-2011-side-1.png){fig-alt="UF250 Side 1" fig-align="center" width="400"}](http://blog.danwin.com/request-nypd-form-uf250/)
 
-[![UF250 Side 2, Dan Nguyen's Blog](http://blog.danwin.com/files/images/uf250-2011-side-2.png){fig-alt="UF250 Side 2" fig-align="center" width="500"}](http://blog.danwin.com/request-nypd-form-uf250/)
+[![UF250 Side 2, Dan Nguyen\'s Blog](http://blog.danwin.com/files/images/uf250-2011-side-2.png){fig-alt="UF250 Side 2" fig-align="center" width="500"}](http://blog.danwin.com/request-nypd-form-uf250/)
 
-As a result of some high profile shootings in the late 1990s and mid-2000s, both the New York State Attorney General's Office and the New York Civil Liberties Union began to examine NYPD stop and frisk activity for racial profiling. With pressure from these organizations, in the mid-2000s, information recorded on UF-250 forms began getting reported in public databases. In the early 2010s, when the NYPD's use of stop and frisk went before the US District Court, this data was integral in proving that stop and frisk was being carried out in NYC in an unconstitutional way. The ruling mandated that the NYPD create a policy outlining when stops were authorized, and since the practice has declined considerably.
+As a result of some high profile shootings in the late 1990s and mid-2000s, both the New York State Attorney General's Office and the New York Civil Liberties Union began to examine NYPD stop and frisk activity for racial profiling. With pressure from these organizations, in the mid-2000s, information recorded on UF-250 forms began getting reported in public databases. In the early 2010s, when the NYPD's use of stop and frisk went before the US District Court, this data was integral in proving that stop and frisk was being carried out in NYC in an unconstitutional way. The ruling mandated that the NYPD create a policy outlining when stops were authorized, and since the practice has declined considerably. See
 
-### Further References
-
-[@smith2018]
-
-[@southall2019]
+[@smith2018] and [@southall2019] for more information.
 
 ### Data Dictionary
 
 We will analyze data for all stops in 2011. This data can be found [here](The%20original%20dataset%20can%20be%20found%20at:%20https://%20www1.nyc.gov/site/nypd/stats/reports-analysis/). However, we're only going to be considering a subset of the columns. Here is a data dictionary for the columns we're using in this analysis.
 
-+-----------+---------------------------------------+--------------------------------+
-| VARIABLE  | DEFINITION                            | POSSIBLE VALUES                |
-+===========+=======================================+================================+
-| pct       | Precinct of the stop                  | 1:123                          |
-+-----------+---------------------------------------+--------------------------------+
-| arrestsum | Was an arrest made or summons issued? | 1 = Yes                        |
-|           |                                       |                                |
-|           |                                       | 0 = No                         |
-+-----------+---------------------------------------+--------------------------------+
-| frisked   | Was suspect frisked?                  | 1 = Yes                        |
-|           |                                       |                                |
-|           |                                       | 0 = No                         |
-+-----------+---------------------------------------+--------------------------------+
-| wpnfound  | Was a weapon found on suspect?        | 1 = Yes                        |
-|           |                                       |                                |
-|           |                                       | 0 = No                         |
-+-----------+---------------------------------------+--------------------------------+
-| race_cat  | Suspect's race                        | AMERICAN INDIAN/ALASKAN NATIVE |
-|           |                                       |                                |
-|           |                                       | ASIAN/PACIFIC ISLANDER         |
-|           |                                       |                                |
-|           |                                       | BLACK                          |
-|           |                                       |                                |
-|           |                                       | BLACK-HISPANIC                 |
-|           |                                       |                                |
-|           |                                       | OTHER                          |
-|           |                                       |                                |
-|           |                                       | WHITE                          |
-|           |                                       |                                |
-|           |                                       | WHITE-HISPANIC                 |
-+-----------+---------------------------------------+--------------------------------+
-| age       | Suspect's age                         | 999 indicates a missing value  |
-+-----------+---------------------------------------+--------------------------------+
++--------------+---------------------------------------+--------------------------------+
+| VARIABLE     | DEFINITION                            | POSSIBLE VALUES                |
++==============+=======================================+================================+
+| pct          | Precinct of the stop                  | 1:123                          |
++--------------+---------------------------------------+--------------------------------+
+| arrestsum    | Was an arrest made or summons issued? | 1 = Yes                        |
+|              |                                       |                                |
+|              |                                       | 0 = No                         |
++--------------+---------------------------------------+--------------------------------+
+| frisked      | Was suspect frisked?                  | 1 = Yes                        |
+|              |                                       |                                |
+|              |                                       | 0 = No                         |
++--------------+---------------------------------------+--------------------------------+
+| wpnfound     | Was a weapon found on suspect?        | 1 = Yes                        |
+|              |                                       |                                |
+|              |                                       | 0 = No                         |
++--------------+---------------------------------------+--------------------------------+
+| race_cat     | Suspect's race                        | AMERICAN INDIAN/ALASKAN NATIVE |
+|              |                                       |                                |
+|              |                                       | ASIAN/PACIFIC ISLANDER         |
+|              |                                       |                                |
+|              |                                       | BLACK                          |
+|              |                                       |                                |
+|              |                                       | BLACK-HISPANIC                 |
+|              |                                       |                                |
+|              |                                       | OTHER                          |
+|              |                                       |                                |
+|              |                                       | WHITE                          |
+|              |                                       |                                |
+|              |                                       | WHITE-HISPANIC                 |
++--------------+---------------------------------------+--------------------------------+
+| age          | Suspect's age                         | 999 indicates a missing value  |
++--------------+---------------------------------------+--------------------------------+
 
 ## Setting Up Your Environment
 
-```{r import}
+```{r}
+#| messages: FALSE
+#| warnings: FALSE
 library(tidyverse)
 
 sqf_url <- "https://www1.nyc.gov/assets/nypd/downloads/zip/analysis_and_planning/stop-question-frisk/sqf-2011-csv.zip"
@@ -120,7 +118,7 @@ rm(sqf_zip)
 
 ### Prepare Dataset for Analysis
 
-The original dataset codes each race with a single letter. This adds a column called `race_cat` that writes out each racial category in accordance with the data documentation. It also replaces every instance of "Y" in the dataset with 1 and every instance of "N" with 0. This will allow us to sum the Yes's in the dataset.
+The original dataset codes each race with a single letter. This adds a column called `race_cat` that writes out each racial category in accordance with the data documentation. It also replaces every instance of "Y" in the dataset with 1 and every instance of "N" with 0. This will allow us to sum the Yes's in the dataset. You'll learn more about how this code works in coming weeks.
 
 ```{r}
 sqf_2011 <- 
@@ -144,7 +142,7 @@ Add new columns indicating 1) whether a weapon was found or 2) an arrest/summons
 sqf_2011 <- 
   sqf_2011 %>%
   #Add a variable for weapon found
-  mutate(wpnfound = case_when(pistol == 1 |
+  _____(wpnfound = case_when(pistol == 1 |
                                riflshot == 1 | 
                                asltweap == 1 |
                                knifcuti == 1 | 
@@ -154,7 +152,7 @@ sqf_2011 <-
 sqf_2011 <- 
   sqf_2011 %>%
   #Add a variable for arrest made or summons issued
-  mutate(arrestsumm = case_when(sumissue == 1 | 
+  _____(arrestsumm = case_when(sumissue == 1 | 
                                 arstmade == 1 ~ 1,
                                TRUE ~ 0))
 ```

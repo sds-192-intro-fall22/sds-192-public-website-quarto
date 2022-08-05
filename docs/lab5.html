@@ -185,7 +185,6 @@ div.csl-indent {
   <li><a href="#review-of-key-terms" id="toc-review-of-key-terms" class="nav-link" data-scroll-target="#review-of-key-terms">Review of Key Terms</a></li>
   <li><a href="#stop-question-and-frisk-dataset" id="toc-stop-question-and-frisk-dataset" class="nav-link" data-scroll-target="#stop-question-and-frisk-dataset">Stop, Question, and Frisk Dataset</a>
   <ul class="collapse">
-  <li><a href="#further-references" id="toc-further-references" class="nav-link" data-scroll-target="#further-references">Further References</a></li>
   <li><a href="#data-dictionary" id="toc-data-dictionary" class="nav-link" data-scroll-target="#data-dictionary">Data Dictionary</a></li>
   </ul></li>
   <li><a href="#setting-up-your-environment" id="toc-setting-up-your-environment" class="nav-link" data-scroll-target="#setting-up-your-environment">Setting Up Your Environment</a>
@@ -283,29 +282,25 @@ Tip
 <div id="fig-anonymous-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><a href="http://blog.danwin.com/request-nypd-form-uf250/"><img src="http://blog.danwin.com/files/images/uf250-2011-side-1.png" class="img-fluid figure-img" alt="UF250 Side 1" width="400"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 1, Dan Nguyen’s Blog</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 1, Dan Nguyen's Blog</figcaption><p></p>
 </figure>
 </div>
 <div id="fig-anonymous-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><a href="http://blog.danwin.com/request-nypd-form-uf250/"><img src="http://blog.danwin.com/files/images/uf250-2011-side-2.png" class="img-fluid figure-img" alt="UF250 Side 2" width="500"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 2, Dan Nguyen’s Blog</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 2, Dan Nguyen's Blog</figcaption><p></p>
 </figure>
 </div>
-<p>As a result of some high profile shootings in the late 1990s and mid-2000s, both the New York State Attorney General’s Office and the New York Civil Liberties Union began to examine NYPD stop and frisk activity for racial profiling. With pressure from these organizations, in the mid-2000s, information recorded on UF-250 forms began getting reported in public databases. In the early 2010s, when the NYPD’s use of stop and frisk went before the US District Court, this data was integral in proving that stop and frisk was being carried out in NYC in an unconstitutional way. The ruling mandated that the NYPD create a policy outlining when stops were authorized, and since the practice has declined considerably.</p>
-<section id="further-references" class="level3">
-<h3 class="anchored" data-anchor-id="further-references">Further References</h3>
-<p><span class="citation" data-cites="smith2018">(<a href="#ref-smith2018" role="doc-biblioref">Smith 2018</a>)</span></p>
-<p><span class="citation" data-cites="southall2019">(<a href="#ref-southall2019" role="doc-biblioref">Southall and Gold 2019</a>)</span></p>
-</section>
+<p>As a result of some high profile shootings in the late 1990s and mid-2000s, both the New York State Attorney General’s Office and the New York Civil Liberties Union began to examine NYPD stop and frisk activity for racial profiling. With pressure from these organizations, in the mid-2000s, information recorded on UF-250 forms began getting reported in public databases. In the early 2010s, when the NYPD’s use of stop and frisk went before the US District Court, this data was integral in proving that stop and frisk was being carried out in NYC in an unconstitutional way. The ruling mandated that the NYPD create a policy outlining when stops were authorized, and since the practice has declined considerably. See</p>
+<p><span class="citation" data-cites="smith2018">(<a href="#ref-smith2018" role="doc-biblioref">Smith 2018</a>)</span> and <span class="citation" data-cites="southall2019">(<a href="#ref-southall2019" role="doc-biblioref">Southall and Gold 2019</a>)</span> for more information.</p>
 <section id="data-dictionary" class="level3">
 <h3 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h3>
 <p>We will analyze data for all stops in 2011. This data can be found <a href="The%20original%20dataset%20can%20be%20found%20at:%20https://%20www1.nyc.gov/site/nypd/stats/reports-analysis/">here</a>. However, we’re only going to be considering a subset of the columns. Here is a data dictionary for the columns we’re using in this analysis.</p>
 <table class="table">
 <colgroup>
-<col style="width: 14%">
-<col style="width: 47%">
-<col style="width: 38%">
+<col style="width: 17%">
+<col style="width: 45%">
+<col style="width: 37%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -360,7 +355,7 @@ Tip
 </section>
 <section id="setting-up-your-environment" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-your-environment">Setting Up Your Environment</h2>
-<div class="cell">
+<div class="cell" data-messages="false" data-warnings="false">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
@@ -401,7 +396,7 @@ Tip
 </div>
 <section id="prepare-dataset-for-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="prepare-dataset-for-analysis">Prepare Dataset for Analysis</h3>
-<p>The original dataset codes each race with a single letter. This adds a column called <code>race_cat</code> that writes out each racial category in accordance with the data documentation. It also replaces every instance of “Y” in the dataset with 1 and every instance of “N” with 0. This will allow us to sum the Yes’s in the dataset.</p>
+<p>The original dataset codes each race with a single letter. This adds a column called <code>race_cat</code> that writes out each racial category in accordance with the data documentation. It also replaces every instance of “Y” in the dataset with 1 and every instance of “N” with 0. This will allow us to sum the Yes’s in the dataset. You’ll learn more about how this code works in coming weeks.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="ot">&lt;-</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span> </span>
@@ -429,7 +424,7 @@ Exercise 1
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="ot">&lt;-</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Add a variable for weapon found</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wpnfound =</span> <span class="fu">case_when</span>(pistol <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="at">wpnfound =</span> <span class="fu">case_when</span>(pistol <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                               riflshot <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> </span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                               asltweap <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                               knifcuti <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> </span>
@@ -439,7 +434,7 @@ Exercise 1
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="ot">&lt;-</span> </span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span></span>
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Add a variable for arrest made or summons issued</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">arrestsumm =</span> <span class="fu">case_when</span>(sumissue <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> </span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="at">arrestsumm =</span> <span class="fu">case_when</span>(sumissue <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> </span>
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                                arstmade <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
 <span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
