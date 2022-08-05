@@ -17,7 +17,11 @@ This lab is all about learning to understand the context and parts of a dataset 
 
 -   Identify unique observations in a dataset
 
--   Understand different variable types and the kinds of operations you would preform on them
+-   Understand different variable types 
+
+-   Look up value codes and recode a variable
+
+-   Determine the number of missing values in a variable and why they are missing
 
 ## Review of Key Terms
 
@@ -69,13 +73,13 @@ Continuous numeric variables are variables
 
 In his 2013 State of the Union Address, President Barack Obama announced his plans to create a "college scorecard" that would allow prospective students and parents to compare schools in terms of cost, offerings, diversity, completion rates, and post-graduate earnings. This data was first published in 2015 and since has undergone several improvements and revisions.
 
-The College Scorecard dataset is *massive*. In fact, I thought long and hard about whether this was really the first dataset I wanted to introduce to you in a lab. It includes information about over \_\_\_\_\_ institutions in the U.S., and has more than 3000 columns documenting information about those institutions. I chose this dataset for this lab because, if you can learn to read this data dictionary, you will be leaps and bounds ahead of the game in learning to read other data dictionaries. (It's also just a super cool dataset, and hint, hint: you will get a chance to dive into it in much more detail in a few weeks). While the full data is available online, we are only going to work with a small subset of the data today.
+The College Scorecard dataset is *massive*. In fact, I thought long and hard about whether this was really the first dataset I wanted to introduce to you in a lab. It includes information about over 6500 institutions in the U.S., and has more than 3000 columns documenting information about those institutions. I chose this dataset for this lab because, if you can learn to read this data dictionary, you will be leaps and bounds ahead of the game in learning to read other data dictionaries. (It's also just a super cool dataset, and hint, hint: you will get a chance to dive into it in much more detail in a few weeks). While the full data is available online, we are only going to work with a small subset of the data today.
 
 ## Setting Up Your Environment
 
 1.  Install the RScorecard package by entering the following into your Console: `install.packages("rscorecard")`
 
-2.  Create a Scorecard API Key at [this link](https://api.data.gov/signup/). Shortly after you fill out the form, you will be emailed a key. Copy that key into code chunk below. Be sure to wrap the key in quotation marks.
+2.  Create a Scorecard API Key at [this link](https://api.data.gov/signup/). Shortly after you fill out the form, you will be emailed a key. Copy that key into code chunk below, replacing all of the following text in `sc_key()`: Sys.getenv("SCORECARD_KEY"). Be sure to wrap the key in quotation marks.
 
 3.  Download the Scorecard Data Dictionary and Technical Documentation for Institution-Level Data Files [here](https://collegescorecard.ed.gov/data/documentation/).
 
@@ -86,12 +90,12 @@ The College Scorecard dataset is *massive*. In fact, I thought long and hard abo
 #| messages: false
 library(tidyverse)
 library(rscorecard)
-sc_key(Sys.getenv("SCORECARD_KEY"))
+sc_key(Sys.getenv("SCORECARD_KEY")) # Replace Sys.getenv("SCORECARD_KEY") here with your API Key in quotation marks
 
 scorecard <- sc_init() %>%
   sc_year(2018) %>%                 #Note how we are looking at only 2021 data here!
   sc_filter(stabbr == "MA") %>%     #Note how we are looking at only Massachusetts data here!
-  sc_select(unitid, instnm, city, highdeg, control, adm_rate, costt4_a, costt4_p, pcip27, pctfloan, admcon7, wdraw_orig_yr2_rt, cdr3, ugds_white, ugds_black) %>%
+  sc_select(unitid, instnm, city, highdeg, control, ugds, adm_rate, costt4_a, costt4_p, pcip27, pctfloan, admcon7, wdraw_orig_yr2_rt, cdr3) %>%
   sc_get()
 ```
 
@@ -114,8 +118,6 @@ You can also click on the name of your data frame in your Environment panel in R
 ::: callout-tip
 This is the same as calling `df %>% View()` in your Console.
 :::
-
-Note the column names for this dataframe, and the kinds of values that appear in those columns. Some of them (like `city` and `year`) might make sense to you immediately. Others (like `pcip27` and `highdeg`) might be much more confusing. To figure out what we are looking out, we are going to need to refer to the dataset's data dictionary.
 
 ## Getting to Know this Dataset
 
@@ -145,9 +147,15 @@ Anytime we count something in the world, we are not only engaging in a process o
 At this point, you've probably figured out that each row in this dataset is a higher education institution. ...but there are many different ways that we can define higher education institutions, and that will impact what gets included and excluded in our data. Referencing the Technical Documentation, locate a definition for the unit of observation in this dataset. What institutions are included, and what institutions are excluded? Summarize a definition below.
 :::
 
-> Summarize definition here.
+::: {.callout-note icon="false"}
+#### Your Response
+
+Fill response here.
+:::
 
 ### Variables (Columns)
+
+Note the column names for this dataframe, and the kinds of values that appear in those columns. Some of them (like `city` and `year`) might make sense to you immediately. Others (like `pcip27` and `highdeg`) might be much more confusing. To figure out what we are looking out, we are going to need to refer to the dataset's data dictionary.
 
 Open the data dictionary you downloaded in an earlier step. It will open as an Excel file. Click on the tab labeled "Institution_Data_Dictionary". There are thousands of variables in this dataset, falling into the broader categories of school, completion, admissions, cost, etc. Note how the file is organized, and specifically draw your attention to:
 
@@ -164,30 +172,110 @@ Open the data dictionary you downloaded in an earlier step. It will open as an E
 ::: callout-important
 ## Exercise 3
 
-Identify one nominal variable, one ordinal variable, one discrete variable, and one continuous variable.
+For each of the variable names in the `scorecard` data frame, look up the associated name in the data dictionary. You will need to search for the variable name in the sixth column of the data dictionary (I recommend using Ctrl-F to quickly locate the variable name in the spreadsheet.) Once you've found the variable name, reference column 1 to determine what this variable means, and reference columns 7 and 8 to see what possible values will appear in that column.
+
+Identify one nominal variable, one ordinal variable, one discrete variable, and one continuous variable in `scorecard` and list their variable names below. Then uncomment the lines below and use the `typeof()` function to see how `R` determined their data types. Did any surprise you?
 :::
 
+::: {.callout-note icon="false"}
+## Your Response
+
+-   Nominal variable: \_\_\_\_\_
+
+-   Ordinal variable: \_\_\_\_\_
+
+-   Discrete variable: \_\_\_\_\_
+
+-   Continuous variable: \_\_\_\_\_
+:::
+
+```{r}
+#typeof(scorecard$_____)
+#typeof(scorecard$_____)
+#typeof(scorecard$_____)
+#typeof(scorecard$_____)
+```
+
 ### Values (Cells)
+
+You may have noticed that several categorical variables are coded as numbers in the imported dataset. For instance, look at the column `control` which designates the institution's ownership. Running the code below, we see that the distinct values in that column are 1, 2, and 3.
+
+```{r}
+scorecard %>% distinct(control)
+```
+
+When we reference that column in the data dictionary (row 27), we see that a 1 in that column designates that the institution is Public, a 2 that the institution is Private nonprofit, and a 3 that the institution is Private for-profit. While I can always look that up, sometimes it is helpful to have that information in our dataset. For instance, let's say I create a bar plot that's supposed to show how many higher education institutions have each type of ownership in MA (which you will learn how to do soon!). The plot can be confusing when `control` is a series of numbers.
+
+```{r}
+ggplot(scorecard, aes(x = control)) +
+  geom_bar()
+```
+
+With this in mind, sometimes it can be helpful to *recode* the values in a column. Recoding data involves replacing the values in a vector according to criteria that we provide. Remember how all columns in a data frame are technically vectors? We can use the `recode()` function to recode all of the values in the `control` vector. We are going to store the recoded values in a new column in our dataset called `control_text`. Check out the code below to see how we do this. Reference the help pages for recode (i.e. `?recode`) to help you interpret the code.
+
+```{r}
+scorecard$control_text <-
+  recode(
+    scorecard$control, 
+    "1" = "Public", 
+    "2" = "Private nonprofit", 
+    "3" = "Private for-profit",
+    .default = NA_character_
+  )
+```
+
+Check out our barplot now!
+
+```{r}
+ggplot(scorecard, aes(x = control_text)) +
+  geom_bar()
+```
 
 ::: callout-important
 ## Exercise 4
 
-Recode/factor ordinal variable
+Write code below to recode the `admcon7` variable and store the results in a new variable in `scorecard` called `admcon7_text`. You'll need to look up the values in the data dictionary. If you've done this correctly, running this code should produce a barplot that displays multiple bars.
 :::
 
-::: callout-important
-## Exercise 5
+```{r}
+scorecard$admcon7_text <-
+  recode(
+    scorecard$admcon7, 
+    #Fill replacements here
+    .default = NA_character_
+  )
 
-Cut numeric variable into buckets and label them
-:::
+ggplot(scorecard, aes(x = admcon7_text)) +
+  geom_bar()
+```
 
 ### Missing Values
 
-::: callout-important
-## Exercise 6
+When we have missing values in a rectangular dataset, we have to provide a placeholder for the missing value in order for the dataset to remain rectangular. If we just skipped the value, then our dataset wouldn't necessarily have rows of all equal lengths and columns of all equal lengths. In `R`, `NA` serves as that placeholder. Before we start analyzing data, it can be important to note how many `NA` values we have in a column so that we can determine if the data is *representative*. 
 
-Determine the number of missing values in \_\_.
+The function `is.na()` checks whether a value is an `NA` value and returns `TRUE` if it is and `FALSE` if it isn't. Providing a vector to `is.na()` will check this for every value in the vector and return a logical vector indicating `TRUE`/`FALSE` for every original value in the vector.
+
+```{r}
+is.na(scorecard$wdraw_orig_yr2_rt)
+```
+
+When we `sum()` across a logical vector, `R` will calculate the number of `TRUE` values in the vector. 
+
+```{r}
+sum(is.na(scorecard$wdraw_orig_yr2_rt))
+```
+
+::: callout-important
+## Exercise 5
+Calculate the number of missing values in both the `costt4_a` and the `costt4_p` columns. Reference the NOTES column in the data dictionary to determine why there are so many `NA` values in these columns. Add a comment to the code chunk below, explaining the reason for missing values in these columns.
 :::
+
+```{r}
+# Calculate the number of NA values here
+
+# Add comment to explain missing values here
+```
+
 
 ::: callout-caution
 ## Ethical Considerations
