@@ -52,7 +52,7 @@ In 1968, the Supreme Court case Terry v. Ohio ruled that a police officer could 
 
 In the early 1990s, stop, question, and frisk became a widely prevalent tactic in policing in NYC. Every time an officer stops a civilian in NYC, the officer is supposed to complete a UF-250 form (see image below) outlining the details of the stop.
 
-[![UF250 Side 1, Dan Nguyen\'s Blog](http://blog.danwin.com/files/images/uf250-2011-side-1.png){fig-alt="UF250 Side 1" fig-align="center" width="400"}](http://blog.danwin.com/request-nypd-form-uf250/)
+[![UF250 Side 2, Dan Nguyen\'s Blog](img/uf250-2011-side-1.png){fig-alt="UF250 Side 2" fig-align="center" width="500"}](http://blog.danwin.com/request-nypd-form-uf250/)
 
 [![UF250 Side 2, Dan Nguyen\'s Blog](img/uf250-2011-side-2.png){fig-alt="UF250 Side 2" fig-align="center"}](http://blog.danwin.com/request-nypd-form-uf250/)
 
