@@ -111,11 +111,11 @@ Lab solutions will be posted as video lectures in Perusall. I expect that you wi
 ::: panel-tabset
 #### Labs
 
-In most weeks, you will be assigned a lab, which you will start in class and complete at home. Labs will be designed to help you practice applying the course standards towards the analysis of a dataset. You may work on labs in groups, but all group members should submit their own lab. Labs will be **graded for completion**, and you can earn 2 points per standard by completing the lab associated with that standard. All sections of the lab must be completed in good faith to earn these points.
+In most weeks, you will be assigned a lab, which you will start in class and complete at home. There will be one lab per standard. Labs will be designed to help you practice applying the course standards towards the analysis of a dataset. You may work on labs in groups, but all group members should submit their own lab. Labs will be **graded for completion**, and you can earn 2 points per standard by completing the lab associated with that standard. All sections of the lab must be completed in good faith to earn these points.
 
 #### Projects
 
-There will be 3 projects, to be completed in groups of 3-4, assigned over the course of the semester. In each you will have an opportunity to demonstrate fluency in standards we have covered up to that point in the semester. I will provide prompts for each project, but you will have a lot of flexibility to demonstrate your own creativity and explore your own interests in designing a project around the prompt. You can earn up to 3 points towards each standard based on your project submission. Projects will be **graded for fluency**.
+There will be 3 projects, to be completed in groups of 3-4, assigned over the course of the semester. In each you will have an opportunity to demonstrate fluency in standards we have covered up to that point in the semester. I will provide prompts for each project, but you will have a lot of flexibility to demonstrate your own creativity and explore your own interests in designing a project around the prompt. You can earn up to 3 points towards 9 of the ten standards based on your project submission. The only standard that won't be covered in projects is **Data Retrieval**, which we will cover too late in the semester to work into projects. Projects will be **graded for fluency**.
 
 #### Quizzes
 
@@ -125,12 +125,13 @@ Quizzes will be taken at home, administered in Moodle, and are open book/open In
 
 #### Course Advancement
 
-There are a series of very short assignments on the syllabus that are designed to ensure that you are prepared for individual and collaborative work. This includes things like reviewing the syllabus, developing a course study plan, developing group collaboration plans, and completing peer evaluations. In total, there are 12 course advancement assignments, and you can earn 1 point towards your final grade per assignment.
+There are a series of very short assignments on the syllabus that are designed to ensure that you are prepared for individual and collaborative work. This includes things like reviewing the syllabus, developing a course study plan, developing group collaboration plans, and completing peer evaluations. In total, there are 13 course advancement assignments, and you can earn 1 point towards your final grade per assignment.
 
 |      Assignment       | Points |
 |:---------------------:|:------:|
 |     Syllabus Quiz     |   1    |
 |     CATME Survey      |   1    |
+|  Problem Solving Lab  |   1    |
 |      Study Plan       |   1    |
 | Study Plan Evaluation |   1    |
 |  Group Contract (x3)  |   3    |
@@ -142,12 +143,16 @@ These assignments will be **graded for completion**. For the most part, you will
 ::: callout-important
 ## Reassessment
 
-This course will have an *optional* final exam. The final exam is an opportunity to reassess standards that you have not received full **quiz** credit on. If you choose to take the final exam, you only need to complete the sections of the exam associated with standards you wish to reassess, and the score you ultimately receive for a standard will be based on whichever is higher of your quiz score or your final exam score for that standard. 
+This course will have an *optional* final exam. The final exam is an opportunity to reassess standards that you have not received full **quiz** credit on. If you choose to take the final exam, you only need to complete the sections of the exam associated with standards you wish to reassess, and the score you ultimately receive for a standard will be based on whichever is higher of your quiz score or your final exam score for that standard.
 :::
 
 ## How will this system work?
 
-If you've been adding, you may have figured out by this point that you can earn up to 8 points for each standard (2 for lab completion, 3 via group projects, 3 via quizzes). With 11 standards, this computes to 88 points. You can earn the remaining 12 points by completing the course advancement assignments, for a grand total of 100 points. At the end of the semester, I will sum your scores on all standards and other assignments and assign final grades accordingly:
+If you've been adding, you may have figured out by this point that we have:
+
+$(2 * 10) + (3 * 10) + (3 * 9) = 87$
+
+You can earn the remaining 13 points by completing the course advancement assignments, for a grand total of 100 points. At the end of the semester, I will sum your scores on all standards and other assignments and assign final grades accordingly:
 
 | Letter Grade | Numeric Grade |
 |:------------:|:-------------:|
