@@ -56,8 +56,6 @@ In the early 1990s, stop, question, and frisk became a widely prevalent tactic i
 
 [![UF250 Side 2, Dan Nguyen\'s Blog](img/uf250-2011-side-2.png){fig-alt="UF250 Side 2" fig-align="center"}](http://blog.danwin.com/request-nypd-form-uf250/)
 
-[![UF250 Side 2, Dan Nguyen\'s Blog](img/uf250-2011-side-2.png){fig-alt="UF250 Side 2" fig-align="center"}](http://blog.danwin.com/request-nypd-form-uf250/)
-
 As a result of some high profile shootings in the late 1990s and mid-2000s, both the New York State Attorney General's Office and the New York Civil Liberties Union began to examine NYPD stop and frisk activity for racial profiling. With pressure from these organizations, in the mid-2000s, information recorded on UF-250 forms began getting reported in public databases. In the early 2010s, when the NYPD's use of stop and frisk went before the US District Court, this data was integral in proving that stop and frisk was being carried out in NYC in an unconstitutional way. The ruling mandated that the NYPD create a policy outlining when stops were authorized, and since the practice has declined considerably. See
 
 [@smith2018] and [@southall2019] for more information.
