@@ -1,0 +1,569 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "SDS 192: Introduction to Data Science",
+    "section": "",
+    "text": "Data science involves applying a set of strategies to transform a recorded set of values into something from which we can glean knowledge and insight. This course will introduce you to concepts and methods from the field of data science, along with how to apply them in R. You will learn how to acquire, clean, wrangle, and visualize data. You will also learn best practices in data science workflows, such as code documentation and version control. Issues in data ethics will be addressed throughout the course.\nClasses will be held on Mondays, Wednesdays, and Fridays from 9:25 AM to 10:40 AM.\nThere are no prerequisites, but a willingness to write code is necessary. Coding for the first time can be intimidating, but I intend do everything in my power to support you through the learning curve and to make things both fun and relevant in the process. I personally picked up most of my data science skills through a lot of trial-and-error, practice, and curiosity. My hope is that, in this course, you will learn through experimentation, along with independent and collaborative problem-solving. Honing these competencies will serve you as you move on to other courses in the SDS program and/or at Smith.\n\n\n\n\n\n\n\n\nLindsay Poirier, she/her/hers.\n\n\n\n\n\nI am a cultural anthropologist that studies how public interest datasets get produced, how communities think about and interface with data, and how data infrastructure can be designed more equitably. My Ph.D. is in an interdisciplinary discipline called Science and Technology Studies - a field that studies the intricate ways science, technology, culture, and politics all co-constitute each other. I work on a number of collaborative research projects that leverage public data to deepen understanding of social and environmental inequities in the US, while also qualitatively studying the politics behind data gaps and inconsistencies. As an instructor, I prioritize active learning and often structure courses as flipped classrooms. You can expect in-class time to predominantly involve a mix of lectures and live problem-solving exercises.\n\n\n\nSlackOffice Hours\n\n\nI can best support students in this course when I can readily keep tabs on our course-related communication. Because of this, I ask that you please don’t email me regarding course-related questions or issues. The best way to get in touch with me is via our course Slack. If you have course-related questions, I encourage you to ask them in the #sds-192-questions channel. When discretion is needed, feel free to DM. Please reserve more formal concerns like grades or accommodation requests for an in-person (or in-person virtual) conversation.\nDuring the week, I will try my best to answer all Slack messages within 24 hours of receiving them. Please note that to maintain my own work-life balance, I often don’t answer Slack messages late in the evenings or on the weekends. It’s important that you plan when you start your assignments accordingly.\n\n\nOffice hours are a great opportunity for us to chat about what you’re learning in the course, clarify expectations on assignments, and review work in progress. I also love when students drop in to office hours to request book recommendations, discuss career or research paths, or just to say hi! I encourage each student in the course to join office hours at least once this semester. If you’re unable to attend my office hours at the regularly scheduled time, there is link on Moodle to book a meeting with me.\n\nMonday, 3-4, McConnell 212-213\nWednesday, 3-4, McConnell 212-213\n\n\n\n\n\n\n\n\nA number of excellent textbooks introducing data science concepts and methods have been written in the past few years, including a few from faculty in the Smith SDS department. To accompany the topics we will cover each week, I will be selecting my favorite chapters from these books and posting them to Perusall. However, all three books we will engage in this course cover almost every topic we will address, so feel free to supplement your reading with corresponding chapters in the other books: especially if you find yourself drawn to the teaching and writing style in a certain book. All books are available for free online.\n\nBaumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton. 2021. Modern Data Science with R. 2nd ed. CRC Press. https://mdsr-book.github.io/mdsr2e/.\nIrizarry, Rafael A. 2022. Introduction to Data Science. Data Analysis and Prediction Algorithms with R. https://rafalab.github.io/dsbook/.\nIsmay, Chester, and Albert Y. Kim. 2021. Modern Dive: Statistical Inference via Data Science. CRC Press. https://moderndive.com/.\n\nEach week I will also list optional reading and resources in our course schedule that you may reference if you are struggling with a topic or if you wish to explore that topic further. I will update this list often throughout the semester.\n\n\n\nThis course will be graded via a standards-based assessment system.\n\n\n\n\n\n\nSpinelli Center\n\n\n\nSmith’s Spinelli Center offers a number of resources to support SDS students. Spinelli Center Data Assistants will visit our classroom regularly to support you through lab work. The Center also offers drop-in tutoring hours Sunday through Thursday 7-9 PM. Finally, you can drop-in or schedule an appointment with the Data Research and Statistics Counselor (Osman Keshawarz). To schedule an appointment, email qlctutor@smith.edu.\n\n\n\n\n\n\nPreparationAttendanceExtensionsAcademic Honesty\n\n\nThis is a 4-credit course with 3 hours per week of in-classroom instructions. Smith expects students to devote 9 out-of-class hours per week to 4-credit classes. I have designed the course assignments and selected the course readings with this target in mind.\n\n\nI will not be taking attendance in this course, and you do not need to inform me when you will be absent. If you are sick, please stay home. That said, I expect students to be present when possible. If you can’t make it to class, you may listen in on lectures via a link posted in Zoom and follow along with the class slides that will always be posted to our course website prior to the start of class. Please note, however, that you won’t get the full classroom experience via Zoom. If you must miss a class entirely, you should contact a peer to discuss what was missed.\n\n\nThere is an automatic 24-hour grace period on all lab and project assignments. There will be no penalties for submitting the project within this 24-hour period, and you do not need to inform me that you intend to take the extra time. You can also request up to a 72-hour extension on any project or lab assignment, as long as you make that request at least 48 hours before the original assignment due date. You can request an extension by filling out the Extension Request form on Moodle, and I will confirm your extension on Slack. Beyond this, late assignments will not be accepted.\n\n\n\nSmith College expects all students to be honest and committed to the principles of academic and intellectual integrity in their preparation and submission of course work and examinations. Students and faculty at Smith are part of an academic community defined by its commitment to scholarship, which depends on scrupulous and attentive acknowledgement of all sources of information, and honest and respectful use of college resources.\n\nAny cases of dishonesty or plagiarism will be reported to the Academic Honor Board. Examples of dishonesty or plagiarism include:\n\nSubmitting work completed by another student as your own.\nCopying and pasting words from sources without quoting and citing the author.\nParaphrasing material from another source without citing the author.\nFailing to cite your sources correctly.\nFalsifying or misrepresenting information in submitted work.\nPaying another student or service to complete assignments for you.\n\n\n\n\n\n\n\n\n\n\nDeadlines for Quizzess and Course Advancement Assignments\n\n\n\nQuizzes and course advancement assignments are treated separately from lab and project assignments. Quizzes and course advancement assignments are due at the time indicated in the course schedule, and I will not be able to grant extensions for these. Please plan accordingly.\n\n\n\n\n\n\nCode of ConductPrinciples of CommunityPronouns\n\n\nAs the instructor for this course, I am committed to making participation in this course a harassment-free experience for everyone, regardless of level of experience, gender, gender identity and expression, sexual orientation, disability, personal appearance, body size, race, ethnicity, age, or religion. Examples of unacceptable behavior by participants in this course include the use of sexual language or imagery, derogatory comments or personal attacks, trolling, public or private harassment, insults, or other unprofessional conduct.\nAs the instructor I have the right and responsibility to point out and stop behavior that is not aligned to this Code of Conduct. Participants who do not follow the Code of Conduct may be reprimanded for such behavior. Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the instructor.\nAll students and the instructor are expected to adhere to this Code of Conduct in all settings for this course: seminars, office hours, and over Slack.\nThis Code of Conduct is adapted from the Contributor Covenant, version 1.0.0, available here.\n\n\nI hope that we can foster a collaborative and caring environment in this classroom: one that celebrates successes, respects individual strengths and weaknesses, demonstrates compassion for each other’s struggles, and affirms diverse identities. Here are some ideas that I have for creating this environment in our course:\n\nCheck-in with colleagues before starting collaborative work. “What three words describe how you’re feeling?” “Name one challenge and one success from this week.” “What are you doing for self-care right now?” Thank each other for sharing where they’re at.\nConsider when to step up and when to step back in class discussions, creating space for others to contribute. Listening is just as important to community-building as speaking.\nAcknowledge that there is much we don’t know about how our colleagues experience the world. …but don’t ask colleagues to speak on behalf of a social group you perceive them to be a part of.\nCheer on colleagues as they give presentations or try something out for the first time.\nAsk questions often in our #sds-192-questions channel. Help each other out by answering questions when you can.\nMistakes happen. I will certainly make mistakes in class. Admit mistakes, and then move on.\n\n\n\nUsing the proper pronouns for our students is foundational to a safe, respectful classroom environment that creates a culture of trust. For information on pronouns and usage, please see the Office of Equity and Inclusion link here: Pronouns\n\n\n\n\n\n\n\nAccommodationsStudent Well-beingTrigger Warnings\n\n\nIt is my goal for everyone to succeed in this course. If you have personal circumstances that may impact your experience of our classroom, I encourage you to contact Office of Disability Services in College Hall 104 or at ods@smith.edu. The Office will generate a letter that indicates to me what kind of support you need and how I can make your classroom experience more accommodating. Once you have this letter, you are welcome to visit my office hours or email me to discuss ideas about how we can tailor the course accordingly. While you can request accommodations at any time, the sooner we start this conversation, the better. If you have concerns about the course that are not addressed through ODS, please contact me. At no point will I ask you to divulge details about your personal circumstances to me.\n\n\nCollege life is stressful, and life outside of college can be overwhelming. It is my position that attending to your physical and mental health and well-being should be a top priority. I will remind you of this often throughout the semester. I encourage you to schedule a time to talk with me if you are struggling with this course. If you, or anyone you know, is experiencing distress, there are numerous campus resources that can provide support via the Schacht Center. I can point you to these resources at any time throughout the semester.\n\n\nA trigger is a topic or image that can precipitate an intense emotional response. When common triggering topics are to be covered in this course, I will do my best to provide a trigger warning in advance of the discussion. However, I can’t always anticipate triggers. With this in mind I’ve set up an anonymous form, available on Moodle, where you can indicate topics for which you would like me to provide a warning.\n\n\n\n\n\n\n\nMoodlePerusallSlackGitHub\n\n\nGrades, forms, handouts, and quizzes will be available on the course Moodle.\n\n\nAll course readings and recorded lectures will be available on Perusall. You can access Perusall via our course Moodle page.\n\n\n\n#general: Course announcements (only I can post)\n#sds-192-discussions: Share news articles and relevant opportunities\n#sds-192-questions: Ask and answer questions about our course\nYou can also create private Slack channels with your project group members.\n\n\n\nI will be using GitHub Classroom to distribute several course assignments, and you will submit assignments by pushing changes to template documents to a private GitHub repository. I will provide guidance on how to do this early in the semester.\n\n\n\n\n\n\n\n\n\nRStudio/RStudio Server\n\n\n\nThis class will use the R statistical software package. In the first week of the course, I will help you install and configure R and RStudio. If you are using a laptop, you will install both on that computer. If you are using a Chromebook or Tablet, an account will be created for you on the Smith College RStudio Server so that you can access a cloud-based version of RStudio. You should let me know in the first week of the course if you are using a Chromebook or tablet."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "md/accommodations.html",
+    "href": "md/accommodations.html",
+    "title": "",
+    "section": "",
+    "text": "It is my goal for everyone to succeed in this course. If you have personal circumstances that may impact your experience of our classroom, I encourage you to contact Office of Disability Services in College Hall 104 or at ods@smith.edu. The Office will generate a letter that indicates to me what kind of support you need and how I can make your classroom experience more accommodating. Once you have this letter, you are welcome to visit my office hours or email me to discuss ideas about how we can tailor the course accordingly. While you can request accommodations at any time, the sooner we start this conversation, the better. If you have concerns about the course that are not addressed through ODS, please contact me. At no point will I ask you to divulge details about your personal circumstances to me."
+  },
+  {
+    "objectID": "md/wellbeing.html",
+    "href": "md/wellbeing.html",
+    "title": "",
+    "section": "",
+    "text": "College life is stressful, and life outside of college can be overwhelming. It is my position that attending to your physical and mental health and well-being should be a top priority. I will remind you of this often throughout the semester. I encourage you to schedule a time to talk with me if you are struggling with this course. If you, or anyone you know, is experiencing distress, there are numerous campus resources that can provide support via the Schacht Center. I can point you to these resources at any time throughout the semester."
+  },
+  {
+    "objectID": "md/late-policy.html",
+    "href": "md/late-policy.html",
+    "title": "",
+    "section": "",
+    "text": "There is an automatic 24-hour grace period on all lab and project assignments. There will be no penalties for submitting the project within this 24-hour period, and you do not need to inform me that you intend to take the extra time.\nYou can also request up to a 72-hour extension on any project or lab assignment, as long as you make that request at least 48 hours before the original assignment due date. You can request an extension by filling out the Extension Request form on Moodle, and I will confirm your extension on Slack. Beyond this, late assignments will not be accepted.\n\nPlease note however: Quizzes are treated separately from other course assignments. Quizzes are due at the time indicated in the course schedule, and I will not be able to grant extensions on quizzes. Please plan accordingly"
+  },
+  {
+    "objectID": "md/writing-support.html",
+    "href": "md/writing-support.html",
+    "title": "",
+    "section": "",
+    "text": "Smith’s Spinelli Center offers SDS drop-in tutoring hours in Sabin-Reed 301 (or via Zoom) on Monday through Thursday 7-9 PM."
+  },
+  {
+    "objectID": "md/principles-of-community.html",
+    "href": "md/principles-of-community.html",
+    "title": "",
+    "section": "",
+    "text": "Check-in with colleagues before starting collaborative work. “What three words describe how you’re feeling?” “Name one challenge and one success from this week.” “What are you doing for self-care right now?” Thank each other for sharing where they’re at.\nConsider when to step up and when to step back in class discussions, creating space for others to contribute. Listening is just as important to community-building as speaking.\nAcknowledge that there is much we don’t know about how our colleagues experience the world. …but don’t ask colleagues to speak on behalf of a social group you perceive them to be a part of.\nCheer on colleagues as they give presentations or try something out for the first time.\nAsk questions often in our #sds-192-questions channel. Help each other out by answering questions when you can.\nMistakes happen. I will certainly make mistakes in class. Admit mistakes, and then move on."
+  },
+  {
+    "objectID": "md/participation.html",
+    "href": "md/participation.html",
+    "title": "",
+    "section": "",
+    "text": "Active participation in this course is generally expected and encouraged. That said, we all have off-days - be it from illness, sadness, heartbreak, or exhaustion. I too will have off-days where my words just don’t seem to cohere, or my brain will feel jumbled. Because of this, I’ve provided a number of ways to demonstrate engagement throughout the semester."
+  },
+  {
+    "objectID": "md/readings.html",
+    "href": "md/readings.html",
+    "title": "",
+    "section": "",
+    "text": "If you are struggling to keep up with the readings, please reach out to me. I’m more than happy to talk through effective reading strategies and to provide more guidance on what I’d like you to get out of a specific piece."
+  },
+  {
+    "objectID": "md/code-of-conduct.html",
+    "href": "md/code-of-conduct.html",
+    "title": "",
+    "section": "",
+    "text": "As the instructor I have the right and responsibility to point out and stop behavior that is not aligned to this Code of Conduct. Participants who do not follow the Code of Conduct may be reprimanded for such behavior. Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the instructor.\nAll students and the instructor are expected to adhere to this Code of Conduct in all settings for this course: seminars, office hours, and over Slack.\nThis Code of Conduct is adapted from the Contributor Covenant, version 1.0.0, available here."
+  },
+  {
+    "objectID": "md/slack.html",
+    "href": "md/slack.html",
+    "title": "",
+    "section": "",
+    "text": "During the week, I will try my best to answer all Slack messages within 24 hours of receiving them. Please note that to maintain my own work-life balance, I often don’t answer Slack messages on the weekends. It’s important that you plan when you start your assignments accordingly."
+  },
+  {
+    "objectID": "md/preparation.html",
+    "href": "md/preparation.html",
+    "title": "",
+    "section": "",
+    "text": "This is a 4-credit course with 3 hours per week of in-classroom instructions. Smith expects students to devote 9 out-of-class hours per week to 4-credit classes. I have designed the course assignments and selected the course readings with this target in mind."
+  },
+  {
+    "objectID": "md/course-slack.html",
+    "href": "md/course-slack.html",
+    "title": "",
+    "section": "",
+    "text": "#general: Course announcements (only I can post)\n#sds-192-discussions: Share news articles and relevant opportunities\n#sds-192-questions: Ask and answer questions about our course\nYou can also create private Slack channels with your project group members."
+  },
+  {
+    "objectID": "md/office-hours.html",
+    "href": "md/office-hours.html",
+    "title": "",
+    "section": "",
+    "text": "Monday, 3-4, McConnell 212-213\nWednesday, 3-4, McConnell 212-213"
+  },
+  {
+    "objectID": "md/academic-honesty.html",
+    "href": "md/academic-honesty.html",
+    "title": "",
+    "section": "",
+    "text": "Any cases of dishonesty or plagiarism will be reported to the Academic Honor Board. Examples of dishonesty or plagiarism include:\n\nSubmitting work completed by another student as your own.\nCopying and pasting words from sources without quoting and citing the author.\nParaphrasing material from another source without citing the author.\nFailing to cite your sources correctly.\nFalsifying or misrepresenting information in submitted work.\nPaying another student or service to complete assignments for you."
+  },
+  {
+    "objectID": "md/pronouns.html",
+    "href": "md/pronouns.html",
+    "title": "",
+    "section": "",
+    "text": "Using the proper pronouns for our students is foundational to a safe, respectful classroom environment that creates a culture of trust. For information on pronouns and usage, please see the Office of Equity and Inclusion link here: Pronouns"
+  },
+  {
+    "objectID": "md/trigger-warning.html",
+    "href": "md/trigger-warning.html",
+    "title": "",
+    "section": "",
+    "text": "A trigger is a topic or image that can precipitate an intense emotional response. When common triggering topics are to be covered in this course, I will do my best to provide a trigger warning in advance of the discussion. However, I can’t always anticipate triggers. With this in mind I’ve set up an anonymous form, available on Moodle, where you can indicate topics for which you would like me to provide a warning."
+  },
+  {
+    "objectID": "md/attendance.html",
+    "href": "md/attendance.html",
+    "title": "",
+    "section": "",
+    "text": "I will not be taking attendance in this course, and you do not need to inform me when you will be absent. If you are sick, please stay home. That said, I expect students to be present when possible, and consistent absences may impact your ability to earn full participation credit. If you can’t make it to class, you may listen in on lectures via a link posted in Zoom and follow along with the class slides that will always be posted to our course website prior to the start of class. Please note, however, that you won’t get the full classroom experience via Zoom. If you must miss a class entirely, you should contact a peer to discuss what was missed."
+  },
+  {
+    "objectID": "grading_contract.html",
+    "href": "grading_contract.html",
+    "title": "Assessment",
+    "section": "",
+    "text": "This course will be graded using a standards-based assessment system. In a more traditional grading system, your scores on a series of assignments are averaged over the course of the semester. In this course, rather than assessing and averaging your achievement on particular assignments, I will instead be assessing the development of your fluency in a set of pre-defined standards. You will have multiple opportunities over the course of the semester to showcase the depth of your understanding regarding these standards. A standards-based grading system carries the following benefits:\nI’m excited to refine this system this semester as I believe it aligns with my overarching goals for the course. In this course, I find it far more important that you come away with an understanding of the concepts behind core data science strategies (along with an ability to find and interpret reference materials) than it is to demonstrate memorization of R syntax. Developing this understanding will empower you to learn and apply new data science languages on your own."
+  },
+  {
+    "objectID": "grading_contract.html#what-are-the-standards-i-will-be-assessed-on-in-this-course",
+    "href": "grading_contract.html#what-are-the-standards-i-will-be-assessed-on-in-this-course",
+    "title": "Assessment",
+    "section": "What are the standards I will be assessed on in this course?",
+    "text": "What are the standards I will be assessed on in this course?\n\n\n\n\n\n\nData Visualization\n\n\n\n\nThis dimension refers to the development of your ability to produce multiple types of compelling and well-designed visualizations from data.\n\nDATA FUNDAMENTALS VISUALIZATION AESTHETICS COMPOSING & INTERPRETING PLOTS MAPPING\n\n\n\n\n\n\n\n\nData Wrangling\n\n\n\n\nThis dimension refers to the development of your ability to transform datasets into new formats in order to prepare them for further analysis or visualization.\n\nTRANSFORMING DATA JOINING DATASETS TIDYING DATA\n\n\n\n\n\n\n\n\nData Science Workflow\n\n\n\n\nThis dimension refers to the development of your ability to apply data science best practices in your work.\n\nTRACING DATA PROVENANCE GITHUB ITERATING CODE WRITING FUNCTIONS\n\n\n\n\n\n\n\n\nData Ethics\n\n\n\n\nThis dimension refers to your ability to recognize and navigate ethical dilemmas that emerge in data science work. There is not a formal standard for data ethics because issues related to data ethics will be discussed in every unit of the course, and you will be assessed on data ethics issues related to other standards in quizzes and projects."
+  },
+  {
+    "objectID": "grading_contract.html#how-will-i-be-assessed-on-the-course-standards",
+    "href": "grading_contract.html#how-will-i-be-assessed-on-the-course-standards",
+    "title": "Assessment",
+    "section": "How will I be assessed on the course standards?",
+    "text": "How will I be assessed on the course standards?\n\nInformal Assessments\n\nReadingsLab Recaps\n\n\nEach week, you will be assigned a section of the course texts to read prior to class. I expect that you will come having read this section in order to prepare for in-class exercise and labs. You do not need to complete the exercises in the course texts but may choose to do so if you wish. Please note however that we won’t have time to go over the solutions in class, and I don’t have a solutions manual for these texts (though I’m happy to go over them in office hours). All course readings will be available in Perusall, and you can post questions and comments in the reading for myself or your classmates to answer.\n\n\nLab solutions will be posted as video lectures in Perusall. I expect that you will check your lab answers by reviewing these videos. You may leave comments in Perusall at certain timestamps as questions come up.\n\n\n\n\n\nFormal Assessments\n\nLabsProjectsQuizzesCourse Advancement\n\n\nIn most weeks, you will be assigned a lab, which you will start in class and complete at home. Labs will be designed to help you practice applying the course standards towards the analysis of a dataset. You may work on labs in groups, but all group members should submit their own lab. Labs will be graded for completion, and you can earn 2 points per standard by completing the lab associated with that standard. All sections of the lab must be completed in good faith to earn these points.\n\n\nThere will be 3 projects, to be completed in groups of 3-4, assigned over the course of the semester. In each you will have an opportunity to demonstrate fluency in standards we have covered up to that point in the semester. I will provide prompts for each project, but you will have a lot of flexibility to demonstrate your own creativity and explore your own interests in designing a project around the prompt. You can earn up to 3 points towards each standard based on your project submission. Projects will be graded for fluency.\n\n\nThere will be 3 quizzes administered throughout the semester - each assessing 3-4 course standards. There will be 3 questions per standard on each quiz, and you can earn up to 3 points towards each standard based on your quiz attempt: 1 point per question. In this sense, quizzes will be graded for fluency.\nQuizzes will be taken at home, administered in Moodle, and are open book/open Internet. You may start a quiz at any time before its due date, but it must be completed by its due date in order to earn credit. Please note that extensions will not be granted for quizzes.\n\n\nThere are a series of very short assignments on the syllabus that are designed to ensure that you are prepared for individual and collaborative work. This includes things like reviewing the syllabus, developing a course study plan, developing group collaboration plans, and completing peer evaluations. In total, there are 12 course advancement assignments, and you can earn 1 point towards your final grade per assignment.\n\n\n\nAssignment\nPoints\n\n\n\n\nSyllabus Quiz\n1\n\n\nCATME Survey\n1\n\n\nStudy Plan\n1\n\n\nStudy Plan Evaluation\n1\n\n\nGroup Contract (x3)\n3\n\n\nPeer Evaluation (x3)\n3\n\n\n\nThese assignments will be graded for completion. For the most part, you will get out of them, what you put into them. Because these assignments are designed to keep our course running smoothly, please note that extensions will not be granted for course advancement assignments.\n\n\n\n\n\n\n\n\n\nReassessment\n\n\n\nThis course will have an optional final exam. The final exam is an opportunity to reassess standards that you have not received full quiz credit on. If you choose to take the final exam, you only need to complete the sections of the exam associated with standards you wish to reassess, and the score you ultimately receive for a standard will be based on whichever is higher of your quiz score or your final exam score for that standard."
+  },
+  {
+    "objectID": "grading_contract.html#how-will-this-system-work",
+    "href": "grading_contract.html#how-will-this-system-work",
+    "title": "Assessment",
+    "section": "How will this system work?",
+    "text": "How will this system work?\nIf you’ve been adding, you may have figured out by this point that you can earn up to 8 points for each standard (2 for lab completion, 3 via group projects, 3 via quizzes). With 11 standards, this computes to 88 points. You can earn the remaining 12 points by completing the course advancement assignments, for a grand total of 100 points. At the end of the semester, I will sum your scores on all standards and other assignments and assign final grades accordingly:\n\n\n\nLetter Grade\nNumeric Grade\n\n\n\n\nA\n≥ 92.5\n\n\nA-\n≥ 90.0\n\n\nB+\n≥ 87.5\n\n\nB\n≥ 82.5\n\n\nB-\n≥ 80.0\n\n\nC+\n≥ 77.5\n\n\nC\n≥ 72.5\n\n\nC-\n≥ 70.0\n\n\nD+\n≥ 67.5\n\n\nD\n≥ 62.5\n\n\nD-\n≥ 60.0\n\n\nE\n< 60.0"
+  },
+  {
+    "objectID": "schedule.html#september-07-2022",
+    "href": "schedule.html#september-07-2022",
+    "title": "Schedule",
+    "section": "September 07, 2022",
+    "text": "September 07, 2022\n\nWhat is Data Science?\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n\n\n No Readings\n\n\n If you wish you may fill out the Trigger Warnings Questionnaire in Moodle.\n Be sure to configure Slack notifications for our course. I also encourage you to download and install a Desktop version of Slack.\n Class slides are here"
+  },
+  {
+    "objectID": "schedule.html#september-09-2022",
+    "href": "schedule.html#september-09-2022",
+    "title": "Schedule",
+    "section": "September 09, 2022",
+    "text": "September 09, 2022\n\nInfrastructure Set-up\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Fill out First Day of Class Questionnaire in Moodle\n Complete Syllabus Quiz\n Contact me if you will be using a Chromebook\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#september-12-2022",
+    "href": "schedule.html#september-12-2022",
+    "title": "Schedule",
+    "section": "September 12, 2022",
+    "text": "September 12, 2022\n\nData Fundamentals\nUNDERSTANDING DATASETS\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#september-14-2022",
+    "href": "schedule.html#september-14-2022",
+    "title": "Schedule",
+    "section": "September 14, 2022",
+    "text": "September 14, 2022\n\nIntroduction to R\nUNDERSTANDING DATASETS\n\nDue TodayFurther ResourcesAnnouncements\n\n\n 2. R Basics , Irizarry, Rafael A. (2022). Introduction to Data Science. Data Analysis and Prediction Algorithms with R. URL: https://rafalab.github.io/dsbook/ (visited on Jan. 14, 2022).\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#september-16-2022",
+    "href": "schedule.html#september-16-2022",
+    "title": "Schedule",
+    "section": "September 16, 2022",
+    "text": "September 16, 2022\n\nLab: Understanding Datasets\nUNDERSTANDING DATASETS\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Problem-Solving Lab Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#september-19-2022",
+    "href": "schedule.html#september-19-2022",
+    "title": "Schedule",
+    "section": "September 19, 2022",
+    "text": "September 19, 2022\n\nGrammar of Graphics\nVISUALIZATION AESTHETICS\n\nDue TodayFurther ResourcesAnnouncements\n\n\n 2. Data Visualization , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022).\n Lab 1 Due\n\n\n list()"
+  },
+  {
+    "objectID": "schedule.html#september-21-2022",
+    "href": "schedule.html#september-21-2022",
+    "title": "Schedule",
+    "section": "September 21, 2022",
+    "text": "September 21, 2022\n\nVisualization Conventions\nVISUALIZATION AESTHETICS\n\nDue TodayFurther ResourcesAnnouncements\n\n\n 11. Data Visualization Principles , Irizarry, Rafael A. (2022). Introduction to Data Science. Data Analysis and Prediction Algorithms with R. URL: https://rafalab.github.io/dsbook/ (visited on Jan. 14, 2022).\n\n\n Tufte, Edward R. (2001). The Visual Display of Quantitative Information. 2nd edition. Cheshire, Conn: Graphics Press. ISBN: 978-1-930824-13-3.\n\n\n Class slides are here.\n Quiz 1 has been posted and is due next Wednesday.\n Monday’s solutions are here."
+  },
+  {
+    "objectID": "schedule.html#september-23-2022",
+    "href": "schedule.html#september-23-2022",
+    "title": "Schedule",
+    "section": "September 23, 2022",
+    "text": "September 23, 2022\n\nLab: Designing Effective Data Visualizations\nVISUALIZATION AESTHETICS\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Study Plan Due\n\n\n D’Ignazio, Catherine and Lauren Klein (2020). “3. On Rational, Scientific, Objective Viewpoints from Mythical, Imaginary, Impossible Standpoints”. En. In: Data Feminism. Publisher: PubPub. MIT Press. URL: https://data-feminism.mitpress.mit.edu/pub/5evfe9yd/release/1 (visited on Aug. 24, 2021)."
+  },
+  {
+    "objectID": "schedule.html#september-26-2022",
+    "href": "schedule.html#september-26-2022",
+    "title": "Schedule",
+    "section": "September 26, 2022",
+    "text": "September 26, 2022\n\nFrequency Plots\nCOMPOSING & INTERPRETING PLOTS\n\nDue TodayFurther ResourcesAnnouncements\n\n\n 2. Data Visualization , Ismay, Chester and Albert Y. Kim (2021). Modern Dive: Statistical Inference via Data Science. CRC Press. URL: https://moderndive.com/ (visited on Jan. 14, 2022).\n Lab 2 Due\n Complete CATME Survey\n\n\n No Readings\n\n\n Class slides are here\n Friday’s solutions are here"
+  },
+  {
+    "objectID": "schedule.html#september-28-2022",
+    "href": "schedule.html#september-28-2022",
+    "title": "Schedule",
+    "section": "September 28, 2022",
+    "text": "September 28, 2022\n\nBoxplots\nCOMPOSING & INTERPRETING PLOTS\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n\n\n No Readings\n\n\n Class slides are here\n Quiz 2 posted today.\n Mini-project 1 will be posted on Friday."
+  },
+  {
+    "objectID": "schedule.html#september-30-2022",
+    "href": "schedule.html#september-30-2022",
+    "title": "Schedule",
+    "section": "September 30, 2022",
+    "text": "September 30, 2022\n\nLab: Visualizing Data\nCOMPOSING & INTERPRETING PLOTS\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Project 1 Assigned\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#october-03-2022",
+    "href": "schedule.html#october-03-2022",
+    "title": "Schedule",
+    "section": "October 03, 2022",
+    "text": "October 03, 2022\n\nGitHub Essentials\nGITHUB\n\nDue TodayFurther ResourcesAnnouncements\n\n\n Bryan, Jennifer (2018). “Excuse Me, Do You Have a Moment to Talk About Version Control?” In: The American Statistician 72.1. Publisher: Taylor & Francis _ eprint: https://doi.org/10.1080/00031305.2017.1399928, pp. 20-27. DOI: 10.1080/00031305.2017.1399928. URL: https://doi.org/10.1080/00031305.2017.1399928 (visited on Jan. 14, 2022).\n Group Contract Due\n Lab 3 Due\n\n\n Brennan, Stephen (2022). GitHub for Non-Coders - Stephen Brennan. URL: https://brennan.io/2015/08/07/github-noncoders/ (visited on Jan. 14, 2022).\n\n\n Class slides are here"
+  },
+  {
+    "objectID": "schedule.html#october-05-2022",
+    "href": "schedule.html#october-05-2022",
+    "title": "Schedule",
+    "section": "October 05, 2022",
+    "text": "October 05, 2022\n\nLab: Collaborating via GitHub\nGITHUB\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#october-07-2022",
+    "href": "schedule.html#october-07-2022",
+    "title": "Schedule",
+    "section": "October 07, 2022",
+    "text": "October 07, 2022\n\nWork on Group Projects in Class\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#october-10-2022",
+    "href": "schedule.html#october-10-2022",
+    "title": "Schedule",
+    "section": "October 10, 2022",
+    "text": "October 10, 2022\n\nNo Class\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#october-12-2022",
+    "href": "schedule.html#october-12-2022",
+    "title": "Schedule",
+    "section": "October 12, 2022",
+    "text": "October 12, 2022\n\nSubsetting, Aggregating, and Summarizing Data\nTRANSFORMING DATA\n\nDue TodayFurther ResourcesAnnouncements\n\n\n 3. Data Wrangling , Ismay, Chester and Albert Y. Kim (2021). Modern Dive: Statistical Inference via Data Science. CRC Press. URL: https://moderndive.com/ (visited on Jan. 14, 2022).\n Lab 4 Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#october-14-2022",
+    "href": "schedule.html#october-14-2022",
+    "title": "Schedule",
+    "section": "October 14, 2022",
+    "text": "October 14, 2022\n\nLab: Aggregating and Summarizing Data\nTRANSFORMING DATA\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Project 1 Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#october-17-2022",
+    "href": "schedule.html#october-17-2022",
+    "title": "Schedule",
+    "section": "October 17, 2022",
+    "text": "October 17, 2022\n\nExploratory Data Analysis\nTRANSFORMING DATA\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Peer Evaluations Due\n Lab 5 Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#october-19-2022",
+    "href": "schedule.html#october-19-2022",
+    "title": "Schedule",
+    "section": "October 19, 2022",
+    "text": "October 19, 2022\n\nJoining Datasets\nJOINING DATASETS\n\nDue TodayFurther ResourcesAnnouncements\n\n\n 5. Data wrangling on multiple tables , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022).\n\n\n No Readings\n\n\n Class slides are here"
+  },
+  {
+    "objectID": "schedule.html#october-21-2022",
+    "href": "schedule.html#october-21-2022",
+    "title": "Schedule",
+    "section": "October 21, 2022",
+    "text": "October 21, 2022\n\nLab: Joining Datasets\nJOINING DATASETS\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Project 2 Assigned\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#october-24-2022",
+    "href": "schedule.html#october-24-2022",
+    "title": "Schedule",
+    "section": "October 24, 2022",
+    "text": "October 24, 2022\n\nTidying Datasets\nTIDYING DATA\n\nDue TodayFurther ResourcesAnnouncements\n\n\n 26. Parsing dates and times , Irizarry, Rafael A. (2022). Introduction to Data Science. Data Analysis and Prediction Algorithms with R. URL: https://rafalab.github.io/dsbook/ (visited on Jan. 14, 2022).\n Group Contract Due\n Lab 6 Due\n\n\n 25. String processing , Irizarry, Rafael A. (2022). Introduction to Data Science. Data Analysis and Prediction Algorithms with R. URL: https://rafalab.github.io/dsbook/ (visited on Jan. 14, 2022)."
+  },
+  {
+    "objectID": "schedule.html#october-26-2022",
+    "href": "schedule.html#october-26-2022",
+    "title": "Schedule",
+    "section": "October 26, 2022",
+    "text": "October 26, 2022\n\nPivoting Datasets\nTIDYING DATA\n\nDue TodayFurther ResourcesAnnouncements\n\n\n 6. Tidy Data , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022).\n\n\n Wickham, Hadley (2014). “Tidy Data”. En. In: Journal of Statistical Software 59, pp. 1-23. DOI: 10.18637/jss.v059.i10. URL: https://doi.org/10.18637/jss.v059.i10 (visited on Jan. 14, 2022).\n\n\n Class slides are here"
+  },
+  {
+    "objectID": "schedule.html#october-28-2022",
+    "href": "schedule.html#october-28-2022",
+    "title": "Schedule",
+    "section": "October 28, 2022",
+    "text": "October 28, 2022\n\nLab: Pivoting Datasets\nTIDYING DATA\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Quiz 1 Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#october-31-2022",
+    "href": "schedule.html#october-31-2022",
+    "title": "Schedule",
+    "section": "October 31, 2022",
+    "text": "October 31, 2022\n\nProgramming in R\nPROGRAMMING IN R\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Lab 7 Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#november-02-2022",
+    "href": "schedule.html#november-02-2022",
+    "title": "Schedule",
+    "section": "November 02, 2022",
+    "text": "November 02, 2022\n\nWriting Functions\nPROGRAMMING IN R\n\nDue TodayFurther ResourcesAnnouncements\n\n\n 7. Iteration , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022).\n\n\n No Readings\n\n\n Class slides are here"
+  },
+  {
+    "objectID": "schedule.html#november-04-2022",
+    "href": "schedule.html#november-04-2022",
+    "title": "Schedule",
+    "section": "November 04, 2022",
+    "text": "November 04, 2022\n\nWork on Group Projects in Class\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#november-07-2022",
+    "href": "schedule.html#november-07-2022",
+    "title": "Schedule",
+    "section": "November 07, 2022",
+    "text": "November 07, 2022\n\nIteration\nPROGRAMMING IN R\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#november-09-2022",
+    "href": "schedule.html#november-09-2022",
+    "title": "Schedule",
+    "section": "November 09, 2022",
+    "text": "November 09, 2022\n\nLab: Programming in R\nPROGRAMMING IN R\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Study Plan Assessment Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#november-11-2022",
+    "href": "schedule.html#november-11-2022",
+    "title": "Schedule",
+    "section": "November 11, 2022",
+    "text": "November 11, 2022\n\nNo Class\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Project 2 Due\n Lab 8 Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#november-14-2022",
+    "href": "schedule.html#november-14-2022",
+    "title": "Schedule",
+    "section": "November 14, 2022",
+    "text": "November 14, 2022\n\nMap Projections and Spatial Thinking\nMAPPING\n\nDue TodayFurther ResourcesAnnouncements\n\n\n 17. Working with geospatial data (17.1-17.3) , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022).\n Peer Evaluations Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#november-16-2022",
+    "href": "schedule.html#november-16-2022",
+    "title": "Schedule",
+    "section": "November 16, 2022",
+    "text": "November 16, 2022\n\nMapping Point Data in Leaflet\nMAPPING\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n\n\n No Readings\n\n\n Class slides are here"
+  },
+  {
+    "objectID": "schedule.html#november-18-2022",
+    "href": "schedule.html#november-18-2022",
+    "title": "Schedule",
+    "section": "November 18, 2022",
+    "text": "November 18, 2022\n\nLab: Mapping in Leaflet\nMAPPING\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Project 3 Assigned\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#november-21-2022",
+    "href": "schedule.html#november-21-2022",
+    "title": "Schedule",
+    "section": "November 21, 2022",
+    "text": "November 21, 2022\n\nChloropleth Maps\nMAPPING\n\nDue TodayFurther ResourcesAnnouncements\n\n\n 17. Working with geospatial data (17.4-17.8) , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022).\n Group Contract Due\n Lab 9 Due\n\n\n No Readings\n\n\n Class slides are here"
+  },
+  {
+    "objectID": "schedule.html#november-23-2022",
+    "href": "schedule.html#november-23-2022",
+    "title": "Schedule",
+    "section": "November 23, 2022",
+    "text": "November 23, 2022\n\nNo Class\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Project 2 Due\n Lab 8 Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#november-25-2022",
+    "href": "schedule.html#november-25-2022",
+    "title": "Schedule",
+    "section": "November 25, 2022",
+    "text": "November 25, 2022\n\nNo Class\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#november-28-2022",
+    "href": "schedule.html#november-28-2022",
+    "title": "Schedule",
+    "section": "November 28, 2022",
+    "text": "November 28, 2022\n\nLab: How to Lie with Maps\nMAPPING\n\nDue TodayFurther ResourcesAnnouncements\n\n\n Deluca, Eric and Sara Nelson (2017). “7. Lying With Maps”. In: Mapping, Society, and Technology. Ed. by Steven Manson. Minneapolis, Minnesota: University of Minnesota Libraries Publishing. URL: https://open.lib.umn.edu/mapping/chapter/7-lying-with-maps/ (visited on Apr. 14, 2022).\n Quiz 2 Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#november-30-2022",
+    "href": "schedule.html#november-30-2022",
+    "title": "Schedule",
+    "section": "November 30, 2022",
+    "text": "November 30, 2022\n\nSQL\nDATA RETRIEVAL\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#december-02-2022",
+    "href": "schedule.html#december-02-2022",
+    "title": "Schedule",
+    "section": "December 02, 2022",
+    "text": "December 02, 2022\n\nWork on Group Projects in Class\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#december-05-2022",
+    "href": "schedule.html#december-05-2022",
+    "title": "Schedule",
+    "section": "December 05, 2022",
+    "text": "December 05, 2022\n\nWorking with APIs\nDATA RETRIEVAL\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n\n\n No Readings\n\n\n Class slides are here\n MP2 due Wednesday; last day to request an extension (by 5PM)\n Quiz 4 due Wednesday (5PM)"
+  },
+  {
+    "objectID": "schedule.html#december-07-2022",
+    "href": "schedule.html#december-07-2022",
+    "title": "Schedule",
+    "section": "December 07, 2022",
+    "text": "December 07, 2022\n\nAdvanced APIs\nDATA RETRIEVAL\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Project 3 Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#december-09-2022",
+    "href": "schedule.html#december-09-2022",
+    "title": "Schedule",
+    "section": "December 09, 2022",
+    "text": "December 09, 2022\n\nreview\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Peer Evaluations Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "schedule.html#december-12-2022",
+    "href": "schedule.html#december-12-2022",
+    "title": "Schedule",
+    "section": "December 12, 2022",
+    "text": "December 12, 2022\n\nWrap-up\n\nDue TodayFurther ResourcesAnnouncements\n\n\n No Readings\n Quiz 3 Due\n Lab 10 Due\n\n\n No Readings"
+  },
+  {
+    "objectID": "md/learning-check.html",
+    "href": "md/learning-check.html",
+    "title": "",
+    "section": "",
+    "text": "Each week, I will post short learning check quizzes designed to assess your fluency in the course standards covered in the previous week. These quizzes will be graded for completion. They are designed to help me get a pulse of the class’s understanding of key concepts and to help you determine which concepts you should study further. You can earn 1 point towards a standard by completing the learning check for that standard. Because I rely on these checks to orient the direction of our class, extensions will not be granted for learning checks."
+  },
+  {
+    "objectID": "lab1.html",
+    "href": "lab1.html",
+    "title": "Lab 1: Understanding Datasets",
+    "section": "",
+    "text": "This lab is all about learning to understand the context and parts of a dataset. In the process of practicing these skills, you will also learn about how to problem solve when coding in R.\n\n\n\nRead a data dictionary\nReference data documentation\nIdentify unique observations in a dataset\nUnderstand different variable types and the kinds of operations you would preform on them"
+  },
+  {
+    "objectID": "lab1.html#review-of-key-terms",
+    "href": "lab1.html#review-of-key-terms",
+    "title": "Lab 1: Understanding Datasets",
+    "section": "Review of Key Terms",
+    "text": "Review of Key Terms\nIn this course, we will be working entirely with rectangular datasets - i.e. datasets in which all rows are the same length, and all columns are the same length.\n\nHow do we refer to the parts of a rectangular dataset?\nWe refer to each row in a dataset as an observation and each column in a dataset as a variable. This is because rows refer to something that we see in the world, and columns describe that thing we are seeing. Imagine we have a table like this below.\n\n\n\nName\nAge\nBirth Month\nTime on Phone\n\n\n\n\nSally\n23\n3\n42\n\n\nJulie\n40\n2\n98\n\n\nMark\n14\n8\n120\n\n\n\nEach row is an observation - in this case a person - and each column is a variable describing something about a person.\n\n\nWhat are the technical components of a rectangular dataset in R?\nYou may recall that in R, vectors are a one-dimensional set of values that are all of the same type. A vector can be of type integer (non-decimal numbers), double (decimal numbers), characters (letters and symbols), logical (TRUE/FALSE), for example. Because all of the values in a vector are of the same type, we can perform certain operations across all of the values stored in a vector (e.g. adding all the numbers in a vector up or pasting all of the characters in a vector together). Note how we create a vector of numeric values below, check its type, and then perform an operation on it:\n\n# Note how we create a vector by listing the values in `c()`\ntime_on_phone <- c(42, 98, 120)\n\n# We check the data type like this. \ntypeof(time_on_phone)\n\n[1] \"double\"\n\n# We sum the values in the vector like this. \nsum(time_on_phone)\n\n[1] 260\n\n\nWhen we create or import rectangular datasets into R, they will be stored as a data frame. In a data frame, each column is technically a vector, and the name of that vector corresponds to the column’s name. So in the table we created above, the Name column is a character vector of names, the Age column is a numeric vector of ages.\n\n\n\n\n\n\nImportant\n\n\n\nI use the letters df as a placeholder to refer to an arbitrary data frame in R. Any time that I refer to df in a lab, know that you can swap out df with any data frame in your environment.\n\n\n\nRectangular Datasets\n\ndatasets in which all rows are the same length, and all columns are the same length\n\nObservations\n\nrows in a dataset\n\nVariables\n\ncolumns in a dataset; describe something about an observation\n\nVector\n\none-dimensional set of values that are all of the same type\n\nData Frame\n\na list of vectors of equal lengths; typically organizes data into a two-dimensional table composed of columns (the vectors) and rows\n\nUnique Key\n\nvariable (column) in the dataset that can be used to uniquely identify each row"
+  },
+  {
+    "objectID": "lab1.html#scorecard-dataset",
+    "href": "lab1.html#scorecard-dataset",
+    "title": "Lab 1: Understanding Datasets",
+    "section": "Scorecard Dataset",
+    "text": "Scorecard Dataset\nIn his 2013 State of the Union Address, President Barack Obama announced his plans to create a “college scorecard” that would allow prospective students and parents to compare schools in terms of cost, offerings, diversity, completion rates, and post-graduate earnings. This data was first published in 2015 and since has undergone several improvements and revisions.\nThe College Scorecard dataset is massive. In fact, I thought long and hard about whether this was really the first dataset I wanted to introduce to you in a lab. It includes information about over _____ institutions in the U.S., and has more than 3000 columns documenting information about those institutions. I chose this dataset for this lab because, if you can learn to read this data dictionary, you will be leaps and bounds ahead of the game in learning to read other data dictionaries. (It’s also just a super cool dataset, and hint, hint: you will get a chance to dive into it in much more detail in a few weeks). While the full data is available online, we are only going to work with a small subset of the data today."
+  },
+  {
+    "objectID": "lab1.html#setting-up-your-environment",
+    "href": "lab1.html#setting-up-your-environment",
+    "title": "Lab 1: Understanding Datasets",
+    "section": "Setting Up Your Environment",
+    "text": "Setting Up Your Environment\n\nInstall the RScorecard package by entering the following into your Console: install.packages(\"rscorecard\")\nCreate a Scorecard API Key at this link. Shortly after you fill out the form, you will be emailed a key. Copy that key into code chunk below. Be sure to wrap the key in quotation marks.\nDownload the Scorecard Data Dictionary and Technical Documentation for Institution-Level Data Files here.\nRun the code below to the import 2018 Scorecard data for Massachusetts into R. Call me or one of the data assistants over if you get an error.\n\n\nlibrary(tidyverse)\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.3.6     ✔ purrr   0.3.4\n✔ tibble  3.1.8     ✔ dplyr   1.0.9\n✔ tidyr   1.2.0     ✔ stringr 1.4.0\n✔ readr   2.1.2     ✔ forcats 0.5.1\n\n\nWarning: package 'ggplot2' was built under R version 4.1.2\n\n\nWarning: package 'tibble' was built under R version 4.1.2\n\n\nWarning: package 'tidyr' was built under R version 4.1.2\n\n\nWarning: package 'readr' was built under R version 4.1.2\n\n\nWarning: package 'dplyr' was built under R version 4.1.2\n\n\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n\nlibrary(rscorecard)\n\nWarning: package 'rscorecard' was built under R version 4.1.2\n\nsc_key(Sys.getenv(\"SCORECARD_KEY\"))\n\nDATAGOV_API_KEY environment variable now set. You may now use sc_get() without specifying a key.\n\nscorecard <- sc_init() %>%\n  sc_year(2018) %>%                 #Note how we are looking at only 2021 data here!\n  sc_filter(stabbr == \"MA\") %>%     #Note how we are looking at only Massachusetts data here!\n  sc_select(unitid, instnm, city, highdeg, control, adm_rate, costt4_a, costt4_p, pcip27, pctfloan, admcon7, wdraw_orig_yr2_rt, cdr3, ugds_white, ugds_black) %>%\n  sc_get()\n\nLarge request will require: 1 additional pulls.\nRequest additional chunk 1\nRequest complete!"
+  },
+  {
+    "objectID": "lab1.html#glimpsing-the-data",
+    "href": "lab1.html#glimpsing-the-data",
+    "title": "Lab 1: Understanding Datasets",
+    "section": "Glimpsing the Data",
+    "text": "Glimpsing the Data\nWhen working with very large datasets, we need tools to help us get a sense of the dataset without having to load the entire data frame. For instance, we can view the first 6 rows of the dataset by calling head().\n\nscorecard %>% head()\n\n# A tibble: 6 × 16\n  unitid instnm     city  highdeg control adm_r…¹ costt…² costt…³ pcip27 pctfl…⁴\n   <int> <chr>      <chr>   <int>   <int>   <dbl>   <int>   <int>  <dbl>   <dbl>\n1 164368 Hult Inte… Camb…       4       2   0.571   60090      NA 0       0.0566\n2 164447 American … Spri…       4       2   0.684   47742      NA 0       0.833 \n3 164465 Amherst C… Amhe…       3       2   0.128   71300      NA 0.110   0.166 \n4 164492 Anna Mari… Paxt…       4       2   0.736   51109      NA 0       0.746 \n5 164535 Assabet V… Marl…       1       1   0.452      NA   19703 0       0.429 \n6 164562 Assumptio… Worc…       4       2   0.811   53303      NA 0.0162  0.704 \n# … with 6 more variables: admcon7 <int>, wdraw_orig_yr2_rt <dbl>, cdr3 <dbl>,\n#   ugds_white <dbl>, ugds_black <dbl>, year <dbl>, and abbreviated variable\n#   names ¹​adm_rate, ²​costt4_a, ³​costt4_p, ⁴​pctfloan\n# ℹ Use `colnames()` to see all variable names\n\n\nstr() provides a great deal of information about the observations in the data frame, including the number of variables, the number of observations, the column names, their data types, and a list of observations.\n\nscorecard %>% str()\n\ntibble [153 × 16] (S3: tbl_df/tbl/data.frame)\n $ unitid           : int [1:153] 164368 164447 164465 164492 164535 164562 164580 164599 164614 164632 ...\n $ instnm           : chr [1:153] \"Hult International Business School\" \"American International College\" \"Amherst College\" \"Anna Maria College\" ...\n $ city             : chr [1:153] \"Cambridge\" \"Springfield\" \"Amherst\" \"Paxton\" ...\n $ highdeg          : int [1:153] 4 4 3 4 1 4 4 1 3 4 ...\n $ control          : int [1:153] 2 2 2 2 1 2 2 3 2 2 ...\n $ adm_rate         : num [1:153] 0.571 0.684 0.128 0.736 0.452 ...\n $ costt4_a         : int [1:153] 60090 47742 71300 51109 NA 53303 68482 NA 26691 46315 ...\n $ costt4_p         : int [1:153] NA NA NA NA 19703 NA NA NA NA NA ...\n $ pcip27           : num [1:153] 0 0 0.11 0 0 ...\n $ pctfloan         : num [1:153] 0.0566 0.8333 0.1661 0.7464 0.4286 ...\n $ admcon7          : int [1:153] 3 5 1 3 3 3 1 NA 1 5 ...\n $ wdraw_orig_yr2_rt: num [1:153] NA 0.181 0.124 0.129 NA ...\n $ cdr3             : num [1:153] 0.043 0.073 0.014 0.073 0.065 0.044 0.019 0.06 0.024 0.048 ...\n $ ugds_white       : num [1:153] 0.0314 0.3787 0.435 0.6401 0.48 ...\n $ ugds_black       : num [1:153] 0.0087 0.2211 0.1073 0.1415 0.38 ...\n $ year             : num [1:153] 2018 2018 2018 2018 2018 ...\n\n\nYou can also click on the name of your data frame in your Environment panel in RStudio, and it will open a new tab in RStudio that displays the data in a tabular format. Try clicking on scorecard in your Environment panel.\n\n\n\n\n\n\nTip\n\n\n\nThis is the same as calling df %>% View() in your Console.\n\n\nNote the column names for this dataframe, and the kinds of values that appear in those columns. Some of them (like city and year) might make sense to you immediately. Others (like pcip27 and highdeg) might be much more confusing. To figure out what we are looking out, we are going to need to refer to the dataset’s data dictionary."
+  },
+  {
+    "objectID": "lab1.html#getting-to-know-this-dataset",
+    "href": "lab1.html#getting-to-know-this-dataset",
+    "title": "Lab 1: Understanding Datasets",
+    "section": "Getting to Know this Dataset",
+    "text": "Getting to Know this Dataset\n\nObservations (Rows)\nIn starting our data analysis, we need to have a good sense of what each observation in our dataset refers to - or its observational unit. Think of it this way. If you were to count the number rows in your dataset, what would that number refer to? A unique key is a variable (or set of variables) that uniquely identifies an observation in the dataset. Think of a unique key as a unique way to identify a row and all of the values in it. There should never be more than one row in the dataset with the same unique key. A unique key tells us what each row in the dataset refers to.\n\n\n\n\n\n\nExercise 1\n\n\n\nSee if you can identify a unique key for this dataset. Write some lines of code to determine whether the column you’ve identified can act as unique key for the data. Hint: You need to check whether the values in the column ever repeat.\n\n\n\n# Write code to check if values in column are all unique here.\n\n\n\n\n\n\n\nTip\n\n\n\nNote that NAME is typically not an appropriate variable to use as a unique key. Let me provide an example to demonstrate this. When I worked for BetaNYC, I was trying to build a map of vacant storefronts in NYC by mapping all commercially zoned properties in the city, and then filtering out those properties where a business was licensed or permitted. This way the map would only include properties where there wasn't a business operating. One set of businesses I was filtering out was restaurants. The only dataset that the city had made publicly available for restaurant permits was broken. It was operating on an automated process to update whenever there was a change in the permit; however, whenever a permit was updated, rather than updating the appropriate fields in the existing dataset, it was creating a new row in the dataset that only included the permit holder (the restaurant name), the permit type, and the updated fields. Notably the unique permit ID was not being included in this new row. We pointed this issue out to city officials, but fixing something like this can be slow and time-consuming, so in the meantime, we looked into whether we could clean the data ourselves by aggregating the rows that referred to the same restaurant. However, without the permit ID it was impossible to uniquely identify the restaurants in the dataset. Sure, we had the restaurant name, but do you know how many Wendy's there are in NYC?\n\n\nAnytime we count something in the world, we are not only engaging in a process of tabulation; we are also engaging in a process of defining. If I count the number of students in a class, I first have to define what counts as a student. If someone is auditing the class, do they count? If I, as the instructor, am learning from my students, do I count myself as a student? As I make decisions about how I'm going to define “student,” those decisions impact the numbers that I produce. When I change my definition of “student,” how I go about tabulating students also changes. Thus, as we prepare to count observations in a dataset, it is important to know how those observations are defined.\n\n\n\n\n\n\nExercise 2\n\n\n\nAt this point, you’ve probably figured out that each row in this dataset is a higher education institution. …but there are many different ways that we can define higher education institutions, and that will impact what gets included and excluded in our data. Referencing the Technical Documentation, locate a definition for the unit of observation in this dataset. What institutions are included, and what institutions are excluded? Summarize a definition below.\n\n\n\nSummarize definition here.\n\n\n\nVariables (Columns)\nOpen the data dictionary you downloaded in an earlier step. It will open as an Excel file. Click on the tab labeled “Institution_Data_Dictionary”. There are thousands of variables in this dataset, falling into the broader categories of school, completion, admissions, cost, etc. Note how the file is organized, and specifically draw your attention to:\n\nColumn 1 (NAME OF DATA ELEMENT): This is a long description of the variable and gives you clues as to what is represented in it.\nColumn 6 (VARIABLE NAME): This is the column name for the variable. This is how you will reference the variable in R.\nColumn 7 (VALUE): These are the possible values for that variable. Note that for many categorical variables, the values are numbers. We are going to have to associate the numbers with their corresponding labels.\nColumn 8 (LABEL): These are the labels associated with the values recorded for the variable.\nColumn 11 (NOTES): This provides notes about the variable, including whether it is currently in use and what missing values indicate.\n\n\n\n\n\n\n\nExercise 3\n\n\n\nIdentify one nominal variable, one ordinal variable, one discrete variable, and one continuous variable.\n\n\n\n\nValues (Cells)\n\n\n\n\n\n\nExercise 4\n\n\n\nRecode/factor ordinal variable\n\n\n\n\n\n\n\n\nExercise 5\n\n\n\nCut numeric variable into buckets and label them\n\n\n\n\nMissing Values\n\n\n\n\n\n\nExercise 6\n\n\n\nDetermine the number of missing values in __.\n\n\n\n\n\n\n\n\nEthical Considerations\n\n\n\nReferencing the College Scorecard data documentation, see if you can determine which students are included in calculations of earnings and debt. How might the data’s coverage bias the values that get reported? What might be the social consequences of these biases? Share your ideas on our `sds-192-discussions` Slack channel."
+  },
+  {
+    "objectID": "problem-solving.html",
+    "href": "problem-solving.html",
+    "title": "Problem Solving",
+    "section": "",
+    "text": "This lab will introduce you to resources and techniques for problem solving in R. You should reference this lab often throughout the semester for reminders on best practices for addressing errors and getting help.\n\n\n\nInterpret error messages in R\nRead R cheatsheets\nAccess R help pages\nReference Stack Overflow and other online resources for help"
+  },
+  {
+    "objectID": "problem-solving.html#interpreting-error-messages",
+    "href": "problem-solving.html#interpreting-error-messages",
+    "title": "Problem Solving",
+    "section": "Interpreting Error Messages",
+    "text": "Interpreting Error Messages\nThroughout this week, we have taken a look at different error messages that R presents when it can’t evaluate our code. Today, we will consider these in more detail. First, it’s important to make some distinctions between the kinds of messages that R presents to us when attempting to run code:\n\nErrors\n\nTerminate a process that we are trying to run in R. They arise when it is not possible for R to continue evaluating a function.\n\nWarnings\n\nDon’t terminate a process but are meant to warn us that there may be an issue with our code and its output. They arise when R recognizes potential problems with the code we’ve supplied.\n\nMessages\n\nAlso don’t terminate a process and don’t necessarily indicate a problem but simply provide us with more potentially helpful information about the code we’ve supplied.\n\n\nCheck out the differences between an error and a warning in R by reviewing the output in the Console when you run the following code chunks.\n\nError in R\n\nsum(\"3\", \"4\")\n\nError in sum(\"3\", \"4\"): invalid 'type' (character) of argument\n\n\n\n\nWarning in R\n\nvector1 <- 1:5\nvector2 <- 3:6\nvector1 + vector2\n\nWarning in vector1 + vector2: longer object length is not a multiple of shorter\nobject length\n\n\n[1]  4  6  8 10  8\n\n\nSo what should you do when you get an error message? How should you interpret it? Luckily, there are some clues and standardized components of the message the indicate why R can’t execute the code. Consider the following error message that you received when running the code above:\nError in sum(“3”, “4”) : invalid ‘type’ (character) of argument\nThere are three things we should pay attention to in this message:\n\nThe word “Error” indicates that this code did not run.\nThe text immediately after the word “in” tells us which specific function did not run.\nThe text after the colon gives us clues as why the code did not run.\n\nReviewing the error above, I can guess that there was a problem with the argument that I supplied to the sum() function, and specifically that I supplied a function of the wrong type.\n\n\n\n\n\n\nExercise 1\n\n\n\nRun the codes below and check out the error messages. Review the code to fix each of the errors. Note that each subsequent code chunk relies on the previous code chunk, so you will need to fix the errors in order and run the chunks in order.\n\n\n\n# Create three vectors\na <- 1, 2, 3, 4, 5\nb <- \"a\", \"b\", \"c\", \"d\", \"e\"\nc <- TRUE, FALSE, TRUE, TRUE, FALSE\n\nError: <text>:2:7: unexpected ','\n1: # Create three vectors\n2: a <- 1,\n         ^\n\n\n\n# Add the values in the vector a\na_added <- add(a)\n\nError in add(a): could not find function \"add\"\n\n\n\n# Multiply the previous output by 3\nthree_times_a_added <- added_a * 3\n\nError in eval(expr, envir, enclos): object 'added_a' not found\n\n\n\n# Create a dataframe with col1 and col2\ndf <- data.frame(\n  col1 = c(1, 2, 3)\n  col2 = c(\"a\", \"b\", \"c\")\n\nError: <text>:4:3: unexpected symbol\n3:   col1 = c(1, 2, 3)\n4:   col2\n     ^\n\n\n\n# Add a new column to df\ndf$col3 <- c(TRUE, FALSE)\n\nError in df$col3 <- c(TRUE, FALSE): object of type 'closure' is not subsettable"
+  },
+  {
+    "objectID": "problem-solving.html#preparing-to-get-help",
+    "href": "problem-solving.html#preparing-to-get-help",
+    "title": "Problem Solving",
+    "section": "Preparing to Get Help",
+    "text": "Preparing to Get Help\nWhen we do get errors in our code and need to ask for help in interpreting them, it’s important to provide collaborators with the information they need to help us. Sometimes when teaching R I will hear things like: “My code doesn’t work!” or “I’m stuck and don’t know what to do,” and it can be challenging to suss out the root of the issue without more information. Here are some strategies for describing issues you are having with your code:\n\nReference line numbers. Notice the left side of this document has a series of numbers listed vertically next to each line? These are known as line numbers. Oftentimes, if you are having an issue with your code and ask me to review it, I will say something like: “Check out line 53.” By this I mean that you should scroll the document to the 53rd line. You can similarly tell me or your peers which line of your code you are struggling with.\nCompose good reproducible examples. A good reproducible example includes all of the lines of code that we need to reproduce an output on our own machines. This means that if you create a vector in a previous code snippet and then supply it as an argument in another code snippet, you are going to want to make sure that both of these lines of code appear in your reproducible example. Further, if the functions that you are using are from certain packages, you will want to make sure the library() call to load that package is in your reproducible example.\nUse the code and code block buttons in Slack to share example code. First, when we copy and paste code from RStudio into programs like Slack and email, we can’t see the output. Second, certain characters like quotation marks and apostrophes are treated differently across these programs. For example, run the code chunk below and check out the output in your Console. The first line of code I typed directly into RStudio. The second I copied over from Slack.\n\n\n# typed directly into RStudio\ntoupper(\"apple\")\n# copied from Slack\ntoupper(“apple”)\n\nError: <text>:4:9: unexpected input\n3: # copied from Slack\n4: toupper(“\n           ^\n\n\nNotice the slight differences in the quotation marks? R recognizes the first but doesn’t recognize the second, even though I used the same keyboard key to create both. This is due to the fact that these two systems use different character encodings.\nThe Code button (for a single line of code) and Code Block button (for multiple lines of code) in Slack are useful tools for composing code and avoiding character encoding issues. If you click these buttons when typing a Slack message, you can enter code in the red outlined box that appears, and this will easily copy to RStudio. I will ask you to always use these features when copying code this semester.\n\n\n\n\n\n\nTip\n\n\n\nIn Slack, you can also wrap text backticks (` `) to have it output in a single-line code block, and three backticks (``` ```) to have it output as a multi-line code block.\n\n\n\n\n\n\n\n\nExercise 2\n\n\n\nCopy and paste one line of code from this lab as a threaded comment on the Slack message I posted on September 7, 2022. Be sure the text is formatted as code."
+  },
+  {
+    "objectID": "problem-solving.html#help-pages",
+    "href": "problem-solving.html#help-pages",
+    "title": "Problem Solving",
+    "section": "Help pages",
+    "text": "Help pages\nOne resource we’ve already discussed are the R help pages. I tend to use the help pages when I know the function I need to use, but can’t remember how to apply it or what its parameters are. Help pages typically include a description of the function, its arguments, details about the function, the values it produces, a list of related functions, and examples of its use. We can access the help pages for a function by typing the name of the function with a question mark in front of it into our Console (e.g. ?log or ?sum). Some help pages are well-written and include helpful examples, while others are spotty and don’t include many examples.\n\n\n\n\n\n\nExercise 3\n\n\n\nAccess the help pages for the function sort(). Write code below to sort the vector a (which you created in an earlier step) in decreasing order.\n\n\n\n# Write code here."
+  },
+  {
+    "objectID": "problem-solving.html#cheatsheets",
+    "href": "problem-solving.html#cheatsheets",
+    "title": "Problem Solving",
+    "section": "Cheatsheets",
+    "text": "Cheatsheets\nThe R community has developed a series of cheatsheets that list the functions made available through a particular package and their arguments. I tend to use cheatsheets when I know what I need to do to a dataset in R, but I can’t recall the function that enables me to do it.\n\n\n\n\n\n\nExercise 4\n\n\n\nNavigate to this cheatsheet for base R. Imagine we collected the temperature of our home each day for the past ten days (see code below). Let’s say we wanted to find how each day ranked from coolest to hottest. For instance, I wanted to know the ranking for day 1 vs. day 2 vs. day 3, and so on. Using the cheatsheet, find the function that will allow you to generate a ranking of each day’s temperature. Search the help pages for this function to determine how to randomly rank two days with the same temperature. Write a comment to yourself describing how this function is different than sorting the data.\n\n\n\n#Create a vector of temperatures\ntemps_to_factor <- c(68, 70, 78, 75, 69, 80, 66, 66, 79)\n\n# Write code below to rank the days with random ties\n\n\n# Replace this line with a comment to yourself describing how this function is different than sorting the data."
+  },
+  {
+    "objectID": "lab5.html",
+    "href": "lab5.html",
+    "title": "Lab 5: Exploratory Data Analysis",
+    "section": "",
+    "text": "In this lab, you will apply the 5 data wrangling verbs we learned this week in order to analyze data regarding NYPD . Specifically, we will replicate data analysis performed by the NYCLU in 2011 to demonstrate how the practice was being carried out unconstitutionally in New York.\n\n\n\nAnswer questions with data using data wrangling verbs\nConsider the implications of racial categorization"
+  },
+  {
+    "objectID": "lab5.html#review-of-key-terms",
+    "href": "lab5.html#review-of-key-terms",
+    "title": "Lab 5: Exploratory Data Analysis",
+    "section": "Review of Key Terms",
+    "text": "Review of Key Terms\n\n\n\n\n\n\nTip\n\n\n\nYou may wish to reference this Data Wrangling Cheatsheet when completing this lab.\n\n\n\nfilter\n\nfilters to rows (observations) that meet a certain criteria\n\nselect\n\nkeeps only selected variables (columns)\n\narrange\n\nsorts values in a variable (column)\n\nsummarize\n\ncalculates a single value by performing an operation across a variable (column); summarizing by n() calculates the number of observations in the column\n\ngroup_by\n\ngroups rows (observations) by shared values in a variable (column); when paired with summarize(), performs an operation in each group\n\nmutate\n\ncreates a new variable (column) and assigns values according to criteria we provide"
+  },
+  {
+    "objectID": "lab5.html#stop-question-and-frisk-dataset",
+    "href": "lab5.html#stop-question-and-frisk-dataset",
+    "title": "Lab 5: Exploratory Data Analysis",
+    "section": "Stop, Question, and Frisk Dataset",
+    "text": "Stop, Question, and Frisk Dataset\nIn 1968, the Supreme Court case Terry v. Ohio ruled that a police officer could stop an individual without “probable cause” but with “reasonable suspicion” the suspect had committed a crime. Further, an officer could frisk an individual without “probable cause” but with “reasonable suspicion” the suspect was carrying a weapon.\nIn the early 1990s, stop, question, and frisk became a widely prevalent tactic in policing in NYC. Every time an officer stops a civilian in NYC, the officer is supposed to complete a UF-250 form (see image below) outlining the details of the stop.\n\n\n\nUF250 Side 1, Dan Nguyen’s Blog\n\n\n\n\n\nUF250 Side 2, Dan Nguyen’s Blog\n\n\nAs a result of some high profile shootings in the late 1990s and mid-2000s, both the New York State Attorney General’s Office and the New York Civil Liberties Union began to examine NYPD stop and frisk activity for racial profiling. With pressure from these organizations, in the mid-2000s, information recorded on UF-250 forms began getting reported in public databases. In the early 2010s, when the NYPD’s use of stop and frisk went before the US District Court, this data was integral in proving that stop and frisk was being carried out in NYC in an unconstitutional way. The ruling mandated that the NYPD create a policy outlining when stops were authorized, and since the practice has declined considerably.\n\nFurther References\n(Smith 2018)\n(Southall and Gold 2019)\n\n\nData Dictionary\nWe will analyze data for all stops in 2011. This data can be found here. However, we’re only going to be considering a subset of the columns. Here is a data dictionary for the columns we’re using in this analysis.\n\n\n\n\n\n\n\n\nVARIABLE\nDEFINITION\nPOSSIBLE VALUES\n\n\n\n\npct\nPrecinct of the stop\n1:123\n\n\narrestsum\nWas an arrest made or summons issued?\n1 = Yes\n0 = No\n\n\nfrisked\nWas suspect frisked?\n1 = Yes\n0 = No\n\n\nwpnfound\nWas a weapon found on suspect?\n1 = Yes\n0 = No\n\n\nrace_cat\nSuspect’s race\nAMERICAN INDIAN/ALASKAN NATIVE\nASIAN/PACIFIC ISLANDER\nBLACK\nBLACK-HISPANIC\nOTHER\nWHITE\nWHITE-HISPANIC\n\n\nage\nSuspect’s age\n999 indicates a missing value"
+  },
+  {
+    "objectID": "lab5.html#setting-up-your-environment",
+    "href": "lab5.html#setting-up-your-environment",
+    "title": "Lab 5: Exploratory Data Analysis",
+    "section": "Setting Up Your Environment",
+    "text": "Setting Up Your Environment\n\nlibrary(tidyverse)\n\nsqf_url <- \"https://www1.nyc.gov/assets/nypd/downloads/zip/analysis_and_planning/stop-question-frisk/sqf-2011-csv.zip\"\ntemp <- tempfile()\ndownload.file(sqf_url, temp)\nsqf_zip <- unzip(temp, \"2011.csv\")\nsqf_2011 <- read.csv(sqf_zip, stringsAsFactors = FALSE) \nsqf_2011_race_cat <- read.csv(\"https://raw.githubusercontent.com/lindsaypoirier/STS-101/master/Data/SQF/sqf_race_categories.csv\", stringsAsFactors = FALSE) \nrm(sqf_url)\nrm(temp)\nrm(sqf_zip)\n\n\nPrepare Dataset for Analysis\nThe original dataset codes each race with a single letter. This adds a column called race_cat that writes out each racial category in accordance with the data documentation. It also replaces every instance of “Y” in the dataset with 1 and every instance of “N” with 0. This will allow us to sum the Yes’s in the dataset.\n\nsqf_2011 <- \n  sqf_2011 %>% \n  select(pct, race, age, frisked, pistol, riflshot, asltweap, knifcuti, machgun, othrweap, sumissue, arstmade) %>%\n  left_join(sqf_2011_race_cat, by = \"race\") %>%\n  mutate(across(frisked:arstmade, \n         ~ case_when(. == \"Y\" ~ 1, . == \"N\" ~ 0)))\nrm(sqf_2011_race_cat)\n\nThe original dataset had separate variables for indicating whether a pistol, rifle, assault weapon, knife, machine gun, or other weapon was found on a suspect. We will create a variable equal to 1 if any of these weapons were found on the suspect. Further, the original dataset had separate variables for indicating whether a stop resulted in an arrest made or summons issued. We will create a variable equal to 1 if either occurred.\n\n\n\n\n\n\nExercise 1\n\n\n\nAdd new columns indicating 1) whether a weapon was found or 2) an arrest/summons was made.\n\n\n\nsqf_2011 <- \n  sqf_2011 %>%\n  #Add a variable for weapon found\n  mutate(wpnfound = case_when(pistol == 1 |\n                               riflshot == 1 | \n                               asltweap == 1 |\n                               knifcuti == 1 | \n                               machgun == 1 | \n                               othrweap == 1 ~ 1,\n                             TRUE ~ 0))\nsqf_2011 <- \n  sqf_2011 %>%\n  #Add a variable for arrest made or summons issued\n  mutate(arrestsumm = case_when(sumissue == 1 | \n                                arstmade == 1 ~ 1,\n                               TRUE ~ 0))\n\n\n\n\n\n\n\nExercise 2\n\n\n\nSubset the dataset to the six variables listed in the data dictionary above.\n\n\n\nsqf_2011 <-\n  sqf_2011 %>%\n  _____(pct, arrestsumm, _____, wpnfound, race_cat, _____)"
+  },
+  {
+    "objectID": "lab5.html#analysis",
+    "href": "lab5.html#analysis",
+    "title": "Lab 5: Exploratory Data Analysis",
+    "section": "Analysis",
+    "text": "Analysis\n\n\n\n\n\n\nExercise 3\n\n\n\nCalculate the number of stops in 2011. Hint: Keep in mind that every row in the dataset represents one stop.\n\n\n\n\n\n\n\n\nTip\n\n\n\nsummarize() will return a data frame with the summarized value. Remember a data frame is a two-dimensional table with rows and columns (even if it’s a 1x1 table). If we want just the value, we can call pull() to extract the value from that two–dimensional table.\n\n\n\ntotal_stops <-\n  sqf_2011 %>%\n  summarize(Count = _____) %>%\n  pull()\n\ntotal_stops\n\n\n\n\n\n\n\nExercise 4\n\n\n\nHow many stops did not result in an arrest or summons in 2011? What percentage of stops did not result in an arrest or summons?\n\n\n\nsqf_2011 %>%\n  #Subset to rows where suspect innocent\n  _____(arrestsumm _____ 0) %>% \n  #Calculate number of observations\n  _____(total_innocent = n(), \n            percent_innocent = _____ / total_stops * 100)\n\n\n\n\n\n\n\nExercise 5\n\n\n\nIn how many stops were the individuals aged 14-24? In what percentage of stops were the individuals aged 14-24?\n\n\n\nsqf_2011 %>%\n  #Subset to rows where suspect age 14-24\n  _____(age _____ 14 & age _____ 24) %>% \n  #Calculate number of observations and percentage of observations\n  _____(total_14_24 = _____, \n            percent_14_24 = n() / total_stops * 100)\n\nWhy doesn’t this match the values we see on the NYCLU website?\nNote the following from the NYCLU’s 2011 report on Stop, Question, and Frisk data:\n\n“In a negligible number of cases, race and age information is not recorded in the database. Throughout this report, percentages of race and age are percentages of those cases where race and age are recorded, not of all stops.”\n\n\ntotal_stops_age_recorded <-\n  sqf_2011 %>%\n  #Subset to rows where age is not 999\n  _____(age _____ 999) %>% \n  summarize(Count = n()) %>%\n  pull()\n\nsqf_2011_sub %>%\n  filter(age >= 14 & age <= 24) %>%\n  summarize(total_14_24 = n(), \n            percent_14_24 = n() / total_stops_age_recorded * 100)\n\nThis still doesn’t match the values we see on the website, but it does match the values we see in the NYCLU’s 2011 report on Stop, Question, and Frisk data. This is typically when I would reach out to a representative at the NYCLU to inquire about the discrepancy.\n\n\n\n\n\n\nExercise 6\n\n\n\nHow many stops were there per race in 2011? What percentage of stops per race in 2011? Arrange by number of stops in descending order.\n\n\n\ntotal_stops_race_recorded <-\n  sqf_2011 %>%\n  #Subset to rows where race_cat is not NA or \"OTHER\"\n  filter(_____(race_cat) & race_cat _____ \"OTHER\") %>% \n  summarize(Count = n()) %>%\n  pull()\n\nsqf_2011 %>%\n  #Subset to rows where race_cat is not NA or \"OTHER\"\n  _____(_____(race_cat) & race_cat _____ \"OTHER\") %>% \n  #Group by race\n  _____(race_cat) %>% \n  #Calculate number of observations\n  _____(stops = n(), \n            percent_stops = n() / total_stops_race_recorded * 100) %>%\n  #Sort by stops in descending order\n  _____(_____(stops)) \n\nNote how this dataset categorizes race. Many different government datasets categorize race in many different ways. This, for instance, is not how the US Census categorizes race. How we categorize race matters for how we can talk about discrimination and racial profiling. Imagine if WHITE was not categorized separately from WHITE-HISPANIC. The values in this dataset would appear very differently! The NYCLU chose to aggregate two racial categories in this dataset into the one category - Latino - in order to advance certain claims regarding discrimination. What we should remember is that these racial categories are not reported by those stopped; they are recorded by officers stopping individuals. They may not reflect how individuals identify themselves.\n\nsqf_2011 %>%\n  #Subset to rows where race_cat is \"WHITE-HISPANIC\" or \"BLACK-HISPANIC\"\n  _____(race_cat _____ c(\"WHITE-HISPANIC\", \"BLACK-HISPANIC\")) %>% \n  #Calculate number of observations\n  _____(stops_Latinx = _____, \n            percent_Latinx = n() / total_stops_race_recorded * 100)\n\n\n\n\n\n\n\nExercise 7\n\n\n\nWhat percentage of stops in 2011 resulted in a frisk per race? What percentage of stops in 2011 resulted in a weapon found per race? What percentage of stops in 2011 resulted in an arrest or summons per race? In your resulting data table, each row should be a race, and there should be columns for stops, percent_stops, percent_frisked, percent_wpnfound , and percent_arrestsum.\n\n\n\n# Write code here. \n\n\n\n\n\n\n\nEthical Considerations\n\n\n\nIn her ruling in the 2011 District Court case Floyd vs. the City of New York, Honorable Shira Sheidlen remarked the following regarding the database of stops we analyzed today:\n\nBecause it is impossible to individually analyze each of those stops, plaintiffs’ case was based on the imperfect information contained in the NYPD’s database of forms (“UF-250s”) that officers are required to prepare after each stop. The central flaws in this database all skew toward underestimating the number of unconstitutional stops that occur: the database is incomplete, in that officers do not prepare a UF-250 for every stop they make; it is one-sided, in that the UF250 only records the officer’s version of the story; the UF-250 permits the officer to merely check a series of boxes, rather than requiring the officer to explain the basis for her suspicion; and many of the boxes on the form are inherently subjective and vague (such as “furtive movements”). Nonetheless, the analysis of the UF-250 database reveals that at least 200,000 stops were made without reasonable suspicion.\n\nWhat are some of the consequences of the incompleteness and/or one-sided nature of this dataset? How should we think about and communicate its flaws vs its value? How might this data collection program be redesigned so as to represent more diverse perspectives? Share your ideas on our sds-192-discussions Slack channel.\n\n\n\n\n\n\n\n\nNote\n\n\n\nIf you finish early, I encourage you to attempt to plot some of this data below using ggplot()!"
+  }
+]

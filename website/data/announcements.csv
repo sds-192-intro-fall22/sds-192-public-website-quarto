@@ -1,0 +1,75 @@
+topic_id,topic_abbr,announcement
+1,data_science,If you wish you may fill out the Trigger Warnings Questionnaire in Moodle.
+1,data_science,Be sure to configure Slack notifications for our course. I also encourage you to download and install a Desktop version of Slack. 
+1,data_science,Class slides are [here](slides/Day1-Intro.html)
+2,datasets, Class slides are [here](slides/Day2-Datasets.html)
+2,datasets, Today's worksheet is [here](slides/Day2-Datasets-Workhsheet.pdf)
+3,r_intro,Trigger warning: Monday's reading opens with a case study on gun homicide in the U.S.
+3,r_intro,The CS Liaisons will be hosting a software install session from 2:30-4 today. More information soon. 
+3,r_intro,Today's lab is posted [here](https://github.com/SDS-192-Intro/getting-started). 
+3,r_intro, I will remain on the call for one hour past our scheduled class time to help anyone that would like to finish the lab. Please note that I won't be able to do this every week. 
+4,data_fundamentals,You do not need to follow along with exercises in the course texts but may choose to do so if you wish. 
+4,data_fundamentals,Please thread responses to messages in Slack. 
+4,data_fundamentals,Class slides are [here](slides/Day4-DataFundamentals.html)
+4,data_fundamentals,Today's worksheet is in Moodle. Download it and then open it in RStudio. 
+5,summarizing, Class slides are [here](slides/Day5-DataSummaries.html)
+5,summarizing, Today's worksheet is in Moodle. Download it and then open it in RStudio.
+5,summarizing, Monday's solutions are [here](slides/Day4-DataFundamentals-Workbook-Solutions.pdf).
+6,learning_code,Today's and all future labs are [here](https://github.com/SDS-192-Intro/sds-192-labs).
+6,learning_code, Last Wednesday's solutions are [here](slides/Day5-DataSummaries-Workbook-Solutions.pdf).
+7,grammar_graphics,
+8,viz_conventions,Class slides are [here](slides/Day7-8-GrammarGraphics.html).
+8,viz_conventions,Quiz 1 has been posted and is due next Wednesday. 
+8,viz_conventions,Monday's solutions are [here](https://github.com/SDS-192-Intro/sds-192-labs/blob/main/Day6-ErrorRes/Day6-ProblemSolving-Solutions.pdf). 
+9,designing_graphics, Today's and all future labs are [here](https://github.com/SDS-192-Intro/sds-192-labs).
+9,designing_graphics, The `ggplot()` cheatsheet is [here](https://ggplot2.tidyverse.org/).
+9,designing_graphics, Solutions to Wednesday's exercises are [here](https://github.com/SDS-192-Intro/sds-192-labs/blob/main/Day7-GrammarGraphics/Day7-GrammarGraphics-Solutions.pdf).
+9,designing_graphics, Remember our data challenge!
+10,frequency_Plots, Class slides are [here](slides/Day10-Frequency.html)
+10,frequency_Plots, Friday's solutions are [here](https://github.com/SDS-192-Intro/sds-192-labs/blob/main/Day9-VizConv/Day9-VizConv-Solutions.pdf)
+11,boxplots, Class slides are [here](slides/Day11-Boxplots.html)
+11,boxplots, Quiz 2 posted today.
+11,boxplots, Mini-project 1 will be posted on Friday. 
+12,multivariate, Day 10 solutions are [here](https://github.com/SDS-192-Intro/sds-192-labs/blob/main/Day10-Frequency/Day10-Frequency-Solutions.Rmd).
+12,multivariate, Day 11 solutions are [here](https://github.com/SDS-192-Intro/sds-192-labs/blob/main/Day11-Boxplots/Day11-Boxplots-Solutions.Rmd).
+13,github,Class slides are [here](slides/Day13-GitHub.html)
+14,markdown,Class slides are [here](slides/Day14-Markdown.html)
+14,markdown,Day 12 solutions are [here](https://github.com/SDS-192-Intro/sds-192-labs/blob/main/Day12-Multivariate/Day12-Multivariate-Solutions.Rmd)
+15,recap1, Snow Day!
+16,subsetting, Day 14 solutions are [here](https://github.com/SDS-192-Intro/sds-192-labs/blob/main/Day14-rmarkdown/Day14-rmarkdown-Solutions.Rmd)
+16,subsetting, Class slides are [here](slides/Day16-Subsetting.html)
+16,subsetting, MP1 due Friday!
+16,subsetting, If you struggled on quiz 2 be sure to study the y-axis labels on all of our frequency plots and pay attention to units of observation!
+16,subsetting, Trigger warning: This week's lab will review data that demonstrates racial profiling in policing. We will be reproducing the NYCLU's data analysis of stop and frisk in NYC in 2011. 
+17,aggregating, Class slides are [here](slides/Day17-Aggregating.html)
+18,facet_filter,
+19,data_acquisition,Class slides are [here](slides/Day19-Importing.html)
+19,data_acquisition,Topics and due dates have been updated since Friday's discussion
+19,data_acquisition,Today's office hours are **in-person**
+19,data_acquisition,First 15 minutes of office hours on Wednesday will be devoted to quiz 2 review.
+19,data_acquisition,Solutions for lab 18 will be posted by end of day. 
+20,pivoting,Class slides are [here](slides/Day22-Pivoting.html)
+21,tidying, 
+22,joining, Class slides are [here](slides/Day23-Joining.html)
+23,apis, Class slides are [here](slides/Day25-APIs.html)
+23,apis, MP2 due Wednesday; last day to request an extension (by 5PM)
+23,apis, Quiz 4 due Wednesday (5PM)
+24,joining_apis, Class slides are [here](slides/Day26-SoSQL.html)
+25,functions, Class slides are [here](slides/Day34-Functions.html)
+26,practicing_functions, Class slides are [here](slides/Day35-Iteration.html)
+27,recap2, 
+28,projections,
+29,leaflet, Class slides are [here](slides/Day29-Leaflet.html)
+30,interpretation,
+31,polygons,
+32,layering, Class slides are [here](slides/Day32-Polygon.html)
+32,layering, Quiz 5 due at 5PM.
+32,layering, MP3 soft deadline this Friday. 
+32,layering, Class will be **in-person** on Friday. 
+33,chloropleth, Class slides are [here](slides/Day33-HowToLie.html)
+34,tbd1,
+35,tbd2, Class slides are [here](slides/Day24-Privacy.html)
+36,recap3, Class slides are [here](slides/Day36-AlgrithmicBias.html)
+37,final1,
+38,final2,
+39,final3,

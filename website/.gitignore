@@ -1,0 +1,10 @@
+/.quarto/
+.json
+
+.Renviron
+
+2011.csv
+
+.DS_Store
+
+*.Rproj

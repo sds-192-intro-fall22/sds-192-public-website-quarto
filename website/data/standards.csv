@@ -1,0 +1,11 @@
+standard_id,standard,type
+1.00,Understanding Datasets,workflow
+2.00,Data Retrieval,workflow
+3.00,Visualization Aesthetics,visualization
+4.00,Composing & Interpreting Plots,visualization
+5.00,GitHub,workflow
+6.00,Transforming Data,wrangling
+7.00,Joining Datasets,wrangling
+8.00,Tidying Data,wrangling
+9.00,Programming in R,workflow
+10.00,Mapping,visualization

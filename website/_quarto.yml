@@ -1,0 +1,28 @@
+project:
+  type: website
+
+website:
+  navbar:
+    background: primary
+    title: "SDS 192: Intro to Data Science"
+    right:
+      - text: "Syllabus"
+        href: index.html
+      - text: "Standards Grading"
+        href: grading_contract.html
+      - text: "Schedule"
+        href: schedule.html
+
+format:
+  html:
+    theme: flatly
+    css: "styles.css"
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: false
+    highlight: tango
+    lib_dir: libs
+
+
+

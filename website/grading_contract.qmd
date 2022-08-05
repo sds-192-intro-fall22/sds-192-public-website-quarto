@@ -1,0 +1,165 @@
+---
+title: "Assessment"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r imports, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(bsplus)
+library(htmltools)
+standards <- read.csv("data/standards.csv")
+source("R/buttons.R", local = knitr::knit_global())
+```
+
+This course will be graded using a standards-based assessment system. In a more traditional grading system, your scores on a series of assignments are averaged over the course of the semester. In this course, rather than assessing and averaging your achievement on particular assignments, I will instead be assessing the development of your fluency in a set of pre-defined standards. You will have multiple opportunities over the course of the semester to showcase the depth of your understanding regarding these standards. A standards-based grading system carries the following benefits:
+
+-   Learning targets for the course are clearly defined from the outset, and almost every graded assignment that you receive will be directly tied to at least one standard. This should make it abundantly clear what skills and competencies I'm assessing on each assignment. There is no "busy work" with a standards-based system.
+-   No one assignment will make-or-break your grade. You have multiple opportunities to demonstrate fluency in a standard. This rewards students that take the time to practice and learn from their mistakes. It prioritizes student growth throughout the course of the semester and allows for us all to have off-days.
+-   Assessments in a standards-based system are much clearer than in a point-based grading system. Saying that I've become proficient in data wrangling, joining, and visualizing means more than saying that I earned a 92.5 in my Introduction to Data Science course. Further, when approaching me about how to improve your grade in the course, we can focus our conversation more on how to deepen certain skills and competencies rather than how to hit certain numeric benchmarks.
+-   A standards-based grading system makes it easier to monitor your progress towards a certain grade.
+
+I'm excited to refine this system this semester as I believe it aligns with my overarching goals for the course. In this course, I find it far more important that you come away with an understanding of the concepts behind core data science strategies (along with an ability to find and interpret reference materials) than it is to demonstrate memorization of `R` syntax. Developing this understanding will empower you to learn and apply new data science languages on your own.
+
+## What are the standards I will be assessed on in this course?
+
+::: {.callout-tip icon="false"}
+## Data Visualization
+
+<div>
+
+This dimension refers to the development of your ability to produce multiple types of compelling and well-designed visualizations from data.
+
+</div>
+
+```{r, results='asis'}
+viz_standards <- standards %>% 
+    filter(type == "visualization") %>%
+    select(standard_id, standard, type) %>%
+    arrange(standard_id)
+
+print_standards_buttons(viz_standards)
+```
+:::
+
+::: {.callout-warning icon="false"}
+## Data Wrangling
+
+<div>
+
+This dimension refers to the development of your ability to transform datasets into new formats in order to prepare them for further analysis or visualization.
+
+</div>
+
+```{r, results='asis'}
+wrangling_standards <- standards %>% 
+    filter(type == "wrangling") %>%
+    select(standard_id, standard, type) %>%
+    arrange(standard_id)
+
+print_standards_buttons(wrangling_standards)
+```
+:::
+
+::: {.callout-info icon="false"}
+## Data Science Workflow
+
+<div>
+
+This dimension refers to the development of your ability to apply data science best practices in your work.
+
+</div>
+
+```{r, results='asis'}
+workflow_standards <- standards %>% 
+    filter(type == "workflow") %>%
+    select(standard_id, standard, type) %>%
+    arrange(standard_id)
+
+print_standards_buttons(workflow_standards)
+```
+:::
+
+::: {.callout-note icon="false"}
+## Data Ethics
+
+<div>
+
+This dimension refers to your ability to recognize and navigate ethical dilemmas that emerge in data science work. There is not a formal standard for data ethics because issues related to data ethics will be discussed in every unit of the course, and you will be assessed on data ethics issues related to other standards in quizzes and projects.
+
+</div>
+:::
+
+## How will I be assessed on the course standards?
+
+### Informal Assessments
+
+::: panel-tabset
+#### Readings
+
+Each week, you will be assigned a section of the course texts to read prior to class. I expect that you will come having read this section in order to prepare for in-class exercise and labs. You do not need to complete the exercises in the course texts but may choose to do so if you wish. Please note however that we won't have time to go over the solutions in class, and I don't have a solutions manual for these texts (though I'm happy to go over them in office hours). All course readings will be available in Perusall, and you can post questions and comments in the reading for myself or your classmates to answer.
+
+#### Lab Recaps
+
+Lab solutions will be posted as video lectures in Perusall. I expect that you will check your lab answers by reviewing these videos. You may leave comments in Perusall at certain timestamps as questions come up.
+:::
+
+### Formal Assessments
+
+::: panel-tabset
+#### Labs
+
+In most weeks, you will be assigned a lab, which you will start in class and complete at home. Labs will be designed to help you practice applying the course standards towards the analysis of a dataset. You may work on labs in groups, but all group members should submit their own lab. Labs will be **graded for completion**, and you can earn 2 points per standard by completing the lab associated with that standard. All sections of the lab must be completed in good faith to earn these points.
+
+#### Projects
+
+There will be 3 projects, to be completed in groups of 3-4, assigned over the course of the semester. In each you will have an opportunity to demonstrate fluency in standards we have covered up to that point in the semester. I will provide prompts for each project, but you will have a lot of flexibility to demonstrate your own creativity and explore your own interests in designing a project around the prompt. You can earn up to 3 points towards each standard based on your project submission. Projects will be **graded for fluency**.
+
+#### Quizzes
+
+There will be 3 quizzes administered throughout the semester - each assessing 3-4 course standards. There will be 3 questions per standard on each quiz, and you can earn up to 3 points towards each standard based on your quiz attempt: 1 point per question. In this sense, quizzes will be **graded for fluency.**
+
+Quizzes will be taken at home, administered in Moodle, and are open book/open Internet. You may start a quiz at any time before its due date, but it must be completed by its due date in order to earn credit. Please note that extensions will not be granted for quizzes.
+
+#### Course Advancement
+
+There are a series of very short assignments on the syllabus that are designed to ensure that you are prepared for individual and collaborative work. This includes things like reviewing the syllabus, developing a course study plan, developing group collaboration plans, and completing peer evaluations. In total, there are 12 course advancement assignments, and you can earn 1 point towards your final grade per assignment.
+
+|      Assignment       | Points |
+|:---------------------:|:------:|
+|     Syllabus Quiz     |   1    |
+|     CATME Survey      |   1    |
+|      Study Plan       |   1    |
+| Study Plan Evaluation |   1    |
+|  Group Contract (x3)  |   3    |
+| Peer Evaluation (x3)  |   3    |
+
+These assignments will be **graded for completion**. For the most part, you will get out of them, what you put into them. Because these assignments are designed to keep our course running smoothly, please note that extensions will not be granted for course advancement assignments.
+:::
+
+::: callout-important
+## Reassessment
+
+This course will have an *optional* final exam. The final exam is an opportunity to reassess standards that you have not received full **quiz** credit on. If you choose to take the final exam, you only need to complete the sections of the exam associated with standards you wish to reassess, and the score you ultimately receive for a standard will be based on whichever is higher of your quiz score or your final exam score for that standard. 
+:::
+
+## How will this system work?
+
+If you've been adding, you may have figured out by this point that you can earn up to 8 points for each standard (2 for lab completion, 3 via group projects, 3 via quizzes). With 11 standards, this computes to 88 points. You can earn the remaining 12 points by completing the course advancement assignments, for a grand total of 100 points. At the end of the semester, I will sum your scores on all standards and other assignments and assign final grades accordingly:
+
+| Letter Grade | Numeric Grade |
+|:------------:|:-------------:|
+|      A       |    ≥ 92.5     |
+|      A-      |    ≥ 90.0     |
+|      B+      |    ≥ 87.5     |
+|      B       |    ≥ 82.5     |
+|      B-      |    ≥ 80.0     |
+|      C+      |    ≥ 77.5     |
+|      C       |    ≥ 72.5     |
+|      C-      |    ≥ 70.0     |
+|      D+      |    ≥ 67.5     |
+|      D       |    ≥ 62.5     |
+|      D-      |    ≥ 60.0     |
+|      E       |    \< 60.0    |

@@ -1,0 +1,112 @@
+---
+title: "Schedule"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r imports, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(bsplus)
+library(fontawesome)
+library(htmltools)
+library(RefManageR)
+library(lubridate)
+
+bib <- ReadBib("IntroDS.bib")
+BibOptions(check.entries = FALSE, 
+           bib.style = "authoryear", 
+           style = "html",
+           dashed = TRUE,
+           first.inits = FALSE, 
+           no.print.fields = "issn")
+
+topics <- read.csv("data/topics.csv") %>%
+  mutate(date = mdy(date)) %>%
+  arrange(date)
+standards <- read.csv("data/standards.csv") %>%
+  mutate(standard_id = as.character(standard_id))
+announcements <- read.csv("data/announcements.csv")
+
+topics[topics == ""] <- NA
+standards[standards == ""] <- NA
+announcements[announcements == ""] <- NA
+
+required_reading <- topics %>%
+  select(topic_abbr, required_reading, req_chapter) %>%
+  separate_rows(required_reading, req_chapter, sep = ";") %>%
+  rename(reading = required_reading,
+         chapter = req_chapter)
+
+optional_reading <- topics %>%
+  select(topic_abbr, optional_reading, opt_chapter) %>%
+  separate_rows(optional_reading, opt_chapter, sep = ";") %>%
+  rename(reading = optional_reading,
+         chapter = opt_chapter)
+
+writing_assignments <- topics %>%
+  select(topic_abbr, writing_assignment) %>%
+  separate_rows(writing_assignment, sep = ";")
+
+project_assignments <- topics %>%
+  select(topic_abbr, project_assignment) %>%
+  separate_rows(project_assignment, sep = ";")
+
+topic_standards <- 
+  topics %>%
+  select(topic_id,topic_abbr,topic,standard_id,date) %>%
+  mutate(standard_id = as.character(standard_id)) %>%
+  left_join(standards)
+```
+
+```{r source-files, include=FALSE}
+source("R/print_assignments.R", local = knitr::knit_global())
+source("R/buttons.R", local = knitr::knit_global())
+#source("css/custom.css", local = knitr::knit_global())
+```
+
+::: callout-note
+## Acknowledgements
+Styling and infrastructure for this page inspired by [related syllabi](https://beanumber.github.io/sds192/schedule.html) produced by Ben Baumer and R. Jordan Crouser.
+:::
+
+::: callout-tip
+All readings for this course will be available in our course Perusall, which is linked in Moodle. I encourage you to complete the readings there so that you can leave comments and questions as they come up.
+:::
+
+<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%2311967d&ctz=America%2FNew_York&title=SDS%20192&showPrint=0&showTabs=0&showCalendars=0&showTitle=0&showDate=1&showTz=1&src=ZnUxaThjZm92ODN1MjYwN3NzZm9lN2dyMDJycDkybGJAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23F09300" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+```{r print-schedule, message=FALSE, results='asis'}
+for (i in 1:nrow(topics)){
+  
+  todays_topic <- topics %>%
+    slice(i)
+  
+  date_format <- stamp("January 17, 1999")
+  
+  cat(paste("## ", date_format(ymd(todays_topic$date[1]))))
+  cat("\n")
+  cat(paste("### ", todays_topic$topic[1]))
+  cat("\n")
+  print_this_week_standards_buttons(todays_topic$topic_abbr[1])
+  cat("\n")
+  cat("\n")
+  cat("::: {.panel-tabset}")
+  cat("\n")
+  cat("#### Due Today")
+  cat("\n")
+  print_due_today(todays_topic$topic_abbr[1])
+  cat("\n")
+  cat("#### Further Resources")
+  cat("\n")
+  print_further_reading(todays_topic$topic_abbr[1])
+  cat("\n")
+  cat("#### Announcements")
+  cat("\n")
+  print_today_announcements(todays_topic$topic_abbr[1])
+  cat("\n")
+  cat(":::")
+  cat("\n")
+}
+```
