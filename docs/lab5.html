@@ -79,25 +79,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -224,7 +205,7 @@ div.csl-indent {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this lab, you will apply the 5 data wrangling verbs we learned this week in order to analyze data regarding NYPD . Specifically, we will replicate <a href="https://www.nyclu.org/en/stop-and-frisk-data">data analysis performed by the NYCLU</a> in 2011 to demonstrate how the practice was being carried out unconstitutionally in New York.</p>
+<p>In this lab, you will apply the 5 data wrangling verbs we learned this week in order to analyze data regarding NYPD stop, question, and frisk. Specifically, we will replicate <a href="https://www.nyclu.org/en/stop-and-frisk-data">data analysis performed by the NYCLU</a> in 2011 to demonstrate how the practice was being carried out unconstitutionally in New York.</p>
 <section id="learning-goals" class="level3">
 <h3 class="anchored" data-anchor-id="learning-goals">Learning Goals</h3>
 <ul>
@@ -282,17 +263,17 @@ Tip
 <div id="fig-anonymous-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><a href="http://blog.danwin.com/request-nypd-form-uf250/"><img src="img/uf250-2011-side-1.png" class="img-fluid figure-img" alt="UF250 Side 2" width="500"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 2, Dan Nguyen's Blog</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 2, Dan Nguyen’s Blog</figcaption><p></p>
 </figure>
 </div>
 <div id="fig-anonymous-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><a href="http://blog.danwin.com/request-nypd-form-uf250/"><img src="img/uf250-2011-side-2.png" class="img-fluid figure-img" alt="UF250 Side 2"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 2, Dan Nguyen's Blog</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 2, Dan Nguyen’s Blog</figcaption><p></p>
 </figure>
 </div>
 <p>As a result of some high profile shootings in the late 1990s and mid-2000s, both the New York State Attorney General’s Office and the New York Civil Liberties Union began to examine NYPD stop and frisk activity for racial profiling. With pressure from these organizations, in the mid-2000s, information recorded on UF-250 forms began getting reported in public databases. In the early 2010s, when the NYPD’s use of stop and frisk went before the US District Court, this data was integral in proving that stop and frisk was being carried out in NYC in an unconstitutional way. The ruling mandated that the NYPD create a policy outlining when stops were authorized, and since the practice has declined considerably. See</p>
-<p><span class="citation" data-cites="smith2018">(<a href="#ref-smith2018" role="doc-biblioref">Smith 2018</a>)</span> and <span class="citation" data-cites="southall2019">(<a href="#ref-southall2019" role="doc-biblioref">Southall and Gold 2019</a>)</span> for more information.</p>
+<p><span class="citation" data-cites="smith2018">(<a href="#ref-smith2018" role="doc-biblioref"><strong>smith2018?</strong></a>)</span> and <span class="citation" data-cites="southall2019">(<a href="#ref-southall2019" role="doc-biblioref"><strong>southall2019?</strong></a>)</span> for more information.</p>
 <section id="data-dictionary" class="level3">
 <h3 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h3>
 <p>We will analyze data for all stops in 2011. This data can be found <a href="The%20original%20dataset%20can%20be%20found%20at:%20https://%20www1.nyc.gov/site/nypd/stats/reports-analysis/">here</a>. However, we’re only going to be considering a subset of the columns. Here is a data dictionary for the columns we’re using in this analysis.</p>
@@ -618,17 +599,9 @@ Note
 </div>
 
 
-
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-smith2018" class="csl-entry" role="doc-biblioentry">
-Smith, Chris. 2018. <span>“The Crime-Fighting Program That Changed New York Forever.”</span> <a href="http://nymag.com/intelligencer/2018/03/the-crime-fighting-program-that-changed-new-york-forever.html">http://nymag.com/intelligencer/2018/03/the-crime-fighting-program-that-changed-new-york-forever.html</a>.
-</div>
-<div id="ref-southall2019" class="csl-entry" role="doc-biblioentry">
-Southall, Ashley, and Michael Gold. 2019. <span>“Why <span>‘</span>Stop-and-Frisk<span>’</span> Inflamed Black and Hispanic Neighborhoods (Published 2019).”</span> <em>The New York Times</em>, November. <a href="https://www.nytimes.com/2019/11/17/nyregion/bloomberg-stop-and-frisk-new-york.html">https://www.nytimes.com/2019/11/17/nyregion/bloomberg-stop-and-frisk-new-york.html</a>.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const icon = "";

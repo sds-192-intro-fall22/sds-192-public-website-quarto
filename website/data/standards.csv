@@ -2,7 +2,7 @@ standard_id,standard,type
 1.00,Understanding Datasets,workflow
 2.00,Data Retrieval,workflow
 3.00,Visualization Aesthetics,visualization
-4.00,Composing & Interpreting Plots,visualization
+4.00,Plotting Frequencies and Distributions,visualization
 5.00,GitHub,workflow
 6.00,Transforming Data,wrangling
 7.00,Joining Datasets,wrangling

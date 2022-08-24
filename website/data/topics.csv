@@ -7,10 +7,10 @@ topic_id,topic_abbr,topic,date,standard_id,required_reading,req_chapter,optional
 6,grammar_graphics,Grammar of Graphics,9/19/22,3.00,baumerModernDataScience2021,2. Data Visualization,wickhamGgplot2ElegantGraphics,,[Lab 1](lab1.html) Due,
 7,viz_conventions,Visualization Conventions,9/21/22,3.00,irizarryIntroductionDataScience2022,11. Data Visualization Principles,tufteVisualDisplayQuantitative2001,,,
 8,designing_graphics_lab,Lab: Designing Effective Data Visualizations,9/23/22,3.00,,,dignazioRationalScientificObjective2020,,Study Plan Due,
-9,frequency_Plots,Frequency Plots,9/26/22,4.00,ismayModernDiveStatistical2021,2. Data Visualization,,,Lab 2 Due;Complete CATME Survey,
+9,frequency_Plots,Frequency Plots,9/26/22,4.00,ismayModernDiveStatistical2021,2. Data Visualization,,,[Lab 2](lab2.html) Due;Complete CATME Survey,
 10,boxplots,Boxplots,9/28/22,4.00,,,,,,
 11,visualization_lab,Lab: Visualizing Data,9/30/22,4.00,,,,,,Project 1 Assigned
-12,github,GitHub Essentials,10/3/22,5.00,bryanExcuseMeYou2018,,brennanGitHubNonCodersStephen,,Lab 3 Due,Group Contract Due
+12,github,GitHub Essentials,10/3/22,5.00,bryanExcuseMeYou2018,,brennanGitHubNonCodersStephen,,[Lab 3](lab3.html) Due,Group Contract Due
 13,github_lab,Lab: Collaborating via GitHub,10/5/22,5.00,,,,,,
 14,open1,Work on Group Projects in Class,10/7/22,,,,,,,
 15,no_class1,No Class,10/10/22,,,,,,,

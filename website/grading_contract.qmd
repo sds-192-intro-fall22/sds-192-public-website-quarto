@@ -21,7 +21,7 @@ This course will be graded using a standards-based assessment system. In a more 
 -   Assessments in a standards-based system are much clearer than in a point-based grading system. Saying that I've become proficient in data wrangling, joining, and visualizing means more than saying that I earned a 92.5 in my Introduction to Data Science course. Further, when approaching me about how to improve your grade in the course, we can focus our conversation more on how to deepen certain skills and competencies rather than how to hit certain numeric benchmarks.
 -   A standards-based grading system makes it easier to monitor your progress towards a certain grade.
 
-I'm excited to refine this system this semester as I believe it aligns with my overarching goals for the course. In this course, I find it far more important that you come away with an understanding of the concepts behind core data science strategies (along with an ability to find and interpret reference materials) than it is to demonstrate memorization of `R` syntax. Developing this understanding will empower you to learn and apply new data science languages on your own.
+This is my second iteration of teaching a standards-based course, and I've made several revisions from the first iteration based on what I've learned from experience and student feedback. I'm excited to refine this system this semester as I believe it aligns with my overarching goals for the course. In this course, I find it far more important that you come away with an understanding of the concepts behind core data science strategies (along with an ability to find and interpret reference materials) than it is to demonstrate memorization of `R` syntax. Developing this understanding will empower you to learn and apply new data science languages on your own.
 
 ## What are the standards I will be assessed on in this course?
 
@@ -111,7 +111,7 @@ Lab solutions will be posted as video lectures in Perusall. I expect that you wi
 ::: panel-tabset
 #### Labs
 
-In most weeks, you will be assigned a lab, which you will start in class and complete at home. There will be one lab per standard. Labs will be designed to help you practice applying the course standards towards the analysis of a dataset. You may work on labs in groups, but all group members should submit their own lab. Labs will be **graded for completion**, and you can earn 2 points per standard by completing the lab associated with that standard. All sections of the lab must be completed in good faith to earn these points.
+In most weeks, you will be assigned a lab, which you will start in class and complete at home. There will be one lab per standard. Labs will be designed to help you practice applying the course standards towards the analysis of a dataset. You may work on labs in groups, but all group members should submit their own lab. Labs will be **graded for completion**, and you can earn 3 points per standard by completing the lab associated with that standard. All sections of the lab must be completed in good faith to earn these points.
 
 #### Projects
 
@@ -150,7 +150,7 @@ This course will have an *optional* final exam. The final exam is an opportunity
 
 If you've been adding, you may have figured out by this point that we have:
 
-$(2 * 10) + (3 * 10) + (3 * 9) = 87$
+$(3 * 10) + (3 * 10) + (3 * 9) = 87$
 
 You can earn the remaining 13 points by completing the course advancement assignments, for a grand total of 100 points. At the end of the semester, I will sum your scores on all standards and other assignments and assign final grades accordingly:
 

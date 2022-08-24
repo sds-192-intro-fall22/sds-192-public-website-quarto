@@ -17,7 +17,7 @@ This lab is all about learning to understand the context and parts of a dataset 
 
 -   Identify unique observations in a dataset
 
--   Understand different variable types 
+-   Understand different variable types
 
 -   Look up value codes and recode a variable
 
@@ -251,7 +251,7 @@ ggplot(scorecard, aes(x = admcon7_text)) +
 
 ### Missing Values
 
-When we have missing values in a rectangular dataset, we have to provide a placeholder for the missing value in order for the dataset to remain rectangular. If we just skipped the value, then our dataset wouldn't necessarily have rows of all equal lengths and columns of all equal lengths. In `R`, `NA` serves as that placeholder. Before we start analyzing data, it can be important to note how many `NA` values we have in a column so that we can determine if the data is *representative*. 
+When we have missing values in a rectangular dataset, we have to provide a placeholder for the missing value in order for the dataset to remain rectangular. If we just skipped the value, then our dataset wouldn't necessarily have rows of all equal lengths and columns of all equal lengths. In `R`, `NA` serves as that placeholder. Before we start analyzing data, it can be important to note how many `NA` values we have in a column so that we can determine if the data is *representative*.
 
 The function `is.na()` checks whether a value is an `NA` value and returns `TRUE` if it is and `FALSE` if it isn't. Providing a vector to `is.na()` will check this for every value in the vector and return a logical vector indicating `TRUE`/`FALSE` for every original value in the vector.
 
@@ -259,7 +259,7 @@ The function `is.na()` checks whether a value is an `NA` value and returns `TRUE
 is.na(scorecard$wdraw_orig_yr2_rt)
 ```
 
-When we `sum()` across a logical vector, `R` will calculate the number of `TRUE` values in the vector. 
+When we `sum()` across a logical vector, `R` will calculate the number of `TRUE` values in the vector.
 
 ```{r}
 sum(is.na(scorecard$wdraw_orig_yr2_rt))
@@ -267,6 +267,7 @@ sum(is.na(scorecard$wdraw_orig_yr2_rt))
 
 ::: callout-important
 ## Exercise 5
+
 Calculate the number of missing values in both the `costt4_a` and the `costt4_p` columns. Reference the NOTES column in the data dictionary to determine why there are so many `NA` values in these columns. Add a comment to the code chunk below, explaining the reason for missing values in these columns.
 :::
 
@@ -275,7 +276,6 @@ Calculate the number of missing values in both the `costt4_a` and the `costt4_p`
 
 # Add comment to explain missing values here
 ```
-
 
 ::: callout-caution
 ## Ethical Considerations
