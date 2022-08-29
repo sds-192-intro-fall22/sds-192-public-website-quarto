@@ -135,11 +135,10 @@ There are a series of very short assignments on the syllabus that are designed t
 |:---------------------:|:------:|
 |     Syllabus Quiz     |   1    |
 |     CATME Survey      |   1    |
-|  Problem Solving Lab  |   1    |
-|      Study Plan       |   1    |
-| Study Plan Evaluation |   1    |
+|  Problem Solving Lab  |   2    |
+|      Study Plan       |   2    |
+| Study Plan Evaluation |   2    |
 |  Group Contract (x3)  |   3    |
-| Peer Evaluation (x3)  |   3    |
 
 These assignments will be **graded for completion**. For the most part, you will get out of them, what you put into them. Because these assignments are designed to keep our course running smoothly, please note that extensions will not be granted for course advancement assignments.
 :::
