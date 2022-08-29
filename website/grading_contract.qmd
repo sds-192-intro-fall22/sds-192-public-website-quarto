@@ -108,6 +108,10 @@ Lab solutions will be posted as video lectures in Perusall. I expect that you wi
 
 ### Formal Assessments
 
+::: callout-tip
+5PM (close of business day) will be the cut-off time for all assignments in this course. The reason I've set the deadlines to 5PM is that I'd like to discourage students from staying up late into the night to complete assignments. Note that there is a 24-hour grace period for submitting [labs and project assignments]{.underline}. This means that you will still get full credit for these assignments as long as they are submitted by 5PM the day following the assignment due date. However, [quizzes and course advancement assignments]{.underline} must be submitted by 5PM *on the due date* for credit.
+:::
+
 ::: panel-tabset
 #### Labs
 
