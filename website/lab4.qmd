@@ -59,6 +59,32 @@ Merge
 
 ## GitHub Flow
 
+In my opinion, there are two kinds of workflows for GitHub. There's the quick and dirty version, and there's the long and elegant version. Below are the differences between these two workflows (don't worry about if you don't understand what the steps mean right now; we will learn all of them in the lab).
+
++--------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| Quick and Dirty Version                                                  | Long and Elegant Version                                                          |
++==========================================================================+===================================================================================+
+| 1.  Pull recent changes from GitHub to local machine.                    | 1.  Create an issue at GitHub.com                                                 |
+|                                                                          |                                                                                   |
+| 2.  Make edits and save them                                             | 2.  Branch the repo at GitHub.com.                                                |
+|                                                                          |                                                                                   |
+| 3.  Stage and commit changes.                                            | 3.  Pull recent changes from GitHub.com to local machine.                         |
+|                                                                          |                                                                                   |
+| 4.  Push changes from local machine to GitHub.                           | 4.  Make edits in the new branch and save them.                                   |
+|                                                                          |                                                                                   |
+| *In the quick and dirty version, all of this occurs in the main branch.* | 5.  Stage and commit changes.                                                     |
+|                                                                          |                                                                                   |
+|                                                                          | 6.  Push changes from local machine to GitHub.com.                                |
+|                                                                          |                                                                                   |
+|                                                                          | 7.  Create a pull request at GitHub.com                                           |
+|                                                                          |                                                                                   |
+|                                                                          | 8.  Assign a reviewer to review the proposed changes and wait for their approval. |
+|                                                                          |                                                                                   |
+|                                                                          | 9.  Merge changes, while also closing the issue and deleting the branch.          |
++--------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+
+Typically I recommend the long and elegant version as it is designed to avoid errors and ensure that collaborators are all on the same page regarding changes to files. However, occasionally when you have to make small, quick changes to a file, and it won't impact your team mate's work, it will make more sense to follow the quick and dirty workflow. The goal for today is to get practice in the long and elegant version.
+
 ### Repo
 
 ::: callout-important

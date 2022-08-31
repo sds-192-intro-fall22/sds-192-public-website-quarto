@@ -212,6 +212,42 @@ ul.task-list{list-style: none;}
 </section>
 <section id="github-flow" class="level2">
 <h2 class="anchored" data-anchor-id="github-flow">GitHub Flow</h2>
+<p>In my opinion, there are two kinds of workflows for GitHub. There’s the quick and dirty version, and there’s the long and elegant version. Below are the differences between these two workflows (don’t worry about if you don’t understand what the steps mean right now; we will learn all of them in the lab).</p>
+<table class="table">
+<colgroup>
+<col style="width: 47%">
+<col style="width: 52%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Quick and Dirty Version</th>
+<th>Long and Elegant Version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><ol type="1">
+<li><p>Pull recent changes from GitHub to local machine.</p></li>
+<li><p>Make edits and save them</p></li>
+<li><p>Stage and commit changes.</p></li>
+<li><p>Push changes from local machine to GitHub.</p></li>
+</ol>
+<em>In the quick and dirty version, all of this occurs in the main branch.</em></td>
+<td><ol type="1">
+<li><p>Create an issue at GitHub.com</p></li>
+<li><p>Branch the repo at GitHub.com.</p></li>
+<li><p>Pull recent changes from GitHub.com to local machine.</p></li>
+<li><p>Make edits in the new branch and save them.</p></li>
+<li><p>Stage and commit changes.</p></li>
+<li><p>Push changes from local machine to GitHub.com.</p></li>
+<li><p>Create a pull request at GitHub.com</p></li>
+<li><p>Assign a reviewer to review the proposed changes and wait for their approval.</p></li>
+<li><p>Merge changes, while also closing the issue and deleting the branch.</p></li>
+</ol></td>
+</tr>
+</tbody>
+</table>
+<p>Typically I recommend the long and elegant version as it is designed to avoid errors and ensure that collaborators are all on the same page regarding changes to files. However, occasionally when you have to make small, quick changes to a file, and it won’t impact your team mate’s work, it will make more sense to follow the quick and dirty workflow. The goal for today is to get practice in the long and elegant version.</p>
 <section id="repo" class="level3">
 <h3 class="anchored" data-anchor-id="repo">Repo</h3>
 <div class="callout-important callout callout-style-default callout-captioned">
