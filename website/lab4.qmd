@@ -211,37 +211,63 @@ Once all reviewers have approved changes, we are ready to merge those changes in
 Click the button to "Merge Pull Request" and then "Confirm Merge." Finally, click the button to the delete the branch. Once this has been completed for all pull requests, head back over to the "Code" tab at GitHub.com, and check out github-practice.Rmd. What has happened to the file since merging the code?
 :::
 
+::: callout-important
+## Before moving on to the next section\...
+
+You've now deleted branches at GitHub.com that your local machines don't know have been deleted. Before moving on to the next step, you should navigate back to RStudio and **pull** these changes to your local machine by clicking the blue downward arrow. To streamline things in the next section of the lab, we are going to work entirely in the main branch (something that I would otherwise not recommend).
+:::
+
 ## Error Resolution
 
 The workflow presented above seems to work all fine and dandy. ...but there are a number of factors that can impede this seamless workflow. In this final section of the lab, we will go over three kinds of errors that you might come across in the workflow above, and talk about how you would resolve them. I can almost guarantee that you will deal with some of these issues when working on your group projects, so I would encourage you to keep this lab handy when engaging in project work.
 
 ### Push error
 
-A push error occurs when we make changes to files on our local machines, and go to commit and push them to GitHub.com, but other changes had already been made to the file at GitHub.com that were not yet pulled into our local environments. We get an error because our local repo is inconsistent with the remote repo. To fix this error, we need to pull changes to our local machine, and try committing and pushing again. Let's replicate this error:
+A push error occurs when we make changes to files on our local machines, and go to commit and push them to GitHub.com, but other changes had already been made to the file at GitHub.com that were not yet pulled into our local environments. We get an error because our local repo is inconsistent with the remote repo. **To fix this error, we need to pull changes to our local machine, and try committing and pushing again.** Let's replicate this error:
 
 ::: callout-important
 ## Exercise 14
 
-One of your partners should navigate to the GitHub.com repository. Click on the file README.md. Click the pencil icon to edit the file. Replace the text: ADD NAME 1 HERE ADD NAME 2 HERE, with your names. Scroll to the bottom of the page and commit changes noting in the message that your names were added. 
+One of your partners should navigate to the GitHub.com repository. Click on the file README.md. Click the pencil icon to edit the file. Replace the text: ADD NAME 1 HERE ADD NAME 2 HERE, with your names. Scroll to the bottom of the page and commit changes noting in the message that your names were added.
 
-Other partner: Other partner: return to RStudio. Add your names at the top of github-practice.Rmd. Save the file. Stage and commit your changes.
+Other partner: Return to RStudio. **Do not pull changes yet.** Add your names at the top of github-practice.Rmd. Save the file. Stage and commit your changes. Click the green upward arrow to push your changes. You should get an error that looks like this.
+
+![](img/push-error.png){fig-alt="This shows the text that we see when we get a push error. It says hint: Updates were rejected because the remote contains work that you do hint: not have locally. This is usually caused by another repository pushing hint: to the same ref. You may want to first integrate the remote changes hint: (e.g., 'git pull ...') before pushing again."}
+
+Follow the steps above to resolve the error.
 :::
 
+An easy way to avoid a push error is to always click the blue downward arrow to pull remote changes before starting to edit files on your local machine.
 
+### Pull error
 
+A pull error occurs when changes have already been made to the same location (the same line number) in both a remote file and a local file, and then we try to pull the changes from the remote repo to our local machines. As far as Git can tell, there are two options for what this line is supposed to look like, and it can't tell which to prioritize. So Git recommends that, as a first step, we commit the changes that we made locally. It's basically saying, let's take a snapshot of your local repo as it looks right now, so that later we can figure out what to do about this conflict.
 
+If this seems confusing imagine this: let's say you write a paper, and you share it with two of your classmates to review. One peer reads through it, makes suggested changes to the opening sentence, sends it back to both you and the other classmate. Later that week the second the second classmate also makes changes to the opening sentence but without first looking at or incorporating the changes the first peer made. A pull error is like you trying to automatically incorporate your first classmate's edits. You're not sure what to do because your second classmate made changes in the same place. What should you do?
 
-14. Pull error
+Well a first step might be just to be sure that you have a saved copy of the second classmate's suggested changes before incorporating the first classmate's suggestions. Then you can figure out later how to resolve the conflict. That's exactly what we are going to do here. To fix this error, you should stage and commit your local changes and then try pulling again. Let's replicate this error:
 
-One of your partners should navigate to the GitHub repository online. Click on the file github-practice.Rmd. Click the pencil icon to edit the file. Replace the code on line 37 with the following: colnames(pioneer_valley_2013)
+::: callout-important
+## Exercise 15
 
-Scroll to the bottom of the page and commit changes noting in the message how you updated the function. Other partner: return to RStudio. Open github-practice.Rmd. Replace the code on line 37 with the following: ncol(pioneer_valley_2013)
+One of your partners should navigate to the GitHub.com repository. Click on the file github-practice.Rmd. Click the pencil icon to edit the file. Replace the code on line 37 with the following: `colnames(pioneer_valley_2013).`
 
-Save the file. Click the button to Pull changes. What do we have to do to fix the error?
+Scroll to the bottom of the page and commit changes noting in the message how you updated the function.
 
-15. Merge conflict
+Other partner: Return to RStudio. **Do not pull changes yet.** Open github-practice.Rmd. Replace the code on line 37 with the following: `ncol(pioneer_valley_2013)`
+
+Save the file. Click the blue downward button to Pull changes. You should get an error that looks like this.
+
+![](img/push-error.png){fig-alt="This shows the text that we see when we get a push error. It says hint: Updates were rejected because the remote contains work that you do hint: not have locally. This is usually caused by another repository pushing hint: to the same ref. You may want to first integrate the remote changes hint: (e.g., 'git pull ...') before pushing again."}
+
+Follow the steps above to resolve the error.
+:::
+
+### Merge conflict
 
 After you resolve the error above, fix the merge conflict that arises when you try to push changes.
+
+### Path of Least Resistance
 
 ::: callout-caution
 ## Ethical Considerations
