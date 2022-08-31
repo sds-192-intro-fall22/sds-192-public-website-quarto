@@ -144,7 +144,7 @@ In the top right hand corner of the Git tab, you will see a dropdown currently s
 ::: callout-important
 ## Exercise 7
 
-Once in your branch, open github-practice.Rmd from the files pane. Decide within your group who will be Group member 1, 2, 3, and so on. Each group member should edit this file on their own machines by adding their name to the appropriate location in the document based on their group member. **It's very important that this be the only section of the document you edit.** Save the file by clicking File\>Save.
+Once in your branch, open github-practice.Rmd from the files pane. Decide within your group who will be Group member 1, 2, 3, and so on. Each group member should edit this file on their own machines by adding their name and only their group name to the appropriate location in the document (line 5, 7, or 9) based on their group member. **It's very important that this be the only section of the document you edit.** Save the file by clicking File\>Save.
 :::
 
 ### Stage
@@ -155,6 +155,8 @@ Sometimes we make a changes to a few files, save them, and we're ready to create
 ## Exercise 8
 
 Once you save the file you'll notice in the RStudio Git pane that the file name appears after a blue square labeled "M" (which stands for Modified). This means that the file is ready for staging. Stage the file - indicating that it's ready for committing - by clicking the checkbox in front of the file name.
+
+![](img/stage.png){fig-alt="This highlights where to look to stage changes." width="400"}
 :::
 
 ### Commit
@@ -163,7 +165,7 @@ As we just noted, committing changes basically means taking a snapshot of a repo
 
 To help put this into context, think back to our photograph metaphor. Let's say that we are a photographer assigned to document how a baby develops in the first year of its life. If the photographer only took one photograph when the baby was 1 year old, we wouldn't have a lot of documentation regarding how the baby developed! ...so instead, let's say that the photographer took a snapshot of the baby after every major milestone - their first laugh, their first solid food, their first crawl, their first word. We would have a lot more to go by when trying to understand how the baby developed. Same goes for committing code often.
 
-Now let's say the photographer handed the batch of photos to the parents, and said - "look, here's how your baby developed over time." The parents might not remember which photograph was taken after which milestone. ...but if the photographer were to label each photograph with things like "baby had first laugh," the parents would be able to easily go back to specific moments in their baby's development. This is why we want descriptive commit messages.
+Now let's say the photographer handed the batch of photos to the parents, and said - "look, here's how your baby developed over time." The parents might not remember which photograph was taken after which milestone. ...but if the photographer were to label each photograph with things like "baby had first laugh," the parents would be able to easily go back to specific moments in their baby's development. This is why we want descriptive commit messages. We want to later be able to go back and scan through what changes were made after each commit.
 
 ::: callout-important
 ## Exercise 9
@@ -178,7 +180,11 @@ Only your local machine knows that a change has been made to the code. Remember 
 ::: callout-important
 ## Exercise 10
 
-Click the Green upward arrow in the Git pane to push your changes to GitHub. Once all group members have pushed their changes, head back over to GitHub. On the main code page, switch between branches and check out the contents of github-practice.Rmd in each branch. What differences do you notice?
+Click the Green upward arrow in the Git pane to push your changes to GitHub.
+
+![](img/push-button.png){fig-alt="This highlights the push button in RStudio." width="400"}
+
+Once all group members have pushed their changes, head back over to GitHub. On the main code page, switch between branches and check out the contents of github-practice.Rmd in each branch. What differences do you notice?
 :::
 
 ### Pull Request
@@ -188,7 +194,11 @@ Note that now we have a few versions of our repo in separate branches on GitHub.
 ::: callout-important
 ## Exercise 11
 
-On your repo's page in GitHub.com, click the "Pull Requests" tab, and then click the green "New Pull Request" button. You're requesting to pull the changes from your personal branch into the main branch. This means that the *base* branch should be main, and the *compare* branch should be your personal branch. You'll see a screen where you can compare your branch to the main branch. Click the button to "Create Pull Request," enter a descriptive title of the changes made, and then click "Create Pull Request" again.
+On your repo's page in GitHub.com, click the "Pull Requests" tab, and then click the green "New Pull Request" button. You're requesting to pull the changes from your personal branch into the main branch. This means that the *base* branch should be main, and the *compare* branch should be your personal branch.
+
+![](img/pull-request.png){fig-alt="This shows how you should select branches when creating a pull request." width="500"}
+
+You'll see a screen where you can compare your branch to the main branch. Click the button to "Create Pull Request," enter a descriptive title of the changes made, and then click "Create Pull Request" again.
 :::
 
 ### Review Pull Requests
@@ -200,7 +210,15 @@ Now there should be a pull request for all members of your team. Assign one team
 ::: callout-important
 ## Exercise 12
 
-Open your own pull request in GitHub.com, and in the right sidebar, assign the team member responsible for reviewing your changes as a "Reviewer." Then navigate to the pull request you are responsible for reviewing. Click on the "Files Changed" tab. Note that the left side of the screen shows the previous version of the file, and the right side of the screen shows the new version of the file. Lines in red have been deleted, and lines in green have been added. After looking through the changes, click the green button "Review changes." Leave a note for your collaborator, indicating your evaluation of their changes. If everything looks good, check the radio button for "Approve." If there are issues, check the radio button for "Request Changes." Then click the button to "Submit Review."
+Open your own pull request in GitHub.com, and in the right sidebar, assign the team member responsible for reviewing your changes as a "Reviewer."
+
+![](img/reviewers.png){fig-alt="This shows where to add reviewers on the GitHub UI." width="500"}
+
+Then navigate to the pull request you are responsible for reviewing. Click on the "Files Changed" tab. Note that the left side of the screen shows the previous version of the file, and the right side of the screen shows the new version of the file. Lines in red have been deleted, and lines in green have been added.
+
+![](img/files-changed.png){fig-alt="This shows where to find the files changed tab in GitHub." width="500"}
+
+After looking through the changes, click the green button "Review changes." Leave a note for your collaborator, indicating your evaluation of their changes. If everything looks good, check the radio button for "Approve." If there are issues, check the radio button for "Request Changes." Then click the button to "Submit Review."
 :::
 
 ::: callout-tip
@@ -209,12 +227,20 @@ If your reviewer requested changes, you should go back to RStudio, and make sure
 
 ### Merge
 
-Once all reviewers have approved changes, we are ready to merge those changes into the main branch. Open each pull request. If everything is good and ready to merge, you will see a green checkmark that says "This branch has no conflicts with the base branch." (If you get a message that there are conflicts, call myself or one of the Data Assistants over.)
+Once all reviewers have approved changes, we are ready to merge those changes into the main branch. Open each pull request. If everything is good and ready to merge, you will see a green checkmark that says "This branch has no conflicts with the base branch."
+
+![](img/no-conflicts.png){fig-alt="This shows the message you that should appear if there are no conflicts."}
+
+(If you get a message that there are conflicts, call myself or one of the Data Assistants over.)
 
 ::: callout-important
 ## Exercise 13
 
-Click the button to "Merge Pull Request" and then "Confirm Merge." Finally, click the button to the delete the branch. Once this has been completed for all pull requests, head back over to the "Code" tab at GitHub.com, and check out github-practice.Rmd. What has happened to the file since merging the code?
+Click the button to "Merge Pull Request". In the comment box that appears, enter the text "closes \#". When you enter this text, you will see a dropdown of issues and pull requests currently in the repo. Issues will have an icon that appears as a circle with a dot in the center.
+
+![](img/closes.png){fig-alt="This shows the window that appears when you enter \"closes #\" into the comment box." width="300"}
+
+Select the issue associated with this pull request, and then click "Confirm Merge." This will both merge the changes into the main branch and simultaneously close the issue you opened earlier. Finally, click the button to the delete the branch. Once this has been completed for all pull requests, head back over to the "Code" tab at GitHub.com, and check out github-practice.Rmd. What has happened to the file since merging the code? Navigate to the "Issues" tab. What has happened to the issues since confirming the merge?
 :::
 
 ::: callout-important
@@ -234,9 +260,9 @@ A push error occurs when we make changes to files on our local machines, and go 
 ::: callout-important
 ## Exercise 14
 
-One of your partners should navigate to the GitHub.com repository. Click on the file README.md. Click the pencil icon to edit the file. Replace the text: ADD NAME 1 HERE ADD NAME 2 HERE, with your names. Scroll to the bottom of the page and commit changes noting in the message that your names were added.
+One of your partners should navigate to the GitHub.com repository. Click on the file README.md. Click the pencil icon to edit the file. Replace the text: ADD NAME 1 HERE ADD NAME 2 HERE, and so on with your names. Scroll to the bottom of the page and commit changes noting in the message that your names were added.
 
-Other partner: Return to RStudio. **Do not pull changes yet.** Add your names at the top of github-practice.Rmd. Save the file. Stage and commit your changes. Click the green upward arrow to push your changes. You should get an error that looks like this.
+Other partner: Return to RStudio. **Do not pull changes yet.** Open github-practice.Rmd. On line 40 change the `ncol()` function to `dim()`. Save the file. Stage and commit your changes. Click the green upward arrow to push your changes. You should get an error that looks like this.
 
 ![](img/push-error.png){fig-alt="This shows the text that we see when we get a push error. It says hint: Updates were rejected because the remote contains work that you do hint: not have locally. This is usually caused by another repository pushing hint: to the same ref. You may want to first integrate the remote changes hint: (e.g., 'git pull ...') before pushing again."}
 
@@ -256,11 +282,11 @@ If this seems confusing imagine this: let's say you write a paper, and you share
 ::: callout-important
 ## Exercise 15
 
-One of your partners should navigate to the GitHub.com repository. Click on the file github-practice.Rmd. Click the pencil icon to edit the file. Replace the code on line 37 with the following: `colnames(pioneer_valley_2013).`
+One of your partners should navigate to the GitHub.com repository. Click on the file github-practice.Rmd. Click the pencil icon to edit the file. Replace the code on line 47 with the following: `colnames(pioneer_valley_2013).`
 
 Scroll to the bottom of the page and commit changes noting in the message how you updated the function.
 
-Other partner: Return to RStudio. **Do not pull changes yet.** Open github-practice.Rmd. Replace the code on line 37 with the following: `ncol(pioneer_valley_2013)`
+Other partner: Return to RStudio. **Do not pull changes yet.** Open github-practice.Rmd. Replace the code on line 47 with the following: `ncol(pioneer_valley_2013)`
 
 Save the file. Click the blue downward button to Pull changes. You should get an error that looks like this.
 
@@ -284,7 +310,7 @@ One of your partners should try to pull changes by clicking the blue downward ar
 
 ![](img/merge-conflict.png){fig-alt="This is the window that we see when we get a merge conflict. It says: CONFLICT (content): Merge conflict in README.md}
 
-To fix this one your parnters should open the file with the conflict. In this case it will be github-practice.Rmd. Scroll to the section of the file with the conflict. It will now look something like this:
+To fix this one your partners should open the file with the conflict. In this case it will be github-practice.Rmd. Scroll to the section of the file with the conflict. It will now look something like this:
 
         <<<<<<< HEAD
 
@@ -304,19 +330,19 @@ The code following HEAD represents the recent changes you made on your local mac
 
 You may have noticed that the most frustrating merge conflicts tend to emerge when we have two people working on the same line of a repo's file. The most effective way to avoid merge conflicts is to ensure that collaborators are working on different documents or different lines in a file. One way you might do this when starting to work on your group project is to open a file that you all plan to work on and having one of your team mates section off space of that file for different people to work. It might look something like this:
 
-![](img/avoiding-merge-conflict.png){fig-alt="This image show an RMarkdown file with several lines for Collaborator 1 to work and several more lines for Collaborator 2 to work."}
+![](img/avoiding-merge-conflict.png){fig-alt="This image show an RMarkdown file with several lines for Collaborator 1 to work and several more lines for Collaborator 2 to work." width="300"}
 
 Once this change has been made, that group mate should stage, commit, and push the file to GitHub, and all other group mates should pull the change to their local machines.
 :::
 
 ### Path of Least Resistance
 
-I have been working with GitHub for years, and even to this day, I run into instances where things are just so inconsistent between my local machine and GitHub that the fastest way to fix things is just to save local copies of the files that I've changed to somewhere else on my machine, delete the super fancy Git folder from its current location, and then reclone the most up-to-date remote version to my local machine. Then I can figure out how I want to edit the most up-to-date version with my changes. This comic from XKCD captures this widely acknowledged solution:
+I have been working with GitHub for years, and even to this day, I run into instances where things become so inconsistent between my local machine and the repo at GitHub.com that the fastest way to fix things is just to save local copies of the files that I've changed to somewhere else on my machine, delete the super fancy Git folder from its current location, and then re-clone the most up-to-date remote version to my local machine. Then I can figure out how I want to edit the most up-to-date version with my changes. This comic from XKCD captures this widely acknowledged solution beautifully:
 
 ![](https://imgs.xkcd.com/comics/git.png){fig-alt="This is a comic explaining why we sometimes just delete our local git repos and reclone."}
 
 ::: callout-caution
 ## Ethical Considerations
 
-free software/open access ethics
+Increasingly, when data science researchers publish a paper in a journal, they are making the code they used to reach certain results freely available on GitHub.com for other researchers and the public to review. This is in part a response to the reproducibility crisis that you learned about in SDS 100. What do you see as the social benefits to making the code behind a data science finding publicly available online? What might be some of the social consequences of making this code freely available? How might we mitigate these consequences? Share your ideas on our `sds-192-discussions` Slack channel.
 :::

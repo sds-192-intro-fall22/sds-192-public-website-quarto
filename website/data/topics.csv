@@ -14,7 +14,7 @@ topic_id,topic_abbr,topic,date,standard_id,required_reading,req_chapter,optional
 13,github_lab,Lab: Collaborating via GitHub,10/5/22,5,,,,,,
 14,open1,Work on Group Projects in Class,10/7/22,,,,,,,
 15,no_class1,No Class,10/10/22,,,,,,,
-16,wrangling_review,"Subsetting, Aggregating, and Summarizing Data",10/12/22,6,ismayModernDiveStatistical2021,3. Data Wrangling,,,Lab 4 Due,
+16,wrangling_review,"Subsetting, Aggregating, and Summarizing Data",10/12/22,6,ismayModernDiveStatistical2021,3. Data Wrangling,,,[Lab 4](lab4.html) Due,
 17,wrangling_lab,Lab: Aggregating and Summarizing Data,10/14/22,6,,,,,,Project 1 Due
 18,exploratory,Exploratory Data Analysis,10/17/22,6,,,,,[Lab 5](lab5.html) Due,
 19,joining,Joining Datasets,10/19/22,7,baumerModernDataScience2021,5. Data wrangling on multiple tables,,,Quiz 1 Recommended Deadline,

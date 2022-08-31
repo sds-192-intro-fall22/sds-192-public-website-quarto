@@ -117,7 +117,13 @@ ul.task-list{list-style: none;}
   <li><a href="#review-pull-requests" id="toc-review-pull-requests" class="nav-link" data-scroll-target="#review-pull-requests">Review Pull Requests</a></li>
   <li><a href="#merge" id="toc-merge" class="nav-link" data-scroll-target="#merge">Merge</a></li>
   </ul></li>
-  <li><a href="#error-resolution" id="toc-error-resolution" class="nav-link" data-scroll-target="#error-resolution">Error Resolution</a></li>
+  <li><a href="#error-resolution" id="toc-error-resolution" class="nav-link" data-scroll-target="#error-resolution">Error Resolution</a>
+  <ul class="collapse">
+  <li><a href="#push-error" id="toc-push-error" class="nav-link" data-scroll-target="#push-error">Push error</a></li>
+  <li><a href="#pull-error" id="toc-pull-error" class="nav-link" data-scroll-target="#pull-error">Pull error</a></li>
+  <li><a href="#merge-conflict" id="toc-merge-conflict" class="nav-link" data-scroll-target="#merge-conflict">Merge conflict</a></li>
+  <li><a href="#path-of-least-resistance" id="toc-path-of-least-resistance" class="nav-link" data-scroll-target="#path-of-least-resistance">Path of Least Resistance</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -273,9 +279,9 @@ Tip
 </section>
 <section id="branch" class="level3">
 <h3 class="anchored" data-anchor-id="branch">Branch</h3>
-<p>When you first create a repository all of the code will be stored in the <em>main</em> branch of the repository. If you were to think of a project like a tree growing up from the ground, then the main branch would be the like the trunk of the tree. One goal of a branching workflow in GitHub is to keep the most stable and polished versions of code in the main branch.</p>
-<p>So what do we do in the meantime - when we’re editing code and trying to sort out its bugs, and it’s not quite in that stable and polished state yet? That’s where branching comes in.</p>
-<p>When we create a branch of our repo, GitHub creates a separate copy of the repo where you can make changes without impacting what’s in the main branch. Later, once we’re down making changes and things are stable and polised, we will have the opportunity to merge those changes back into the main branch.</p>
+<p>When you first create a repository all of the code will be stored in the <em>main</em> branch of the repository. If you were to think of a project like a tree growing up from the ground, then the main branch would be the like the trunk of the tree. One goal of a branching workflow in GitHub is to keep the most stable and polished versions of code in the main branch. So what do we do in the meantime - when we’re editing code and trying to sort out its bugs, and it’s not quite in that stable and polished state yet? That’s where branching comes in.</p>
+<p>When we create a branch of our repo, GitHub creates a separate copy of the repo where you can make changes without impacting what’s in the main branch. Later, once we’re done making changes and things are stable and polished, we will have the opportunity to merge those changes back into the main branch.</p>
+<p><img src="img/branching.png" class="img-fluid" alt="This shows how branches stem from the main branch and then merge back in."></p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -300,6 +306,7 @@ Exercise 4
 </div>
 <div class="callout-body-container callout-body">
 <p>Click on the Code tab on your repo’s page at GitHub.com. Directly below this tab, you will see a dropdown that is currently labeled “main.” This means that you are in the main branch. Each member of your team should click the down arrow, and create a branch by entering their first name into the textbox that appears, and then clicking “Create branch.”</p>
+<p><img src="img/creating-branch.png" class="img-fluid" alt="This demonstrates the UI to create a branch." width="300"></p>
 </div>
 </div>
 </section>
@@ -317,6 +324,7 @@ Exercise 5
 </div>
 <div class="callout-body-container callout-body">
 <p>Head back to RStudio. In the Environment pane, you will notice a tab labeled “Git.” It’s important to note that this tab will only appear in projects that are built from super fancy git folders. This is your RStudio command center for Git and GitHub. When you click on this tab, you will see a few buttons in the navigation bar. To pull changes, you should click the blue downward arrow. Click this button to pull the branches created remotely to your local machine.</p>
+<p><img src="img/pull-button.png" class="img-fluid" alt="This highlights the pull button." width="400"></p>
 </div>
 </div>
 </section>
@@ -334,6 +342,7 @@ Exercise 6
 </div>
 <div class="callout-body-container callout-body">
 <p>In the top right hand corner of the Git tab, you will see a dropdown currently set to “main”. Click the downward arrow, and switch to your branch by selecting the appropriate branch.</p>
+<p><img src="img/switch-branch.png" class="img-fluid" alt="This highlights were to look to switch branches." width="400"></p>
 </div>
 </div>
 </section>
@@ -349,7 +358,7 @@ Exercise 7
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Once in your branch, open github-practice.Rmd from the files pane. Decide within your group who will be Group member 1, 2, 3, and so on. Each group member should edit this file on their own machines by adding their name to the appropriate location in the document based on their group member. <strong>It’s very important that this be the only section of the document you edit.</strong> Save the file by clicking File&gt;Save.</p>
+<p>Once in your branch, open github-practice.Rmd from the files pane. Decide within your group who will be Group member 1, 2, 3, and so on. Each group member should edit this file on their own machines by adding their name and only their group name to the appropriate location in the document (line 5, 7, or 9) based on their group member. <strong>It’s very important that this be the only section of the document you edit.</strong> Save the file by clicking File&gt;Save.</p>
 </div>
 </div>
 </section>
@@ -367,6 +376,7 @@ Exercise 8
 </div>
 <div class="callout-body-container callout-body">
 <p>Once you save the file you’ll notice in the RStudio Git pane that the file name appears after a blue square labeled “M” (which stands for Modified). This means that the file is ready for staging. Stage the file - indicating that it’s ready for committing - by clicking the checkbox in front of the file name.</p>
+<p><img src="img/stage.png" class="img-fluid" alt="This highlights where to look to stage changes." width="400"></p>
 </div>
 </div>
 </section>
@@ -374,7 +384,7 @@ Exercise 8
 <h3 class="anchored" data-anchor-id="commit">Commit</h3>
 <p>As we just noted, committing changes basically means taking a snapshot of a repo at a particular moment in time. Commits are given unique hashes - sort of like a unique identifier that enables us to access the snapshot of the repo at a later date. In collaborative projects, it is typically recommended to commit often - after any major changes are made to a file. This ensures that we can eventually go back to look at very specific changes. It’s also important to label commits with descriptive titles so that we can recall what changes within that commit.</p>
 <p>To help put this into context, think back to our photograph metaphor. Let’s say that we are a photographer assigned to document how a baby develops in the first year of its life. If the photographer only took one photograph when the baby was 1 year old, we wouldn’t have a lot of documentation regarding how the baby developed! …so instead, let’s say that the photographer took a snapshot of the baby after every major milestone - their first laugh, their first solid food, their first crawl, their first word. We would have a lot more to go by when trying to understand how the baby developed. Same goes for committing code often.</p>
-<p>Now let’s say the photographer handed the batch of photos to the parents, and said - “look, here’s how your baby developed over time.” The parents might not remember which photograph was taken after which milestone. …but if the photographer were to label each photograph with things like “baby had first laugh,” the parents would be able to easily go back to specific moments in their baby’s development. This is why we want descriptive commit messages.</p>
+<p>Now let’s say the photographer handed the batch of photos to the parents, and said - “look, here’s how your baby developed over time.” The parents might not remember which photograph was taken after which milestone. …but if the photographer were to label each photograph with things like “baby had first laugh,” the parents would be able to easily go back to specific moments in their baby’s development. This is why we want descriptive commit messages. We want to later be able to go back and scan through what changes were made after each commit.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -391,7 +401,7 @@ Exercise 9
 </section>
 <section id="push" class="level3">
 <h3 class="anchored" data-anchor-id="push">Push</h3>
-<p>Only your local machine knows that a change has been made to the code. Remember again how we said that the super fancy git folder knows that there is a remote version of the repository somewhere that you might want to keep it consistent with? Now we want to do the opposite of pulling changes from GitHub to our local mahchines. Instead, we want to push the changes on our local machines to GitHub.</p>
+<p>Only your local machine knows that a change has been made to the code. Remember again how we said that the super fancy git folder knows that there is a remote version of the repository somewhere that you might want to keep it consistent with? Now we want to do the opposite of pulling changes from GitHub to our local machines. Instead, we want to push the changes on our local machines to GitHub.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -402,13 +412,15 @@ Exercise 10
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Click the Green upward arrow in the Git pane to push your changes to GitHub. Once all group members have pushed their changes, head back over to GitHub. On the main code page, switch between branches and check out the contents of github-practice.Rmd in each branch. What differences do you notice?</p>
+<p>Click the Green upward arrow in the Git pane to push your changes to GitHub.</p>
+<p><img src="img/push-button.png" class="img-fluid" alt="This highlights the push button in RStudio." width="400"></p>
+<p>Once all group members have pushed their changes, head back over to GitHub. On the main code page, switch between branches and check out the contents of github-practice.Rmd in each branch. What differences do you notice?</p>
 </div>
 </div>
 </section>
 <section id="pull-request" class="level3">
 <h3 class="anchored" data-anchor-id="pull-request">Pull Request</h3>
-<p>Note that that now we have a few versions of our repo in separate branches on GitHub.com, and in each of those versions of the repo, the github-practice.Rmd file looks a little bit different. Now that we’ve made our changes and things are stable and polished, we want to move all of those changes into the main branch. To do this, we are going to issue a <strong>Pull Request</strong>. This is a request that signals to all of our collaborators that we are ready to move our changes back into the main branch.</p>
+<p>Note that now we have a few versions of our repo in separate branches on GitHub.com, and in each of those versions of the repo, the github-practice.Rmd file looks a little bit different. Now that we’ve made our changes and things are stable and polished, we want to move all of those changes into the main branch. To do this, we are going to issue a <strong>Pull Request</strong>. This is a request that signals to all of our collaborators that we are ready to move our changes back into the main branch.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -419,13 +431,16 @@ Exercise 11
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>On your repo’s page in GitHub.com, click the “Pull Requests” tab, and then click the green “New Pull Request” button. You’re requesting to pull the changes from your personal branch into the main branch. This means that the <em>base</em> branch should be main, and the <em>compare</em> branch should be your personal branch. You’ll see a screen where you can compare your branch to the main branch. Click the button to “Create Pull Request,” enter a descriptive title of the changes made, and then click “Create Pull Request” again.</p>
+<p>On your repo’s page in GitHub.com, click the “Pull Requests” tab, and then click the green “New Pull Request” button. You’re requesting to pull the changes from your personal branch into the main branch. This means that the <em>base</em> branch should be main, and the <em>compare</em> branch should be your personal branch.</p>
+<p><img src="img/pull-request.png" class="img-fluid" alt="This shows how you should select branches when creating a pull request." width="500"></p>
+<p>You’ll see a screen where you can compare your branch to the main branch. Click the button to “Create Pull Request,” enter a descriptive title of the changes made, and then click “Create Pull Request” again.</p>
 </div>
 </div>
 </section>
 <section id="review-pull-requests" class="level3">
 <h3 class="anchored" data-anchor-id="review-pull-requests">Review Pull Requests</h3>
-<p>Sometimes, you want to make a practice of reviewing your collaborator’s work before merging their changes into the main branch. By creating pull requests, we scaffold an opportunity to review each other’s work before fully integrating the changes.</p>
+<p>I recommend that you get in the habit of reviewing your collaborator’s work before merging their changes into the main branch. By creating pull requests, we scaffold an opportunity to review each other’s work before fully integrating the changes.</p>
+<p>Now there should be a pull request for all members of your team. Assign one team member to review one other team member’s code. All team members should have one reviewer.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -436,21 +451,160 @@ Exercise 12
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Now there should be a pull request for all members of your team. Assign one team member to review</p>
+<p>Open your own pull request in GitHub.com, and in the right sidebar, assign the team member responsible for reviewing your changes as a “Reviewer.”</p>
+<p><img src="img/reviewers.png" class="img-fluid" alt="This shows where to add reviewers on the GitHub UI." width="500"></p>
+<p>Then navigate to the pull request you are responsible for reviewing. Click on the “Files Changed” tab. Note that the left side of the screen shows the previous version of the file, and the right side of the screen shows the new version of the file. Lines in red have been deleted, and lines in green have been added.</p>
+<p><img src="img/files-changed.png" class="img-fluid" alt="This shows where to find the files changed tab in GitHub." width="500"></p>
+<p>After looking through the changes, click the green button “Review changes.” Leave a note for your collaborator, indicating your evaluation of their changes. If everything looks good, check the radio button for “Approve.” If there are issues, check the radio button for “Request Changes.” Then click the button to “Submit Review.”</p>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If your reviewer requested changes, you should go back to RStudio, and make sure you are in your own branch. Then make the requested changes, save the file, stage the file, commit the changes, and push again. The changes to your file will be tracked in your pull request. After this, you may move on to the Merge step. See <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/dismissing-a-pull-request-review">here</a> for further options on dismissing or re-requesting reviews.</p>
 </div>
 </div>
 </section>
 <section id="merge" class="level3">
 <h3 class="anchored" data-anchor-id="merge">Merge</h3>
+<p>Once all reviewers have approved changes, we are ready to merge those changes into the main branch. Open each pull request. If everything is good and ready to merge, you will see a green checkmark that says “This branch has no conflicts with the base branch.”</p>
+<p><img src="img/no-conflicts.png" class="img-fluid" alt="This shows the message you that should appear if there are no conflicts."></p>
+<p>(If you get a message that there are conflicts, call myself or one of the Data Assistants over.)</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercise 13
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Click the button to “Merge Pull Request”. In the comment box that appears, enter the text “closes #”. When you enter this text, you will see a dropdown of issues and pull requests currently in the repo. Issues will have an icon that appears as a circle with a dot in the center.</p>
+<p><img src="img/closes.png" class="img-fluid" alt="This shows the window that appears when you enter &quot;closes #&quot; into the comment box." width="300"></p>
+<p>Select the issue associated with this pull request, and then click “Confirm Merge.” This will both merge the changes into the main branch and simultaneously close the issue you opened earlier. Finally, click the button to the delete the branch. Once this has been completed for all pull requests, head back over to the “Code” tab at GitHub.com, and check out github-practice.Rmd. What has happened to the file since merging the code? Navigate to the “Issues” tab. What has happened to the issues since confirming the merge?</p>
+</div>
+</div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Before moving on to the next section...
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You’ve now deleted branches at GitHub.com that your local machines don’t know have been deleted. Before moving on to the next step, you should navigate back to RStudio and <strong>pull</strong> these changes to your local machine by clicking the blue downward arrow. To streamline things in the next section of the lab, we are going to work entirely in the main branch (something that I would otherwise not recommend).</p>
+</div>
+</div>
 </section>
 </section>
 <section id="error-resolution" class="level2">
 <h2 class="anchored" data-anchor-id="error-resolution">Error Resolution</h2>
-<ol start="13" type="1">
-<li><p>Pull error</p></li>
-<li><p>Push error</p></li>
-<li><p>Merge conflict</p></li>
-</ol>
+<p>The workflow presented above seems to work all fine and dandy. …but there are a number of factors that can impede this seamless workflow. In this final section of the lab, we will go over three kinds of errors that you might come across in the workflow above, and talk about how you would resolve them. I can almost guarantee that you will deal with some of these issues when working on your group projects, so I would encourage you to keep this lab handy when engaging in project work.</p>
+<section id="push-error" class="level3">
+<h3 class="anchored" data-anchor-id="push-error">Push error</h3>
+<p>A push error occurs when we make changes to files on our local machines, and go to commit and push them to GitHub.com, but other changes had already been made to the file at GitHub.com that were not yet pulled into our local environments. We get an error because our local repo is inconsistent with the remote repo. <strong>To fix this error, we need to pull changes to our local machine, and try committing and pushing again.</strong> Let’s replicate this error:</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercise 14
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>One of your partners should navigate to the GitHub.com repository. Click on the file README.md. Click the pencil icon to edit the file. Replace the text: ADD NAME 1 HERE ADD NAME 2 HERE, and so on with your names. Scroll to the bottom of the page and commit changes noting in the message that your names were added.</p>
+<p>Other partner: Return to RStudio. <strong>Do not pull changes yet.</strong> Open github-practice.Rmd. On line 40 change the <code>ncol()</code> function to <code>dim()</code>. Save the file. Stage and commit your changes. Click the green upward arrow to push your changes. You should get an error that looks like this.</p>
+<p><img src="img/push-error.png" class="img-fluid" alt="This shows the text that we see when we get a push error. It says hint: Updates were rejected because the remote contains work that you do hint: not have locally. This is usually caused by another repository pushing hint: to the same ref. You may want to first integrate the remote changes hint: (e.g., 'git pull ...') before pushing again."></p>
+<p>Follow the steps above to resolve the error.</p>
+</div>
+</div>
+<p>An easy way to avoid a push error is to always click the blue downward arrow to pull remote changes before starting to edit files on your local machine.</p>
+</section>
+<section id="pull-error" class="level3">
+<h3 class="anchored" data-anchor-id="pull-error">Pull error</h3>
+<p>A pull error occurs when changes have already been made to the same location (the same line number) in both a remote file and a local file, and then we try to pull the changes from the remote repo to our local machines. As far as Git can tell, there are two options for what this line is supposed to look like, and it can’t tell which to prioritize. So Git recommends that, as a first step, we commit the changes that we made locally. It’s basically saying, let’s take a snapshot of your local repo as it looks right now, so that later we can figure out what to do about this conflict.</p>
+<p>If this seems confusing imagine this: let’s say you write a paper, and you share it with one of your classmates to review. The classmate reads through it, makes suggested changes to the opening sentence, and sends it back you. …but, while your classmate was reviewing the paper, you were getting antsy about the paper deadline and started making your own edits to the paper, including edits to the opening sentence. Now you’re trying to incorporate the changes from your classmate’s review, and you’re not sure what to do about that opening sentence. As a first step, you have two options you can scrap your recent changes (maybe your classmate’s suggestions were better!) or you can save a separate copy of the file with your recent changes and figure out later how to resolve the differences. That’s exactly what we are going to do here:</p>
+<p><strong>To fix this error, you should stage and commit your local changes and then try pulling again.</strong> Let’s replicate this error:</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercise 15
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>One of your partners should navigate to the GitHub.com repository. Click on the file github-practice.Rmd. Click the pencil icon to edit the file. Replace the code on line 47 with the following: <code>colnames(pioneer_valley_2013).</code></p>
+<p>Scroll to the bottom of the page and commit changes noting in the message how you updated the function.</p>
+<p>Other partner: Return to RStudio. <strong>Do not pull changes yet.</strong> Open github-practice.Rmd. Replace the code on line 47 with the following: <code>ncol(pioneer_valley_2013)</code></p>
+<p>Save the file. Click the blue downward button to Pull changes. You should get an error that looks like this.</p>
+<p><img src="img/pull-error.png" class="img-fluid" alt="This shows the error message we get for a pull error. It says &quot;error: Your local changes to the following files would be overwritten by merge:    README.md Please commit your changes or stash them before you merge.&quot;"></p>
+<p>Follow the steps above to resolve the error.</p>
+</div>
+</div>
+</section>
+<section id="merge-conflict" class="level3">
+<h3 class="anchored" data-anchor-id="merge-conflict">Merge conflict</h3>
+<p>So now we have these two snapshots of github-practice.Rmd, and they are in conflict with one another. If we try to push our changes back to GitHub.com, Git is not going to know what to do. Should the file at GitHub.com look like the version currently at GitHub.com, should it look like the snapshot that we just commit to our local machines, or should it look like something else entirely?</p>
+<p>Let’s return to the example of trying to incorporate a peer’s edits to a paper that you have recently made changes to. We have to figure out what to do about that opening sentence. Do we want our version, their version, or some combination of the two? This is what it is like to fix a merge conflict.</p>
+<p><strong>To fix this error, open the file with conflicts and edit the lines with conflict.</strong></p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Exercise 16
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>One of your partners should try to pull changes by clicking the blue downward arrow in RStudio. You will get an error that looks like this:</p>
+<p><img src="img/merge-conflict.png" class="img-fluid">{fig-alt=“This is the window that we see when we get a merge conflict. It says: CONFLICT (content): Merge conflict in README.md}</p>
+<p>To fix this one your partners should open the file with the conflict. In this case it will be github-practice.Rmd. Scroll to the section of the file with the conflict. It will now look something like this:</p>
+<pre><code>    &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+
+    ncol(pioneer_valley_2013)
+
+    =======
+
+    colnames(pioneer_valley_2013)
+
+    &gt;&gt;&gt;&gt;&gt;&gt;&gt; ee175895783b64e0e1f696d9456be4c4c7c3f3bf</code></pre>
+<p>The code following HEAD represents the recent changes you made on your local machine, and the code right before the long string of characters represents the changes that were made in an earlier commit (the long string of characters is the commit hash). Decide what that line should look like and delete all other content. This means you <em>must</em> delete “&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD”, “=======”, and “&gt;&gt;&gt;&gt;&gt;&gt;&gt; &lt;long-hash&gt;”, and you likely should delete at least one other line. Save the file, stage the file by clicking the checkbox next to the file in the Git page, and then commit your changes, and push them to GitHub.com.</p>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Avoiding Merge Conflicts
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You may have noticed that the most frustrating merge conflicts tend to emerge when we have two people working on the same line of a repo’s file. The most effective way to avoid merge conflicts is to ensure that collaborators are working on different documents or different lines in a file. One way you might do this when starting to work on your group project is to open a file that you all plan to work on and having one of your team mates section off space of that file for different people to work. It might look something like this:</p>
+<p><img src="img/avoiding-merge-conflict.png" class="img-fluid" alt="This image show an RMarkdown file with several lines for Collaborator 1 to work and several more lines for Collaborator 2 to work." width="300"></p>
+<p>Once this change has been made, that group mate should stage, commit, and push the file to GitHub, and all other group mates should pull the change to their local machines.</p>
+</div>
+</div>
+</section>
+<section id="path-of-least-resistance" class="level3">
+<h3 class="anchored" data-anchor-id="path-of-least-resistance">Path of Least Resistance</h3>
+<p>I have been working with GitHub for years, and even to this day, I run into instances where things become so inconsistent between my local machine and the repo at GitHub.com that the fastest way to fix things is just to save local copies of the files that I’ve changed to somewhere else on my machine, delete the super fancy Git folder from its current location, and then re-clone the most up-to-date remote version to my local machine. Then I can figure out how I want to edit the most up-to-date version with my changes. This comic from XKCD captures this widely acknowledged solution beautifully:</p>
+<p><img src="https://imgs.xkcd.com/comics/git.png" class="img-fluid" alt="This is a comic explaining why we sometimes just delete our local git repos and reclone."></p>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -461,11 +615,12 @@ Ethical Considerations
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>free software/open access ethics</p>
+<p>Increasingly, when data science researchers publish a paper in a journal, they are making the code they used to reach certain results freely available on GitHub.com for other researchers and the public to review. This is in part a response to the reproducibility crisis that you learned about in SDS 100. What do you see as the social benefits to making the code behind a data science finding publicly available online? What might be some of the social consequences of making this code freely available? How might we mitigate these consequences? Share your ideas on our <code>sds-192-discussions</code> Slack channel.</p>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
