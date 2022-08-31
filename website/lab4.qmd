@@ -123,6 +123,8 @@ As of right now, the branches that were created in the previous step only exist 
 ## Exercise 5
 
 Head back to RStudio. In the Environment pane, you will notice a tab labeled "Git." It's important to note that this tab will only appear in projects that are built from super fancy git folders. This is your RStudio command center for Git and GitHub. When you click on this tab, you will see a few buttons in the navigation bar. To pull changes, you should click the blue downward arrow. Click this button to pull the branches created remotely to your local machine.
+
+![](img/pull-button.png){fig-alt="This highlights the pull button." width="400"}
 :::
 
 ### Switch Branches
@@ -133,6 +135,8 @@ Even though you pulled the new branches to your local machine, you are still cur
 ## Exercise 6
 
 In the top right hand corner of the Git tab, you will see a dropdown currently set to "main". Click the downward arrow, and switch to your branch by selecting the appropriate branch.
+
+![](img/switch-branch.png){fig-alt="This highlights were to look to switch branches." width="400"}
 :::
 
 ### Make Changes
