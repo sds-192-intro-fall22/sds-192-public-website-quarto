@@ -197,15 +197,15 @@ nbi_hampshire %>%
 
 Color can be used on plots to either distinguish between discrete values in a categorical variable or to represent the range of values in numeric variable. We use different kinds of color palettes for each of these scenarios. Palettes refer to a range of colors. We can have palettes with discrete colors (e.g. red, orange, and blue) or palettes with a gradient of colors (e.g. lightest red to darkest red).
 
-+-------------+---------------------------------------------------------+------------------------------------------------+
-| Palette     | Effective for what kinds of variables?                  | Example                                        |
-+=============+=========================================================+================================================+
-| Qualitative | Categorical                                             | Red, yellow, blue                              |
-+-------------+---------------------------------------------------------+------------------------------------------------+
-| Sequential  | Numeric                                                 | Light blue to dark blue                        |
-+-------------+---------------------------------------------------------+------------------------------------------------+
-| Divergent   | Numeric, extending in two directions (e.g. \>1 and \<1) | Blue to purple to red                          |
-+-------------+---------------------------------------------------------+------------------------------------------------+
++-------------+---------------------------------------------------------+-------------------------+
+| Palette     | Effective for what kinds of variables?                  | Example                 |
++=============+=========================================================+=========================+
+| Qualitative | Categorical                                             | Red, yellow, blue       |
++-------------+---------------------------------------------------------+-------------------------+
+| Sequential  | Numeric                                                 | Light blue to dark blue |
++-------------+---------------------------------------------------------+-------------------------+
+| Divergent   | Numeric, extending in two directions (e.g. \>1 and \<1) | Blue to purple to red   |
++-------------+---------------------------------------------------------+-------------------------+
 
 ::: callout-important
 ## Exercise 2

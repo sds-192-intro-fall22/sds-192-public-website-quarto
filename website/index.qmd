@@ -31,7 +31,7 @@ knitr::include_graphics("https://www.smith.edu/sites/default/files/styles/img-fa
 ```
 :::
 
-I am a cultural anthropologist that studies how public interest datasets get produced, how communities think about and interface with data, and how data infrastructure can be designed more equitably. My Ph.D. is in an interdisciplinary discipline called Science and Technology Studies - a field that studies the intricate ways science, technology, culture, and politics all co-constitute each other. I work on a number of collaborative research projects that leverage public data to deepen understanding of social and environmental inequities in the US, while also qualitatively studying the politics behind data gaps and inconsistencies. As an instructor, I prioritize active learning and often structure courses as flipped classrooms. You can expect in-class time to predominantly involve a mix of lectures and live problem-solving exercises.
+While you're welcome to refer to me as Professor Poirier, I would prefer it if you called me Lindsay. I am a cultural anthropologist that studies how public interest datasets get produced, how communities think about and interface with data, and how data infrastructure can be designed more equitably. My Ph.D. is in an interdisciplinary discipline called Science and Technology Studies - a field that studies the intricate ways science, technology, culture, and politics all co-constitute each other. I work on a number of collaborative research projects that leverage public data to deepen understanding of social and environmental inequities in the US, while also qualitatively studying the politics behind data gaps and inconsistencies. As an instructor, I prioritize active learning and often structure courses as flipped classrooms. You can expect in-class time to predominantly involve a mix of lectures and live problem-solving exercises.
 
 ### Getting in Touch
 
@@ -81,7 +81,7 @@ This is a 4-credit course with 3 hours per week of in-classroom instructions. Sm
 
 ### Attendance
 
-Attendance is expected in this course and important for your learning. That said, you do not need to inform me when you will be absent. If you are sick, please stay home. If you must miss a class entirely, you should contact a peer to discuss what was missed.
+Attending class is not only important for your learning but also an act of community. Attendance is expected in this course. Many course assignments will be completed in-class. That said, you do not need to inform me when you will be absent. If you are sick, please stay home. If you must miss a class entirely, you should contact a peer to discuss what was missed.
 
 ### Extensions
 
@@ -104,7 +104,7 @@ Any cases of dishonesty or plagiarism will be reported to the Academic Honor Boa
 ::: callout-important
 ## Deadlines for Quizzess and Course Advancement Assignments
 
-Quizzes and course advancement assignments are treated separately from lab and project assignments. Quizzes and course advancement assignments are due at the time indicated in the course schedule, and I will not be able to grant extensions for these. Please plan accordingly.
+The standards you will be practicing in this course all build off of each other, and it's important that I know how students are doing on each standard in order to direct my teaching going forward. Because of this, the deadlines for quizzes are a bit more firm than for other assignments. On the course schedule and in Moodle you will see a suggested deadline for quizzes and a final deadline. I won't be able to accept quiz submissions after the final deadline, so you'll want to be sure to stay on top of these dates. Similarly, course advancements assignments are assignments that need to be completed to keep our course moving. Because of this, they need to be completed by the due date. I will give you an opportunity to work on many of these assignments in class. 
 :::
 
 ## Community

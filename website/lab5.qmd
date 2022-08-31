@@ -52,9 +52,9 @@ In 1968, the Supreme Court case Terry v. Ohio ruled that a police officer could 
 
 In the early 1990s, stop, question, and frisk became a widely prevalent tactic in policing in NYC. Every time an officer stops a civilian in NYC, the officer is supposed to complete a UF-250 form (see image below) outlining the details of the stop.
 
-[![UF250 Side 2, Dan Nguyen's Blog](img/uf250-2011-side-1.png){fig-alt="UF250 Side 2" fig-align="center" width="500"}](http://blog.danwin.com/request-nypd-form-uf250/)
+[![UF250 Side 2, Dan Nguyen\'s Blog](img/uf250-2011-side-1.png){fig-alt="UF250 Side 2" fig-align="center" width="500"}](http://blog.danwin.com/request-nypd-form-uf250/)
 
-[![UF250 Side 2, Dan Nguyen's Blog](img/uf250-2011-side-2.png){fig-alt="UF250 Side 2" fig-align="center"}](http://blog.danwin.com/request-nypd-form-uf250/)
+[![UF250 Side 2, Dan Nguyen\'s Blog](img/uf250-2011-side-2.png){fig-alt="UF250 Side 2" fig-align="center"}](http://blog.danwin.com/request-nypd-form-uf250/)
 
 As a result of some high profile shootings in the late 1990s and mid-2000s, both the New York State Attorney General's Office and the New York Civil Liberties Union began to examine NYPD stop and frisk activity for racial profiling. With pressure from these organizations, in the mid-2000s, information recorded on UF-250 forms began getting reported in public databases. In the early 2010s, when the NYPD's use of stop and frisk went before the US District Court, this data was integral in proving that stop and frisk was being carried out in NYC in an unconstitutional way. The ruling mandated that the NYPD create a policy outlining when stops were authorized, and since the practice has declined considerably. See
 
@@ -64,39 +64,39 @@ As a result of some high profile shootings in the late 1990s and mid-2000s, both
 
 We will analyze data for all stops in 2011. This data can be found [here](The%20original%20dataset%20can%20be%20found%20at:%20https://%20www1.nyc.gov/site/nypd/stats/reports-analysis/). However, we're only going to be considering a subset of the columns. Here is a data dictionary for the columns we're using in this analysis.
 
-+--------------+---------------------------------------+--------------------------------+
-| VARIABLE     | DEFINITION                            | POSSIBLE VALUES                |
-+==============+=======================================+================================+
-| pct          | Precinct of the stop                  | 1:123                          |
-+--------------+---------------------------------------+--------------------------------+
-| arrestsum    | Was an arrest made or summons issued? | 1 = Yes                        |
-|              |                                       |                                |
-|              |                                       | 0 = No                         |
-+--------------+---------------------------------------+--------------------------------+
-| frisked      | Was suspect frisked?                  | 1 = Yes                        |
-|              |                                       |                                |
-|              |                                       | 0 = No                         |
-+--------------+---------------------------------------+--------------------------------+
-| wpnfound     | Was a weapon found on suspect?        | 1 = Yes                        |
-|              |                                       |                                |
-|              |                                       | 0 = No                         |
-+--------------+---------------------------------------+--------------------------------+
-| race_cat     | Suspect's race                        | AMERICAN INDIAN/ALASKAN NATIVE |
-|              |                                       |                                |
-|              |                                       | ASIAN/PACIFIC ISLANDER         |
-|              |                                       |                                |
-|              |                                       | BLACK                          |
-|              |                                       |                                |
-|              |                                       | BLACK-HISPANIC                 |
-|              |                                       |                                |
-|              |                                       | OTHER                          |
-|              |                                       |                                |
-|              |                                       | WHITE                          |
-|              |                                       |                                |
-|              |                                       | WHITE-HISPANIC                 |
-+--------------+---------------------------------------+--------------------------------+
-| age          | Suspect's age                         | 999 indicates a missing value  |
-+--------------+---------------------------------------+--------------------------------+
++-----------+---------------------------------------+--------------------------------+
+| VARIABLE  | DEFINITION                            | POSSIBLE VALUES                |
++===========+=======================================+================================+
+| pct       | Precinct of the stop                  | 1:123                          |
++-----------+---------------------------------------+--------------------------------+
+| arrestsum | Was an arrest made or summons issued? | 1 = Yes                        |
+|           |                                       |                                |
+|           |                                       | 0 = No                         |
++-----------+---------------------------------------+--------------------------------+
+| frisked   | Was suspect frisked?                  | 1 = Yes                        |
+|           |                                       |                                |
+|           |                                       | 0 = No                         |
++-----------+---------------------------------------+--------------------------------+
+| wpnfound  | Was a weapon found on suspect?        | 1 = Yes                        |
+|           |                                       |                                |
+|           |                                       | 0 = No                         |
++-----------+---------------------------------------+--------------------------------+
+| race_cat  | Suspect's race                        | AMERICAN INDIAN/ALASKAN NATIVE |
+|           |                                       |                                |
+|           |                                       | ASIAN/PACIFIC ISLANDER         |
+|           |                                       |                                |
+|           |                                       | BLACK                          |
+|           |                                       |                                |
+|           |                                       | BLACK-HISPANIC                 |
+|           |                                       |                                |
+|           |                                       | OTHER                          |
+|           |                                       |                                |
+|           |                                       | WHITE                          |
+|           |                                       |                                |
+|           |                                       | WHITE-HISPANIC                 |
++-----------+---------------------------------------+--------------------------------+
+| age       | Suspect's age                         | 999 indicates a missing value  |
++-----------+---------------------------------------+--------------------------------+
 
 ## Setting Up Your Environment
 
