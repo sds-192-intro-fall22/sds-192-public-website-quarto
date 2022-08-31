@@ -97,11 +97,11 @@ In my own projects, I use Issues for a number of purposes. Sometimes I use Issue
 
 ### Branch
 
-When you first create a repository all of the code will be stored in the *main* branch of the repository. If you were to think of a project like a tree growing up from the ground, then the main branch would be the like the trunk of the tree. One goal of a branching workflow in GitHub is to keep the most stable and polished versions of code in the main branch.
+When you first create a repository all of the code will be stored in the *main* branch of the repository. If you were to think of a project like a tree growing up from the ground, then the main branch would be the like the trunk of the tree. One goal of a branching workflow in GitHub is to keep the most stable and polished versions of code in the main branch. So what do we do in the meantime - when we're editing code and trying to sort out its bugs, and it's not quite in that stable and polished state yet? That's where branching comes in.
 
-So what do we do in the meantime - when we're editing code and trying to sort out its bugs, and it's not quite in that stable and polished state yet? That's where branching comes in.
+When we create a branch of our repo, GitHub creates a separate copy of the repo where you can make changes without impacting what's in the main branch. Later, once we're done making changes and things are stable and polished, we will have the opportunity to merge those changes back into the main branch.
 
-When we create a branch of our repo, GitHub creates a separate copy of the repo where you can make changes without impacting what's in the main branch. Later, once we're down making changes and things are stable and polised, we will have the opportunity to merge those changes back into the main branch.
+![](img/branching.png){fig-alt="This shows how branches stem from the main branch and then merge back in."}
 
 ::: callout-tip
 Branching can get pretty wild in GitHub. You can have branches of branches of branches. I don't recommend this. A good workflow is to create a branch for making specific changes, merge those changes back into main, delete the branch, and then create a new branch for the next batch of changes.
@@ -111,6 +111,8 @@ Branching can get pretty wild in GitHub. You can have branches of branches of br
 ## Exercise 4
 
 Click on the Code tab on your repo's page at GitHub.com. Directly below this tab, you will see a dropdown that is currently labeled "main." This means that you are in the main branch. Each member of your team should click the down arrow, and create a branch by entering their first name into the textbox that appears, and then clicking "Create branch."
+
+![](img/creating-branch.png){fig-alt="This demonstrates the UI to create a branch." width="300"}
 :::
 
 ### Pull
@@ -243,9 +245,9 @@ An easy way to avoid a push error is to always click the blue downward arrow to 
 
 A pull error occurs when changes have already been made to the same location (the same line number) in both a remote file and a local file, and then we try to pull the changes from the remote repo to our local machines. As far as Git can tell, there are two options for what this line is supposed to look like, and it can't tell which to prioritize. So Git recommends that, as a first step, we commit the changes that we made locally. It's basically saying, let's take a snapshot of your local repo as it looks right now, so that later we can figure out what to do about this conflict.
 
-If this seems confusing imagine this: let's say you write a paper, and you share it with two of your classmates to review. One peer reads through it, makes suggested changes to the opening sentence, sends it back to both you and the other classmate. Later that week the second the second classmate also makes changes to the opening sentence but without first looking at or incorporating the changes the first peer made. A pull error is like you trying to automatically incorporate your first classmate's edits. You're not sure what to do because your second classmate made changes in the same place. What should you do?
+If this seems confusing imagine this: let's say you write a paper, and you share it with one of your classmates to review. The classmate reads through it, makes suggested changes to the opening sentence, and sends it back you. ...but, while your classmate was reviewing the paper, you were getting antsy about the paper deadline and started making your own edits to the paper, including edits to the opening sentence. Now you're trying to incorporate the changes from your classmate's review, and you're not sure what to do about that opening sentence. As a first step, you have two options you can scrap your recent changes (maybe your classmate's suggestions were better!) or you can save a separate copy of the file with your recent changes and figure out later how to resolve the differences. That's exactly what we are going to do here:
 
-Well a first step might be just to be sure that you have a saved copy of the second classmate's suggested changes before incorporating the first classmate's suggestions. Then you can figure out later how to resolve the conflict. That's exactly what we are going to do here. To fix this error, you should stage and commit your local changes and then try pulling again. Let's replicate this error:
+**To fix this error, you should stage and commit your local changes and then try pulling again.** Let's replicate this error:
 
 ::: callout-important
 ## Exercise 15
@@ -258,16 +260,56 @@ Other partner: Return to RStudio. **Do not pull changes yet.** Open github-pract
 
 Save the file. Click the blue downward button to Pull changes. You should get an error that looks like this.
 
-![](img/push-error.png){fig-alt="This shows the text that we see when we get a push error. It says hint: Updates were rejected because the remote contains work that you do hint: not have locally. This is usually caused by another repository pushing hint: to the same ref. You may want to first integrate the remote changes hint: (e.g., 'git pull ...') before pushing again."}
+![](img/pull-error.png){fig-alt="This shows the error message we get for a pull error. It says \"error: Your local changes to the following files would be overwritten by merge:    README.md Please commit your changes or stash them before you merge.\""}
 
 Follow the steps above to resolve the error.
 :::
 
 ### Merge conflict
 
-After you resolve the error above, fix the merge conflict that arises when you try to push changes.
+So now we have these two snapshots of github-practice.Rmd, and they are in conflict with one another. If we try to push our changes back to GitHub.com, Git is not going to know what to do. Should the file at GitHub.com look like the version currently at GitHub.com, should it look like the snapshot that we just commit to our local machines, or should it look like something else entirely?
+
+Let's return to the example of trying to incorporate a peer's edits to a paper that you have recently made changes to. We have to figure out what to do about that opening sentence. Do we want our version, their version, or some combination of the two? This is what it is like to fix a merge conflict.
+
+**To fix this error, open the file with conflicts and edit the lines with conflict.**
+
+::: callout-important
+## Exercise 16
+
+One of your partners should try to pull changes by clicking the blue downward arrow in RStudio. You will get an error that looks like this:
+
+![](img/merge-conflict.png){fig-alt="This is the window that we see when we get a merge conflict. It says: CONFLICT (content): Merge conflict in README.md}
+
+To fix this one your parnters should open the file with the conflict. In this case it will be github-practice.Rmd. Scroll to the section of the file with the conflict. It will now look something like this:
+
+        <<<<<<< HEAD
+
+        ncol(pioneer_valley_2013)
+
+        =======
+
+        colnames(pioneer_valley_2013)
+
+        >>>>>>> ee175895783b64e0e1f696d9456be4c4c7c3f3bf
+
+The code following HEAD represents the recent changes you made on your local machine, and the code right before the long string of characters represents the changes that were made in an earlier commit (the long string of characters is the commit hash). Decide what that line should look like and delete all other content. This means you *must* delete "\<\<\<\<\<\<\< HEAD", "=======", and "\>\>\>\>\>\>\> \<long-hash\>", and you likely should delete at least one other line. Save the file, stage the file by clicking the checkbox next to the file in the Git page, and then commit your changes, and push them to GitHub.com.
+:::
+
+::: callout-tip
+## Avoiding Merge Conflicts
+
+You may have noticed that the most frustrating merge conflicts tend to emerge when we have two people working on the same line of a repo's file. The most effective way to avoid merge conflicts is to ensure that collaborators are working on different documents or different lines in a file. One way you might do this when starting to work on your group project is to open a file that you all plan to work on and having one of your team mates section off space of that file for different people to work. It might look something like this:
+
+![](img/avoiding-merge-conflict.png){fig-alt="This image show an RMarkdown file with several lines for Collaborator 1 to work and several more lines for Collaborator 2 to work."}
+
+Once this change has been made, that group mate should stage, commit, and push the file to GitHub, and all other group mates should pull the change to their local machines.
+:::
 
 ### Path of Least Resistance
+
+I have been working with GitHub for years, and even to this day, I run into instances where things are just so inconsistent between my local machine and GitHub that the fastest way to fix things is just to save local copies of the files that I've changed to somewhere else on my machine, delete the super fancy Git folder from its current location, and then reclone the most up-to-date remote version to my local machine. Then I can figure out how I want to edit the most up-to-date version with my changes. This comic from XKCD captures this widely acknowledged solution:
+
+![](https://imgs.xkcd.com/comics/git.png){fig-alt="This is a comic explaining why we sometimes just delete our local git repos and reclone."}
 
 ::: callout-caution
 ## Ethical Considerations
