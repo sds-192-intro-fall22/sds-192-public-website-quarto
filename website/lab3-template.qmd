@@ -1,0 +1,133 @@
+---
+title: "Lab 3: Plotting Frequencies and Distributions"
+author: "YOUR NAME"
+format: html
+editor: 
+  mode: source
+---
+
+## Setting Up Your Environment
+
+::: callout-tip
+Today's set-up is a little more complicated than usual, so be sure to take it slow and ask questions as they come up!
+:::
+
+1.  Install the Spotify R package by entering the following into your Console: `install.packages("spotifyr")`
+2.  Log-in to Spotify's Developer Dashboard [here](https://developer.spotify.com/dashboard/). If you have a Spotify account, you can log-in with that account. Otherwise, you should create one.
+3.  Click the 'Create an App' button to create an app named "SDS 192 Class Project". You can indicate that this is a "Project for SDS 192 class"
+4.  Click Edit Settings. Under the heading **Redirect URIs** copy and paste this URL: http://localhost:1410/, and click Add. Scroll to the bottom of the window and click Save. This is going to allow us to authenticate our Spotify accounts through our local computers.
+5.  Click the Users and Access button. Scroll down to Add New User, and add your name and the email address associated with your Spotify account. Click Add.
+6.  Click "Show Client Secret". Copy client id and secret below, and then run the code chunk.
+
+```{r}
+library(spotifyr)
+# id <- 'FILL CLIENT ID HERE'
+# secret <- 'FILL CLIENT SECRET HERE'
+# Sys.setenv(SPOTIFY_CLIENT_ID = id)
+# Sys.setenv(SPOTIFY_CLIENT_SECRET = secret)
+```
+
+7.  Below replace `poiril` with your Spotify username. This is the ID that appears in the upper right hand corner when you log into your Spotify account (not your developer account.)
+8.  Search Spotify for your favorite music genre and select three *playlists* from the search. Note that this code will only work for playlists, and playlists may be a ways down in the search results.
+9.  When you click on a playlist, notice the URL in the navigation bar of your web browser. It should look something like spotify.com/playlist/LONG_STRING_OF_CHARACTERS. Copy the long string of characters at the end of the URL, and paste it into the function below. Your characters should replace the example playlist I've added: `7ryj1GwAWYUY36VQd4uXoq`.
+10. Repeat this for the other two playlists, replacing my other examples. Then run the code.
+
+```{r}
+#| warning: false
+#| message: false
+library(tidyverse)
+spotify_playlists <- get_playlist_audio_features(
+  username = "poiril",
+  playlist_uris = c("7ryj1GwAWYUY36VQd4uXoq",
+                    "3DYUw0nHB9o8tLZKQup4zp",
+                    "37i9dQZF1DXdOEFt9ZX0dh"),
+  authorization = get_spotify_access_token()
+) %>%
+  select(-c(track.artists, 
+            track.available_markets, 
+            track.album.artists, 
+            track.album.available_markets, 
+            track.album.images))
+```
+
+::: callout-important
+## Exercise 1
+
+How many songs are in each playlist? Create a plot to visualize this, and order the results by the number of songs. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.
+:::
+
+```{r}
+# Create plot here
+```
+
+::: callout-important
+## Exercise 2
+
+What is the distribution of valence across all of the songs (in intervals of 0.1 valence)? Create a histogram to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.
+:::
+
+```{r}
+# Create plot here
+```
+
+::: callout-important
+## Exercise 3
+
+What is the distribution of valence across all of the songs (in intervals of 0.1 valence) *in each playlist*? Create a histogram to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.
+:::
+
+```{r}
+# Create plot here
+```
+
+::: callout-important
+## Exercise 4
+
+What are differences in the summary statistics (max, min, median, etc.) of the valence of songs in each playlist? Create grouped boxplot to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.
+:::
+
+```{r}
+# Create plot here
+```
+
+::: callout-important
+## Exercise 5
+
+Do happier songs tend to be more danceable *in each playlist*? Create a plot to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context. Also be sure to adjust your plot to address overplotting.
+:::
+
+```{r}
+# Create plot here
+```
+
+::: callout-important
+## Exercise 6
+
+Do songs composed in the minor or major mode tend to be happier *in each playlist*? Create a plot to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.
+:::
+
+```{r}
+# Create plot here
+```
+
+::: callout-important
+## Exercise 7
+
+Do happier songs tend to have a higher tempo across all playlists? What role might the song's mode play? Create a plot to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context. Also be sure to adjust your plot to address overplotting.
+:::
+
+```{r }
+#Create boxplot here
+```
+
+::: callout-important
+## Exercise 8
+
+Based on all of your plots, summarize what you learned about the joyfulness of these three playlists below.
+:::
+
+::: {.callout-note icon="false"}
+#### Your Response
+
+Fill response here.
+:::

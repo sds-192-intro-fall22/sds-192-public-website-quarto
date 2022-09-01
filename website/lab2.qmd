@@ -54,27 +54,17 @@ Every year the U.S. Federal Highway Administration publishes a dataset listing e
 
 Today, we are going to look at a subset of 2022 NBI data for Massachusetts and for Hampshire County, MA, and we are going to focus solely on highway bridges (excluding pedestrian and railroad bridges). We're going to look at what kinds of variables might contribute to poor bridge conditions, where there are poor bridge conditions, and which entities are responsible for maintaining them. The [data documentation](https://www.fhwa.dot.gov/bridge/mtguide.pdf) for this dataset is quite thick, so I will provide you with a data dictionary for today.
 
-+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 | VARIABLE NAME         | DESCRIPTION                                                                                                                             |
-+=======================+=========================================================================================================================================+
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | STRUCTURE_NUMBER_008  | Unique ID for the bridge                                                                                                                |
-+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 | COUNTY_CODE_003_L     | Name of the county where the bridge is located                                                                                          |
-+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 | ROUTE_PREFIX_005B_L   | Route signing prefix for the inventory route                                                                                            |
-+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 | MAINTENANCE_021_L     | The actual name(s) of the agency(s) responsible for the maintenance of the structure                                                    |
-+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 | YEAR_BUILT_027        | The year of construction of the structure                                                                                               |
-+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 | ADT_029               | The average daily traffic volume for the inventory route based on most recent available data                                            |
-+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 | STRUCTURE_KIND_043A_L | The kind of material and/or design of the structure                                                                                     |
-+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 | STRUCTURAL_EVAL_067   | A rating of the structural evaluation of the bridge based on inspections of its main structures, substructures, and/or its load ratings |
-+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 | BRIDGE_IMP_COST_094   | Estimated costs for bridge improvements                                                                                                 |
-+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 
 ## Setting Up Your Environment
 
@@ -114,25 +104,25 @@ nbi_hampshire <- nbi_ma %>% filter(COUNTY_CODE_003_L == "Hampshire")
 
 The visual cues that we select to display on a plot largely depend on the kind of data that we have available. Last week we discussed the differences between categorical variables and numeric variables. Certain types of visual cues are more suited for representing categorical variables, while other types of visual cues are more suited for representing numeric variables. For instance, we wouldn't use different shapes to represent different numeric values because there is no obvious ordering to a group of shapes (e.g. a triangle isn't necessarily larger or greater than a circle; they're just different). Because of this, shapes are much more appropriate for representing nominal categorical variables. Size is a much more effective visual cue for numeric variables because size can increase as the values in the data increase.
 
-+---------------+----------------------------------------+-------------------------+
-| Cue           | Effective for what kinds of variables? | Example where applied?  |
-+===============+========================================+=========================+
-| Shape         | Categorical                            | Points on scatterplots  |
-+---------------+----------------------------------------+-------------------------+
-| Size          | Numeric                                | Points on scatterplots  |
-+---------------+----------------------------------------+-------------------------+
-| Area          | Numeric                                | Bars in bar plots       |
-+---------------+----------------------------------------+-------------------------+
-| Color         | Categorical (Qualitative palette)      | Points on scatterplots; |
-|               |                                        |                         |
-|               | Numeric (Sequential/Divergent)         | Bars in bar plots;      |
-|               |                                        |                         |
-|               |                                        | Lines in a line plot    |
-+---------------+----------------------------------------+-------------------------+
-| Position      | Categorical; Numeric                   | Points on scatterplots  |
-+---------------+----------------------------------------+-------------------------+
-| Angle         | Numeric                                | Slices in pie chart     |
-+---------------+----------------------------------------+-------------------------+
++----------+----------------------------------------+-------------------------+
+| Cue      | Effective for what kinds of variables? | Example where applied?  |
++==========+========================================+=========================+
+| Shape    | Categorical                            | Points on scatterplots  |
++----------+----------------------------------------+-------------------------+
+| Size     | Numeric                                | Points on scatterplots  |
++----------+----------------------------------------+-------------------------+
+| Area     | Numeric                                | Bars in bar plots       |
++----------+----------------------------------------+-------------------------+
+| Color    | Categorical (Qualitative palette)      | Points on scatterplots; |
+|          |                                        |                         |
+|          | Numeric (Sequential/Divergent)         | Bars in bar plots;      |
+|          |                                        |                         |
+|          |                                        | Lines in a line plot    |
++----------+----------------------------------------+-------------------------+
+| Position | Categorical; Numeric                   | Points on scatterplots  |
++----------+----------------------------------------+-------------------------+
+| Angle    | Numeric                                | Slices in pie chart     |
++----------+----------------------------------------+-------------------------+
 
 You'll remember from lecture that we map variables onto these visual cues via the aesthetic function (`aes()`) in `ggplot()`.
 
@@ -197,15 +187,11 @@ nbi_hampshire %>%
 
 Color can be used on plots to either distinguish between discrete values in a categorical variable or to represent the range of values in numeric variable. We use different kinds of color palettes for each of these scenarios. Palettes refer to a range of colors. We can have palettes with discrete colors (e.g. red, orange, and blue) or palettes with a gradient of colors (e.g. lightest red to darkest red).
 
-+-------------+---------------------------------------------------------+-------------------------+
 | Palette     | Effective for what kinds of variables?                  | Example                 |
-+=============+=========================================================+=========================+
+|-------------|---------------------------------------------------------|-------------------------|
 | Qualitative | Categorical                                             | Red, yellow, blue       |
-+-------------+---------------------------------------------------------+-------------------------+
 | Sequential  | Numeric                                                 | Light blue to dark blue |
-+-------------+---------------------------------------------------------+-------------------------+
 | Divergent   | Numeric, extending in two directions (e.g. \>1 and \<1) | Blue to purple to red   |
-+-------------+---------------------------------------------------------+-------------------------+
 
 ::: callout-important
 ## Exercise 2
@@ -307,19 +293,13 @@ Fill response here.
 
 When we map a variable onto an aesthetic, we are only indicating *that* the variable should be mapped. We are not indicating *how* the variable should be mapped. In order to indicate how we want a variable mapped to an aesthetic, we can adjust its scales. Scales are adjusted by tacking the following onto a `ggplot()` object: `+ scale_<aesthetic>_<type>()`. For instance, let's say that I wanted to adjust the scale of my x-axis to a log scale. I would attached `+ scale_x_log10()` to my `ggplot()` object.
 
-+--------------+-----------------------------------------------------+----------------------------+
-| Scale        | Description                                         | Example                    |
-+==============+=====================================================+============================+
-| Continuous   | Numeric values are mapped along a continuum         | `+ scale_y_continuous()`   |
-+--------------+-----------------------------------------------------+----------------------------+
-| Discrete     | Categorical values are mapped into discrete buckets | `+ scale_color_discrete()` |
-+--------------+-----------------------------------------------------+----------------------------+
-| Binned       | Numeric values are mapped into discrete bins        | `+ scale_size_binned()`    |
-+--------------+-----------------------------------------------------+----------------------------+
-| Log          | Numeric values are mapped logarthmically            | `+ scale_y_log10()`        |
-+--------------+-----------------------------------------------------+----------------------------+
-| Date-Time    | Numeric values are mapped along a timeline          | `+ scale_x_datetime()`     |
-+--------------+-----------------------------------------------------+----------------------------+
+| Scale      | Description                                         | Example                    |
+|------------|-----------------------------------------------------|----------------------------|
+| Continuous | Numeric values are mapped along a continuum         | `+ scale_y_continuous()`   |
+| Discrete   | Categorical values are mapped into discrete buckets | `+ scale_color_discrete()` |
+| Binned     | Numeric values are mapped into discrete bins        | `+ scale_size_binned()`    |
+| Log        | Numeric values are mapped logarthmically            | `+ scale_y_log10()`        |
+| Date-Time  | Numeric values are mapped along a timeline          | `+ scale_x_datetime()`     |
 
 Let's talk about how we would adjust the scales for each of the aesthetics we've covered so far.
 
