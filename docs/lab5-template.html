@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Lindsay Poirier">
+<meta name="author" content="YOUR NAME">
 
 <title>Lab 5: Exploratory Data Analysis</title>
 <style>
@@ -79,25 +79,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -178,20 +159,7 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals">Learning Goals</a></li>
-  </ul></li>
-  <li><a href="#review-of-key-terms" id="toc-review-of-key-terms" class="nav-link" data-scroll-target="#review-of-key-terms">Review of Key Terms</a></li>
-  <li><a href="#stop-question-and-frisk-dataset" id="toc-stop-question-and-frisk-dataset" class="nav-link" data-scroll-target="#stop-question-and-frisk-dataset">Stop, Question, and Frisk Dataset</a>
-  <ul class="collapse">
-  <li><a href="#data-dictionary" id="toc-data-dictionary" class="nav-link" data-scroll-target="#data-dictionary">Data Dictionary</a></li>
-  </ul></li>
-  <li><a href="#setting-up-your-environment" id="toc-setting-up-your-environment" class="nav-link" data-scroll-target="#setting-up-your-environment">Setting Up Your Environment</a>
-  <ul class="collapse">
-  <li><a href="#prepare-dataset-for-analysis" id="toc-prepare-dataset-for-analysis" class="nav-link" data-scroll-target="#prepare-dataset-for-analysis">Prepare Dataset for Analysis</a></li>
-  </ul></li>
-  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
+  <li><a href="#setting-up-your-environment" id="toc-setting-up-your-environment" class="nav-link active" data-scroll-target="#setting-up-your-environment">Setting Up Your Environment</a></li>
   </ul>
 </nav>
     </div>
@@ -212,7 +180,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Lindsay Poirier </p>
+             <p>YOUR NAME </p>
           </div>
   </div>
     
@@ -222,137 +190,6 @@ div.csl-indent {
 
 </header>
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this lab, you will apply the 5 data wrangling verbs we learned this week in order to analyze data regarding NYPD stop, question, and frisk. Specifically, we will replicate <a href="https://www.nyclu.org/en/stop-and-frisk-data">data analysis performed by the NYCLU</a> in 2011 to demonstrate how the practice was being carried out unconstitutionally in New York.</p>
-<section id="learning-goals" class="level3">
-<h3 class="anchored" data-anchor-id="learning-goals">Learning Goals</h3>
-<ul>
-<li><p>Answer questions with data using data wrangling verbs</p></li>
-<li><p>Consider the implications of racial categorization</p></li>
-</ul>
-</section>
-</section>
-<section id="review-of-key-terms" class="level2">
-<h2 class="anchored" data-anchor-id="review-of-key-terms">Review of Key Terms</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You may wish to reference this <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Data Wrangling Cheatsheet</a> when completing this lab.</p>
-</div>
-</div>
-<dl>
-<dt>filter</dt>
-<dd>
-<p>filters to rows (observations) that meet a certain criteria</p>
-</dd>
-<dt>select</dt>
-<dd>
-<p>keeps only selected variables (columns)</p>
-</dd>
-<dt>arrange</dt>
-<dd>
-<p>sorts values in a variable (column)</p>
-</dd>
-<dt>summarize</dt>
-<dd>
-<p>calculates a single value by performing an operation across a variable (column); summarizing by <code>n()</code> calculates the number of observations in the column</p>
-</dd>
-<dt>group_by</dt>
-<dd>
-<p>groups rows (observations) by shared values in a variable (column); when paired with <code>summarize()</code>, performs an operation in each group</p>
-</dd>
-<dt>mutate</dt>
-<dd>
-<p>creates a new variable (column) and assigns values according to criteria we provide</p>
-</dd>
-</dl>
-</section>
-<section id="stop-question-and-frisk-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="stop-question-and-frisk-dataset">Stop, Question, and Frisk Dataset</h2>
-<p>In 1968, the Supreme Court case Terry v. Ohio ruled that a police officer could stop an individual without “probable cause” but with “reasonable suspicion” the suspect had committed a crime. Further, an officer could frisk an individual without “probable cause” but with “reasonable suspicion” the suspect was carrying a weapon.</p>
-<p>In the early 1990s, stop, question, and frisk became a widely prevalent tactic in policing in NYC. Every time an officer stops a civilian in NYC, the officer is supposed to complete a UF-250 form (see image below) outlining the details of the stop.</p>
-<div id="fig-anonymous-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><a href="http://blog.danwin.com/request-nypd-form-uf250/"><img src="img/uf250-2011-side-1.png" class="img-fluid figure-img" alt="UF250 Side 2" width="500"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 2, Dan Nguyen’s Blog</figcaption><p></p>
-</figure>
-</div>
-<div id="fig-anonymous-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><a href="http://blog.danwin.com/request-nypd-form-uf250/"><img src="img/uf250-2011-side-2.png" class="img-fluid figure-img" alt="UF250 Side 2"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 2, Dan Nguyen’s Blog</figcaption><p></p>
-</figure>
-</div>
-<p>As a result of some high profile shootings in the late 1990s and mid-2000s, both the New York State Attorney General’s Office and the New York Civil Liberties Union began to examine NYPD stop and frisk activity for racial profiling. With pressure from these organizations, in the mid-2000s, information recorded on UF-250 forms began getting reported in public databases. In the early 2010s, when the NYPD’s use of stop and frisk went before the US District Court, this data was integral in proving that stop and frisk was being carried out in NYC in an unconstitutional way. The ruling mandated that the NYPD create a policy outlining when stops were authorized, and since the practice has declined considerably. See</p>
-<p><span class="citation" data-cites="smith2018">(<a href="#ref-smith2018" role="doc-biblioref">Smith 2018</a>)</span> and <span class="citation" data-cites="southall2019">(<a href="#ref-southall2019" role="doc-biblioref">Southall and Gold 2019</a>)</span> for more information.</p>
-<section id="data-dictionary" class="level3">
-<h3 class="anchored" data-anchor-id="data-dictionary">Data Dictionary</h3>
-<p>We will analyze data for all stops in 2011. This data can be found <a href="The%20original%20dataset%20can%20be%20found%20at:%20https://%20www1.nyc.gov/site/nypd/stats/reports-analysis/">here</a>. However, we’re only going to be considering a subset of the columns. Here is a data dictionary for the columns we’re using in this analysis.</p>
-<table class="table">
-<colgroup>
-<col style="width: 17%">
-<col style="width: 45%">
-<col style="width: 37%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>VARIABLE</th>
-<th>DEFINITION</th>
-<th>POSSIBLE VALUES</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>pct</td>
-<td>Precinct of the stop</td>
-<td>1:123</td>
-</tr>
-<tr class="even">
-<td>arrestsum</td>
-<td>Was an arrest made or summons issued?</td>
-<td><p>1 = Yes</p>
-<p>0 = No</p></td>
-</tr>
-<tr class="odd">
-<td>frisked</td>
-<td>Was suspect frisked?</td>
-<td><p>1 = Yes</p>
-<p>0 = No</p></td>
-</tr>
-<tr class="even">
-<td>wpnfound</td>
-<td>Was a weapon found on suspect?</td>
-<td><p>1 = Yes</p>
-<p>0 = No</p></td>
-</tr>
-<tr class="odd">
-<td>race_cat</td>
-<td>Suspect’s race</td>
-<td><p>AMERICAN INDIAN/ALASKAN NATIVE</p>
-<p>ASIAN/PACIFIC ISLANDER</p>
-<p>BLACK</p>
-<p>BLACK-HISPANIC</p>
-<p>OTHER</p>
-<p>WHITE</p>
-<p>WHITE-HISPANIC</p></td>
-</tr>
-<tr class="even">
-<td>age</td>
-<td>Suspect’s age</td>
-<td>999 indicates a missing value</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
 <section id="setting-up-your-environment" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-your-environment">Setting Up Your Environment</h2>
 <div class="cell" data-messages="false">
@@ -368,9 +205,6 @@ Tip
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(temp)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(sqf_zip)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="prepare-dataset-for-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="prepare-dataset-for-analysis">Prepare Dataset for Analysis</h3>
-<p>The original dataset codes each race with a single letter. This adds a column called <code>race_cat</code> that writes out each racial category in accordance with the data documentation. It also replaces every instance of “Y” in the dataset with 1 and every instance of “N” with 0. This will allow us to sum the Yes’s in the dataset. You’ll learn more about how this code works in coming weeks.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="ot">&lt;-</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span> </span>
@@ -380,7 +214,6 @@ Tip
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>         <span class="sc">~</span> <span class="fu">case_when</span>(. <span class="sc">==</span> <span class="st">"Y"</span> <span class="sc">~</span> <span class="dv">1</span>, . <span class="sc">==</span> <span class="st">"N"</span> <span class="sc">~</span> <span class="dv">0</span>)))</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(sqf_2011_race_cat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The original dataset had separate variables for indicating whether a pistol, rifle, assault weapon, knife, machine gun, or other weapon was found on a suspect. We will create a variable equal to 1 if any of these weapons were found on the suspect. Further, the original dataset had separate variables for indicating whether a stop resulted in an arrest made or summons issued. We will create a variable equal to 1 if either occurred.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -430,10 +263,6 @@ Exercise 2
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(pct, arrestsumm, _____, wpnfound, race_cat, _____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-</section>
-<section id="analysis" class="level2">
-<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -445,19 +274,6 @@ Exercise 3
 </div>
 <div class="callout-body-container callout-body">
 <p>Calculate the number of stops in 2011. Hint: Keep in mind that every row in the dataset represents one stop.</p>
-</div>
-</div>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>summarize()</code> will return a <em>data frame</em> with the summarized value. Remember a data frame is a two-dimensional table with rows and columns (even if it’s a 1x1 table). If we want <strong>just the value</strong>, we can call <code>pull()</code> to extract the value from that two–dimensional table.</p>
 </div>
 </div>
 <div class="cell">
@@ -510,11 +326,6 @@ Exercise 5
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="at">total_14_24 =</span> _____, </span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent_14_24 =</span> <span class="fu">n</span>() <span class="sc">/</span> total_stops <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Why doesn’t this match the values we see on the NYCLU website?</p>
-<p>Note the following from the <a href="https://www.nyclu.org/en/publications/report-nypd-stop-and-frisk-activity-2011-2012">NYCLU’s 2011 report on Stop, Question, and Frisk</a> data:</p>
-<blockquote class="blockquote">
-<p>“In a negligible number of cases, race and age information is not recorded in the database. Throughout this report, percentages of race and age are percentages of those cases where race and age are recorded, not of all stops.”</p>
-</blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>total_stops_age_recorded <span class="ot">&lt;-</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span></span>
@@ -528,7 +339,6 @@ Exercise 5
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_14_24 =</span> <span class="fu">n</span>(), </span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent_14_24 =</span> <span class="fu">n</span>() <span class="sc">/</span> total_stops_age_recorded <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This still doesn’t match the values we see on the website, but it does match the values we see in the NYCLU’s 2011 report on Stop, Question, and Frisk data. This is typically when I would reach out to a representative at the NYCLU to inquire about the discrepancy.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -561,7 +371,6 @@ Exercise 6
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Sort by stops in descending order</span></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="fu">_____</span>(stops)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note how this dataset categorizes race. Many different government datasets categorize race in many different ways. This, for instance, is not how the US Census categorizes race. How we categorize race matters for how we can talk about discrimination and racial profiling. Imagine if WHITE was not categorized separately from WHITE-HISPANIC. The values in this dataset would appear very differently! The NYCLU chose to aggregate two racial categories in this dataset into the one category - Latino - in order to advance certain claims regarding discrimination. What we should remember is that these racial categories are not reported by those stopped; they are recorded by officers stopping individuals. They may not reflect how individuals identify themselves.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Subset to rows where race_cat is "WHITE-HISPANIC" or "BLACK-HISPANIC"</span></span>
@@ -586,49 +395,11 @@ Exercise 7
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write code here. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Ethical Considerations
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In her ruling in the 2011 District Court case Floyd vs.&nbsp;the City of New York, Honorable Shira Sheidlen remarked the following regarding the database of stops we analyzed today:</p>
-<blockquote class="blockquote">
-<p>Because it is impossible to individually analyze each of those stops, plaintiffs’ case was based on the imperfect information contained in the NYPD’s database of forms (“UF-250s”) that officers are required to prepare after each stop. The central flaws in this database all skew toward underestimating the number of unconstitutional stops that occur: the database is incomplete, in that officers do not prepare a UF-250 for every stop they make; it is one-sided, in that the UF250 only records the officer’s version of the story; the UF-250 permits the officer to merely check a series of boxes, rather than requiring the officer to explain the basis for her suspicion; and many of the boxes on the form are inherently subjective and vague (such as “furtive movements”). Nonetheless, the analysis of the UF-250 database reveals that at least 200,000 stops were made without reasonable suspicion.</p>
-</blockquote>
-<p>What are some of the consequences of the incompleteness and/or one-sided nature of this dataset? How should we think about and communicate its flaws vs its value? How might this data collection program be redesigned so as to represent more diverse perspectives? Share your ideas on our <code>sds-192-discussions</code> Slack channel.</p>
-</div>
-</div>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you finish early, I encourage you to attempt to plot some of this data below using <code>ggplot()</code>!</p>
-</div>
-</div>
-
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-smith2018" class="csl-entry" role="doc-biblioentry">
-Smith, Chris. 2018. <span>“The Crime-Fighting Program That Changed New York Forever.”</span> <a href="http://nymag.com/intelligencer/2018/03/the-crime-fighting-program-that-changed-new-york-forever.html">http://nymag.com/intelligencer/2018/03/the-crime-fighting-program-that-changed-new-york-forever.html</a>.
-</div>
-<div id="ref-southall2019" class="csl-entry" role="doc-biblioentry">
-Southall, Ashley, and Michael Gold. 2019. <span>“Why <span>‘</span>Stop-and-Frisk<span>’</span> Inflamed Black and Hispanic Neighborhoods (Published 2019).”</span> <em>The New York Times</em>, November. <a href="https://www.nytimes.com/2019/11/17/nyregion/bloomberg-stop-and-frisk-new-york.html">https://www.nytimes.com/2019/11/17/nyregion/bloomberg-stop-and-frisk-new-york.html</a>.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const icon = "";
