@@ -59,7 +59,18 @@ topic_standards <-
 
 slides <- 
   topics %>%
-  select(topic_abbr, slides)
+  select(topic_abbr, slides) %>%
+  separate_rows(slides, sep = ";")
+
+links <- 
+  topics %>%
+  select(topic_abbr, link) %>%
+  separate_rows(link, sep = ";")
+
+codes <- 
+  topics %>%
+  select(topic_abbr, code) %>%
+  separate_rows(code, sep = ";")
 ```
 
 ```{r source-files, include=FALSE}

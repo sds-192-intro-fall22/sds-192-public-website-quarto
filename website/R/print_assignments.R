@@ -16,6 +16,8 @@ print_readings <- function(reading_df){
     
     cat(paste("", fa(name ="book"), "   ", reading_keys$chapter, reading_list), sep = '  \n')
   }
+  else{
+  }
 }
 
 print_writing_assignments <- function(assignment_df){
@@ -39,6 +41,32 @@ print_project_assignments <- function(assignment_df){
   if(length(assignment_names > 0)) {
     cat("\n")
     cat(paste("", fa(name ="user-friends"), "   ", assignment_names), sep = "  \n")
+  }
+}
+
+print_links <- function(links_df){
+  links_names <- links_df %>% 
+    select(link) %>% 
+    drop_na() %>%
+    pull()
+  
+  if(length(links_names > 0)) {
+    cat("\n")
+    cat(paste("", fa(name ="link"), "   ", links_names), sep = "  \n")
+    cat("\n")
+  }
+}
+
+print_codes <- function(codes_df){
+  codes_names <- codes_df %>% 
+    select(code) %>% 
+    drop_na() %>%
+    pull()
+  
+  if(length(codes_names > 0)) {
+    cat("\n")
+    cat(paste("", fa(name ="code"), "   ", codes_names), sep = "  \n")
+    cat("\n")
   }
 }
 
@@ -79,6 +107,10 @@ print_due_today <- function(topic){
 print_further_reading <- function(topic){
   this_week_slides <- slides %>% filter(topic_abbr == topic)
   print_slides(this_week_slides)
+  this_week_codes <- codes %>% filter(topic_abbr == topic) 
+  print_codes(this_week_codes)
+  this_week_links <- links %>% filter(topic_abbr == topic) 
+  print_links(this_week_links)
   this_week_optional_reading <- optional_reading %>% filter(topic_abbr == topic) 
   print_readings(this_week_optional_reading)
 }
