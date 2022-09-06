@@ -27,11 +27,9 @@ topics <- read.csv("data/topics.csv") %>%
   arrange(date)
 standards <- read.csv("data/standards.csv") %>%
   mutate(standard_id = as.character(standard_id))
-announcements <- read.csv("data/announcements.csv")
 
 topics[topics == ""] <- NA
 standards[standards == ""] <- NA
-announcements[announcements == ""] <- NA
 
 required_reading <- topics %>%
   select(topic_abbr, required_reading, req_chapter) %>%
@@ -58,6 +56,10 @@ topic_standards <-
   select(topic_id,topic_abbr,topic,standard_id,date) %>%
   mutate(standard_id = as.character(standard_id)) %>%
   left_join(standards)
+
+slides <- 
+  topics %>%
+  select(topic_abbr, slides)
 ```
 
 ```{r source-files, include=FALSE}
@@ -99,10 +101,6 @@ for (i in 1:nrow(topics)){
   cat("#### Further Resources")
   cat("\n")
   print_further_reading(todays_topic$topic_abbr[1])
-  cat("\n")
-  cat("#### Announcements")
-  cat("\n")
-  print_today_announcements(todays_topic$topic_abbr[1])
   cat("\n")
   cat(":::")
   cat("\n")

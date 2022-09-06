@@ -16,10 +16,6 @@ print_readings <- function(reading_df){
     
     cat(paste("", fa(name ="book"), "   ", reading_keys$chapter, reading_list), sep = '  \n')
   }
-  else{
-    cat(paste("", fa(name ="book"), "   ", "No Readings"))
-    cat("\n")
-  }
 }
 
 print_writing_assignments <- function(assignment_df){
@@ -46,17 +42,30 @@ print_project_assignments <- function(assignment_df){
   }
 }
 
-print_announcements <- function(announcement_df){
-  announcement_names <- announcement_df %>% 
-    select(announcement) %>% 
+print_slides <- function(slides_df){
+  slides_names <- slides_df %>% 
+    select(slides) %>% 
     drop_na() %>%
     pull()
   
-  if(length(announcement_names > 0)) {
+  if(length(slides_names > 0)) {
     cat("\n")
-    cat(paste("", fa(name ="bullhorn"), "   ", announcement_names), sep = "  \n")
+    cat(paste("", fa(name ="images"), "   ", slides_names), sep = "  \n")
+    cat("\n")
   }
 }
+
+# print_announcements <- function(announcement_df){
+#   announcement_names <- announcement_df %>% 
+#     select(announcement) %>% 
+#     drop_na() %>%
+#     pull()
+#   
+#   if(length(announcement_names > 0)) {
+#     cat("\n")
+#     cat(paste("", fa(name ="bullhorn"), "   ", announcement_names), sep = "  \n")
+#   }
+# }
 
 print_due_today <- function(topic){
   this_week_required_reading <- required_reading %>% filter(topic_abbr == topic) 
@@ -68,11 +77,13 @@ print_due_today <- function(topic){
 }
 
 print_further_reading <- function(topic){
+  this_week_slides <- slides %>% filter(topic_abbr == topic)
+  print_slides(this_week_slides)
   this_week_optional_reading <- optional_reading %>% filter(topic_abbr == topic) 
   print_readings(this_week_optional_reading)
 }
 
-print_today_announcements <- function(topic){
-  this_week_announcement <- announcements %>% filter(topic_abbr == topic) 
-  print_announcements(this_week_announcement)
-}
+# print_today_announcements <- function(topic){
+#   this_week_announcement <- announcements %>% filter(topic_abbr == topic) 
+#   print_announcements(this_week_announcement)
+# }

@@ -1,0 +1,156 @@
+---
+title: "Day One: Introductions"
+subtitle: "SDS 192: Introduction to Data Science"
+author: |
+  Lindsay Poirier<br/>
+  <span style = 'font-size: 70%;'>
+  [Statistical & Data Sciences](http://www.smith.edu/sds), Smith College<br/>
+  </span>
+date: |
+  Spring 2022<br/>
+  `r sds::img_logo(width = 64)`
+format: 
+  revealjs:
+    scrollable: true
+editor: source
+---
+
+## What is data science?: Common view
+
+::: columns
+::: {.column width="60%"}
+-   interdisciplinary field combining computer science, mathematics/statistics, and domain expertise to extract meaningful information from unstructured data points
+:::
+
+::: {.column width="40%"}
+![](https://upload.wikimedia.org/wikipedia/commons/b/b4/Data_science.png){width="400"} Hckum, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons
+:::
+:::
+
+------------------------------------------------------------------------
+
+## What is data science?: My view
+
+::: columns
+::: {.column width="60%"}
+-   interdisciplinary field combining computer science, mathematics/statistics, and domain expertise to extract meaningful information from unstructured data points
+-   also involves art, design, hermeneutics, communication, and ability to grapple with ethical dilemmas
+:::
+
+::: {.column width="40%"}
+![](https://upload.wikimedia.org/wikipedia/commons/b/b4/Data_science.png) Hckum, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons
+:::
+:::
+
+------------------------------------------------------------------------
+
+### Case Study 1: ACLU Fights Discriminatory Housing {.smaller}
+
+::: columns
+::: column
+-   American Civil Liberties Union employs [data scientists](https://medium.com/aclu-tech-analytics/meet-the-aclu-analytics-team-4644d4f20dae) to produce insights regarding discriminatory laws and practices
+-   Findings are presented in courts, legislatures, and public reports
+-   In [this study](https://www.aclu.org/blog/racial-justice/race-and-economic-justice/lawsuit-challenges-discriminatory-housing-policy), they use public data to show that excluding people with criminal records from housing can be viewed as a violation of the US Fair Housing Act.
+:::
+
+::: column
+![](https://www.aclu.org/sites/default/files/maps-desktop2.png)
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Case Study 2: EPA Tracks Environmental Injustice {.smaller}
+
+::: columns
+::: column
+-   Environmental Protection Agency hires [data scientists](https://www.epa.gov/careers/science-careers-epa) to produce insights regarding environmental health risks
+-   Findings implicate environmental policies, funding allocations, and legal actions against states and industries
+-   [This tool](https://www.epa.gov/ejscreen), visualizes environmental and demographic indicators to highlight communities experiencing environmental injustices.
+:::
+
+::: column
+![](https://www.epa.gov/system/files/images/2021-07/map_data.png)
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Case Study 3: Geena Davis Institute Studies Gender Biases in Films {.smaller}
+
+::: columns
+::: {.column width="70%"}
+-   Geena Davis Institute collaborated with University of Southern California's Signal Analysis and Interpretation Laboratory (SAIL)
+-   Developed a machine learning tool to measure representation of diverse groups in films by studying screen time and speaking
+:::
+
+::: {.column width="30%"}
+![](https://seejane.org/wp-content/uploads/geena-davis-inclusion-quotient-logo-tm.png)
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Topics covered in this course
+
+::: columns
+::: {.column width="70%"}
+-   data visualization
+-   data wrangling
+-   programming with data
+-   mapping
+-   data retrieval
+-   data science infrastructures and workflows
+-   data science ethics
+:::
+
+::: {.column width="30%"}
+![](https://miro.medium.com/max/1400/1*g945d5qBHDh_HjvdXStvNg.jpeg) <https://towardsdatascience.com/the-25-best-data-visualizations-of-2018-93643f0aad04>
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Who is the professor? Why is an anthropologist teaching data science? {.smaller}
+
+-   Please call me Lindsay (preferred), Professor Poirier, or Dr. Poirier
+-   Assistant Professor of SDS and cultural anthropologist
+-   Previously Assistant Professor of Science and Technology Studies at UC Davis
+-   Lab Manager at [BetaNYC](https://beta.nyc/)
+-   M.S./Ph.D. in Science and Technology Studies from Rensselaer Polytechnic Institute
+-   B.S. in Information Technology and Web Science from Rensselaer Polytechnic Institute
+-   Dancing, crafting, cooking, re-watching the same TV series over and over again.
+-   I have a *very* spunky dog Madison.
+
+------------------------------------------------------------------------
+
+## Exercise
+
+Demonstration: Find the non-STEM major in the class for which students with that major on average drink the most cups of coffee per day. Repeat for STEM majors.
+
+------------------------------------------------------------------------
+
+## Coding can be intimidating!
+
+-   Coding is like learning a new language. When you are first learning it, it all feels completely unfamiliar. I will work to support you in building the vocabulary and syntax to code in R.
+-   Coding can be frustrating. I regularly lose hours of my day in trying to find bugs in my code. I will work to give you resources and skills to navigate coding frustrations.
+-   Coding social environments have historically been exclusionary. I will work to reduce barriers to coding in whatever ways I can.
+
+------------------------------------------------------------------------
+
+## Prepping for this Class
+
+-   Navigating Course Website
+-   Standards Grading
+-   Perusall
+-   Slack
+
+------------------------------------------------------------------------
+
+## For Friday
+
+-   Install Slack Desktop and set notifications
+-   Complete Syllabus Quiz
+-   Fill out first day of class questionnaire
+-   Let me know if you will be using a Chromebook, asap
+-   Bring charged tech to class on Friday
