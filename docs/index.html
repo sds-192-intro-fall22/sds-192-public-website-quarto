@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Lindsay Poirier">
-<meta name="dcterms.date" content="2022-08-31">
+<meta name="dcterms.date" content="2022-09-06">
 
 <title>SDS 192: Introduction to Data Science</title>
 <style>
@@ -137,7 +137,7 @@ ul.task-list{list-style: none;}
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 31, 2022</p>
+      <p class="date">September 6, 2022</p>
     </div>
   </div>
     
@@ -149,8 +149,8 @@ ul.task-list{list-style: none;}
 <section id="syllabus" class="level1">
 <h1>Syllabus</h1>
 <p>Data science involves applying a set of strategies to transform a recorded set of values into something from which we can glean knowledge and insight. This course will introduce you to concepts and methods from the field of data science, along with how to apply them in <code>R</code>. You will learn how to acquire, clean, wrangle, and visualize data. You will also learn best practices in data science workflows, such as code documentation and version control. Issues in data ethics will be addressed throughout the course.</p>
-<p>Classes will be held on Mondays, Wednesdays, and Fridays from 9:25 AM to 10:40 AM.</p>
-<p>There are no prerequisites, but a willingness to write code is necessary. Coding for the first time can be intimidating, but I intend do everything in my power to support you through the learning curve and to make things both fun and relevant in the process. I personally picked up most of my data science skills through a lot of trial-and-error, practice, and curiosity. My hope is that, in this course, you will learn through experimentation, along with independent and collaborative problem-solving. Honing these competencies will serve you as you move on to other courses in the SDS program and/or at Smith.</p>
+<p>Classes will be held on Mondays, Wednesdays, and Fridays from 9:25 AM to 10:40 AM in McConnell 404.</p>
+<p>SDS 100: Reproducible Scientific Computing with Data is a co-requisite for this course and designed to help support you in coding in <code>R</code>. Please note that I walk into this course with the assumption that most students have never coded before. Coding for the first time can be intimidating, but I intend do everything in my power to support you through the learning curve and to make things both fun and relevant in the process. I personally picked up most of my data science skills through a lot of trial-and-error, practice, and curiosity. My hope is that, in this course, you will learn through experimentation, along with independent and collaborative problem-solving. Honing these competencies will serve you as you move on to other courses in the SDS program and/or at Smith.</p>
 <section id="course-instructor" class="level2">
 <h2 class="anchored" data-anchor-id="course-instructor">Course Instructor</h2>
 <div class="float_image_right">
@@ -179,7 +179,7 @@ ul.task-list{list-style: none;}
 <p>Office hours are a great opportunity for us to chat about what you’re learning in the course, clarify expectations on assignments, and review work in progress. I also love when students drop in to office hours to request book recommendations, discuss career or research paths, or just to say hi! I encourage each student in the course to join office hours at least once this semester. If you’re unable to attend my office hours at the regularly scheduled time, there is link on Moodle to book a meeting with me.</p>
 <ul>
 <li>Monday, 3-4, McConnell 212-213</li>
-<li>Wednesday, 3-4, McConnell 212-213</li>
+<li>Wednesday, 3-5, McConnell 212-213</li>
 </ul>
 </div>
 </div>
@@ -209,7 +209,7 @@ Spinelli Center
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Smith’s <a href="https://www.smith.edu/qlc/tutoring.html">Spinelli Center</a> offers a number of resources to support SDS students. Spinelli Center Data Assistants will visit our classroom regularly to support you through lab work. The Center also offers <a href="https://www.smith.edu/qlc/tutoring.html?colStats=open#PanelStats">drop-in tutoring hours</a> Sunday through Thursday 7-9 PM. Finally, you can drop-in or schedule an appointment with the Data Research and Statistics Counselor (Osman Keshawarz). To schedule an appointment, email <a href="mailto:qlctutor@smith.edu">qlctutor@smith.edu</a>.</p>
+<p>Smith’s <a href="https://www.smith.edu/qlc/tutoring.html">Spinelli Center</a> offers a number of resources to support SDS students. Spinelli Center Data Assistants will visit our classroom regularly to support you through lab work. The Center also offers <a href="https://www.smith.edu/qlc/tutoring.html?colStats=open#PanelStats">drop-in tutoring hours</a> Sunday through Thursday 7-9 PM. Finally, you can drop-in to Seelye 207D or schedule an appointment with the Data Research and Statistics Counselor (Kenneth Jeong). To schedule an appointment, email <a href="mailto:qlctutor@smith.edu">qlctutor@smith.edu</a>.</p>
 </div>
 </div>
 </section>
@@ -219,10 +219,13 @@ Spinelli Center
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Preparation</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Attendance</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Extensions</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">Academic Honesty</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<p>This is a 4-credit course with 3 hours per week of in-classroom instructions. Smith expects students to devote 9 out-of-class hours per week to 4-credit classes. I have designed the course assignments and selected the course readings with this target in mind.</p>
+<p>This is a 4-credit course with 4.5 hours per week of in-classroom instructions. Smith expects students to devote 7.5 out-of-class hours per week to 4-credit classes. I have designed the course assignments and selected the course readings with this target in mind.</p>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<p>Attending class is not only important for your learning but also an act of community. Attendance is expected in this course. Many course assignments will be completed in-class. That said, you do not need to inform me when you will be absent. If you are sick, please stay home. If you must miss a class entirely, you should contact a peer to discuss what was missed.</p>
+<p>Attending class is not only important for your learning but also an act of community. Attendance is expected in this course. Many course assignments will be completed in-class. That said, you do not need to inform me when you will be absent. If you are sick, please stay home. If you must miss a class entirely, you should contact a peer to discuss what was missed. Please note that the <a href="https://www.smith.edu/academics/statistics">SDS Program</a> has adopted a shared policy regarding in-person attendance this semester:</p>
+<blockquote class="blockquote">
+<p>In keeping with Smith’s core identity and mission as an in-person, residential college, SDS affirms College policy (as per the Provost and Dean of the College) that students will attend class in person. SDS courses will not provide options for remote attendance. Students who have been determined to require a remote attendance accommodation by the Office of Disability Services will be the only exceptions to this policy. As with any other kind of ADA accommodations, please notify your instructor during the first week of classes to discuss how we can meet your accommodations.</p>
+</blockquote>
 </div>
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <p>There is an automatic 24-hour <strong>grace period</strong> on all <em>lab and project assignments</em>. There will be no penalties for submitting the project within this 24-hour period, and you do not need to inform me that you intend to take the extra time. You can also request up to a 72-hour <strong>extension</strong> on any project or lab assignment, as long <em>as you make that request at least 48 hours before the original assignment due date</em>. You can request an extension by filling out the Extension Request form on Moodle, and I will confirm your extension on Slack. Beyond this, late assignments will not be accepted.</p>
