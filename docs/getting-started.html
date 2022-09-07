@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.342">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Lindsay Poirier">
+
+<title>Configuring RStudio with GitHub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">SDS 192: Intro to Data Science</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html">Syllabus</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./grading_contract.html">Standards Grading</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./schedule.html">Schedule</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a>
+  <ul class="collapse">
+  <li><a href="#step-1-create-github-account" id="toc-step-1-create-github-account" class="nav-link" data-scroll-target="#step-1-create-github-account">Step 1: Create GitHub Account</a></li>
+  <li><a href="#step-2-install-r-and-rstudio" id="toc-step-2-install-r-and-rstudio" class="nav-link" data-scroll-target="#step-2-install-r-and-rstudio">Step 2: Install <code>R</code> and RStudio</a></li>
+  <li><a href="#step-3-open-rstudio" id="toc-step-3-open-rstudio" class="nav-link" data-scroll-target="#step-3-open-rstudio">Step 3: Open RStudio</a></li>
+  <li><a href="#step-4-install-git" id="toc-step-4-install-git" class="nav-link" data-scroll-target="#step-4-install-git">Step 4: Install git</a></li>
+  <li><a href="#step-5-install-usethis" id="toc-step-5-install-usethis" class="nav-link" data-scroll-target="#step-5-install-usethis">Step 5: Install <code>usethis</code></a></li>
+  <li><a href="#step-6-configure-git" id="toc-step-6-configure-git" class="nav-link" data-scroll-target="#step-6-configure-git">Step 6: Configure git</a></li>
+  <li><a href="#step-7-create-personal-access-token" id="toc-step-7-create-personal-access-token" class="nav-link" data-scroll-target="#step-7-create-personal-access-token">Step 7: Create Personal Access Token</a></li>
+  <li><a href="#step-8-store-your-personal-access-token-in-rstudio" id="toc-step-8-store-your-personal-access-token-in-rstudio" class="nav-link" data-scroll-target="#step-8-store-your-personal-access-token-in-rstudio">Step 8: Store your Personal Access Token in RStudio</a></li>
+  <li><a href="#step-9-create-first-github-repo" id="toc-step-9-create-first-github-repo" class="nav-link" data-scroll-target="#step-9-create-first-github-repo">Step 9: Create first GitHub repo</a></li>
+  <li><a href="#step-10-copy-repo-url" id="toc-step-10-copy-repo-url" class="nav-link" data-scroll-target="#step-10-copy-repo-url">Step 10: Copy repo URL</a></li>
+  <li><a href="#step-11-create-git-project-in-rstudio" id="toc-step-11-create-git-project-in-rstudio" class="nav-link" data-scroll-target="#step-11-create-git-project-in-rstudio">Step 11: Create git Project in RStudio</a></li>
+  <li><a href="#step-12-open-edit-and-commit-changes-to-getting-started.qmd" id="toc-step-12-open-edit-and-commit-changes-to-getting-started.qmd" class="nav-link" data-scroll-target="#step-12-open-edit-and-commit-changes-to-getting-started.qmd">Step 12: Open, edit, and commit changes to <code>getting-started.qmd</code></a></li>
+  <li><a href="#step-13-push-your-code-to-github.com" id="toc-step-13-push-your-code-to-github.com" class="nav-link" data-scroll-target="#step-13-push-your-code-to-github.com">Step 13: Push your code to GitHub.com</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Configuring RStudio with GitHub</h1>
+</div>
+
+
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Lindsay Poirier </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<p>Below are instructions for setting up our course environment. We’re going to walk through them together, but different groups might get stuck at different points in the process. If you get stuck, hold up a block flag, which indicates to me that you need help.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I’m going to start off by saying that I dread this day every time I teach <code>R</code> in a course. Students have different computers, sometimes have older versions of software installed on them, and different levels of experience setting up coding environments. I’ll also admit that as a former CS undergrad, for me, the absolute hugest barrier to getting started on any project was getting my coding environment set up. We <strong>are</strong> going to run into frustrations today; it’s inevitable. I’m going to do whatever I can to support you through them, which is why I’m carving out class time to do it. I don’t expect every issue we run into to be sorted out by the end of class or even by class on Monday. I’m telling you this because I don’t want you to worry if you run into roadblocks in setting up in your environment. <em>We will get through them.</em> On the other hand, some of you might breeze through this, having certain components already set up or having previous experience configuring GitHub. While not required, if you finish early and would be willing to help me troubleshoot other issues that come up, it would certainly be appreciated.</p>
+</div>
+</div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Don’t worry if you don’t know what certain terms mean at this point. We will be going over things like the difference between <code>R</code> and RStudio, what a package is, what it means to commit code, and what a quarto file is a little later in the semester.</strong> I just believe it will be easier to follow along with me in learning those things if you can follow along on your own computers. That’s why we’re taking this step to get things up and running so earlier in the semester.</p>
+</div>
+</div>
+<section id="step-1-create-github-account" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-create-github-account">Step 1: Create GitHub Account</h3>
+<p>You should create a GitHub account <a href="https://github.com/">here</a>. When choosing a username, I encourage you to:</p>
+<ul>
+<li>Include some version of your actual name</li>
+<li>Keep it short!</li>
+<li>Avoid including things that designate this moment in time. (Don’t include “Smith student” or “2022”)</li>
+</ul>
+</section>
+<section id="step-2-install-r-and-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-install-r-and-rstudio">Step 2: Install <code>R</code> and RStudio</h3>
+<p>I’m assuming that everyone in this course already has <code>R</code> and RStudio installed - either because you are in SDS 100, and you installed things yesterday, or because you’ve taken a course in <code>R</code> before. If you haven’t installed <code>R</code> and RStudio, follow <a href="https://rstudio-education.github.io/hopr/starting.html">these instructions</a> to do so.</p>
+</section>
+<section id="step-3-open-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-open-rstudio">Step 3: Open RStudio</h3>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you open RStudio, if you get a prompt to install “git” command line tools, don’t dismiss it. Click ‘Install’. You’ll see why in the next step.</p>
+</div>
+</div>
+<p>Note the different sections of the RStudio interface.</p>
+<p><img src="img/rstudio_panels.png" class="img-fluid" width="800"></p>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Potential Blocker: Every time I try to open RStudio, I’m being prompted to reinstall RStudio.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This was happening for a few students on Windows machines. The reason is that you are clicking the file to install/RStudio, rather than the file to open the application. See if you can find the icon for RStudio when you open C:/ProgramFiles. The icon should look like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/rstudio.png" class="img-fluid figure-img" width="100"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">RStudio Icon</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Potential Blocker: I’m seeing this image when I try to open RStudio:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="img/error.png" class="img-fluid" width="300"></p>
+<p>This means that you likely installed RStudio but not <code>R</code>. Check back in on the instructions in Step 2 to make sure that you install <code>R</code> <strong>and</strong> RStudio.</p>
+</div>
+</div>
+<section id="congratulations-youve-installed-all-of-the-software-needed-for-this-course.-now-onto-configuration." class="level4">
+<h4 class="anchored" data-anchor-id="congratulations-youve-installed-all-of-the-software-needed-for-this-course.-now-onto-configuration."><strong>CONGRATULATIONS! You’ve installed all of the software needed for this course. Now onto configuration.</strong></h4>
+<hr>
+</section>
+</section>
+<section id="step-4-install-git" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-install-git">Step 4: Install git</h3>
+<p>This is going to be different for different students depending on what type of operating system you are using.</p>
+<section id="step-4-for-macosx" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-for-macosx">Step 4 for MacOSX</h4>
+<p>If you just recently installed RStudio, when you open RStudio, you may see a window that looks like this:</p>
+<p><img src="img/install_git.png" class="img-fluid" width="300"></p>
+<p>If you see this image, you should click ‘Install’. It will likely take a few moments to install.</p>
+<p>If you don’t see this image, it could be because git is already installed on your computer. You can check by navigating to the Console pane at the bottom of your screen and clicking on the ‘Terminal’ tab. Enter the following in that window: <code>which git</code>. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: <code>/usr/bin/git</code>, but yours may look different.</p>
+<p>If git is not installed at this point, then you should copy and paste the following into your terminal and click enter:</p>
+<pre><code>xcode-select --install</code></pre>
+</section>
+<section id="step-4-for-windows" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-for-windows">Step 4 for Windows</h4>
+<p>Check if git is already installed by navigating to the Console pane at the bottom of your screen and clicking on the ‘Terminal’ tab. Enter the following in that window: <code>where git</code>. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: <code>/usr/bin/git</code>, but yours may look different.</p>
+<p>If git is not installed at this point, then you should install Git for Windows <a href="https://gitforwindows.org/">here</a>. <strong>When installing, you will be prompted about “Adjusting your PATH environment”. When this happens, you should select “Git from the command line and also from 3rd-party software”.</strong></p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Before moving to step 5...
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We want to be absolutely sure that git is properly installed before moving on. Navigate to the Console pane at the bottom of your screen and clicking on the ‘Terminal’ tab. If you are using a Mac, enter <code>which git</code>. If you are using a Windows, enter <code>where git</code>. If git is installed, you should see a file path to git (most likely in a <code>bin</code> folder). If you get an indication that git can’t be found, raise a blocker flag.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="step-5-install-usethis" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-install-usethis">Step 5: Install <code>usethis</code></h3>
+<p>Many of you will have already installed the <code>usethis</code> package in SDS 100 yesterday. If for some reason you didn’t, you should follow the instructions below to install <code>usethis</code>.</p>
+<ol type="1">
+<li>Ensure that you are in the ‘Console’ at the bottom of your screen.</li>
+<li>Copy and paste <code>install.packages("usethis")</code> into your console and click enter.</li>
+<li>You will be asked “Do you want to install from sources the packages which need compilation? (Yes/no/cancel)”, and you can type ‘yes’. After that, a bunch of lines of code will run with red font.</li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Potential Blocker: I’m getting an error message that rlang is not installed.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In your console type <code>install.packages("rlang")</code>. Then re-try Step 7.</p>
+</div>
+</div>
+</section>
+<section id="step-6-configure-git" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-configure-git">Step 6: Configure git</h3>
+<ol type="1">
+<li><p>Copy and paste <code>library(usethis)</code> into your Console to load the library.</p></li>
+<li><p>Copy and paste the following into your console, replacing USERNAMEHERE with your GitHub username and EMAILHERE with your GitHub email:</p>
+<p>use_git_config(user.name = “USERNAMEHERE”, user.email = “EMAILHERE”)</p></li>
+</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Potential Blocker: I’m getting the following error when I try to set my git credentials:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>Error in new_git_error("git_error", args = args, stdout = out, status = attr(out,  :
+  System git failed: xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</code></pre>
+<p>Switch to the Terminal tab in the bottom left hand corner of RStudio and enter the following:</p>
+<p><code>xcode-select --install</code></p>
+<p>Then try again.</p>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Potential Blocker: I’m getting an error message that RStudio can’t find git.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Following the instructions at this link: https://happygitwithr.com/rstudio-see-git to tell RStudio where to find git.</p>
+</div>
+</div>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you’ve configured git on your computer before, you can edit your git config by following these instructions:</p>
+<p>
+<a href="https://vimeo.com/511798861">Edit gitconfig file</a> from <a href="https://vimeo.com/user95475944">David Keyes</a> on <a href="https://vimeo.com">Vimeo</a>.
+</p>
+</div>
+</div>
+</section>
+<section id="step-7-create-personal-access-token" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-create-personal-access-token">Step 7: Create Personal Access Token</h3>
+<ol type="1">
+<li>Navigate to Github.com and log-in.</li>
+<li>At Github.com, click on your user icon (top right hand corner) and then ‘Settings’.</li>
+<li>At the very bottom of the left side panel, click ‘Developer Settings’</li>
+</ol>
+<p><img src="img/github-dev-settings.png" class="img-fluid" width="200"></p>
+<ol start="4" type="1">
+<li>In the right sidebar, click ‘Personal Access Tokens’, and then on the page that appears, click ‘Generate New Token’.</li>
+<li>In the ‘Note’ field, enter “SDS 192”</li>
+<li>Set the ‘Expiration’ to ‘Custom’, and then select a date <strong>after</strong> December 12, 2022.</li>
+<li>Check the box next to ‘repo’ in Select Scopes.</li>
+<li>Click the green ‘Generate Token’ button.</li>
+<li>Keep this window open because you will need to copy your Personal Access Token in the next step.</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This video summarizes these steps:</p>
+<p>
+<a href="https://vimeo.com/511801645">Create a Personal Access Token (PAT) on GitHub</a> from <a href="https://vimeo.com/user95475944">David Keyes</a> on <a href="https://vimeo.com">Vimeo</a>.
+</p>
+</div>
+</div>
+</section>
+<section id="step-8-store-your-personal-access-token-in-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="step-8-store-your-personal-access-token-in-rstudio">Step 8: Store your Personal Access Token in RStudio</h3>
+<ol type="1">
+<li>Install the <code>gitcreds</code> package by entering the following into your RStudio Console: <code>install.packages("gitcreds")</code></li>
+<li>Load the <code>gitcreds</code> package by entering the following into your RStudio Console: <code>library(gitcreds)</code></li>
+<li>Enter <code>gitcreds_set()</code> into your Console.</li>
+<li>You will be prompted to enter your password or token. Head back over to Github.com, and copy the Personal Access Token that you created in the last step. It will be a long string of characters. Paste it into your RStudio Console.</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This video summarizes these steps:</p>
+<p>
+<a href="https://vimeo.com/511803103">Store Personal Access Token to Connect RStudio and GitHub</a> from <a href="https://vimeo.com/user95475944">David Keyes</a> on <a href="https://vimeo.com">Vimeo</a>.
+</p>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Potential Blocker: I’m get an error <code>System git failed: fatal: bad config line</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you get the following error:</p>
+<pre><code>Error in new_git_error("git_error", args = args, stdout = out, status = attr(out,  :
+  System git failed: fatal: bad config line ...</code></pre>
+<p>…this means that you probably added some unrecognized characters in your git config file. Enter:</p>
+<pre><code>library(usethis)
+edit_git_config</code></pre>
+<p>This will open your config file. Check to make sure you don’t have extra quotation marks in your user name or email address. It should look something like this.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/config_file.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">RStudio Icon</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="congratulations-youve-configured-github-to-connect-with-rstudio-now-onto-assignment-submission-practice." class="level4">
+<h4 class="anchored" data-anchor-id="congratulations-youve-configured-github-to-connect-with-rstudio-now-onto-assignment-submission-practice."><strong>CONGRATULATIONS! You’ve configured GitHub to connect with RStudio! Now onto assignment submission practice.</strong></h4>
+<hr>
+</section>
+</section>
+<section id="step-9-create-first-github-repo" class="level3">
+<h3 class="anchored" data-anchor-id="step-9-create-first-github-repo">Step 9: Create first GitHub repo</h3>
+<p>In Moodle, scroll to the bottom of our course page to find the Getting Started Assignment link. Click this link to enter our GitHub classroom. This will copy a GitHub template repo into your GitHub account. It might take a few moments.</p>
+</section>
+<section id="step-10-copy-repo-url" class="level3">
+<h3 class="anchored" data-anchor-id="step-10-copy-repo-url">Step 10: Copy repo URL</h3>
+<p>Once the repo is created, copy the link to the repo that was just created to your clipboard. It should look something like https://https://github.com/sds-192-intro-fall22/getting-started/YOUR-USER-NAME</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/github_url.png" class="img-fluid figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">GitHub URL</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="step-11-create-git-project-in-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="step-11-create-git-project-in-rstudio">Step 11: Create git Project in RStudio</h3>
+<ol type="1">
+<li>In RStudio, click File &gt; New Project &gt; Version Control &gt; Git</li>
+<li>In the window that appears, paste the URL that you copied in the last step into the ‘Repository URL’ box.</li>
+<li>Where it says ‘Create project as subdirectory of:’, click ‘Browse’. Create a new folder called “SDS 192.” You can store this folder wherever on your computer (e.g.&nbsp;Documents, Desktop, etc.), but I encourage you to store it in a place where you can easily find it.</li>
+<li>Click ‘Create Project.’</li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This video summarizes these steps:</p>
+<p>
+<a href="https://vimeo.com/511804881">How to Connect RStudio Projects with GitHub Repositories: GitHub First</a> from <a href="https://vimeo.com/user95475944">David Keyes</a> on <a href="https://vimeo.com">Vimeo</a>.
+</p>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Potential Blocker: I’m getting an error indicating that support for password authentical was removed.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you get this error:</p>
+<pre><code>remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.</code></pre>
+<p>This means that you likely set up some git credentials on your computer in the past. GitHub used to identify you by a password, but now they use the special token you generated in an earlier step. To fix this, you can enter the following into your console:</p>
+<pre><code>install.packages("gitcreds")
+library(gitcreds)
+gitcreds_set()</code></pre>
+<p>You’ll see the following message:</p>
+<pre><code>1: Keep these credentials
+2: Replace these credentials
+3: See the password / token</code></pre>
+<p>Click 2. Then enter the personal access token you created in step 9. You should be able to create a project after this.</p>
+</div>
+</div>
+</section>
+<section id="step-12-open-edit-and-commit-changes-to-getting-started.qmd" class="level3">
+<h3 class="anchored" data-anchor-id="step-12-open-edit-and-commit-changes-to-getting-started.qmd">Step 12: Open, edit, and commit changes to <code>getting-started.qmd</code></h3>
+<ol type="1">
+<li><p>On the initial install, the Files tab will be in the lower right hand corner of RStudio. Open the <code>getting-started.qmd</code> file.</p></li>
+<li><p>Follow instructions in the file. Make sure to save the file.</p></li>
+<li><p>When the file tells you to commit your code, turn your attention to the Environment pane of RStudio (i.e.&nbsp;upper right hand pane on initial install).</p></li>
+<li><p>Click on the ‘Git’ tab, and then click the blank checkbox next to <code>getting-started.qmd</code>. As we will learn in a few weeks, this <em>stages</em> a file in git. <img src="img/stage.png" class="img-fluid" width="300"></p></li>
+<li><p>In this same ‘Git’ pane, click the ‘Commit’ button. In the window that appears, you will be prompted to write a commit message. Enter the following in the commit message window: “added name to getting-started.qmd”</p></li>
+<li><p>Click the ‘Commit’ button. Again, in a few weeks, we will learn what this means.</p></li>
+</ol>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This video summarizes these steps:</p>
+<p>
+<a href="https://vimeo.com/511800674">Make a Commit and View More History</a> from <a href="https://vimeo.com/user95475944">David Keyes</a> on <a href="https://vimeo.com">Vimeo</a>.
+</p>
+</div>
+</div>
+</section>
+<section id="step-13-push-your-code-to-github.com" class="level3">
+<h3 class="anchored" data-anchor-id="step-13-push-your-code-to-github.com">Step 13: Push your code to GitHub.com</h3>
+<p>In the same ‘Git’ pane, you will see a little green upwards arrow, click this arrow to push your code to GitHub.com.</p>
+<p><img src="img/push-button.png" class="img-fluid" width="300"></p>
+<section id="congratulations-youve-completed-our-course-infrastructure-set-up" class="level4">
+<h4 class="anchored" data-anchor-id="congratulations-youve-completed-our-course-infrastructure-set-up"><strong>CONGRATULATIONS! You’ve completed our course infrastructure set-up!</strong></h4>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
