@@ -73,20 +73,20 @@ If you see this image, you should click 'Install'. It will likely take a few mom
 
 If you don't see this image, it could be because git is already installed on your computer. You can check by navigating to the Console pane at the bottom of your screen and clicking on the 'Terminal' tab. Enter the following in that window: `which git`. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: `/usr/bin/git`, but yours may look different.
 
-If git is not installed at this point, then you should copy and paste the following into your terminal and click enter:
+If git is not installed at this point, then you should copy and paste the following into your **Terminal** and click enter:
 
     xcode-select --install
 
 #### Step 4 for Windows
 
-Check if git is already installed by navigating to the Console pane at the bottom of your screen and clicking on the 'Terminal' tab. Enter the following in that window: `where git`. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: `/usr/bin/git`, but yours may look different.
+Check if git is already installed by navigating to the Console pane at the bottom of your screen and clicking on the 'Terminal' tab. Enter the following in the **Terminal**: `where git`. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: `/usr/bin/git`, but yours may look different.
 
 If git is not installed at this point, then you should install Git for Windows [here](https://gitforwindows.org/). **When installing, you will be prompted about "Adjusting your PATH environment". When this happens, you should select "Git from the command line and also from 3rd-party software".**
 
 ::: callout-important
 ## Before moving to step 5\...
 
-We want to be absolutely sure that git is properly installed before moving on. Navigate to the Console pane at the bottom of your screen and clicking on the 'Terminal' tab. If you are using a Mac, enter `which git`. If you are using a Windows, enter `where git`. If git is installed, you should see a file path to git (most likely in a `bin` folder). If you get an indication that git can't be found, raise a blocker flag.
+We want to be absolutely sure that git is properly installed before moving on. Navigate to the Console pane at the bottom of your screen and clicking on the **Terminal** tab. If you are using a Mac, enter `which git`. If you are using a Windows, enter `where git`. If git is installed, you should see a file path to git (most likely in a `bin` folder). If you get an indication that git can't be found, raise a blocker flag.
 :::
 
 ### Step 5: Install `usethis`
@@ -107,9 +107,7 @@ In your console type `install.packages("rlang")`. Then re-try Step 7.
 
 1.  Copy and paste `library(usethis)` into your Console to load the library.
 
-2.  Copy and paste the following into your console, replacing USERNAMEHERE with your GitHub username and EMAILHERE with your GitHub email:
-
-    use_git_config(user.name = "USERNAMEHERE", user.email = "EMAILHERE")
+2.  Copy and paste the following into your console, replacing USERNAMEHERE with your GitHub username and EMAILHERE with your GitHub email: `use_git_config(user.name = "USERNAMEHERE", user.email = "EMAILHERE")`
 
 ::: callout-caution
 ## Potential Blocker: I'm getting the following error when I try to set my git credentials:
@@ -206,7 +204,7 @@ Once the repo is created, copy the link to the repo that was just created to you
 
 1.  In RStudio, click File \> New Project \> Version Control \> Git
 2.  In the window that appears, paste the URL that you copied in the last step into the 'Repository URL' box.
-3.  Where it says 'Create project as subdirectory of:', click 'Browse'. Create a new folder called "SDS 192." You can store this folder wherever on your computer (e.g. Documents, Desktop, etc.), but I encourage you to store it in a place where you can easily find it.
+3.  Where it says 'Create project as subdirectory of:', click 'Browse'. Create a new folder called "SDS 192." I suggest that you store this folder in you **Documents** folder, so that you can easily find it.
 4.  Click 'Create Project.'
 
 ::: callout-tip
@@ -245,7 +243,9 @@ Click 2. Then enter the personal access token you created in step 9. You should 
 
 3.  When the file tells you to commit your code, turn your attention to the Environment pane of RStudio (i.e. upper right hand pane on initial install).
 
-4.  Click on the 'Git' tab, and then click the blank checkbox next to `getting-started.qmd`. As we will learn in a few weeks, this *stages* a file in git. ![](img/stage.png){width="300"}
+4.  Click on the 'Git' tab, and then click the blank checkbox next to `getting-started.qmd`. As we will learn in a few weeks, this *stages* a file in git.
+
+    ![](img/stage.png){width="300"}
 
 5.  In this same 'Git' pane, click the 'Commit' button. In the window that appears, you will be prompted to write a commit message. Enter the following in the commit message window: "added name to getting-started.qmd"
 

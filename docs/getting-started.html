@@ -248,12 +248,12 @@ Potential Blocker: I’m seeing this image when I try to open RStudio:
 <p><img src="img/install_git.png" class="img-fluid" width="300"></p>
 <p>If you see this image, you should click ‘Install’. It will likely take a few moments to install.</p>
 <p>If you don’t see this image, it could be because git is already installed on your computer. You can check by navigating to the Console pane at the bottom of your screen and clicking on the ‘Terminal’ tab. Enter the following in that window: <code>which git</code>. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: <code>/usr/bin/git</code>, but yours may look different.</p>
-<p>If git is not installed at this point, then you should copy and paste the following into your terminal and click enter:</p>
+<p>If git is not installed at this point, then you should copy and paste the following into your <strong>Terminal</strong> and click enter:</p>
 <pre><code>xcode-select --install</code></pre>
 </section>
 <section id="step-4-for-windows" class="level4">
 <h4 class="anchored" data-anchor-id="step-4-for-windows">Step 4 for Windows</h4>
-<p>Check if git is already installed by navigating to the Console pane at the bottom of your screen and clicking on the ‘Terminal’ tab. Enter the following in that window: <code>where git</code>. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: <code>/usr/bin/git</code>, but yours may look different.</p>
+<p>Check if git is already installed by navigating to the Console pane at the bottom of your screen and clicking on the ‘Terminal’ tab. Enter the following in the <strong>Terminal</strong>: <code>where git</code>. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: <code>/usr/bin/git</code>, but yours may look different.</p>
 <p>If git is not installed at this point, then you should install Git for Windows <a href="https://gitforwindows.org/">here</a>. <strong>When installing, you will be prompted about “Adjusting your PATH environment”. When this happens, you should select “Git from the command line and also from 3rd-party software”.</strong></p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -265,7 +265,7 @@ Before moving to step 5...
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We want to be absolutely sure that git is properly installed before moving on. Navigate to the Console pane at the bottom of your screen and clicking on the ‘Terminal’ tab. If you are using a Mac, enter <code>which git</code>. If you are using a Windows, enter <code>where git</code>. If git is installed, you should see a file path to git (most likely in a <code>bin</code> folder). If you get an indication that git can’t be found, raise a blocker flag.</p>
+<p>We want to be absolutely sure that git is properly installed before moving on. Navigate to the Console pane at the bottom of your screen and clicking on the <strong>Terminal</strong> tab. If you are using a Mac, enter <code>which git</code>. If you are using a Windows, enter <code>where git</code>. If git is installed, you should see a file path to git (most likely in a <code>bin</code> folder). If you get an indication that git can’t be found, raise a blocker flag.</p>
 </div>
 </div>
 </section>
@@ -296,8 +296,7 @@ Potential Blocker: I’m getting an error message that rlang is not installed.
 <h3 class="anchored" data-anchor-id="step-6-configure-git">Step 6: Configure git</h3>
 <ol type="1">
 <li><p>Copy and paste <code>library(usethis)</code> into your Console to load the library.</p></li>
-<li><p>Copy and paste the following into your console, replacing USERNAMEHERE with your GitHub username and EMAILHERE with your GitHub email:</p>
-<p>use_git_config(user.name = “USERNAMEHERE”, user.email = “EMAILHERE”)</p></li>
+<li><p>Copy and paste the following into your console, replacing USERNAMEHERE with your GitHub username and EMAILHERE with your GitHub email: <code>use_git_config(user.name = "USERNAMEHERE", user.email = "EMAILHERE")</code></p></li>
 </ol>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -452,7 +451,7 @@ edit_git_config</code></pre>
 <ol type="1">
 <li>In RStudio, click File &gt; New Project &gt; Version Control &gt; Git</li>
 <li>In the window that appears, paste the URL that you copied in the last step into the ‘Repository URL’ box.</li>
-<li>Where it says ‘Create project as subdirectory of:’, click ‘Browse’. Create a new folder called “SDS 192.” You can store this folder wherever on your computer (e.g.&nbsp;Documents, Desktop, etc.), but I encourage you to store it in a place where you can easily find it.</li>
+<li>Where it says ‘Create project as subdirectory of:’, click ‘Browse’. Create a new folder called “SDS 192.” I suggest that you store this folder in you <strong>Documents</strong> folder, so that you can easily find it.</li>
 <li>Click ‘Create Project.’</li>
 </ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
@@ -501,7 +500,8 @@ gitcreds_set()</code></pre>
 <li><p>On the initial install, the Files tab will be in the lower right hand corner of RStudio. Open the <code>getting-started.qmd</code> file.</p></li>
 <li><p>Follow instructions in the file. Make sure to save the file.</p></li>
 <li><p>When the file tells you to commit your code, turn your attention to the Environment pane of RStudio (i.e.&nbsp;upper right hand pane on initial install).</p></li>
-<li><p>Click on the ‘Git’ tab, and then click the blank checkbox next to <code>getting-started.qmd</code>. As we will learn in a few weeks, this <em>stages</em> a file in git. <img src="img/stage.png" class="img-fluid" width="300"></p></li>
+<li><p>Click on the ‘Git’ tab, and then click the blank checkbox next to <code>getting-started.qmd</code>. As we will learn in a few weeks, this <em>stages</em> a file in git.</p>
+<p><img src="img/stage.png" class="img-fluid" width="300"></p></li>
 <li><p>In this same ‘Git’ pane, click the ‘Commit’ button. In the window that appears, you will be prompted to write a commit message. Enter the following in the commit message window: “added name to getting-started.qmd”</p></li>
 <li><p>Click the ‘Commit’ button. Again, in a few weeks, we will learn what this means.</p></li>
 </ol>
