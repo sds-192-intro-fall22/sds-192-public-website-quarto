@@ -13,7 +13,9 @@ format:
   revealjs:
     scrollable: true
     incremental: true
-    chalkboard: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
 editor: source
 ---
 
