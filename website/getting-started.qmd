@@ -59,9 +59,9 @@ This means that you likely installed RStudio but not `R`. Check back in on the i
 
 ------------------------------------------------------------------------
 
-### Step 4: Install git
+### Step 4: Install git (OS-specific instructions below)
 
-This is going to be different for different students depending on what type of operating system you are using.
+This is going to be different for different students depending on what type of operating system you are using. Scroll to the instructions for your operating system.
 
 #### Step 4 for MacOSX
 
@@ -71,7 +71,7 @@ If you just recently installed RStudio, when you open RStudio, you may see a win
 
 If you see this image, you should click 'Install'. It will likely take a few moments to install.
 
-If you don't see this image, it could be because git is already installed on your computer. You can check by navigating to the Console pane at the bottom of your screen and clicking on the 'Terminal' tab. Enter the following in that window: `which git`. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: `/usr/bin/git`, but yours may look different.
+If you don't see this image, it could be because git is already installed on your computer. You can check by navigating to the 'Console' pane at the bottom of your screen and clicking on the 'Terminal' tab. Enter the following in that window: `which git`. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: `/usr/bin/git`, but yours may look different.
 
 If git is not installed at this point, then you should copy and paste the following into your **Terminal** and click enter:
 
@@ -81,12 +81,18 @@ If git is not installed at this point, then you should copy and paste the follow
 
 Check if git is already installed by navigating to the Console pane at the bottom of your screen and clicking on the 'Terminal' tab. Enter the following in the **Terminal**: `where git`. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: `/usr/bin/git`, but yours may look different.
 
+![](img/terminal.png){width="800"}
+
 If git is not installed at this point, then you should install Git for Windows [here](https://gitforwindows.org/). **When installing, you will be prompted about "Adjusting your PATH environment". When this happens, you should select "Git from the command line and also from 3rd-party software".**
 
 ::: callout-important
 ## Before moving to step 5\...
 
-We want to be absolutely sure that git is properly installed before moving on. Navigate to the Console pane at the bottom of your screen and clicking on the **Terminal** tab. If you are using a Mac, enter `which git`. If you are using a Windows, enter `where git`. If git is installed, you should see a file path to git (most likely in a `bin` folder). If you get an indication that git can't be found, raise a blocker flag.
+After you've installed git, quit out of RStudio and then reopen it. We want to be absolutely sure that git is properly installed before moving on. Navigate to the Console pane at the bottom of your screen and clicking on the **Terminal** tab. If you are using a Mac, enter `which git`. If you are using a Windows, enter `where git`. If git is installed, you should see a file path to git (most likely in a `bin` folder).
+
+![](img/terminal.png){width="800"}
+
+If you get an indication that git can't be found, raise a blocker flag.
 :::
 
 ### Step 5: Install `usethis`
@@ -95,7 +101,7 @@ Many of you will have already installed the `usethis` package in SDS 100 yesterd
 
 1.  Ensure that you are in the 'Console' at the bottom of your screen.
 2.  Copy and paste `install.packages("usethis")` into your console and click enter.
-3.  You will be asked "Do you want to install from sources the packages which need compilation? (Yes/no/cancel)", and you can type 'yes'. After that, a bunch of lines of code will run with red font.
+3.  You will be asked "Do you want to install from sources the packages which need compilation? (Yes/no/cancel)", and you can type 'no'. After that, a bunch of lines of code will run with red font.
 
 ::: callout-caution
 ## Potential Blocker: I'm getting an error message that rlang is not installed.
@@ -110,16 +116,9 @@ In your console type `install.packages("rlang")`. Then re-try Step 7.
 2.  Copy and paste the following into your console, replacing USERNAMEHERE with your GitHub username and EMAILHERE with your GitHub email: `use_git_config(user.name = "USERNAMEHERE", user.email = "EMAILHERE")`
 
 ::: callout-caution
-## Potential Blocker: I'm getting the following error when I try to set my git credentials:
+## Potential Blocker: I'm getting an error message that gert is not installed.
 
-    Error in new_git_error("git_error", args = args, stdout = out, status = attr(out,  :
-      System git failed: xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
-
-Switch to the Terminal tab in the bottom left hand corner of RStudio and enter the following:
-
-`xcode-select --install`
-
-Then try again.
+In your console type `install.packages("gert")`. Then re-try Step 6.
 :::
 
 ::: callout-caution
@@ -162,6 +161,19 @@ This video summarizes these steps:
 3.  Enter `gitcreds_set()` into your Console.
 4.  You will be prompted to enter your password or token. Head back over to Github.com, and copy the Personal Access Token that you created in the last step. It will be a long string of characters. Paste it into your RStudio Console.
 
+::: callout-caution
+## Potential Blocker: I'm getting the following error when I try to set my git credentials:
+
+    Error in new_git_error("git_error", args = args, stdout = out, status = attr(out,  :
+      System git failed: xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+
+Switch to the Terminal tab in the bottom left hand corner of RStudio and enter the following:
+
+`xcode-select --install`
+
+Then try again.
+:::
+
 ::: callout-tip
 This video summarizes these steps:
 
@@ -179,7 +191,7 @@ If you get the following error:
 ...this means that you probably added some unrecognized characters in your git config file. Enter:
 
     library(usethis)
-    edit_git_config
+    edit_git_config()
 
 This will open your config file. Check to make sure you don't have extra quotation marks in your user name or email address. It should look something like this.
 
@@ -192,11 +204,11 @@ This will open your config file. Check to make sure you don't have extra quotati
 
 ### Step 9: Create first GitHub repo
 
-In Moodle, scroll to the bottom of our course page to find the Getting Started Assignment link. Click this link to enter our GitHub classroom. This will copy a GitHub template repo into your GitHub account. It might take a few moments.
+In Moodle, scroll to today's date to find the Course Infrastructure Set-up link. Click this link to enter our GitHub classroom. This will copy a GitHub template repo into your GitHub account. It might take a few moments.
 
 ### Step 10: Copy repo URL
 
-Once the repo is created, copy the link to the repo that was just created to your clipboard. It should look something like https://https://github.com/sds-192-intro-fall22/getting-started/YOUR-USER-NAME
+Once the repo is created, copy the link to the repo that was just created to your clipboard. It should look something like https://github.com/sds-192-intro-fall22/getting-started-YOUR-USER-NAME
 
 ![GitHub URL](img/github_url.png)
 
@@ -237,7 +249,9 @@ Click 2. Then enter the personal access token you created in step 9. You should 
 
 ### Step 12: Open, edit, and commit changes to `getting-started.qmd`
 
-1.  On the initial install, the Files tab will be in the lower right hand corner of RStudio. Open the `getting-started.qmd` file.
+1.  On the initial install, the Files tab will be in the lower right hand corner of RStudio. Look for the `getting-started.qmd` file in that pane and then open it.
+
+    ![](img/rstudio_panels.png)
 
 2.  Follow instructions in the file. Make sure to save the file.
 
@@ -251,6 +265,8 @@ Click 2. Then enter the personal access token you created in step 9. You should 
 
 6.  Click the 'Commit' button. Again, in a few weeks, we will learn what this means.
 
+7.  If you've done this correctly, when you close the window, there will be no files listed in the Git pane.
+
 ::: callout-tip
 This video summarizes these steps:
 
@@ -262,5 +278,19 @@ This video summarizes these steps:
 In the same 'Git' pane, you will see a little green upwards arrow, click this arrow to push your code to GitHub.com.
 
 ![](img/push-button.png){width="300"}
+
+::: callout-caution
+## Potential Blocker: When I push my code, I get an a notification that everything is up to date.
+
+![](img/uptodate.png)
+
+If you get this notification, and you are sure you haven't already pushed the changes, it likely means one of three things:
+
+1.  You didn't make changes to any files.
+2.  You didn't save your changes to the files.
+3.  You didn't commit your changes to the files.
+
+If this is the case, return back to step 12, and make sure that changes were made, saved, and committed, and then try pushing again.
+:::
 
 #### **CONGRATULATIONS! You've completed our course infrastructure set-up!**

@@ -101,7 +101,7 @@ ul.task-list{list-style: none;}
   <li><a href="#step-1-create-github-account" id="toc-step-1-create-github-account" class="nav-link" data-scroll-target="#step-1-create-github-account">Step 1: Create GitHub Account</a></li>
   <li><a href="#step-2-install-r-and-rstudio" id="toc-step-2-install-r-and-rstudio" class="nav-link" data-scroll-target="#step-2-install-r-and-rstudio">Step 2: Install <code>R</code> and RStudio</a></li>
   <li><a href="#step-3-open-rstudio" id="toc-step-3-open-rstudio" class="nav-link" data-scroll-target="#step-3-open-rstudio">Step 3: Open RStudio</a></li>
-  <li><a href="#step-4-install-git" id="toc-step-4-install-git" class="nav-link" data-scroll-target="#step-4-install-git">Step 4: Install git</a></li>
+  <li><a href="#step-4-install-git-os-specific-instructions-below" id="toc-step-4-install-git-os-specific-instructions-below" class="nav-link" data-scroll-target="#step-4-install-git-os-specific-instructions-below">Step 4: Install git (OS-specific instructions below)</a></li>
   <li><a href="#step-5-install-usethis" id="toc-step-5-install-usethis" class="nav-link" data-scroll-target="#step-5-install-usethis">Step 5: Install <code>usethis</code></a></li>
   <li><a href="#step-6-configure-git" id="toc-step-6-configure-git" class="nav-link" data-scroll-target="#step-6-configure-git">Step 6: Configure git</a></li>
   <li><a href="#step-7-create-personal-access-token" id="toc-step-7-create-personal-access-token" class="nav-link" data-scroll-target="#step-7-create-personal-access-token">Step 7: Create Personal Access Token</a></li>
@@ -239,21 +239,22 @@ Potential Blocker: I’m seeing this image when I try to open RStudio:
 <hr>
 </section>
 </section>
-<section id="step-4-install-git" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-install-git">Step 4: Install git</h3>
-<p>This is going to be different for different students depending on what type of operating system you are using.</p>
+<section id="step-4-install-git-os-specific-instructions-below" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-install-git-os-specific-instructions-below">Step 4: Install git (OS-specific instructions below)</h3>
+<p>This is going to be different for different students depending on what type of operating system you are using. Scroll to the instructions for your operating system.</p>
 <section id="step-4-for-macosx" class="level4">
 <h4 class="anchored" data-anchor-id="step-4-for-macosx">Step 4 for MacOSX</h4>
 <p>If you just recently installed RStudio, when you open RStudio, you may see a window that looks like this:</p>
 <p><img src="img/install_git.png" class="img-fluid" width="300"></p>
 <p>If you see this image, you should click ‘Install’. It will likely take a few moments to install.</p>
-<p>If you don’t see this image, it could be because git is already installed on your computer. You can check by navigating to the Console pane at the bottom of your screen and clicking on the ‘Terminal’ tab. Enter the following in that window: <code>which git</code>. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: <code>/usr/bin/git</code>, but yours may look different.</p>
+<p>If you don’t see this image, it could be because git is already installed on your computer. You can check by navigating to the ‘Console’ pane at the bottom of your screen and clicking on the ‘Terminal’ tab. Enter the following in that window: <code>which git</code>. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: <code>/usr/bin/git</code>, but yours may look different.</p>
 <p>If git is not installed at this point, then you should copy and paste the following into your <strong>Terminal</strong> and click enter:</p>
 <pre><code>xcode-select --install</code></pre>
 </section>
 <section id="step-4-for-windows" class="level4">
 <h4 class="anchored" data-anchor-id="step-4-for-windows">Step 4 for Windows</h4>
 <p>Check if git is already installed by navigating to the Console pane at the bottom of your screen and clicking on the ‘Terminal’ tab. Enter the following in the <strong>Terminal</strong>: <code>where git</code>. If git is not installed, the window will tell you so. If it is installed, it will report a file path. My file path looks like this: <code>/usr/bin/git</code>, but yours may look different.</p>
+<p><img src="img/terminal.png" class="img-fluid" width="800"></p>
 <p>If git is not installed at this point, then you should install Git for Windows <a href="https://gitforwindows.org/">here</a>. <strong>When installing, you will be prompted about “Adjusting your PATH environment”. When this happens, you should select “Git from the command line and also from 3rd-party software”.</strong></p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -265,7 +266,9 @@ Before moving to step 5...
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We want to be absolutely sure that git is properly installed before moving on. Navigate to the Console pane at the bottom of your screen and clicking on the <strong>Terminal</strong> tab. If you are using a Mac, enter <code>which git</code>. If you are using a Windows, enter <code>where git</code>. If git is installed, you should see a file path to git (most likely in a <code>bin</code> folder). If you get an indication that git can’t be found, raise a blocker flag.</p>
+<p>After you’ve installed git, quit out of RStudio and then reopen it. We want to be absolutely sure that git is properly installed before moving on. Navigate to the Console pane at the bottom of your screen and clicking on the <strong>Terminal</strong> tab. If you are using a Mac, enter <code>which git</code>. If you are using a Windows, enter <code>where git</code>. If git is installed, you should see a file path to git (most likely in a <code>bin</code> folder).</p>
+<p><img src="img/terminal.png" class="img-fluid" width="800"></p>
+<p>If you get an indication that git can’t be found, raise a blocker flag.</p>
 </div>
 </div>
 </section>
@@ -276,7 +279,7 @@ Before moving to step 5...
 <ol type="1">
 <li>Ensure that you are in the ‘Console’ at the bottom of your screen.</li>
 <li>Copy and paste <code>install.packages("usethis")</code> into your console and click enter.</li>
-<li>You will be asked “Do you want to install from sources the packages which need compilation? (Yes/no/cancel)”, and you can type ‘yes’. After that, a bunch of lines of code will run with red font.</li>
+<li>You will be asked “Do you want to install from sources the packages which need compilation? (Yes/no/cancel)”, and you can type ‘no’. After that, a bunch of lines of code will run with red font.</li>
 </ol>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -304,15 +307,11 @@ Potential Blocker: I’m getting an error message that rlang is not installed.
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Potential Blocker: I’m getting the following error when I try to set my git credentials:
+Potential Blocker: I’m getting an error message that gert is not installed.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<pre><code>Error in new_git_error("git_error", args = args, stdout = out, status = attr(out,  :
-  System git failed: xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</code></pre>
-<p>Switch to the Terminal tab in the bottom left hand corner of RStudio and enter the following:</p>
-<p><code>xcode-select --install</code></p>
-<p>Then try again.</p>
+<p>In your console type <code>install.packages("gert")</code>. Then re-try Step 6.</p>
 </div>
 </div>
 <div class="callout-caution callout callout-style-default callout-captioned">
@@ -386,6 +385,23 @@ Tip
 <li>Enter <code>gitcreds_set()</code> into your Console.</li>
 <li>You will be prompted to enter your password or token. Head back over to Github.com, and copy the Personal Access Token that you created in the last step. It will be a long string of characters. Paste it into your RStudio Console.</li>
 </ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Potential Blocker: I’m getting the following error when I try to set my git credentials:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<pre><code>Error in new_git_error("git_error", args = args, stdout = out, status = attr(out,  :
+  System git failed: xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</code></pre>
+<p>Switch to the Terminal tab in the bottom left hand corner of RStudio and enter the following:</p>
+<p><code>xcode-select --install</code></p>
+<p>Then try again.</p>
+</div>
+</div>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -417,7 +433,7 @@ Potential Blocker: I’m get an error <code>System git failed: fatal: bad config
   System git failed: fatal: bad config line ...</code></pre>
 <p>…this means that you probably added some unrecognized characters in your git config file. Enter:</p>
 <pre><code>library(usethis)
-edit_git_config</code></pre>
+edit_git_config()</code></pre>
 <p>This will open your config file. Check to make sure you don’t have extra quotation marks in your user name or email address. It should look something like this.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -434,11 +450,11 @@ edit_git_config</code></pre>
 </section>
 <section id="step-9-create-first-github-repo" class="level3">
 <h3 class="anchored" data-anchor-id="step-9-create-first-github-repo">Step 9: Create first GitHub repo</h3>
-<p>In Moodle, scroll to the bottom of our course page to find the Getting Started Assignment link. Click this link to enter our GitHub classroom. This will copy a GitHub template repo into your GitHub account. It might take a few moments.</p>
+<p>In Moodle, scroll to today’s date to find the Course Infrastructure Set-up link. Click this link to enter our GitHub classroom. This will copy a GitHub template repo into your GitHub account. It might take a few moments.</p>
 </section>
 <section id="step-10-copy-repo-url" class="level3">
 <h3 class="anchored" data-anchor-id="step-10-copy-repo-url">Step 10: Copy repo URL</h3>
-<p>Once the repo is created, copy the link to the repo that was just created to your clipboard. It should look something like https://https://github.com/sds-192-intro-fall22/getting-started/YOUR-USER-NAME</p>
+<p>Once the repo is created, copy the link to the repo that was just created to your clipboard. It should look something like https://github.com/sds-192-intro-fall22/getting-started-YOUR-USER-NAME</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/github_url.png" class="img-fluid figure-img"></p>
@@ -497,13 +513,15 @@ gitcreds_set()</code></pre>
 <section id="step-12-open-edit-and-commit-changes-to-getting-started.qmd" class="level3">
 <h3 class="anchored" data-anchor-id="step-12-open-edit-and-commit-changes-to-getting-started.qmd">Step 12: Open, edit, and commit changes to <code>getting-started.qmd</code></h3>
 <ol type="1">
-<li><p>On the initial install, the Files tab will be in the lower right hand corner of RStudio. Open the <code>getting-started.qmd</code> file.</p></li>
+<li><p>On the initial install, the Files tab will be in the lower right hand corner of RStudio. Look for the <code>getting-started.qmd</code> file in that pane and then open it.</p>
+<p><img src="img/rstudio_panels.png" class="img-fluid"></p></li>
 <li><p>Follow instructions in the file. Make sure to save the file.</p></li>
 <li><p>When the file tells you to commit your code, turn your attention to the Environment pane of RStudio (i.e.&nbsp;upper right hand pane on initial install).</p></li>
 <li><p>Click on the ‘Git’ tab, and then click the blank checkbox next to <code>getting-started.qmd</code>. As we will learn in a few weeks, this <em>stages</em> a file in git.</p>
 <p><img src="img/stage.png" class="img-fluid" width="300"></p></li>
 <li><p>In this same ‘Git’ pane, click the ‘Commit’ button. In the window that appears, you will be prompted to write a commit message. Enter the following in the commit message window: “added name to getting-started.qmd”</p></li>
 <li><p>Click the ‘Commit’ button. Again, in a few weeks, we will learn what this means.</p></li>
+<li><p>If you’ve done this correctly, when you close the window, there will be no files listed in the Git pane.</p></li>
 </ol>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -526,6 +544,26 @@ Tip
 <h3 class="anchored" data-anchor-id="step-13-push-your-code-to-github.com">Step 13: Push your code to GitHub.com</h3>
 <p>In the same ‘Git’ pane, you will see a little green upwards arrow, click this arrow to push your code to GitHub.com.</p>
 <p><img src="img/push-button.png" class="img-fluid" width="300"></p>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Potential Blocker: When I push my code, I get an a notification that everything is up to date.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="img/uptodate.png" class="img-fluid"></p>
+<p>If you get this notification, and you are sure you haven’t already pushed the changes, it likely means one of three things:</p>
+<ol type="1">
+<li>You didn’t make changes to any files.</li>
+<li>You didn’t save your changes to the files.</li>
+<li>You didn’t commit your changes to the files.</li>
+</ol>
+<p>If this is the case, return back to step 12, and make sure that changes were made, saved, and committed, and then try pushing again.</p>
+</div>
+</div>
 <section id="congratulations-youve-completed-our-course-infrastructure-set-up" class="level4">
 <h4 class="anchored" data-anchor-id="congratulations-youve-completed-our-course-infrastructure-set-up"><strong>CONGRATULATIONS! You’ve completed our course infrastructure set-up!</strong></h4>
 
