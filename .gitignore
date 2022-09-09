@@ -29,3 +29,8 @@ vignettes/*.pdf
 .DS_Store
 2011.csv
 sds-192-public-website-quarto.Rproj
+
+website/labs
+website/solutions
+docs/solutions
+
