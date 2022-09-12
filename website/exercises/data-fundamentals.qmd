@@ -33,7 +33,7 @@ Today, we are going to work with a dataset that documents cases where NYC Urban 
   * Identify the index of one missing value in this dataset.
   * Identify one nominal variable, one ordinal variable, one discrete variable, and one continuous variable. 
 
-6. As a preview of what you will be able to do in a few weeks, here is a visualization of the most popular dog names in 2021 in NYC! 
+6. As a preview of what you will be able to do in a few weeks, here is a visualization of the most commons species for which services are requested in NYC! 
   
 ```{r}
 #| message: false
