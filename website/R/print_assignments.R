@@ -14,7 +14,7 @@ print_readings <- function(reading_df){
         collapse = " ")
     })
     
-    cat(paste("", fa(name ="book"), "   ", reading_keys$chapter, reading_list), sep = '  \n')
+    cat(paste("", fa(name ="book"), "  (Read in Perusall; linked in Moodle) ", reading_keys$chapter, reading_list), sep = '  \n')
   }
   else{
   }
