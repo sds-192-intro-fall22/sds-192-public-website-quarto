@@ -1,0 +1,183 @@
+---
+title: 'Lab 5: Exploratory Data Analysis'
+format:
+  html:
+    self-contained: true
+editor: source
+knitr:
+  opts_chunk:
+    message: false
+---
+
+```{r}
+#| warning: false
+#| messages: false
+#| document: show
+library(tidyverse)
+
+sqf_url <- "https://www1.nyc.gov/assets/nypd/downloads/zip/analysis_and_planning/stop-question-frisk/sqf-2011-csv.zip"
+temp <- tempfile()
+download.file(sqf_url, temp)
+sqf_zip <- unzip(temp, "2011.csv")
+sqf_2011 <- read.csv(sqf_zip, stringsAsFactors = FALSE) 
+sqf_2011_race_cat <- read.csv("https://raw.githubusercontent.com/lindsaypoirier/STS-101/master/Data/SQF/sqf_race_categories.csv", stringsAsFactors = FALSE) 
+rm(sqf_url)
+rm(temp)
+rm(sqf_zip)
+```
+
+```{r}
+#| warning: false
+#| messages: false
+#| document: show
+sqf_2011 <- 
+  sqf_2011 %>% 
+  select(pct, race, age, frisked, pistol, riflshot, asltweap, knifcuti, machgun, othrweap, sumissue, arstmade) %>%
+  left_join(sqf_2011_race_cat, by = "race") %>%
+  mutate(across(frisked:arstmade, 
+         ~ case_when(. == "Y" ~ 1, . == "N" ~ 0)))
+rm(sqf_2011_race_cat)
+```
+
+###### Question
+
+::: question
+
+Add new columns indicating 1) whether a weapon was found or 2) an arrest/summons was made.
+:::
+
+
+```{r}
+#| eval: false
+sqf_2011 <- 
+  sqf_2011 %>%
+  #Add a variable for weapon found
+  _____(wpnfound = case_when(pistol == 1 |
+                               riflshot == 1 | 
+                               asltweap == 1 |
+                               knifcuti == 1 | 
+                               machgun == 1 | 
+                               othrweap == 1 ~ 1,
+                             TRUE ~ 0))
+sqf_2011 <- 
+  sqf_2011 %>%
+  #Add a variable for arrest made or summons issued
+  _____(arrestsumm = case_when(sumissue == 1 | 
+                                arstmade == 1 ~ 1,
+                               TRUE ~ 0))
+```
+
+###### Question
+
+::: question
+
+Subset the dataset to the six variables listed in the data dictionary above.
+:::
+
+
+```{r}
+#| eval: false
+sqf_2011 <-
+  sqf_2011 %>%
+  _____(pct, arrestsumm, _____, wpnfound, race_cat, _____)
+```
+
+###### Question
+
+::: question
+Calculate the number of stops in 2011. Hint: Keep in mind that every row in the dataset represents one stop.
+:::
+
+
+```{r}
+#| eval: false
+total_stops <-
+  sqf_2011 %>%
+  summarize(Count = _____) %>%
+  pull()
+
+total_stops
+```
+
+###### Question
+
+::: question
+How many stops did not result in an arrest or summons in 2011? What percentage of stops did not result in an arrest or summons?
+:::
+
+
+```{r}
+#| eval: false
+sqf_2011 %>%
+  #Subset to rows where suspect innocent
+  _____(arrestsumm _____ 0) %>% 
+  #Calculate number of observations
+  _____(total_innocent = n(), 
+            percent_innocent = _____ / total_stops * 100)
+```
+
+###### Question
+
+::: question
+
+In how many stops were the individuals aged 14-24? In what percentage of stops were the individuals aged 14-24?
+:::
+
+
+```{r}
+#| eval: false
+sqf_2011 %>%
+  #Subset to rows where suspect age 14-24
+  _____(age _____ 14 & age _____ 24) %>% 
+  #Calculate number of observations and percentage of observations
+  _____(total_14_24 = _____, 
+            percent_14_24 = n() / total_stops * 100)
+```
+
+###### Question
+
+::: question
+
+How many stops were there per race in 2011? What percentage of stops per race in 2011? Arrange by number of stops in descending order.
+:::
+
+
+```{r}
+#| eval: false
+total_stops_race_recorded <-
+  sqf_2011 %>%
+  #Subset to rows where race_cat is not NA or "OTHER"
+  filter(_____(race_cat) & race_cat _____ "OTHER") %>% 
+  summarize(Count = n()) %>%
+  pull()
+
+sqf_2011 %>%
+  #Subset to rows where race_cat is not NA or "OTHER"
+  _____(_____(race_cat) & race_cat _____ "OTHER") %>% 
+  #Group by race
+  _____(race_cat) %>% 
+  #Calculate number of observations
+  _____(stops = n(), 
+            percent_stops = n() / total_stops_race_recorded * 100) %>%
+  #Sort by stops in descending order
+  _____(_____(stops)) 
+```
+
+###### Question
+
+::: question
+
+What percentage of stops in 2011 resulted in a frisk per race? What percentage of stops in 2011 resulted in a weapon found per race? What percentage of stops in 2011 resulted in an arrest or summons per race? In your resulting data table, each row should be a race, and there should be columns for `stops`, `percent_stops`, `percent_frisked`, `percent_wpnfound` , and `percent_arrestsumm`.
+:::
+
+
+```{r}
+#| eval: false
+# Write code here. 
+```
+
+```{r}
+#| document: show
+#If you finish early, I encourage you to attempt to plot some of this data below using `ggplot()`!
+```
+

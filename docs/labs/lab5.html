@@ -282,13 +282,13 @@ Tip
 <div id="fig-anonymous-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><a href="http://blog.danwin.com/request-nypd-form-uf250/"><img src="img/uf250-2011-side-1.png" class="img-fluid figure-img" alt="UF250 Side 2" width="500"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 2, Dan Nguyen's Blog</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 2, Dan Nguyen’s Blog</figcaption><p></p>
 </figure>
 </div>
 <div id="fig-anonymous-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><a href="http://blog.danwin.com/request-nypd-form-uf250/"><img src="img/uf250-2011-side-2.png" class="img-fluid figure-img" alt="UF250 Side 2"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 2, Dan Nguyen's Blog</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">UF250 Side 2, Dan Nguyen’s Blog</figcaption><p></p>
 </figure>
 </div>
 <p>As a result of some high profile shootings in the late 1990s and mid-2000s, both the New York State Attorney General’s Office and the New York Civil Liberties Union began to examine NYPD stop and frisk activity for racial profiling. With pressure from these organizations, in the mid-2000s, information recorded on UF-250 forms began getting reported in public databases. In the early 2010s, when the NYPD’s use of stop and frisk went before the US District Court, this data was integral in proving that stop and frisk was being carried out in NYC in an unconstitutional way. The ruling mandated that the NYPD create a policy outlining when stops were authorized, and since the practice has declined considerably. See</p>
@@ -299,7 +299,7 @@ Tip
 <table class="table">
 <colgroup>
 <col style="width: 17%">
-<col style="width: 45%">
+<col style="width: 44%">
 <col style="width: 37%">
 </colgroup>
 <thead>
@@ -355,7 +355,7 @@ Tip
 </section>
 <section id="setting-up-your-environment" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-your-environment">Setting Up Your Environment</h2>
-<div class="cell" data-messages="false">
+<div class="cell" data-messages="false" data-document="show">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sqf_url <span class="ot">&lt;-</span> <span class="st">"https://www1.nyc.gov/assets/nypd/downloads/zip/analysis_and_planning/stop-question-frisk/sqf-2011-csv.zip"</span></span>
@@ -371,7 +371,7 @@ Tip
 <section id="prepare-dataset-for-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="prepare-dataset-for-analysis">Prepare Dataset for Analysis</h3>
 <p>The original dataset codes each race with a single letter. This adds a column called <code>race_cat</code> that writes out each racial category in accordance with the data documentation. It also replaces every instance of “Y” in the dataset with 1 and every instance of “N” with 0. This will allow us to sum the Yes’s in the dataset. You’ll learn more about how this code works in coming weeks.</p>
-<div class="cell">
+<div class="cell" data-messages="false" data-document="show">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="ot">&lt;-</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span> </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pct, race, age, frisked, pistol, riflshot, asltweap, knifcuti, machgun, othrweap, sumissue, arstmade) <span class="sc">%&gt;%</span></span>
@@ -381,18 +381,10 @@ Tip
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(sqf_2011_race_cat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The original dataset had separate variables for indicating whether a pistol, rifle, assault weapon, knife, machine gun, or other weapon was found on a suspect. We will create a variable equal to 1 if any of these weapons were found on the suspect. Further, the original dataset had separate variables for indicating whether a stop resulted in an arrest made or summons issued. We will create a variable equal to 1 if either occurred.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Exercise 1
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="question" class="level6">
+<h6 class="anchored" data-anchor-id="question">Question</h6>
+<div class="question">
 <p>Add new columns indicating 1) whether a weapon was found or 2) an arrest/summons was made.</p>
-</div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="ot">&lt;-</span> </span>
@@ -412,41 +404,46 @@ Exercise 1
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                                arstmade <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="cell" data-document="solutions">
+
 </div>
-<div class="callout-caption-container flex-fill">
-Exercise 2
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="question-1" class="level6">
+<h6 class="anchored" data-anchor-id="question-1">Question</h6>
+<div class="question">
 <p>Subset the dataset to the six variables listed in the data dictionary above.</p>
-</div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="ot">&lt;-</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(pct, arrestsumm, _____, wpnfound, race_cat, _____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-document="solutions">
+
+</div>
+</section>
 </section>
 </section>
 <section id="analysis" class="level2">
 <h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Exercise 3
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="question-2" class="level6">
+<h6 class="anchored" data-anchor-id="question-2">Question</h6>
+<div class="question">
 <p>Calculate the number of stops in 2011. Hint: Keep in mind that every row in the dataset represents one stop.</p>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>total_stops <span class="ot">&lt;-</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> _____) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>total_stops</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-document="solutions">
+
+</div>
+<section id="section" class="level7">
+<p class="heading"></p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -460,26 +457,12 @@ Tip
 <p><code>summarize()</code> will return a <em>data frame</em> with the summarized value. Remember a data frame is a two-dimensional table with rows and columns (even if it’s a 1x1 table). If we want <strong>just the value</strong>, we can call <code>pull()</code> to extract the value from that two–dimensional table.</p>
 </div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>total_stops <span class="ot">&lt;-</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> _____) <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>total_stops</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Exercise 4
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+</section>
+<section id="question-3" class="level6">
+<h6 class="anchored" data-anchor-id="question-3">Question</h6>
+<div class="question">
 <p>How many stops did not result in an arrest or summons in 2011? What percentage of stops did not result in an arrest or summons?</p>
-</div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">%&gt;%</span></span>
@@ -489,18 +472,14 @@ Exercise 4
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="at">total_innocent =</span> <span class="fu">n</span>(), </span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent_innocent =</span> _____ <span class="sc">/</span> total_stops <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="cell" data-document="solutions">
+
 </div>
-<div class="callout-caption-container flex-fill">
-Exercise 5
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="question-4" class="level6">
+<h6 class="anchored" data-anchor-id="question-4">Question</h6>
+<div class="question">
 <p>In how many stops were the individuals aged 14-24? In what percentage of stops were the individuals aged 14-24?</p>
-</div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">%&gt;%</span></span>
@@ -510,6 +489,11 @@ Exercise 5
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="at">total_14_24 =</span> _____, </span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent_14_24 =</span> <span class="fu">n</span>() <span class="sc">/</span> total_stops <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-document="solutions">
+
+</div>
+<section id="section-1" class="level7">
+<p class="heading"></p>
 <p>Why doesn’t this match the values we see on the NYCLU website?</p>
 <p>Note the following from the <a href="https://www.nyclu.org/en/publications/report-nypd-stop-and-frisk-activity-2011-2012">NYCLU’s 2011 report on Stop, Question, and Frisk</a> data:</p>
 <blockquote class="blockquote">
@@ -523,24 +507,21 @@ Exercise 5
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>sqf_2011_sub <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">%&gt;%</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;=</span> <span class="dv">14</span> <span class="sc">&amp;</span> age <span class="sc">&lt;=</span> <span class="dv">24</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_14_24 =</span> <span class="fu">n</span>(), </span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent_14_24 =</span> <span class="fu">n</span>() <span class="sc">/</span> total_stops_age_recorded <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-document="solutions">
+
+</div>
 <p>This still doesn’t match the values we see on the website, but it does match the values we see in the NYCLU’s 2011 report on Stop, Question, and Frisk data. This is typically when I would reach out to a representative at the NYCLU to inquire about the discrepancy.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Exercise 6
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+</section>
+<section id="question-5" class="level6">
+<h6 class="anchored" data-anchor-id="question-5">Question</h6>
+<div class="question">
 <p>How many stops were there per race in 2011? What percentage of stops per race in 2011? Arrange by number of stops in descending order.</p>
-</div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>total_stops_race_recorded <span class="ot">&lt;-</span></span>
@@ -561,7 +542,12 @@ Exercise 6
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Sort by stops in descending order</span></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="fu">_____</span>(stops)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note how this dataset categorizes race. Many different government datasets categorize race in many different ways. This, for instance, is not how the US Census categorizes race. How we categorize race matters for how we can talk about discrimination and racial profiling. Imagine if WHITE was not categorized separately from WHITE-HISPANIC. The values in this dataset would appear very differently! The NYCLU chose to aggregate two racial categories in this dataset into the one category - Latino - in order to advance certain claims regarding discrimination. What we should remember is that these racial categories are not reported by those stopped; they are recorded by officers stopping individuals. They may not reflect how individuals identify themselves.</p>
+<div class="cell" data-document="solutions">
+
+</div>
+<section id="section-2" class="level7">
+<p class="heading"></p>
+<p>Note how this dataset categorizes race. Many different government datasets categorize race in many different ways. This, for instance, is not how the US Census categorizes race. How we categorize race matters for how we can talk about discrimination and racial profiling. Imagine if WHITE was not categorized separately from WHITE-HISPANIC. The values in this dataset would appear very differently! The NYCLU chose to aggregate two racial categories in this dataset into the one category - Latinx - in order to advance certain claims regarding discrimination. What we should remember is that these racial categories are not reported by those stopped; they are recorded by officers stopping individuals. They may not reflect how individuals identify themselves.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Subset to rows where race_cat is "WHITE-HISPANIC" or "BLACK-HISPANIC"</span></span>
@@ -570,22 +556,24 @@ Exercise 6
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="at">stops_Latinx =</span> _____, </span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent_Latinx =</span> <span class="fu">n</span>() <span class="sc">/</span> total_stops_race_recorded <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="cell" data-document="solutions">
+
 </div>
-<div class="callout-caption-container flex-fill">
-Exercise 7
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>What percentage of stops in 2011 resulted in a frisk per race? What percentage of stops in 2011 resulted in a weapon found per race? What percentage of stops in 2011 resulted in an arrest or summons per race? In your resulting data table, each row should be a race, and there should be columns for <code>stops</code>, <code>percent_stops</code>, <code>percent_frisked</code>, <code>percent_wpnfound</code> , and <code>percent_arrestsum</code>.</p>
-</div>
+</section>
+</section>
+<section id="question-6" class="level6">
+<h6 class="anchored" data-anchor-id="question-6">Question</h6>
+<div class="question">
+<p>What percentage of stops in 2011 resulted in a frisk per race? What percentage of stops in 2011 resulted in a weapon found per race? What percentage of stops in 2011 resulted in an arrest or summons per race? In your resulting data table, each row should be a race, and there should be columns for <code>stops</code>, <code>percent_stops</code>, <code>percent_frisked</code>, <code>percent_wpnfound</code> , and <code>percent_arrestsumm</code>.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write code here. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-document="solutions">
+
+</div>
+<section id="section-3" class="level7">
+<p class="heading"></p>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -603,22 +591,14 @@ Ethical Considerations
 <p>What are some of the consequences of the incompleteness and/or one-sided nature of this dataset? How should we think about and communicate its flaws vs its value? How might this data collection program be redesigned so as to represent more diverse perspectives? Share your ideas on our <code>sds-192-discussions</code> Slack channel.</p>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you finish early, I encourage you to attempt to plot some of this data below using <code>ggplot()</code>!</p>
-</div>
+<div class="cell" data-document="show">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#If you finish early, I encourage you to attempt to plot some of this data below using `ggplot()`!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
 
+</section>
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">

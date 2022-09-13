@@ -1,0 +1,123 @@
+---
+title: 'Lab 3: Plotting Frequencies and Distributions'
+format:
+  html:
+    self-contained: true
+editor: source
+knitr:
+  opts_chunk:
+    message: false
+---
+
+```{r}
+#| document: show
+library(spotifyr)
+# id <- 'FILL CLIENT ID HERE'
+# secret <- 'FILL CLIENT SECRET HERE'
+# Sys.setenv(SPOTIFY_CLIENT_ID = id)
+# Sys.setenv(SPOTIFY_CLIENT_SECRET = secret)
+```
+
+```{r}
+#| warning: false
+#| message: false
+#| document: show
+library(tidyverse)
+spotify_playlists <- get_playlist_audio_features(
+  username = "poiril",
+  playlist_uris = c("7ryj1GwAWYUY36VQd4uXoq",
+                    "3DYUw0nHB9o8tLZKQup4zp",
+                    "37i9dQZF1DXdOEFt9ZX0dh"),
+  authorization = get_spotify_access_token()
+) %>%
+  select(-c(track.artists, 
+            track.available_markets, 
+            track.album.artists, 
+            track.album.available_markets, 
+            track.album.images))
+```
+
+###### Question
+
+::: question
+How many songs are in each playlist? Create a plot to visualize this, and order the results by the number of songs. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.
+:::
+
+
+```{r}
+# Create plot here
+```
+
+###### Question
+
+::: question
+What is the distribution of valence across all of the songs (in intervals of 0.1 valence)? Create a histogram to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.
+:::
+
+
+```{r}
+# Create plot here
+```
+
+###### Question
+
+::: question
+What is the distribution of valence across all of the songs (in intervals of 0.1 valence) *in each playlist*? Create a histogram to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.
+:::
+
+
+```{r}
+# Create plot here
+```
+
+###### Question
+
+::: question
+What are differences in the summary statistics (max, min, median, etc.) of the valence of songs in each playlist? Create grouped boxplot to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.
+:::
+
+
+```{r}
+# Create plot here
+```
+
+###### Question
+
+::: question
+Do happier songs tend to be more danceable *in each playlist*? Create a plot to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context. Also be sure to adjust your plot to address overplotting.
+:::
+
+
+```{r}
+# Create plot here
+```
+
+###### Question
+
+::: question
+Do songs composed with the minor or major `mode_name` tend to be happier *in each playlist*? Create a plot to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.
+:::
+
+
+```{r}
+# Create plot here
+```
+
+###### Question
+
+::: question
+Do happier songs tend to have a higher tempo across all playlists? What role might the song's mode play? Create a plot to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context. Also be sure to adjust your plot to address overplotting.
+:::
+
+
+```{r}
+#Create plot here
+```
+
+###### Question
+
+::: question
+Based on all of your plots, summarize what you learned about the joyfulness of these three playlists below.
+:::
+
+

@@ -205,6 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><p>Produce and interpret univariate plots</p></li>
 <li><p>Produce and interpret multivariate plots</p></li>
+<li><p>Summarize and interpret variation and co-variation from observation of plots</p></li>
 <li><p>Contextualize plots with descriptive labels and titles</p></li>
 </ul>
 </section>
@@ -219,6 +220,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <dt>Univariate Plots</dt>
 <dd>
 <p>Plots that summarize and visualize the distribution of a single variable</p>
+</dd>
+<dt>Variation</dt>
+<dd>
+<p>The degree to which categorical or numeric values vary across data</p>
 </dd>
 </dl>
 </section>
@@ -243,18 +248,72 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Today’s set-up is a little more complicated than usual, so be sure to take it slow and ask questions as they come up!</p>
+<p>Today’s set-up is a little more complicated than usual, so <strong>be sure to take it slow</strong> and ask questions as they come up!</p>
 </div>
 </div>
 <ol type="1">
-<li>Install the Spotify R package by entering the following into your Console: <code>install.packages("spotifyr")</code></li>
-<li>Log-in to Spotify’s Developer Dashboard <a href="https://developer.spotify.com/dashboard/">here</a>. If you have a Spotify account, you can log-in with that account. Otherwise, you should create one.</li>
-<li>Click the ‘Create an App’ button to create an app named “SDS 192 Class Project”. You can indicate that this is a “Project for SDS 192 class”</li>
-<li>Click Edit Settings. Under the heading <strong>Redirect URIs</strong> copy and paste this URL: http://localhost:1410/, and click Add. Scroll to the bottom of the window and click Save. This is going to allow us to authenticate our Spotify accounts through our local computers.</li>
-<li>Click the Users and Access button. Scroll down to Add New User, and add your name and the email address associated with your Spotify account. Click Add.</li>
-<li>Click “Show Client Secret”. Copy client id and secret below, and then run the code chunk.</li>
+<li><p>Install the Spotify R package by entering the following into your Console: <code>install.packages("spotifyr")</code></p></li>
+<li><p>Log-in to Spotify’s Developer Dashboard <a href="https://developer.spotify.com/dashboard/">here</a>. If you have a Spotify account, you can log-in with that account. Otherwise, you should create one. <img src=".png" class="img-fluid"></p></li>
+<li><p>Click the ‘Create an App’ button to create an app named “SDS 192 Class Project”. You can indicate that this is a “Project for SDS 192 class”</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/create-app.png" class="img-fluid figure-img" width="800"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">This is where to click to create an app.</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/app-form.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">This is the form that you will fill out when you click ‘Create an app’</figcaption><p></p>
+</figure>
+</div></li>
+<li><p>Click Edit Settings. Under the heading <strong>Redirect URIs</strong> copy and paste this URL: http://localhost:1410/, and click Add. Scroll to the bottom of the window and click Save. This is going to allow us to authenticate our Spotify accounts through our local computers.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/app-settings.png" class="img-fluid figure-img" width="800"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Click here to Edit Settings</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/redirect.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">This is where you will paste the redirect link.</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/save-app-settings.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Be sure to to click ‘Add’ after pasting the URL and to scroll down and click ‘Save’</figcaption><p></p>
+</figure>
+</div></li>
+<li><p>Click the Users and Access button. Scroll down to Add New User, and add your name and the email address associated with your Spotify account. Click Add.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/app-users.png" class="img-fluid figure-img" width="800"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">This is where to click for Users and Access.</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/add-app-user.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">This is where to add a user.</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/added-app-user.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">You should see this if you’ve successfully added a user.</figcaption><p></p>
+</figure>
+</div></li>
+<li><p>Click “Show Client Secret”. Copy <strong>client id</strong> and <strong>secret</strong> into the code below, remove the comments in the code chunk, and then run the code chunk.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/spotify-secret.png" class="img-fluid figure-img" width="500"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">This is where you will see the client ID and secret. I’ve blocked it out here because these should be treated as passwords and not shared.</figcaption><p></p>
+</figure>
+</div></li>
 </ol>
-<div class="cell">
+<div class="cell" data-document="show">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spotifyr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># id &lt;- 'FILL CLIENT ID HERE'</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># secret &lt;- 'FILL CLIENT SECRET HERE'</span></span>
@@ -262,12 +321,30 @@ Tip
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Sys.setenv(SPOTIFY_CLIENT_SECRET = secret)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="7" type="1">
-<li>Below replace <code>poiril</code> with your Spotify username. This is the ID that appears in the upper right hand corner when you log into your Spotify account (not your developer account.)</li>
-<li>Search Spotify for your favorite music genre and select three <em>playlists</em> from the search. Note that this code will only work for playlists, and playlists may be a ways down in the search results.</li>
-<li>When you click on a playlist, notice the URL in the navigation bar of your web browser. It should look something like spotify.com/playlist/LONG_STRING_OF_CHARACTERS. Copy the long string of characters at the end of the URL, and paste it into the function below. Your characters should replace the example playlist I’ve added: <code>7ryj1GwAWYUY36VQd4uXoq</code>.</li>
-<li>Repeat this for the other two playlists, replacing my other examples. Then run the code.</li>
+<li><p>Navigate to <a href="https://open.spotify.com/" class="uri">https://open.spotify.com/</a>. Below replace <code>poiril</code> with your Spotify username. This is the ID that appears in the upper right hand corner when you log into your Spotify account (not your developer account.)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/spotify-user.png" width="800" height="35" class="figure-img"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">This is where you will find the Spotify username.</figcaption><p></p>
+</figure>
+</div></li>
+<li><p>Search Spotify for your favorite music genre and select three <em>playlists</em> from the search. Note that this code will only work for playlists, and playlists may be a ways down in the search results.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/playlists.png" class="img-fluid figure-img" width="800"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Make sure to scroll down to Playlists when running your search!</figcaption><p></p>
+</figure>
+</div></li>
+<li><p>When you click on a playlist, notice the URL in the navigation bar of your web browser. It should look something like spotify.com/playlist/LONG_STRING_OF_CHARACTERS. Copy the long string of characters at the end of the URL, and paste it into the function below. Your characters should replace the example playlist I’ve added: <code>7ryj1GwAWYUY36VQd4uXoq</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/spotify-string.png" class="img-fluid figure-img" width="800"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">When you click on a playlist, you’ll see the long string of characters here.</figcaption><p></p>
+</figure>
+</div></li>
+<li><p>Repeat this for the other two playlists, replacing my other examples. Then run the code.</p></li>
 </ol>
-<div class="cell">
+<div class="cell" data-document="show">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>spotify_playlists <span class="ot">&lt;-</span> <span class="fu">get_playlist_audio_features</span>(</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">username =</span> <span class="st">"poiril"</span>,</span>
@@ -335,145 +412,101 @@ Warning
 </ul>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Exercise 1
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="question" class="level6">
+<h6 class="anchored" data-anchor-id="question">Question</h6>
+<div class="question">
 <p>How many songs are in each playlist? Create a plot to visualize this, and order the results by the number of songs. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.</p>
-</div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plot here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="cell" data-document="solutions">
+
 </div>
-<div class="callout-caption-container flex-fill">
-Exercise 2
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="question-1" class="level6">
+<h6 class="anchored" data-anchor-id="question-1">Question</h6>
+<div class="question">
 <p>What is the distribution of valence across all of the songs (in intervals of 0.1 valence)? Create a histogram to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.</p>
-</div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plot here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-document="solutions">
+
+</div>
+<section id="section" class="level7">
+<p class="heading"></p>
 <p>Let’s move on to some multivariate plotting. Remember that we can add further variables to a plot via a number of different aesthetics (e.g.&nbsp;color: <code>fill=</code> or <code>col=</code>; size: <code>size=</code>; position: <code>x=</code> or <code>y=</code>, small multiples: <code>+ facet_wrap(vars(...))</code> ). Whenever we add further data to a plot, we should be on the lookout for overplotting.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Exercise 3
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+</section>
+<section id="question-2" class="level6">
+<h6 class="anchored" data-anchor-id="question-2">Question</h6>
+<div class="question">
 <p>What is the distribution of valence across all of the songs (in intervals of 0.1 valence) <em>in each playlist</em>? Create a histogram to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.</p>
-</div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plot here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="cell" data-document="solutions">
+
 </div>
-<div class="callout-caption-container flex-fill">
-Exercise 4
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="question-3" class="level6">
+<h6 class="anchored" data-anchor-id="question-3">Question</h6>
+<div class="question">
 <p>What are differences in the summary statistics (max, min, median, etc.) of the valence of songs in each playlist? Create grouped boxplot to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.</p>
-</div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plot here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="cell" data-document="solutions">
+
 </div>
-<div class="callout-caption-container flex-fill">
-Exercise 5
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="question-4" class="level6">
+<h6 class="anchored" data-anchor-id="question-4">Question</h6>
+<div class="question">
 <p>Do happier songs tend to be more danceable <em>in each playlist</em>? Create a plot to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context. Also be sure to adjust your plot to address overplotting.</p>
-</div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plot here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="cell" data-document="solutions">
+
 </div>
-<div class="callout-caption-container flex-fill">
-Exercise 6
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Do songs composed in the minor or major mode tend to be happier <em>in each playlist</em>? Create a plot to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.</p>
-</div>
+</section>
+<section id="question-5" class="level6">
+<h6 class="anchored" data-anchor-id="question-5">Question</h6>
+<div class="question">
+<p>Do songs composed with the minor or major <code>mode_name</code> tend to be happier <em>in each playlist</em>? Create a plot to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plot here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="cell" data-document="solutions">
+
 </div>
-<div class="callout-caption-container flex-fill">
-Exercise 7
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="question-6" class="level6">
+<h6 class="anchored" data-anchor-id="question-6">Question</h6>
+<div class="question">
 <p>Do happier songs tend to have a higher tempo across all playlists? What role might the song’s mode play? Create a plot to visualize this. Be sure to give it a descriptive title and labels covering all 5 essential components of data context. Also be sure to adjust your plot to address overplotting.</p>
 </div>
-</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create boxplot here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create plot here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="cell" data-document="solutions">
+
 </div>
-<div class="callout-caption-container flex-fill">
-Exercise 8
-</div>
-</div>
-<div class="callout-body-container callout-body">
+</section>
+<section id="question-7" class="level6">
+<h6 class="anchored" data-anchor-id="question-7">Question</h6>
+<div class="question">
 <p>Based on all of your plots, summarize what you learned about the joyfulness of these three playlists below.</p>
 </div>
-</div>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Your Response
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Fill response here.</p>
-</div>
-</div>
+<section id="section-1" class="level7">
+<p class="heading"></p>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -489,6 +522,8 @@ Ethical Considerations
 </div>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
