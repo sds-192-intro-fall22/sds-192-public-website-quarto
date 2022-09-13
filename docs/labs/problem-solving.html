@@ -169,8 +169,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#help-pages" id="toc-help-pages" class="nav-link" data-scroll-target="#help-pages">Help pages</a></li>
   <li><a href="#cheatsheets" id="toc-cheatsheets" class="nav-link" data-scroll-target="#cheatsheets">Cheatsheets</a></li>
-  </ul></li>
   <li><a href="#searching-the-web" id="toc-searching-the-web" class="nav-link" data-scroll-target="#searching-the-web">Searching the Web</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -385,6 +386,9 @@ Tip
 <div class="question">
 <p>Access the help pages for the function <code>sort()</code>. Write code below to sort the vector <code>a</code> (which you created in an earlier step) in decreasing order.</p>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="cell" data-document="solutions">
 
 </div>
@@ -398,19 +402,23 @@ Tip
 <div class="question">
 <p>Navigate to <a href="https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf">this cheatsheet</a> for base <code>R</code>. Imagine we collected the temperature of our home each day for the past ten days (see code below).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a vector of temperatures</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>temps_to_factor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">68</span>, <span class="dv">70</span>, <span class="dv">78</span>, <span class="dv">75</span>, <span class="dv">69</span>, <span class="dv">80</span>, <span class="dv">66</span>, <span class="dv">66</span>, <span class="dv">79</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Create a vector of temperatures</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>temps_to_factor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">68</span>, <span class="dv">70</span>, <span class="dv">78</span>, <span class="dv">75</span>, <span class="dv">69</span>, <span class="dv">80</span>, <span class="dv">66</span>, <span class="dv">66</span>, <span class="dv">79</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s say we wanted to find how each day ranked from coolest to hottest. For instance, I wanted to know the ranking for day 1 vs.&nbsp;day 2 vs.&nbsp;day 3, and so on. Using the cheatsheet, find the function that will allow you to generate a ranking of each day’s temperature. Search the help pages for this function to determine how to randomly rank two days with the same temperature. Write a comment to yourself describing how this function is different than sorting the data.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write code here</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Write comment here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-document="solutions">
 
 </div>
 </section>
 </section>
-</section>
-<section id="searching-the-web" class="level1">
-<h1>Searching the Web</h1>
+<section id="searching-the-web" class="level2">
+<h2 class="anchored" data-anchor-id="searching-the-web">Searching the Web</h2>
 <p>I encourage you to search the web when you get errors in your code. Others have likely experienced that error before and gotten help from communities of data analysts and programmers. However, you should <strong>never copy and paste code directly from Stack Overflow</strong>. This violates the course policies on Academic Honesty. Instead you should use these resources to take notes and learn how to improve and revise code. Any time you reference Stack Overflow or any other Web resource to help you figure out an answer to a problem, you should cite that resource in your code. Here is how you would cite that post in APA format:</p>
 <blockquote class="blockquote">
 <p>Username. (Year, Month Date). <em>Title of page (Question/Topic)</em>. Stack Overflow. URL</p>
@@ -423,6 +431,15 @@ Tip
 <div class="cell" data-document="solutions">
 
 </div>
+</section>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<ol type="1">
+<li>When you are done, save your .qmd file in RStudio.</li>
+<li>Stage, commit, and push your file in the Git pane. Refer to step 12 in our <a href="https://sds-192-intro-fall22.github.io/sds-192-public-website-quarto/getting-started.html">Course Infrastructure setup</a> for a reminder of how to do this.</li>
+<li>Navigate back to GitHub.com and click on the .qmd files to make sure you see your changes to the files there. If you don’t see the changes there, I won’t see them either!</li>
+</ol>
 
 
 </section>

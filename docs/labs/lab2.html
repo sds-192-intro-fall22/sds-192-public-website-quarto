@@ -325,22 +325,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>maintenance <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/a8b64e3070ca2543b904d4d92780b09e6062ced6/website/data/nbi_maintenance.csv"</span>)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>kinds <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/a8b64e3070ca2543b904d4d92780b09e6062ced6/website/data/nbi_kind.csv"</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"https://www.fhwa.dot.gov/bridge/nbi/2022/delimited/MA22.txt"</span>, <span class="at">sep =</span> <span class="st">","</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(counties) <span class="sc">%&gt;%</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(route_prefixes) <span class="sc">%&gt;%</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(maintenance) <span class="sc">%&gt;%</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(kinds) <span class="sc">%&gt;%</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SERVICE_ON_042A <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(STRUCTURE_NUMBER_008, COUNTY_CODE_003_L, ROUTE_PREFIX_005B_L, MAINTENANCE_021_L, YEAR_BUILT_027, ADT_029, STRUCTURE_KIND_043A_L, STRUCTURAL_EVAL_067, BRIDGE_IMP_COST_094) <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"https://www.fhwa.dot.gov/bridge/nbi/2022/delimited/MA22.txt"</span>, <span class="at">sep =</span> <span class="st">","</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(counties) <span class="sc">|&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(route_prefixes) <span class="sc">|&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(maintenance) <span class="sc">|&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(kinds) <span class="sc">|&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SERVICE_ON_042A <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(STRUCTURE_NUMBER_008, COUNTY_CODE_003_L, ROUTE_PREFIX_005B_L, MAINTENANCE_021_L, YEAR_BUILT_027, ADT_029, STRUCTURE_KIND_043A_L, STRUCTURAL_EVAL_067, BRIDGE_IMP_COST_094) <span class="sc">|&gt;</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">STRUCTURE_KIND_043A_L =</span> </span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>           <span class="fu">case_when</span>(</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>             STRUCTURE_KIND_043A_L <span class="sc">==</span> <span class="st">"Concrete continuous"</span> <span class="sc">~</span> <span class="st">"Concrete"</span>,</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>             STRUCTURE_KIND_043A_L <span class="sc">==</span> <span class="st">"Steel continuous"</span> <span class="sc">~</span> <span class="st">"Steel"</span>,</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>             STRUCTURE_KIND_043A_L <span class="sc">==</span> <span class="st">"Prestressed concrete continuous"</span> <span class="sc">~</span> <span class="st">"Prestressed concrete"</span>,</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>             <span class="cn">TRUE</span> <span class="sc">~</span> STRUCTURE_KIND_043A_L)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>             <span class="cn">TRUE</span> <span class="sc">~</span> STRUCTURE_KIND_043A_L)) <span class="sc">|&gt;</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">BRIDGE_IMP_COST_094 =</span> BRIDGE_IMP_COST_094 <span class="sc">*</span> <span class="dv">1000</span>)</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="ot">&lt;-</span> nbi_ma <span class="sc">%&gt;%</span> <span class="fu">filter</span>(COUNTY_CODE_003_L <span class="sc">==</span> <span class="st">"Hampshire"</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="ot">&lt;-</span> nbi_ma <span class="sc">|&gt;</span> <span class="fu">filter</span>(COUNTY_CODE_003_L <span class="sc">==</span> <span class="st">"Hampshire"</span>)</span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(counties, kinds, maintenance, route_prefixes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -428,7 +428,7 @@ Tip
 <h3 class="anchored" data-anchor-id="position">Position</h3>
 <p>Since today we will be working with scatterplots, let’s start by talking about position. When we refer to position, we refer to the location of a point on a Cartesian plane (i.e.&nbsp;its position on an x-axis and its position on a y-axis). We can create scatterplots by mapping a variable in our dataset onto the x-axis and another variable onto the y-axis (<code>aes(x = VARIABLE_NAME, y = VARIABLE_NAME)</code>). Let’s take a look at what happens when we map the year a bridge was built onto the x aesthetic and the bridge’s structural evaluation onto the y aesthetic for all Hampshire County Massachusetts highway bridges.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">|&gt;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> STRUCTURAL_EVAL_067)) <span class="sc">+</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -451,7 +451,7 @@ Tip
 <p>In the code below, adjust the size to <code>2</code> and the alpha to <code>0.5</code>. Set the position to <code>"jitter"</code>. Note how this changes the plot.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> STRUCTURAL_EVAL_067)) <span class="sc">+</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
@@ -509,7 +509,7 @@ Tip
 <p>In the plot below, color the points on the plot with a qualitative palette by setting <code>col=</code> to the categorical variable <code>ROUTE_PREFIX_005B_L</code>. Remember that, in this case, color is an aesthetic, so this must be added inside of the <code>aes()</code> function. Add a label for the legend by setting <code>col=</code> in the <code>labs()</code> function to a phrase that describes the color variable.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> STRUCTURAL_EVAL_067)) <span class="sc">+</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>
@@ -545,7 +545,7 @@ Tip
 <p>In the plot below, assign the shape of the data on the plot by setting <code>shape=</code> to the categorical variable <code>STRUCTURE_KIND_043A_L</code>. Remember that, in this case, shape is an aesthetic, so this must be added inside of the <code>aes()</code> function. Add a label for the legend by setting <code>shape=</code> in the <code>labs()</code> function to a phrase that describes the shape variable.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> STRUCTURAL_EVAL_067)) <span class="sc">+</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>
@@ -567,7 +567,7 @@ Tip
 <h3 class="anchored" data-anchor-id="size">Size</h3>
 <p>While we might map a categorical variable onto the the shape aesthetic, we can alternatively map a numeric variable onto the size aesthetic. For instance, note what we learn when we map the variable for average daily traffic onto the size aesthetic below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ROUTE_PREFIX_005B_L, </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> STRUCTURAL_EVAL_067, </span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> ADT_029)) <span class="sc">+</span></span>
@@ -656,7 +656,7 @@ Tip
 <h3 class="anchored" data-anchor-id="position-1">Position</h3>
 <p>We can adjust the scale of our x and y-axes by adding <code>+ scale_x_&lt;type&gt;()</code> or <code>+ scale_y_&lt;type&gt;()</code> to our plots. Note what happens when we attempt to create a scatterplot that shows the relationship between the year a bridge was built and the bridge improvement costs for all MA highway bridges.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> BRIDGE_IMP_COST_094)) <span class="sc">+</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>
@@ -679,7 +679,7 @@ Tip
 <p>In the plot below, change the y-axis scale from <code>continuous</code> to <code>log10</code>. You might reference the formula specified above or reference the ggplot cheatsheet for help. Note that your y-axis will appear in scientific notation. Convert it to comma notation by adding: <code>labels = scales::comma</code> as an argument in the scale function call.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> BRIDGE_IMP_COST_094)) <span class="sc">+</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>
@@ -702,7 +702,7 @@ Tip
 <p class="heading"></p>
 <p>Sometimes I might wish to group certain numeric values into bins on a plot. For instance, let’s say I just want to see how many bridges are structurally deficient in comparison to bridges that are operationally sound. Typically a bridge is considered structurally deficient when it scores 4 or lower. So I want to group the numeric values in <code>STRUCTURAL_EVAL_067</code> into two bins: 0-4 and 4-9. To do this, I will set the scale to: <code>+ scale_y_binned()</code> and add an argument to establish the bin breaks: <code>breaks = c(4, 9)</code> as well as an argument to label the bin breaks: <code>labels = c("Structurally Deficent", "No Deficiencies")</code>. Check out what happens to the y-axis scale when I do this below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">|&gt;</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> STRUCTURAL_EVAL_067)) <span class="sc">+</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>
@@ -723,7 +723,7 @@ Tip
 <p>The Interstate Highway Act of 1956 (signed under Dwight D. Eisenhower) established the U.S.’s interstate highway system and is considered the country’s largest public works project. Adjust the x-axis scale of the plot below to help tell this story. Specifically, bin years into before 1954 (when Eisenhower was elected) and 1954-2021. Set the label at 1954 to “Eisenhower Elected” and the label at 2021 to “Today.”</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">|&gt;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> ROUTE_PREFIX_005B_L)) <span class="sc">+</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>
@@ -756,7 +756,7 @@ Tip
 <p>Add `<code>+ scale_color_brewer()`</code> to the <code>ggplot()</code> object below and assign a categorical palette. Refer to the ggplot cheatsheet or the help pages for help with formatting the function call.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">|&gt;</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> STRUCTURAL_EVAL_067,</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">col =</span> ROUTE_PREFIX_005B_L)) <span class="sc">+</span></span>
@@ -780,7 +780,7 @@ Tip
 <p>Add `<code>+ scale_color_distiller()`</code> to the <code>ggplot()</code> object below and assign a sequential palette. By default the colors will be ordered from darkest to lightest. Add an argument to the function call to reverse the direction of the colors. Refer to the ggplot cheatsheet or the help pages for help with formatting the function call.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">|&gt;</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> STRUCTURAL_EVAL_067,</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">col =</span> ADT_029)) <span class="sc">+</span></span>
@@ -805,7 +805,7 @@ Tip
 <p><img src="http://www.sthda.com/sthda/RDoc/images/points-symbols.png" class="img-fluid" width="200"></p>
 <p>We can manually assign shapes using <code>+ scale_shape_manual(values = c(&lt;shape_values&gt;))</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">|&gt;</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> STRUCTURAL_EVAL_067, </span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> MAINTENANCE_021_L)) <span class="sc">+</span></span>
@@ -838,7 +838,7 @@ Tip
 </div>
 <p>Also note how we bin point sizes just like we binned values on the x and y axis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>nbi_hampshire <span class="sc">|&gt;</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ROUTE_PREFIX_005B_L, </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> STRUCTURAL_EVAL_067, </span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> ADT_029)) <span class="sc">+</span></span>
@@ -861,7 +861,7 @@ Tip
 <h2 class="anchored" data-anchor-id="faceting">Faceting</h2>
 <p>Faceting involves breaking out a single plot into multiple smaller plots based on the value in a variable. Faceting is very helpful when we have a categorical variable with many distinct values. If we tried to color by that variable, the colors would likely be indistinguishable from one another. For instance, check out what happens when we try to color by the <code>COUNTY_CODE_003_L</code> variable below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">|&gt;</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> STRUCTURAL_EVAL_067, </span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">col =</span> COUNTY_CODE_003_L)) <span class="sc">+</span></span>
@@ -877,7 +877,7 @@ Tip
 </div>
 <p>There are so many counties that it’s extremely challenging to distinguish between colors on this plot. In this case, instead of using a color aesthetic, we facet the plot by adding <code>+ facet_wrap(vars(COUNTY_CODE_003_L))</code> to the <code>ggplot()</code> object. Check out what happens when we do that below.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">|&gt;</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> STRUCTURAL_EVAL_067)) <span class="sc">+</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>
@@ -896,7 +896,7 @@ Tip
 <p>Facet the plot below by <code>STRUCTURE_KIND_043A_L</code> to see the degree of structural deficiencies for different kinds of highway bridges of different ages in Massachusetts.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>nbi_ma <span class="sc">|&gt;</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> YEAR_BUILT_027, </span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> STRUCTURAL_EVAL_067)) <span class="sc">+</span></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"jitter"</span>) <span class="sc">+</span></span>

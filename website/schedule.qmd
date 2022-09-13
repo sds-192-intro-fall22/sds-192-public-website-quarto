@@ -2,11 +2,14 @@
 title: "Schedule"
 ---
 
-```{r setup, include=FALSE}
+```{r}
+#| include: false
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r imports, message=FALSE, warning=FALSE}
+```{r}
+#| message: false
+#| warning: false
 library(tidyverse)
 library(bsplus)
 library(fontawesome)
@@ -73,7 +76,8 @@ codes <-
   separate_rows(code, sep = ";")
 ```
 
-```{r source-files, include=FALSE}
+```{r}
+#| include: false
 source("R/print_assignments.R", local = knitr::knit_global())
 source("R/buttons.R", local = knitr::knit_global())
 #source("css/custom.css", local = knitr::knit_global())
@@ -88,7 +92,9 @@ Styling and infrastructure for this page inspired by [related syllabi](https://b
 All readings for this course will be available in our course Perusall, which is linked in Moodle. I encourage you to complete the readings there so that you can leave comments and questions as they come up.
 :::
 
-```{r print-schedule, message=FALSE, results='asis'}
+```{r}
+#| message: false
+#| results: 'asis'
 for (i in 1:nrow(topics)){
   
   todays_topic <- topics %>%

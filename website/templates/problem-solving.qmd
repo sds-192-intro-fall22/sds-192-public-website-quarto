@@ -64,6 +64,10 @@ Access the help pages for the function `sort()`. Write code below to sort the ve
 :::
 
 
+```{r}
+# Write code here
+```
+
 ###### Question
 
 ::: question
@@ -78,6 +82,12 @@ temps_to_factor <- c(68, 70, 78, 75, 69, 80, 66, 66, 79)
 Let's say we wanted to find how each day ranked from coolest to hottest. For instance, I wanted to know the ranking for day 1 vs. day 2 vs. day 3, and so on. Using the cheatsheet, find the function that will allow you to generate a ranking of each day's temperature. Search the help pages for this function to determine how to randomly rank two days with the same temperature. Write a comment to yourself describing how this function is different than sorting the data.
 :::
 
+
+```{r}
+# Write code here
+
+# Write comment here
+```
 
 ###### Question
 

@@ -174,6 +174,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#values-cells" id="toc-values-cells" class="nav-link" data-scroll-target="#values-cells">Values (Cells)</a></li>
   <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values">Missing Values</a></li>
   </ul></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul>
 </nav>
     </div>
@@ -282,10 +283,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rscorecard)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sc_key</span>(<span class="fu">Sys.getenv</span>(<span class="st">"SCORECARD_KEY"</span>)) <span class="co"># Replace Sys.getenv("SCORECARD_KEY") here with your API Key in quotation marks</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>scorecard <span class="ot">&lt;-</span> <span class="fu">sc_init</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_year</span>(<span class="dv">2018</span>) <span class="sc">%&gt;%</span>                 <span class="co">#Note how we are looking at only 2021 data here!</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_filter</span>(stabbr <span class="sc">==</span> <span class="st">"MA"</span>) <span class="sc">%&gt;%</span>     <span class="co">#Note how we are looking at only Massachusetts data here!</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_select</span>(unitid, instnm, city, highdeg, control, ugds, adm_rate, costt4_a, costt4_p, pcip27, pctfloan, admcon7, wdraw_orig_yr2_rt, cdr3) <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>scorecard <span class="ot">&lt;-</span> <span class="fu">sc_init</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_year</span>(<span class="dv">2018</span>) <span class="sc">|&gt;</span>                 <span class="co">#Note how we are looking at only 2021 data here!</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_filter</span>(stabbr <span class="sc">==</span> <span class="st">"MA"</span>) <span class="sc">|&gt;</span>     <span class="co">#Note how we are looking at only Massachusetts data here!</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_select</span>(unitid, instnm, city, highdeg, control, ugds, adm_rate, costt4_a, costt4_p, pcip27, pctfloan, admcon7, wdraw_orig_yr2_rt, cdr3) <span class="sc">|&gt;</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_get</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -293,7 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="glimpsing-the-data">Glimpsing the Data</h2>
 <p>When working with very large datasets, we need tools to help us get a sense of the dataset without having to load the entire data frame. For instance, we can view the first 6 rows of the dataset by calling <code>head()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>scorecard <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>scorecard <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 15
   unitid instnm       city  highdeg control  ugds adm_r…¹ costt…² costt…³ pcip27
@@ -311,7 +312,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p><code>str()</code> provides a great deal of information about the observations in the data frame, including the number of variables, the number of observations, the column names, their data types, and a list of observations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>scorecard <span class="sc">%&gt;%</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>scorecard <span class="sc">|&gt;</span> <span class="fu">str</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [153 × 15] (S3: tbl_df/tbl/data.frame)
  $ unitid           : int [1:153] 164368 164447 164465 164492 164535 164562 164580 164599 164614 164632 ...
@@ -342,7 +343,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This is the same as calling <code>df %&gt;% View()</code> in your Console.</p>
+<p>This is the same as calling <code>df |&gt; View()</code> in your Console.</p>
 </div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
@@ -368,6 +369,9 @@ Note
 <h6 class="anchored" data-anchor-id="question">Question</h6>
 <div class="question">
 <p>See if you can identify a unique key for this dataset. Write some lines of code to determine whether the column you’ve identified can act as unique key for the data. Hint: You need to check whether the values in the column ever repeat.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-document="solutions">
 
@@ -414,11 +418,11 @@ Why not use name as a unique key?
 <p>For each of the variable names in the <code>scorecard</code> data frame, look up the associated name in the data dictionary. You will need to search for the variable name in the sixth column of the data dictionary (I recommend using Ctrl-F to quickly locate the variable name in the spreadsheet.) Once you’ve found the variable name, reference column 1 to determine what this variable means, and reference columns 7 and 8 to see what possible values will appear in that column.</p>
 <p>Identify one nominal variable, one ordinal variable, one discrete variable, and one continuous variable in <code>scorecard</code> and list their variable names below. Then uncomment the lines below and use the <code>typeof()</code> function to see how <code>R</code> determined their data types. Did any surprise you?</p>
 </div>
-<div class="cell" data-document="show">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-document="solutions">
 
@@ -429,7 +433,7 @@ Why not use name as a unique key?
 <h3 class="anchored" data-anchor-id="values-cells">Values (Cells)</h3>
 <p>You may have noticed that several categorical variables are coded as numbers in the imported dataset. For instance, look at the column <code>control</code> which designates the institution’s ownership. Running the code below, we see that the distinct values in that column are 1, 2, and 3.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>scorecard <span class="sc">%&gt;%</span> <span class="fu">distinct</span>(control)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>scorecard <span class="sc">|&gt;</span> <span class="fu">distinct</span>(control)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 1
   control
@@ -441,29 +445,29 @@ Why not use name as a unique key?
 </div>
 <p>When we reference that column in the data dictionary (row 27), we see that a 1 in that column designates that the institution is Public, a 2 that the institution is Private nonprofit, and a 3 that the institution is Private for-profit. While I can always look that up, sometimes it is helpful to have that information in our dataset. For instance, let’s say I create a bar plot that’s supposed to show how many higher education institutions have each type of ownership in MA (which you will learn how to do soon!). The plot can be confusing when <code>control</code> is a series of numbers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scorecard, <span class="fu">aes</span>(<span class="at">x =</span> control)) <span class="sc">+</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scorecard, <span class="fu">aes</span>(<span class="at">x =</span> control)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="lab1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="lab1_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>With this in mind, sometimes it can be helpful to <em>recode</em> the values in a column. Recoding data involves replacing the values in a vector according to criteria that we provide. Remember how all columns in a data frame are technically vectors? We can use the <code>recode()</code> function to recode all of the values in the <code>control</code> vector. We are going to store the recoded values in a new column in our dataset called <code>control_text</code>. Check out the code below to see how we do this. Reference the help pages for recode (i.e.&nbsp;<code>?recode</code>) to help you interpret the code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>scorecard<span class="sc">$</span>control_text <span class="ot">&lt;-</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">recode</span>(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    scorecard<span class="sc">$</span>control, </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Public"</span>, </span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Private nonprofit"</span>, </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"Private for-profit"</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="cn">NA_character_</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>scorecard<span class="sc">$</span>control_text <span class="ot">&lt;-</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">recode</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    scorecard<span class="sc">$</span>control, </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"Public"</span>, </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"2"</span> <span class="ot">=</span> <span class="st">"Private nonprofit"</span>, </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"3"</span> <span class="ot">=</span> <span class="st">"Private for-profit"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="cn">NA_character_</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Check out our barplot now!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scorecard, <span class="fu">aes</span>(<span class="at">x =</span> control_text)) <span class="sc">+</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scorecard, <span class="fu">aes</span>(<span class="at">x =</span> control_text)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="lab1_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="lab1_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <section id="question-3" class="level6">
@@ -472,16 +476,16 @@ Why not use name as a unique key?
 <p>Write code below to recode the <code>admcon7</code> variable and store the results in a new variable in <code>scorecard</code> called <code>admcon7_text</code>. You’ll need to look up the values in the data dictionary. If you’ve done this correctly, running this code should produce a barplot that displays multiple bars.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>scorecard<span class="sc">$</span>admcon7_text <span class="ot">&lt;-</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">recode</span>(</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    scorecard<span class="sc">$</span>admcon7, </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Fill replacements here</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="cn">NA_character_</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scorecard, <span class="fu">aes</span>(<span class="at">x =</span> admcon7_text)) <span class="sc">+</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>scorecard<span class="sc">$</span>admcon7_text <span class="ot">&lt;-</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">recode</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    scorecard<span class="sc">$</span>admcon7, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Fill replacements here</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="cn">NA_character_</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scorecard, <span class="fu">aes</span>(<span class="at">x =</span> admcon7_text)) <span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-document="solutions">
 
@@ -493,7 +497,7 @@ Why not use name as a unique key?
 <p>When we have missing values in a rectangular dataset, we have to provide a placeholder for the missing value in order for the dataset to remain rectangular. If we just skipped the value, then our dataset wouldn’t necessarily have rows of all equal lengths and columns of all equal lengths. In <code>R</code>, <code>NA</code> serves as that placeholder. Before we start analyzing data, it can be important to note how many <code>NA</code> values we have in a column so that we can determine if the data is <em>representative</em>.</p>
 <p>The function <code>is.na()</code> checks whether a value is an <code>NA</code> value and returns <code>TRUE</code> if it is and <code>FALSE</code> if it isn’t. Providing a vector to <code>is.na()</code> will check this for every value in the vector and return a logical vector indicating <code>TRUE</code>/<code>FALSE</code> for every original value in the vector.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(scorecard<span class="sc">$</span>wdraw_orig_yr2_rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(scorecard<span class="sc">$</span>wdraw_orig_yr2_rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE
  [13] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE
@@ -512,7 +516,7 @@ Why not use name as a unique key?
 </div>
 <p>When we <code>sum()</code> across a logical vector, <code>R</code> will calculate the number of <code>TRUE</code> values in the vector.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(scorecard<span class="sc">$</span>wdraw_orig_yr2_rt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(scorecard<span class="sc">$</span>wdraw_orig_yr2_rt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 48</code></pre>
 </div>
@@ -521,6 +525,11 @@ Why not use name as a unique key?
 <h6 class="anchored" data-anchor-id="question-4">Question</h6>
 <div class="question">
 <p>In a code chunk below, calculate the number of missing values in both the <code>costt4_a</code> and the <code>costt4_p</code> columns. Reference the NOTES column in the data dictionary to determine why there are so many <code>NA</code> values in these columns. Add a comment to the code chunk below, explaining the reason for missing values in these columns.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write code here</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Add comment here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-document="solutions">
 
@@ -540,11 +549,19 @@ Ethical Considerations
 <p>Referencing the College Scorecard data documentation, see if you can determine which students are included in calculations of earnings and debt. How might the data’s coverage bias the values that get reported? What might be the social consequences of these biases? Share your ideas on our <code>sds-192-discussions</code> Slack channel.</p>
 </div>
 </div>
+</section>
+</section>
+</section>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<ol type="1">
+<li>When you are done, save your .qmd file in RStudio.</li>
+<li>Stage, commit, and push your file in the Git pane. Refer to step 12 in our <a href="https://sds-192-intro-fall22.github.io/sds-192-public-website-quarto/getting-started.html">Course Infrastructure setup</a> for a reminder of how to do this.</li>
+<li>Navigate back to GitHub.com and click on the .qmd files to make sure you see your changes to the files there. If you don’t see the changes there, I won’t see them either!</li>
+</ol>
 
 
-</section>
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

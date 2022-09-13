@@ -16,10 +16,10 @@ library(tidyverse)
 library(rscorecard)
 sc_key(Sys.getenv("SCORECARD_KEY")) # Replace Sys.getenv("SCORECARD_KEY") here with your API Key in quotation marks
 
-scorecard <- sc_init() %>%
-  sc_year(2018) %>%                 #Note how we are looking at only 2021 data here!
-  sc_filter(stabbr == "MA") %>%     #Note how we are looking at only Massachusetts data here!
-  sc_select(unitid, instnm, city, highdeg, control, ugds, adm_rate, costt4_a, costt4_p, pcip27, pctfloan, admcon7, wdraw_orig_yr2_rt, cdr3) %>%
+scorecard <- sc_init() |>
+  sc_year(2018) |>                 #Note how we are looking at only 2021 data here!
+  sc_filter(stabbr == "MA") |>     #Note how we are looking at only Massachusetts data here!
+  sc_select(unitid, instnm, city, highdeg, control, ugds, adm_rate, costt4_a, costt4_p, pcip27, pctfloan, admcon7, wdraw_orig_yr2_rt, cdr3) |>
   sc_get()
 ```
 
@@ -29,6 +29,10 @@ scorecard <- sc_init() %>%
 See if you can identify a unique key for this dataset. Write some lines of code to determine whether the column you've identified can act as unique key for the data. Hint: You need to check whether the values in the column ever repeat.
 :::
 
+
+```{r}
+# Write code here
+```
 
 ###### Question
 
@@ -47,7 +51,6 @@ Identify one nominal variable, one ordinal variable, one discrete variable, and 
 
 
 ```{r}
-#| document: show
 #typeof(scorecard$_____)
 #typeof(scorecard$_____)
 #typeof(scorecard$_____)
@@ -79,7 +82,13 @@ ggplot(scorecard, aes(x = admcon7_text)) +
 ###### Question
 
 ::: question
-Calculate the number of missing values in both the `costt4_a` and the `costt4_p` columns. Reference the NOTES column in the data dictionary to determine why there are so many `NA` values in these columns. Add a comment to the code chunk below, explaining the reason for missing values in these columns.
+In a code chunk below, calculate the number of missing values in both the `costt4_a` and the `costt4_p` columns. Reference the NOTES column in the data dictionary to determine why there are so many `NA` values in these columns. Add a comment to the code chunk below, explaining the reason for missing values in these columns.
 :::
 
+
+```{r}
+# Write code here
+
+# Add comment here
+```
 

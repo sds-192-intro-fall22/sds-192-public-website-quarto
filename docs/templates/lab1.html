@@ -3995,16 +3995,19 @@ margin-left: 10px;
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rscorecard)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sc_key</span>(<span class="fu">Sys.getenv</span>(<span class="st">"SCORECARD_KEY"</span>)) <span class="co"># Replace Sys.getenv("SCORECARD_KEY") here with your API Key in quotation marks</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>scorecard <span class="ot">&lt;-</span> <span class="fu">sc_init</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_year</span>(<span class="dv">2018</span>) <span class="sc">%&gt;%</span>                 <span class="co">#Note how we are looking at only 2021 data here!</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_filter</span>(stabbr <span class="sc">==</span> <span class="st">"MA"</span>) <span class="sc">%&gt;%</span>     <span class="co">#Note how we are looking at only Massachusetts data here!</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_select</span>(unitid, instnm, city, highdeg, control, ugds, adm_rate, costt4_a, costt4_p, pcip27, pctfloan, admcon7, wdraw_orig_yr2_rt, cdr3) <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>scorecard <span class="ot">&lt;-</span> <span class="fu">sc_init</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_year</span>(<span class="dv">2018</span>) <span class="sc">|&gt;</span>                 <span class="co">#Note how we are looking at only 2021 data here!</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_filter</span>(stabbr <span class="sc">==</span> <span class="st">"MA"</span>) <span class="sc">|&gt;</span>     <span class="co">#Note how we are looking at only Massachusetts data here!</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_select</span>(unitid, instnm, city, highdeg, control, ugds, adm_rate, costt4_a, costt4_p, pcip27, pctfloan, admcon7, wdraw_orig_yr2_rt, cdr3) <span class="sc">|&gt;</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sc_get</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="question" class="level6">
 <h6 class="anchored" data-anchor-id="question">Question</h6>
 <div class="question">
 <p>See if you can identify a unique key for this dataset. Write some lines of code to determine whether the column you’ve identified can act as unique key for the data. Hint: You need to check whether the values in the column ever repeat.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="question-1" class="level6">
@@ -4019,11 +4022,11 @@ margin-left: 10px;
 <p>For each of the variable names in the <code>scorecard</code> data frame, look up the associated name in the data dictionary. You will need to search for the variable name in the sixth column of the data dictionary (I recommend using Ctrl-F to quickly locate the variable name in the spreadsheet.) Once you’ve found the variable name, reference column 1 to determine what this variable means, and reference columns 7 and 8 to see what possible values will appear in that column.</p>
 <p>Identify one nominal variable, one ordinal variable, one discrete variable, and one continuous variable in <code>scorecard</code> and list their variable names below. Then uncomment the lines below and use the <code>typeof()</code> function to see how <code>R</code> determined their data types. Did any surprise you?</p>
 </div>
-<div class="cell" data-document="show">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#typeof(scorecard$_____)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="question-3" class="level6">
@@ -4032,22 +4035,27 @@ margin-left: 10px;
 <p>Write code below to recode the <code>admcon7</code> variable and store the results in a new variable in <code>scorecard</code> called <code>admcon7_text</code>. You’ll need to look up the values in the data dictionary. If you’ve done this correctly, running this code should produce a barplot that displays multiple bars.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>scorecard<span class="sc">$</span>admcon7_text <span class="ot">&lt;-</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">recode</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    scorecard<span class="sc">$</span>admcon7, </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Fill replacements here</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="cn">NA_character_</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scorecard, <span class="fu">aes</span>(<span class="at">x =</span> admcon7_text)) <span class="sc">+</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>scorecard<span class="sc">$</span>admcon7_text <span class="ot">&lt;-</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">recode</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    scorecard<span class="sc">$</span>admcon7, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Fill replacements here</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">.default =</span> <span class="cn">NA_character_</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scorecard, <span class="fu">aes</span>(<span class="at">x =</span> admcon7_text)) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="question-4" class="level6">
 <h6 class="anchored" data-anchor-id="question-4">Question</h6>
 <div class="question">
-<p>Calculate the number of missing values in both the <code>costt4_a</code> and the <code>costt4_p</code> columns. Reference the NOTES column in the data dictionary to determine why there are so many <code>NA</code> values in these columns. Add a comment to the code chunk below, explaining the reason for missing values in these columns.</p>
+<p>In a code chunk below, calculate the number of missing values in both the <code>costt4_a</code> and the <code>costt4_p</code> columns. Reference the NOTES column in the data dictionary to determine why there are so many <code>NA</code> values in these columns. Add a comment to the code chunk below, explaining the reason for missing values in these columns.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write code here</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Add comment here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 

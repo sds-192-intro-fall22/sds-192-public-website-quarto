@@ -373,9 +373,9 @@ Tip
 <p>The original dataset codes each race with a single letter. This adds a column called <code>race_cat</code> that writes out each racial category in accordance with the data documentation. It also replaces every instance of “Y” in the dataset with 1 and every instance of “N” with 0. This will allow us to sum the Yes’s in the dataset. You’ll learn more about how this code works in coming weeks.</p>
 <div class="cell" data-messages="false" data-document="show">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="ot">&lt;-</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pct, race, age, frisked, pistol, riflshot, asltweap, knifcuti, machgun, othrweap, sumissue, arstmade) <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(sqf_2011_race_cat, <span class="at">by =</span> <span class="st">"race"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pct, race, age, frisked, pistol, riflshot, asltweap, knifcuti, machgun, othrweap, sumissue, arstmade) <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(sqf_2011_race_cat, <span class="at">by =</span> <span class="st">"race"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(frisked<span class="sc">:</span>arstmade, </span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>         <span class="sc">~</span> <span class="fu">case_when</span>(. <span class="sc">==</span> <span class="st">"Y"</span> <span class="sc">~</span> <span class="dv">1</span>, . <span class="sc">==</span> <span class="st">"N"</span> <span class="sc">~</span> <span class="dv">0</span>)))</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(sqf_2011_race_cat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -388,7 +388,7 @@ Tip
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="ot">&lt;-</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">|&gt;</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Add a variable for weapon found</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="at">wpnfound =</span> <span class="fu">case_when</span>(pistol <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                               riflshot <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> </span>
@@ -398,7 +398,7 @@ Tip
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                               othrweap <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                             <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">0</span>))</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="ot">&lt;-</span> </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">|&gt;</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Add a variable for arrest made or summons issued</span></span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="at">arrestsumm =</span> <span class="fu">case_when</span>(sumissue <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> </span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                                arstmade <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
@@ -415,7 +415,7 @@ Tip
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="ot">&lt;-</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">|&gt;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(pct, arrestsumm, _____, wpnfound, race_cat, _____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-document="solutions">
@@ -433,8 +433,8 @@ Tip
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>total_stops <span class="ot">&lt;-</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> _____) <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> _____) <span class="sc">|&gt;</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>total_stops</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -465,9 +465,9 @@ Tip
 <p>How many stops did not result in an arrest or summons in 2011? What percentage of stops did not result in an arrest or summons?</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Subset to rows where suspect innocent</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(arrestsumm _____ <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(arrestsumm _____ <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Calculate number of observations</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="at">total_innocent =</span> <span class="fu">n</span>(), </span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent_innocent =</span> _____ <span class="sc">/</span> total_stops <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -482,9 +482,9 @@ Tip
 <p>In how many stops were the individuals aged 14-24? In what percentage of stops were the individuals aged 14-24?</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Subset to rows where suspect age 14-24</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(age _____ <span class="dv">14</span> <span class="sc">&amp;</span> age _____ <span class="dv">24</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(age _____ <span class="dv">14</span> <span class="sc">&amp;</span> age _____ <span class="dv">24</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Calculate number of observations and percentage of observations</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="at">total_14_24 =</span> _____, </span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent_14_24 =</span> <span class="fu">n</span>() <span class="sc">/</span> total_stops <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -501,14 +501,14 @@ Tip
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>total_stops_age_recorded <span class="ot">&lt;-</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">|&gt;</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Subset to rows where age is not 999</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(age _____ <span class="dv">999</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(age _____ <span class="dv">999</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">%&gt;%</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;=</span> <span class="dv">14</span> <span class="sc">&amp;</span> age <span class="sc">&lt;=</span> <span class="dv">24</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">|&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;=</span> <span class="dv">14</span> <span class="sc">&amp;</span> age <span class="sc">&lt;=</span> <span class="dv">24</span>) <span class="sc">|&gt;</span></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_14_24 =</span> <span class="fu">n</span>(), </span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent_14_24 =</span> <span class="fu">n</span>() <span class="sc">/</span> total_stops_age_recorded <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -525,20 +525,20 @@ Tip
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>total_stops_race_recorded <span class="ot">&lt;-</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  sqf_2011 <span class="sc">|&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Subset to rows where race_cat is not NA or "OTHER"</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">_____</span>(race_cat) <span class="sc">&amp;</span> race_cat _____ <span class="st">"OTHER"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">_____</span>(race_cat) <span class="sc">&amp;</span> race_cat _____ <span class="st">"OTHER"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">%&gt;%</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">|&gt;</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Subset to rows where race_cat is not NA or "OTHER"</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="fu">_____</span>(race_cat) <span class="sc">&amp;</span> race_cat _____ <span class="st">"OTHER"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="fu">_____</span>(race_cat) <span class="sc">&amp;</span> race_cat _____ <span class="st">"OTHER"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Group by race</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(race_cat) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(race_cat) <span class="sc">|&gt;</span> </span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Calculate number of observations</span></span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="at">stops =</span> <span class="fu">n</span>(), </span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent_stops =</span> <span class="fu">n</span>() <span class="sc">/</span> total_stops_race_recorded <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent_stops =</span> <span class="fu">n</span>() <span class="sc">/</span> total_stops_race_recorded <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Sort by stops in descending order</span></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="fu">_____</span>(stops)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -549,9 +549,9 @@ Tip
 <p class="heading"></p>
 <p>Note how this dataset categorizes race. Many different government datasets categorize race in many different ways. This, for instance, is not how the US Census categorizes race. How we categorize race matters for how we can talk about discrimination and racial profiling. Imagine if WHITE was not categorized separately from WHITE-HISPANIC. The values in this dataset would appear very differently! The NYCLU chose to aggregate two racial categories in this dataset into the one category - Latinx - in order to advance certain claims regarding discrimination. What we should remember is that these racial categories are not reported by those stopped; they are recorded by officers stopping individuals. They may not reflect how individuals identify themselves.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sqf_2011 <span class="sc">|&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Subset to rows where race_cat is "WHITE-HISPANIC" or "BLACK-HISPANIC"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(race_cat _____ <span class="fu">c</span>(<span class="st">"WHITE-HISPANIC"</span>, <span class="st">"BLACK-HISPANIC"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(race_cat _____ <span class="fu">c</span>(<span class="st">"WHITE-HISPANIC"</span>, <span class="st">"BLACK-HISPANIC"</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Calculate number of observations</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(<span class="at">stops_Latinx =</span> _____, </span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">percent_Latinx =</span> <span class="fu">n</span>() <span class="sc">/</span> total_stops_race_recorded <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

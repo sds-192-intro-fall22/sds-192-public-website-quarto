@@ -2,8 +2,8 @@ topic_id,topic_abbr,topic,date,standard_id,required_reading,req_chapter,optional
 1,data_science,What is Data Science?,9/7/22,,,,,,,,[Day 1 Slides](slides/Day1-Intro.html),[Spinelli Center](https://www.smith.edu/qlc/tutoring.html);[Getting Started with Slack](https://slack.com/help/articles/218080037-Getting-started-for-new-Slack-users),
 2,setup,Infrastructure Set-up,9/9/22,,,,,,Fill out First Day of Class Questionnaire in Moodle;Complete Syllabus Quiz in Moodle;Contact me if you will be using a Chromebook,,,[Configuring Git Set-up Instructions](getting-started.html),
 3,datasets_variables,Data Fundamentals,9/12/22,1,,,,,,,[Day 2 Slides](slides/Day2-DataFundamentals.html),[Day 2 Activity](exercises/data-fundamentals.html),
-4,intro_r,Introduction to R,9/14/22,1,irizarryIntroductionDataScience2022,2. R Basics,,,,,,,
-5,datasets_lab,Lab: Understanding Datasets,9/16/22,1,,,,,,,,,
+4,intro_r,Introduction to R,9/14/22,1,irizarryIntroductionDataScience2022,2. R Basics,,,,,[Day 3 Slides](slides/Day3-RFundamentals.html),[Day 3 Activity](https://github.com/sds-192-intro-fall22/class-activities),
+5,datasets_lab,Lab: Understanding Datasets,9/16/22,1,,,,,,,,[Lab 1 Instructions](labs/lab1.html);[Problem-Solving Lab Instructions](labs/problem-solving.html),[Lab Templates](https://classroom.github.com/a/5AONAxLS)
 6,grammar_graphics,Grammar of Graphics,9/19/22,3,baumerModernDataScience2021,2. Data Visualization,wickhamGgplot2ElegantGraphics,,,,,,
 7,viz_conventions,Visualization Conventions,9/21/22,3,irizarryIntroductionDataScience2022,11. Data Visualization Principles,tufteVisualDisplayQuantitative2001,,[Problem-Solving Lab](labs/problem-solving.html) Due;[Lab 1](labs/lab1.html) Due,,,,
 8,designing_graphics_lab,Lab: Designing Effective Data Visualizations,9/23/22,3,,,dignazioRationalScientificObjective2020,,[Study Plan](learning-styles.html) Due,,,,

@@ -352,7 +352,7 @@ Tip
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"3DYUw0nHB9o8tLZKQup4zp"</span>,</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"37i9dQZF1DXdOEFt9ZX0dh"</span>),</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">authorization =</span> <span class="fu">get_spotify_access_token</span>()</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(track.artists, </span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            track.available_markets, </span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            track.album.artists, </span>
@@ -365,7 +365,7 @@ Tip
 <p>In the exercises below, you will create a series of plots that will enable us to compare the joyfulness of the three playlists you’ve selected.</p>
 <p>I encourage you to take a look at the <code>spotify_playlists</code> data frame in your environment. You’ll note that each row in the dataset is a song/track from one of the the three playlists you selected (unique ID would be <code>track.id</code>), and columns provide information about that song (such as the <code>track.name</code>, the playlist it is a part of, its <code>key</code>, <code>loudness</code>, <code>danceability</code>, and <code>acousticness</code>). We can produce some pretty cool visualizations from this data. For instance check out how we might compare the relationship between the <code>energy</code> and <code>acousticness</code> of songs across the three selected playlists.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>spotify_playlists <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>spotify_playlists <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> acousticness, <span class="at">y =</span> energy)) <span class="sc">+</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
