@@ -31,7 +31,11 @@ See if you can identify a unique key for this dataset. Write some lines of code 
 
 
 ```{r}
-# Write code here
+# Write code to calculate number of rows in scorecard
+
+# Write code to calculate the number of unique values in the column you've identified as a unique key 
+
+# Do these numbers match?
 ```
 
 ###### Question
