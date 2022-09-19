@@ -1566,5 +1566,159 @@
     "title": "Visualizing Data",
     "section": "",
     "text": "Lab debriefing\nWhat is a data visualization?\nTaxonomy of Data Visualizations\nVisualization Conventions and Critiques\nWork on Problem Solving Lab in Class"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html",
+    "href": "slides/Day5-ggplot.html",
+    "title": "ggplot()",
+    "section": "",
+    "text": "Visualizations Exercise\nIntroduction to GGplot\nClass Activity"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#ggplot",
+    "href": "slides/Day5-ggplot.html#ggplot",
+    "title": "ggplot()",
+    "section": "ggplot()",
+    "text": "ggplot()"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#elements-of-data-graphics",
+    "href": "slides/Day5-ggplot.html#elements-of-data-graphics",
+    "title": "ggplot()",
+    "section": "Elements of data graphics",
+    "text": "Elements of data graphics\n\nvisual cues/aesthetics\nscale\ncontext\n\n\nFramework drawn from: Yau, Nathan. 2013. Data Points: Visualization That Means Something. 1st edition. Indianapolis, IN: Wiley."
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#visual-cues",
+    "href": "slides/Day5-ggplot.html#visual-cues",
+    "title": "ggplot()",
+    "section": "Visual Cues",
+    "text": "Visual Cues\n\nWhere is the data positioned on the plot?\nWhat is the length of shapes on the plot?\nHow large is the angle between vectors?\nWhat shapes/symbols appear on the plot?\nHow much area do shapes take up on a plot?\nHow intense is the color presented on the plot?"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#what-variables-mapped-onto-what-visual-cues",
+    "href": "slides/Day5-ggplot.html#what-variables-mapped-onto-what-visual-cues",
+    "title": "ggplot()",
+    "section": "What variables mapped onto what visual cues?",
+    "text": "What variables mapped onto what visual cues?\n\n\nWarning: package 'tidyverse' was built under R version 4.1.2\n\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.3.6      ✔ purrr   0.3.4 \n✔ tibble  3.1.8      ✔ dplyr   1.0.10\n✔ tidyr   1.2.1      ✔ stringr 1.4.1 \n✔ readr   2.1.2      ✔ forcats 0.5.1 \n\n\nWarning: package 'ggplot2' was built under R version 4.1.2\n\n\nWarning: package 'tibble' was built under R version 4.1.2\n\n\nWarning: package 'readr' was built under R version 4.1.2\n\n\nWarning: package 'dplyr' was built under R version 4.1.2\n\n\nWarning: package 'stringr' was built under R version 4.1.2\n\n\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nRows: 2609 Columns: 22\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (15): Date.and.Time.of.initial.call, Date.and.time.of.Ranger.response, B...\ndbl  (3): Duration.of.Response, X..of.Animals, Hours.spent.monitoring\nlgl  (4): PEP.Response, Animal.Monitored, Police.Response, ESU.Response\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#what-variables-mapped-onto-what-visual-cues-1",
+    "href": "slides/Day5-ggplot.html#what-variables-mapped-onto-what-visual-cues-1",
+    "title": "ggplot()",
+    "section": "What variables mapped onto what visual cues?",
+    "text": "What variables mapped onto what visual cues?\n\n\n\n\n\n** This is the last time you will see me use a pie chart in this class!"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#what-variables-mapped-onto-what-visual-cues-2",
+    "href": "slides/Day5-ggplot.html#what-variables-mapped-onto-what-visual-cues-2",
+    "title": "ggplot()",
+    "section": "What variables mapped onto what visual cues?",
+    "text": "What variables mapped onto what visual cues?"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#what-variables-mapped-onto-what-visual-cues-3",
+    "href": "slides/Day5-ggplot.html#what-variables-mapped-onto-what-visual-cues-3",
+    "title": "ggplot()",
+    "section": "What variables mapped onto what visual cues?",
+    "text": "What variables mapped onto what visual cues?\n\n\n\nAttaching package: 'lubridate'\n\n\nThe following objects are masked from 'package:base':\n\n    date, intersect, setdiff, union"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#what-variables-mapped-onto-what-visual-cues-4",
+    "href": "slides/Day5-ggplot.html#what-variables-mapped-onto-what-visual-cues-4",
+    "title": "ggplot()",
+    "section": "What variables mapped onto what visual cues?",
+    "text": "What variables mapped onto what visual cues?"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#what-variables-mapped-onto-what-visual-cues-5",
+    "href": "slides/Day5-ggplot.html#what-variables-mapped-onto-what-visual-cues-5",
+    "title": "ggplot()",
+    "section": "What variables mapped onto what visual cues?",
+    "text": "What variables mapped onto what visual cues?\n\n\n`summarise()` has grouped output by 'Year'. You can override using the\n`.groups` argument."
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#scale",
+    "href": "slides/Day5-ggplot.html#scale",
+    "title": "ggplot()",
+    "section": "Scale",
+    "text": "Scale\n\nLinear: Numeric values are evenly spaced on axis.\nLogarithmic: Numeric interval are spaced by a factor of the base of the logarithm.\nCategorical: Categorical values are discretely placed on axis.\nOrdinal: Categorical values are ordered on axis.\nPercent: Percentages of a whole are evenly spaced on axis.\nTime: Date/time values are placed on axis in years, months, days, hours, etc."
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#examples",
+    "href": "slides/Day5-ggplot.html#examples",
+    "title": "ggplot()",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#context",
+    "href": "slides/Day5-ggplot.html#context",
+    "title": "ggplot()",
+    "section": "Context",
+    "text": "Context\nIn every plot you submit for this class, I will be looking for five pieces of context.\n\nThe data’s unit of observation\nVariables represented on the plot\nFilters applied to the data\nGeographic context of the data\nTemporal (date/time range) context of the date"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#context-1",
+    "href": "slides/Day5-ggplot.html#context-1",
+    "title": "ggplot()",
+    "section": "Context",
+    "text": "Context"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#data-visualization-conventions",
+    "href": "slides/Day5-ggplot.html#data-visualization-conventions",
+    "title": "ggplot()",
+    "section": "Data Visualization Conventions",
+    "text": "Data Visualization Conventions\n\nEdward Tufte, American statistician sometimes considered “father of data visualization”\nIntroduced the concept of “graphical integrity”\nHow do we present data as honestly as possible?"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#lie-factor",
+    "href": "slides/Day5-ggplot.html#lie-factor",
+    "title": "ggplot()",
+    "section": "Lie Factor",
+    "text": "Lie Factor\n\nLie Factor = (size of effect in graphic)/(size of effect in data)\nLie factor is greater when variations on a graph fail to match variations in data\n\n\n\n\nTufte, Visual Display of Quantitative Information\n\n\n\n5.3-0.6 / 0.6 * 100= 783 (graph)\n27.5-18 /18 *100 = 53 (data)\n783/53 = 14.8"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#inconsistent-scales",
+    "href": "slides/Day5-ggplot.html#inconsistent-scales",
+    "title": "ggplot()",
+    "section": "Inconsistent Scales",
+    "text": "Inconsistent Scales\n\n\n\nExample from callingbullshit.org"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#presenting-data-out-of-context",
+    "href": "slides/Day5-ggplot.html#presenting-data-out-of-context",
+    "title": "ggplot()",
+    "section": "Presenting Data out of Context",
+    "text": "Presenting Data out of Context\n\n\n\nExample from mediamatters.org"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#disproportionate-data-to-ink-ratio",
+    "href": "slides/Day5-ggplot.html#disproportionate-data-to-ink-ratio",
+    "title": "ggplot()",
+    "section": "Disproportionate Data-to-Ink Ratio",
+    "text": "Disproportionate Data-to-Ink Ratio\n\nEnsure that the ink used on the data match the amount of data presented\nData-to-ink ratio = (ink used to represent data)/(ink used to print graphic)\nShould be as close as possible to 1\nAnother way to think about it: How much of this graph could I erase without losing data?"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#disproportionate-data-to-ink-ratio-1",
+    "href": "slides/Day5-ggplot.html#disproportionate-data-to-ink-ratio-1",
+    "title": "ggplot()",
+    "section": "Disproportionate Data-to-Ink Ratio",
+    "text": "Disproportionate Data-to-Ink Ratio"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#deviating-from-norms",
+    "href": "slides/Day5-ggplot.html#deviating-from-norms",
+    "title": "ggplot()",
+    "section": "Deviating from Norms",
+    "text": "Deviating from Norms\n\n\n\nExample from callingbullshit.org"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#when-can-i-break-convention",
+    "href": "slides/Day5-ggplot.html#when-can-i-break-convention",
+    "title": "ggplot()",
+    "section": "When can I break convention??",
+    "text": "When can I break convention??"
   }
 ]
