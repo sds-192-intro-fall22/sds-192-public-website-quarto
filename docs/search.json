@@ -39,21 +39,21 @@
     "href": "schedule.html#september-19-2022",
     "title": "Schedule",
     "section": "September 19, 2022",
-    "text": "September 19, 2022\n\nGrammar of Graphics\nVISUALIZATION AESTHETICS\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 2. Data Visualization , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022).\n\n\n (Read in Perusall; linked in Moodle) list()"
+    "text": "September 19, 2022\n\nGrammar of Graphics\nVISUALIZATION AESTHETICS\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 2. Data Visualization , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022).\n\n\n Day 4 Slides\n Day 4 Activity"
   },
   {
     "objectID": "schedule.html#september-21-2022",
     "href": "schedule.html#september-21-2022",
     "title": "Schedule",
     "section": "September 21, 2022",
-    "text": "September 21, 2022\n\nVisualization Conventions\nVISUALIZATION AESTHETICS\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 11. Data Visualization Principles , Irizarry, Rafael A. (2022). Introduction to Data Science. Data Analysis and Prediction Algorithms with R. URL: https://rafalab.github.io/dsbook/ (visited on Jan. 14, 2022).\n Problem-Solving Lab Due\n Lab 1 Due\n\n\n (Read in Perusall; linked in Moodle) Tufte, Edward R. (2001). The Visual Display of Quantitative Information. 2nd edition. Cheshire, Conn: Graphics Press. ISBN: 978-1-930824-13-3."
+    "text": "September 21, 2022\n\nVisualization Conventions\n\nDue TodayFurther Resources\n\n\n\n\n\n (Read in Perusall; linked in Moodle) list()\n (Read in Perusall; linked in Moodle) list()"
   },
   {
     "objectID": "schedule.html#september-23-2022",
     "href": "schedule.html#september-23-2022",
     "title": "Schedule",
     "section": "September 23, 2022",
-    "text": "September 23, 2022\n\nLab: Designing Effective Data Visualizations\nVISUALIZATION AESTHETICS\n\nDue TodayFurther Resources\n\n\n Study Plan Due\n\n\n (Read in Perusall; linked in Moodle) D’Ignazio, Catherine and Lauren Klein (2020). “3. On Rational, Scientific, Objective Viewpoints from Mythical, Imaginary, Impossible Standpoints”. En. In: Data Feminism. Publisher: PubPub. MIT Press. URL: https://data-feminism.mitpress.mit.edu/pub/5evfe9yd/release/1 (visited on Aug. 24, 2021)."
+    "text": "September 23, 2022\n\nLab: Designing Effective Data Visualizations\nVISUALIZATION AESTHETICS\n\nDue TodayFurther Resources\n\n\n Study Plan Due"
   },
   {
     "objectID": "schedule.html#september-26-2022",
@@ -926,30 +926,30 @@
   {
     "objectID": "labs/lab6.html",
     "href": "labs/lab6.html",
-    "title": "Lab 6: Joining Data",
+    "title": "Lab 6: Joining Datasets",
     "section": "",
     "text": "In this lab, you will …\n\n\n\n…"
   },
   {
     "objectID": "labs/lab6.html#review-of-key-terms",
     "href": "labs/lab6.html#review-of-key-terms",
-    "title": "Lab 6: Joining Data",
+    "title": "Lab 6: Joining Datasets",
     "section": "Review of Key Terms",
     "text": "Review of Key Terms\n\n\n\n\n\n\nTip\n\n\n\nYou may wish to reference this Data Wrangling Cheatsheet when completing this lab.\n\n\nleft\nright\ninner\nouter\nanti"
   },
   {
     "objectID": "labs/lab6.html#twitter-dataset",
     "href": "labs/lab6.html#twitter-dataset",
-    "title": "Lab 6: Joining Data",
+    "title": "Lab 6: Joining Datasets",
     "section": "Twitter Dataset",
     "text": "Twitter Dataset"
   },
   {
     "objectID": "labs/lab6.html#setting-up-your-environment",
     "href": "labs/lab6.html#setting-up-your-environment",
-    "title": "Lab 6: Joining Data",
+    "title": "Lab 6: Joining Datasets",
     "section": "Setting Up Your Environment",
-    "text": "Setting Up Your Environment\n\nInstall the TwitteR package by entering the following into your Console: install.packages(\"twitteR\")\nAPI Key and Secret\nConfigure App\nhttp://127.0.0.1:1410\nhttps://github.com/sds-192-intro-fall22/sds-192-public-website-quarto\n\n\nlibrary(rtweet)\n\nWarning: package 'rtweet' was built under R version 4.1.2\n\nauth_setup_default()\n\nUsing default authentication available.\nReading auth from '/Users/lpoirier_1/Library/Preferences/org.R-project.R/R/rtweet/default.rds'\n\nrt <- search_tweets('\"Smith College\"', n = 1000, include_rts = FALSE)\nusers <- users_data(rt)\nin_reply <- lookup_tweets(rt$in_reply_to_status_id)\nusers_reply <- users_data(in_reply)\n\nuseRs <- search_users(\"#smithies\", n = 200)\n\nuseRs_twt <- tweets_data(useRs)\n\nR_foundation_flw <- get_followers(\"lindsaypoirier\", n = 30000, \n                                  retryonratelimit = TRUE)\nR_foundation_flw_data <- lookup_users(head(R_foundation_flw$from_id, 100), verbose = FALSE)\nR_foundation_tweets <- get_timelines(head(R_foundation_flw$from_id, 10))\n\nWarning: `get_timelines()` was deprecated in rtweet 1.0.0.\nPlease use `get_timeline()` instead.\nThis warning is displayed once every 8 hours.\nCall `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.\n\n\nWarning: Skipping unauthorized account: 1193337545461030912\n\n\nWarning: Skipping unauthorized account: 1559563476401635328\n\n\n\n\n\n\n\n\nExercise 1\n\n\n\n…\n\n\n\n\n\n\n\n\nEthical Considerations\n\n\n\n… If you finish early, I encourage you to attempt to plot some of this data below using ggplot()!"
+    "text": "Setting Up Your Environment\n\nlibrary(tidyverse)\n\nWarning: package 'tidyverse' was built under R version 4.1.2\n\n\nWarning: package 'ggplot2' was built under R version 4.1.2\n\n\nWarning: package 'tibble' was built under R version 4.1.2\n\n\nWarning: package 'readr' was built under R version 4.1.2\n\n\nWarning: package 'dplyr' was built under R version 4.1.2\n\n\nWarning: package 'stringr' was built under R version 4.1.2\n\nnabbs_ma <- read_csv(\"../data/nabbs/Massach.csv\")\nnabbs_routes <- read_csv(\"../data/nabbs/routes.csv\")\nnabbs_weather <- read_csv(\"../data/nabbs/weather.csv\")\nspecies_colnames <- read_fwf(\"../data/nabbs/SpeciesList.txt\", skip = 9, n_max = 1)\nnabbs_species <- read_fwf(\"../data/nabbs/SpeciesList.txt\", skip = 11)\nnames(nabbs_species) <- species_colnames[1,]\n\nWarning: The `value` argument of `names<-` must be a character vector as of\ntibble 3.0.0.\n\nrm(species_colnames)\n\n\nnabbs_ma %>%\n  filter(Year == 2019) %>%\n  left_join(nabbs_species, by = \"AOU\") %>%\n  group_by(AOU, English_Common_Name) %>%\n  summarize(SpeciesTotal = sum(SpeciesTotal)) %>% \n  arrange(desc(SpeciesTotal))\n\n# A tibble: 128 × 3\n# Groups:   AOU [128]\n   AOU   English_Common_Name    SpeciesTotal\n   <chr> <chr>                         <dbl>\n 1 07610 American Robin                 1180\n 2 05600 Chipping Sparrow                730\n 3 07040 Gray Catbird                    676\n 4 06240 Red-eyed Vireo                  607\n 5 05930 Northern Cardinal               564\n 6 06740 Ovenbird                        510\n 7 07310 Tufted Titmouse                 508\n 8 04980 Red-winged Blackbird            500\n 9 07350 Black-capped Chickadee          491\n10 05810 Song Sparrow                    487\n# … with 118 more rows\n\nnabbs_ma %>%\n  filter(Year == 1966) %>%\n  left_join(nabbs_species, by = \"AOU\") %>%\n  group_by(AOU, English_Common_Name) %>%\n  summarize(SpeciesTotal = sum(SpeciesTotal)) %>% \n  arrange(desc(SpeciesTotal))\n\n# A tibble: 76 × 3\n# Groups:   AOU [76]\n   AOU   English_Common_Name  SpeciesTotal\n   <chr> <chr>                       <dbl>\n 1 04930 European Starling             762\n 2 05110 Common Grackle                351\n 3 07610 American Robin                317\n 4 05870 Eastern Towhee                182\n 5 04980 Red-winged Blackbird          178\n 6 06882 House Sparrow                 159\n 7 04770 Blue Jay                      123\n 8 07040 Gray Catbird                  121\n 9 05810 Song Sparrow                  107\n10 00510 Herring Gull                   98\n# … with 66 more rows\n\n\n\nnabbs_ma %>%\n  left_join(nabbs_species, by = \"AOU\") %>%\n  filter(English_Common_Name == \"Least Tern\") %>%\n  group_by(Year) %>%\n  summarize(SpeciesTotal = sum(SpeciesTotal)) %>%\n  ggplot(aes(x = Year, y = SpeciesTotal, group = 1)) +\n  geom_line() +\n  theme_minimal() +\n  labs(title = \"Annual NABBS Counts of Least Tern Population, MA\", x = \"Year\", y = \"Species Total\")\n\n\n\n\nFiltering Joins\nAnti\nWhich bird species have never been counted in MA?\n\nnabbs_species %>%\n  anti_join(nabbs_ma, by = \"AOU\") %>%\n  select(English_Common_Name) %>%\n  unique()\n\n# A tibble: 571 × 1\n   English_Common_Name         \n   <chr>                       \n 1 Black-bellied Whistling-Duck\n 2 Fulvous Whistling-Duck      \n 3 Emperor Goose               \n 4 Snow Goose                  \n 5 (Blue Goose) Snow Goose     \n 6 Ross's Goose                \n 7 Greater White-fronted Goose \n 8 Brant                       \n 9 (Black Brant) Brant         \n10 Cackling Goose              \n# … with 561 more rows\n\n\n\nlibrary(leaflet)\n\nWarning: package 'leaflet' was built under R version 4.1.2\n\nlibrary(sf)\nroutes <-\nnabbs_routes %>%\n  filter(StateNum == 47) %>%\n  st_as_sf(coords = c(\"Longitude\", \"Latitude\"), crs = 4269) %>%\n  st_transform(4326)\nleaflet(width = \"100%\") %>%\n  setView(lat = 42.40, lng = -71.38, zoom = 10) %>%\n  addProviderTiles(providers$Stamen.Toner) %>%\n  addCircleMarkers(data = routes, label = ~RouteName)\n\n\n\n\n\nleft vs. right vs. full\nanti vs semi\nJoin by two variables = route and state\nHow many counted in\n\n\n\n\n\n\nExercise 1\n\n\n\n…\n\n\n\n\n\n\n\n\nEthical Considerations\n\n\n\n… If you finish early, I encourage you to attempt to plot some of this data below using ggplot()!"
   },
   {
     "objectID": "labs/lab5.html",
@@ -1384,5 +1384,187 @@
     "title": "R Fundamentals",
     "section": "Pipe Operator in R",
     "text": "Pipe Operator in R\n\nSymbol is |> (old version is %>%)\n\n\nWithout Pipe\n\nFunctions are nested as arguments in R\nlength(unique(df$col1))\nPerform the innermost function to the outermost\n\n\nWith Pipe\n\nFunctions are sequenced in R\ndf$col1 |> unique() |> length()\nTake this data object, and then perform this function, and then perform this function"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#for-today",
+    "href": "slides/Day4-Visualizations.html#for-today",
+    "title": "Visualizing Data",
+    "section": "For Today",
+    "text": "For Today\n\nLab debriefing\nWhat is a data visualization?\nTaxonomy of Data Visualizations\nVisualization Conventions and Critiques\nWork on Problem Solving Lab in Class"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#elements-of-data-graphics",
+    "href": "slides/Day4-Visualizations.html#elements-of-data-graphics",
+    "title": "Visualizing Data",
+    "section": "Elements of data graphics",
+    "text": "Elements of data graphics\n\nvisual cues/aesthetics\nscale\ncontext\n\n\nFramework drawn from: Yau, Nathan. 2013. Data Points: Visualization That Means Something. 1st edition. Indianapolis, IN: Wiley."
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#what-is-data-visualization",
+    "href": "slides/Day4-Visualizations.html#what-is-data-visualization",
+    "title": "Visualizing Data",
+    "section": "What is data visualization?",
+    "text": "What is data visualization?\n\nthe translation of information into a graphical format\nhelps analysts summarize and identify patterns across large datasets\nalways involves critical judgment calls on the part of the designer"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#visual-cues",
+    "href": "slides/Day4-Visualizations.html#visual-cues",
+    "title": "Visualizing Data",
+    "section": "Visual Cues",
+    "text": "Visual Cues\n\nWhere is the data positioned on the plot?\nWhat is the length of shapes on the plot?\nHow large is the angle between vectors?\nWhat shapes/symbols appear on the plot?\nHow much area do shapes take up on a plot?\nHow intense is the color presented on the plot?"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#what-variables-mapped-onto-what-visual-cues",
+    "href": "slides/Day4-Visualizations.html#what-variables-mapped-onto-what-visual-cues",
+    "title": "Visualizing Data",
+    "section": "What variables mapped onto what visual cues?",
+    "text": "What variables mapped onto what visual cues?"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#what-variables-mapped-onto-what-visual-cues-1",
+    "href": "slides/Day4-Visualizations.html#what-variables-mapped-onto-what-visual-cues-1",
+    "title": "Visualizing Data",
+    "section": "What variables mapped onto what visual cues?",
+    "text": "What variables mapped onto what visual cues?\n\n** This is the last time you will see me use a pie chart in this class!"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#what-variables-mapped-onto-what-visual-cues-2",
+    "href": "slides/Day4-Visualizations.html#what-variables-mapped-onto-what-visual-cues-2",
+    "title": "Visualizing Data",
+    "section": "What variables mapped onto what visual cues?",
+    "text": "What variables mapped onto what visual cues?"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#what-variables-mapped-onto-what-visual-cues-3",
+    "href": "slides/Day4-Visualizations.html#what-variables-mapped-onto-what-visual-cues-3",
+    "title": "Visualizing Data",
+    "section": "What variables mapped onto what visual cues?",
+    "text": "What variables mapped onto what visual cues?"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#what-variables-mapped-onto-what-visual-cues-4",
+    "href": "slides/Day4-Visualizations.html#what-variables-mapped-onto-what-visual-cues-4",
+    "title": "Visualizing Data",
+    "section": "What variables mapped onto what visual cues?",
+    "text": "What variables mapped onto what visual cues?"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#what-variables-mapped-onto-what-visual-cues-5",
+    "href": "slides/Day4-Visualizations.html#what-variables-mapped-onto-what-visual-cues-5",
+    "title": "Visualizing Data",
+    "section": "What variables mapped onto what visual cues?",
+    "text": "What variables mapped onto what visual cues?"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#scale",
+    "href": "slides/Day4-Visualizations.html#scale",
+    "title": "Visualizing Data",
+    "section": "Scale",
+    "text": "Scale\n\nLinear: Numeric values are evenly spaced on axis.\nLogarithmic: Numeric interval are spaced by a factor of the base of the logarithm.\nCategorical: Categorical values are discretely placed on axis.\nOrdinal: Categorical values are ordered on axis.\nPercent: Percentages of a whole are evenly spaced on axis.\nTime: Date/time values are placed on axis in years, months, days, hours, etc."
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#examples",
+    "href": "slides/Day4-Visualizations.html#examples",
+    "title": "Visualizing Data",
+    "section": "Examples",
+    "text": "Examples"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#context",
+    "href": "slides/Day4-Visualizations.html#context",
+    "title": "Visualizing Data",
+    "section": "Context",
+    "text": "Context\nIn every plot you submit for this class, I will be looking for five pieces of context.\n\nThe data’s unit of observation\nVariables represented on the plot\nFilters applied to the data\nGeographic context of the data\nTemporal (date/time range) context of the date"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#data-visualization-conventions",
+    "href": "slides/Day4-Visualizations.html#data-visualization-conventions",
+    "title": "Visualizing Data",
+    "section": "Data Visualization Conventions",
+    "text": "Data Visualization Conventions\n\nEdward Tufte, American statistician sometimes considered “father of data visualization”\nIntroduced the concept of “graphical integrity”\nHow do we present data as honestly as possible?"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#lie-factor",
+    "href": "slides/Day4-Visualizations.html#lie-factor",
+    "title": "Visualizing Data",
+    "section": "Lie Factor",
+    "text": "Lie Factor\n\nLie Factor = (size of effect in graphic)/(size of effect in data)\nLie factor is greater when variations on a graph fail to match variations in data\n\n\nTufte, Visual Display of Quantitative Information\n5.3-0.6 / 0.6 * 100= 783 (graph)\n27.5-18 /18 *100 = 53 (data)\n783/53 = 14.8"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#inconsistent-scales",
+    "href": "slides/Day4-Visualizations.html#inconsistent-scales",
+    "title": "Visualizing Data",
+    "section": "Inconsistent Scales",
+    "text": "Inconsistent Scales\n\nExample from callingbullshit.org"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#presenting-data-out-of-context",
+    "href": "slides/Day4-Visualizations.html#presenting-data-out-of-context",
+    "title": "Visualizing Data",
+    "section": "Presenting Data out of Context",
+    "text": "Presenting Data out of Context\n\nExample from mediamatters.org"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#high-data-to-ink-ratio",
+    "href": "slides/Day4-Visualizations.html#high-data-to-ink-ratio",
+    "title": "`Visualizing Data",
+    "section": "High Data-to-Ink Ratio",
+    "text": "High Data-to-Ink Ratio\n\nEnsure that the ink used on the data match the amount of data presented\nData-to-ink ratio = (ink used to represent data)/(ink used to print graphic)\nShould be as close as possible to 1\nAnother way to think about it: How much of this graph could I erase without losing data?"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#high-data-to-ink-ratio-1",
+    "href": "slides/Day4-Visualizations.html#high-data-to-ink-ratio-1",
+    "title": "`Visualizing Data",
+    "section": "High Data-to-Ink Ratio",
+    "text": "High Data-to-Ink Ratio"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#deviating-from-norms",
+    "href": "slides/Day4-Visualizations.html#deviating-from-norms",
+    "title": "Visualizing Data",
+    "section": "Deviating from Norms",
+    "text": "Deviating from Norms\n\nExample from callingbullshit.org"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#when-can-i-break-convention",
+    "href": "slides/Day4-Visualizations.html#when-can-i-break-convention",
+    "title": "Visualizing Data",
+    "section": "When can I break convention??",
+    "text": "When can I break convention??"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#context-1",
+    "href": "slides/Day4-Visualizations.html#context-1",
+    "title": "Visualizing Data",
+    "section": "Context",
+    "text": "Context"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#disproportionate-data-to-ink-ratio",
+    "href": "slides/Day4-Visualizations.html#disproportionate-data-to-ink-ratio",
+    "title": "Visualizing Data",
+    "section": "Disproportionate Data-to-Ink Ratio",
+    "text": "Disproportionate Data-to-Ink Ratio\n\nEnsure that the ink used on the data match the amount of data presented\nData-to-ink ratio = (ink used to represent data)/(ink used to print graphic)\nShould be as close as possible to 1\nAnother way to think about it: How much of this graph could I erase without losing data?"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html#disproportionate-data-to-ink-ratio-1",
+    "href": "slides/Day4-Visualizations.html#disproportionate-data-to-ink-ratio-1",
+    "title": "Visualizing Data",
+    "section": "Disproportionate Data-to-Ink Ratio",
+    "text": "Disproportionate Data-to-Ink Ratio"
+  },
+  {
+    "objectID": "exercises/visualizations.html",
+    "href": "exercises/visualizations.html",
+    "title": "Day 4: Visualizations",
+    "section": "",
+    "text": "Navigate to the New York Times Grapics. Select a data visualization. …but no maps for today! Take no more than 2 minutes to for this! Drop a link to the data visualization in sds-192-discussions.\nIdentify the visual cues on the visualization, along with the scale of the visualization. Remember visual cues are used to represent variations in the data, while scale is the scale at which those visual cues are differentiated.\n\n\nVisual cues include: position, length, angle, shape, size, color\nScales include: numeric, logarithmic, categorical, ordinal, percentage date-time\n\n\nIdentify the context provided on the visualization. Are all five components of context represented?\n\n\nContext components include: units of observation, variables, filter, geographic context, temporal context\n\n\nAssess the graphical integrity of the visualization. Does the visualization violate any of Tufte’s principles? If so, does this violation serve a purpose?"
+  },
+  {
+    "objectID": "slides/Day4-Visualizations.html",
+    "href": "slides/Day4-Visualizations.html",
+    "title": "Visualizing Data",
+    "section": "",
+    "text": "Lab debriefing\nWhat is a data visualization?\nTaxonomy of Data Visualizations\nVisualization Conventions and Critiques\nWork on Problem Solving Lab in Class"
   }
 ]

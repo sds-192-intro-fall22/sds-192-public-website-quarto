@@ -4,9 +4,9 @@ topic_id,topic_abbr,topic,date,standard_id,required_reading,req_chapter,optional
 3,datasets_variables,Data Fundamentals,9/12/22,1,,,,,,,[Day 2 Slides](slides/Day2-DataFundamentals.html),[Day 2 Activity](exercises/data-fundamentals.html),
 4,intro_r,Introduction to R,9/14/22,1,irizarryIntroductionDataScience2022,2. R Basics,,,,,[Day 3 Slides](slides/Day3-RFundamentals.html),[Day 3 Activity](https://github.com/sds-192-intro-fall22/class-activities),
 5,datasets_lab,Lab: Understanding Datasets,9/16/22,1,,,,,,,,[Lab 1 Instructions](labs/lab1.html);[Problem-Solving Lab Instructions](labs/problem-solving.html),[Lab Templates](https://classroom.github.com/a/5AONAxLS)
-6,grammar_graphics,Grammar of Graphics,9/19/22,3,baumerModernDataScience2021,2. Data Visualization,wickhamGgplot2ElegantGraphics,,,,,,
-7,viz_conventions,Visualization Conventions,9/21/22,3,irizarryIntroductionDataScience2022,11. Data Visualization Principles,tufteVisualDisplayQuantitative2001,,[Problem-Solving Lab](labs/problem-solving.html) Due;[Lab 1](labs/lab1.html) Due,,,,
-8,designing_graphics_lab,Lab: Designing Effective Data Visualizations,9/23/22,3,,,dignazioRationalScientificObjective2020,,[Study Plan](learning-styles.html) Due,,,,
+6,grammar_graphics,Grammar of Graphics,9/19/22,3,baumerModernDataScience2021,2. Data Visualization,,,,,[Day 4 Slides](slides/Day4-Visualizations.html),[Day 4 Activity](exercises/visualizations.html),
+7,viz_conventions,Visualization Conventions,9/21/22,,,,[Problem-Solving Lab](labs/problem-solving.html) Due;[Lab 1](labs/lab1.html) Due,,,,
+8,designing_graphics_lab,Lab: Designing Effective Data Visualizations,9/23/22,3,,,,,[Study Plan](learning-styles.html) Due,,,,
 9,frequency_Plots,Frequency Plots,9/26/22,4,ismayModernDiveStatistical2021,2. Data Visualization,,,Complete CATME Survey,,,,
 10,boxplots,Boxplots,9/28/22,4,,,,,[Lab 2](labs/lab2.html) Due,,,,
 11,visualization_lab,Lab: Visualizing Data,9/30/22,4,,,,,,Project 1 Assigned,,,
