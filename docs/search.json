@@ -46,14 +46,14 @@
     "href": "schedule.html#september-21-2022",
     "title": "Schedule",
     "section": "September 21, 2022",
-    "text": "September 21, 2022\n\nVisualization Conventions\n\nDue TodayFurther Resources\n\n\n\n\n\n (Read in Perusall; linked in Moodle) list()\n (Read in Perusall; linked in Moodle) list()"
+    "text": "September 21, 2022\n\nVisualization Conventions\n\nDue TodayFurther Resources\n\n\n Problem-Solving Lab Due\n Lab 1 Due\n\n\n Day 5 Slides\n ggplot2 cheatsheet\n Navigate to RStudio and switch the project called class-activities. Then click the blue downward arrow in the Git tab to pull the new activity into your environment."
   },
   {
     "objectID": "schedule.html#september-23-2022",
     "href": "schedule.html#september-23-2022",
     "title": "Schedule",
     "section": "September 23, 2022",
-    "text": "September 23, 2022\n\nLab: Designing Effective Data Visualizations\nVISUALIZATION AESTHETICS\n\nDue TodayFurther Resources\n\n\n Study Plan Due"
+    "text": "September 23, 2022\n\nLab: Designing Effective Data Visualizations\nVISUALIZATION AESTHETICS\n\nDue TodayFurther Resources\n\n\n Study Plan Due\n\n\n Lab 2 Templates\n Lab 2 Instructions"
   },
   {
     "objectID": "schedule.html#september-26-2022",
@@ -613,7 +613,7 @@
     "href": "learning-styles.html",
     "title": "Course Study Planning",
     "section": "",
-    "text": "How do I study for this class?\n\n… and in the past I’ve sometimes struggled to answer that question because everyone learns differently. With this in mind, I’ve developed the following chart to help students figure out how best to study for this class given their personal learning style.\nThis chart is modeled based on research indexing different kinds of learning styles across four dimensions (active/reflective, sensing/intuitive, visual/verbal, and sequential/global). This model was formulated by Richard M. Felder and Linda K. Silverman. Later, Richard M. Felder and Barbara A. Soloman developed an assessment tool for learning about a respondents’ learning preferences.\nAs the first part of this assignment, you should take this assessment here, and review your results against the descriptions of the dimensions here.\nOnce you’ve reviewed your results, you can reference the following chart to see what I recommend in terms of your studying. Importantly, you should check out the study tips along all four dimensions (i.e. identify where you stand in each row of the table below). In the Study Plan assignment posted in Moodle, reflect on which study tips seem like they will be most supportive to you in 200-300 words.\n\n\n\n\n\n\nTip\n\n\n\nIt’s important to note that these are just suggestions for directing your study habits. As with all indexes, this one has its limits. In writing up your response, focus on those suggestions that speak to you! Later in the semester, you will have an opportunity to reflect on how studying is going and adjust as necessary. Remember that I’m here to help you figure out how best to navigate this course!\n\n\n\n\n\nDimension\nStudy Tips\nDimension\nStudy Tips\n\n\n\n\nMore Active (learn by doing)\n\nBe sure to complete all course lab assignments. Active learners will get a lot out of these!\nWork through practice problems in the course text.\nAsk tutors in the Spinelli Center if they can help you work through practice problems.\nFind online tutorials related to the course standards, and see if you can follow along to complete them in R.\nReach out to me for some good practice datasets and see if you can apply the coding skills we are learning to those datasets!\n\nMore Reflective (learn by thinking)\n\nWhile reviewing reading materials and lecture notes, see if you can stop and write short paragraphs summarizing a course concept or what is happening when we use certain functions in R.\nAsk tutors in the Spinelli Center if they can help you talk out a particular concept.\nFind a friend and see if you can explain a challenging course concept to them. …or see if you can explain the concept to me in office hours!\nForm a study group and build in time to talk through challenging course concepts with each other.\n\n\n\nSensing Preference (preference for learning facts)\n\nWhen reading the course texts, you may pay extra attention to the sections where the authors walk through real world examples where certain data science tools would be applied.\nAsk tutors in the Spinelli Center if they can walk you through a concept by showing a real world example of where it would be applied.\nIf course material is feeling too abstract, ask me to give an example where it may be applied in the real world in class or in office hours.\n\nIntuitive Preference (preference for learning theories and relationships)\n\nWhen reading the course texts, you may pay extra attention to the sections where the authors explain the meaning, rationales, and theories behind course concepts and tools and how they relate to one another.\nAsk tutors in the Spinelli Center if they can walk you through a concept by explaining its meaning and function and how it gets applied.\nIf course material is feeling too rigid or mechanical, ask me to explain the theories behind certain functions in class or in office hours.\n\n\n\nMore Visual (learn by seeing)\n\nBe sure to pay close attention to diagrams and images in course reading assignments and lecture slides.\nIf you’re not following along with a concept in lecture, ask me if we can pause and draw it out on the white board.\nAsk tutors in the Spinelli Center to help you draw a diagram or image to explain a challenging concept.\nAs you are reviewing lecture notes and readings, see if you can summarize a challenging concept by drawing a diagram or schematic of the concept. For instance, you might draw what happens to a data frame when you applying a certain wrangling verb.\nThere are often really helpful icon diagrams in R cheatsheets. I will do my best to always link relevant cheatsheets in course lab assignments.\n\nMore Verbal (learn by hearing and saying)\n\nWatch my lab recaps in Perusall and ask questions when you are struggling to understand a concept from the lab.\nIf you’re not following along with a concept in lecture, ask me if we can pause and explain the concept in a different way.\nAsk tutors in the Spinelli Center if they can explain a concept in a different way.\nForm a study group so that you can listen to other students explain course concepts.\nFind YouTube videos that explain course concepts that you are struggling with.\nDataCamp offers a number of courses on topics we will cover in the course, and students can create a free account! You may wish to work through a DataCamp course related to a concept you are struggling with.\n\n\n\nMore Sequential (learn step-by-step)\n\nAsk tutors in the Spinelli Center if they can walk you step-by-step through a practice problem.\nIdentify practice problems that you struggled with in labs or in class, and write out step-by-step how you would tackle that problem.\nReview quiz questions you got incorrect by working with a classmate to write out the steps to the correct answer.\nAsk me to explain the logic behind the steps we take to answer a certain problem in class or in office hours.\n\nMore Global (learn big picture)\n\nAsk tutors in the Spinelli Center if they can help you draw connections between different course concepts and ideas.\nCreate concept maps that show the relationships between different course concepts.\nReview quiz questions you got incorrect by working with a classmate to relate the question to another question you got correct or to another concept that you understand well.\nAsk me to explain how different course concepts and ideas connect to one another in class or in office hours."
+    "text": "How do I study for this class?\n\n… and in the past I’ve sometimes struggled to answer that question because everyone learns differently. With this in mind, I’ve developed the following chart to help students figure out how best to study for this class given their personal learning style.\nThis chart is modeled based on research indexing different kinds of learning styles across four dimensions (active/reflective, sensing/intuitive, visual/verbal, and sequential/global). This model was formulated by Richard M. Felder and Linda K. Silverman. Later, Richard M. Felder and Barbara A. Soloman developed an assessment tool for learning about a respondents’ learning preferences.\nAs the first part of this assignment, you should take this assessment here, and review your results against the descriptions of the dimensions here.\nOnce you’ve reviewed your results, you can reference the following chart to see what I recommend in terms of your studying. Importantly, you should check out the study tips along all four dimensions (i.e. identify where you stand in each row of the table below). In the Study Plan assignment posted in Moodle, reflect on which study tips seem like they will be most supportive to you in 200-300 words.\n\n\n\n\n\n\nTip\n\n\n\nIt’s important to note that these are just suggestions for directing your study habits. As with all indexes, this one has its limits. In writing up your response, focus on those suggestions that speak to you! Later in the semester, you will have an opportunity to reflect on how studying is going and adjust as necessary. Remember that I’m here to help you figure out how best to navigate this course!\n\n\n\n\n\nDimension\nStudy Tips\nDimension\nStudy Tips\n\n\n\n\nMore Active (learn by doing)\n\nBe sure to complete all course lab assignments. Active learners will get a lot out of these!\nWork through practice problems in the course text.\nAsk tutors in the Spinelli Center if they can help you work through practice problems.\nBonus: Find online tutorials related to the course standards, and see if you can follow along to complete them in R.\nBonus: Reach out to me for some good practice datasets and see if you can apply the coding skills we are learning to those datasets!\n\nMore Reflective (learn by thinking)\n\nWhile reviewing reading materials and lecture notes, see if you can stop and write short paragraphs summarizing a course concept or what is happening when we use certain functions in R.\nAsk tutors in the Spinelli Center if they can help you talk out a particular concept.\nFind a friend and see if you can explain a challenging course concept to them. …or see if you can explain the concept to me in office hours!\nForm a study group and build in time to talk through challenging course concepts with each other.\n\n\n\nSensing Preference (preference for learning facts)\n\nWhen reading the course texts, you may pay extra attention to the sections where the authors walk through real world examples where certain data science tools would be applied.\nAsk tutors in the Spinelli Center if they can walk you through a concept by showing a real world example of where it would be applied.\nIf course material is feeling too abstract, ask me to give an example where it may be applied in the real world in class or in office hours.\n\nIntuitive Preference (preference for learning theories and relationships)\n\nWhen reading the course texts, you may pay extra attention to the sections where the authors explain the meaning, rationales, and theories behind course concepts and tools and how they relate to one another.\nAsk tutors in the Spinelli Center if they can walk you through a concept by explaining its meaning and function and how it gets applied.\nIf course material is feeling too rigid or mechanical, ask me to explain the theories behind certain functions in class or in office hours.\n\n\n\nMore Visual (learn by seeing)\n\nBe sure to pay close attention to diagrams and images in course reading assignments and lecture slides.\nIf you’re not following along with a concept in lecture, ask me if we can pause and draw it out on the white board.\nAsk tutors in the Spinelli Center to help you draw a diagram or image to explain a challenging concept.\nAs you are reviewing lecture notes and readings, see if you can summarize a challenging concept by drawing a diagram or schematic of the concept. For instance, you might draw what happens to a data frame when you applying a certain wrangling verb.\nThere are often really helpful icon diagrams in R cheatsheets. I will do my best to always link relevant cheatsheets in course lab assignments.\n\nMore Verbal (learn by hearing and saying)\n\nWatch my lab recaps in Perusall and ask questions when you are struggling to understand a concept from the lab.\nIf you’re not following along with a concept in lecture, ask me if we can pause and explain the concept in a different way.\nAsk tutors in the Spinelli Center if they can explain a concept in a different way.\nForm a study group so that you can listen to other students explain course concepts.\nFind YouTube videos that explain course concepts that you are struggling with.\nBonus: DataCamp offers a number of courses on topics we will cover in the course, and students can create a free account! You may wish to work through a DataCamp course related to a concept you are struggling with.\n\n\n\nMore Sequential (learn step-by-step)\n\nAsk tutors in the Spinelli Center if they can walk you step-by-step through a practice problem.\nIdentify practice problems that you struggled with in labs or in class, and write out step-by-step how you would tackle that problem.\nReview quiz questions you got incorrect by working with a classmate to write out the steps to the correct answer.\nAsk me to explain the logic behind the steps we take to answer a certain problem in class or in office hours.\n\nMore Global (learn big picture)\n\nAsk tutors in the Spinelli Center if they can help you draw connections between different course concepts and ideas.\nCreate concept maps that show the relationships between different course concepts.\nReview quiz questions you got incorrect by working with a classmate to relate the question to another question you got correct or to another concept that you understand well.\nAsk me to explain how different course concepts and ideas connect to one another in class or in office hours."
   },
   {
     "objectID": "lab4.html",
@@ -1578,8 +1578,8 @@
     "objectID": "slides/Day5-ggplot.html#ggplot",
     "href": "slides/Day5-ggplot.html#ggplot",
     "title": "ggplot()",
-    "section": "ggplot()",
-    "text": "ggplot()"
+    "section": "ggplot",
+    "text": "ggplot\n\nMost plots we create in this course will rely on package called ggplot2\nggplot2 is included in the Tidyverse, which you installed in SDS 100\nLoad ggplot2 in your environment.\n\n\nlibrary(ggplot2)"
   },
   {
     "objectID": "slides/Day5-ggplot.html#elements-of-data-graphics",
@@ -1720,5 +1720,103 @@
     "title": "ggplot()",
     "section": "When can I break convention??",
     "text": "When can I break convention??"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#for-today",
+    "href": "slides/Day5-ggplot.html#for-today",
+    "title": "ggplot()",
+    "section": "For Today",
+    "text": "For Today\n\nVisualizations Exercise\nIntroduction to ggplot()\nClass Activity"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#anatomy-of-the-ggplot-function",
+    "href": "slides/Day5-ggplot.html#anatomy-of-the-ggplot-function",
+    "title": "ggplot()",
+    "section": "Anatomy of the ggplot() function",
+    "text": "Anatomy of the ggplot() function\n\nggplot() takes two arguments:\n\ndata: the dataset used to produce the plot (in a data frame)\nmapping: the variables from the dataset we want mapped onto visual cues\n\nmappings are defined in a function called aes() (short for aesthetics)\nin Cartesian plots, we must supply the variables/columns that will appear on the axes (via x = and y =)"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#anatomy-of-the-ggplot-function-1",
+    "href": "slides/Day5-ggplot.html#anatomy-of-the-ggplot-function-1",
+    "title": "ggplot()",
+    "section": "Anatomy of the ggplot() function",
+    "text": "Anatomy of the ggplot() function\n\nggplot(data = hampshire_census_data, \n       aes(x = COMMUNITY, \n           y = CEN_EARLYED))"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#wheres-the-data",
+    "href": "slides/Day5-ggplot.html#wheres-the-data",
+    "title": "ggplot()",
+    "section": "Where’s the data?",
+    "text": "Where’s the data?\n\nIn previous plot, we told R what variables to plot, but we didn’t indicate how to plot them.\nTo do this, we need to add a geom function to our ggplot call. Examples:\n\nBar plots: geom_bar()\nScatterplots: geom_point()\n\nAppended to function call with a + sign"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#styling-plots-adjusting-the-scale",
+    "href": "slides/Day5-ggplot.html#styling-plots-adjusting-the-scale",
+    "title": "ggplot()",
+    "section": "Styling Plots: Adjusting the Scale",
+    "text": "Styling Plots: Adjusting the Scale\n\n# Adjust the Scale\nggplot(data = pioneer_valley_census_data, \n       aes(x = COUNTY,y = CEN_WORKERS)) +\n  geom_point() +\n  coord_flip() +\n  scale_y_log10() +\n  labs(title = \"Number of Workers Age 16+ in Pioneer Valley, MA Municipalities, 2018\", x = \"County\", y = \"Workers Age 16+\")"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#do-i-really-have-to-memorize-all-of-these-stylistic-functions",
+    "href": "slides/Day5-ggplot.html#do-i-really-have-to-memorize-all-of-these-stylistic-functions",
+    "title": "ggplot()",
+    "section": "Do I really have to memorize all of these stylistic functions?!",
+    "text": "Do I really have to memorize all of these stylistic functions?!\nNo. There are cheatsheets. The ggplot2() cheatsheet is linked here."
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#lets-create-the-following-data-frame-to-motivate-todays-lecture.",
+    "href": "slides/Day5-ggplot.html#lets-create-the-following-data-frame-to-motivate-todays-lecture.",
+    "title": "ggplot()",
+    "section": "Let’s create the following data frame to motivate today’s lecture.",
+    "text": "Let’s create the following data frame to motivate today’s lecture.\n\nThis dataset comes from Pioneer Valley Data and documents estimates of population characteristics for each municipality in the Pioneer Valley.\n\n\nlibrary(tidyverse)\npioneer_valley_census_data <- read.csv(\"https://raw.githubusercontent.com/SDS-192-Intro/SDS-192-public-website/main/slides/datasets/pioneer_valley_census.csv\")\nhampshire_census_data <- pioneer_valley_census_data %>% \n  filter(COUNTY == \"Hampshire\")"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#adding-a-geom-function",
+    "href": "slides/Day5-ggplot.html#adding-a-geom-function",
+    "title": "ggplot()",
+    "section": "Adding a geom function",
+    "text": "Adding a geom function\n\nggplot(data = hampshire_census_data, \n       aes(x = COMMUNITY, \n           y = CEN_EARLYED)) +\n  geom_col()"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#styling-plots-flipping-coordinates",
+    "href": "slides/Day5-ggplot.html#styling-plots-flipping-coordinates",
+    "title": "ggplot()",
+    "section": "Styling Plots: Flipping Coordinates",
+    "text": "Styling Plots: Flipping Coordinates\n\nggplot(data = hampshire_census_data, \n       aes(x = COMMUNITY, \n           y = CEN_EARLYED)) +\n  geom_col() +\n  coord_flip() # Flipping the x and y coordinates here makes the labels more legible."
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#styling-plots-changing-the-theme",
+    "href": "slides/Day5-ggplot.html#styling-plots-changing-the-theme",
+    "title": "ggplot()",
+    "section": "Styling Plots: Changing the Theme",
+    "text": "Styling Plots: Changing the Theme\n\nggplot(data = hampshire_census_data, \n       aes(x = COMMUNITY, \n           y = CEN_EARLYED)) +\n  geom_col() +\n  coord_flip() + # Flipping the x and y coordinates here makes the labels more legible. \n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#styling-plots-adding-labels",
+    "href": "slides/Day5-ggplot.html#styling-plots-adding-labels",
+    "title": "ggplot()",
+    "section": "Styling Plots: Adding Labels",
+    "text": "Styling Plots: Adding Labels\n\nggplot(data = hampshire_census_data, \n       aes(x = COMMUNITY, \n           y = CEN_EARLYED)) +\n  geom_col() +\n  coord_flip() + # Flipping the x and y coordinates here makes the labels more legible. \n  theme_minimal() +\n  labs(title = \"Hampshire County Early Education Enrollment Rates, 2018\", \n       x = \"Enrollment Rate for 3-4 yr old\", \n       y = \"Municipality in Hampshire County, MA\")"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#aeshetics-vs.-attributes",
+    "href": "slides/Day5-ggplot.html#aeshetics-vs.-attributes",
+    "title": "ggplot()",
+    "section": "Aeshetics vs. Attributes",
+    "text": "Aeshetics vs. Attributes\n\nWe can adjust the way the data appears on plots in two ways:\n\nAccording to a variable:\n\nThis must be done inside of the aes() function\n\nIn a fixed way:\n\nThis must be done outside of the aes() function"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#adjusting-data-on-plots-via-aeshetics",
+    "href": "slides/Day5-ggplot.html#adjusting-data-on-plots-via-aeshetics",
+    "title": "ggplot()",
+    "section": "Adjusting Data on Plots via Aeshetics",
+    "text": "Adjusting Data on Plots via Aeshetics\n\nWe add visual cues to the plot in the aes() call\n\n\n# Add visual cue for size\nggplot(data = pioneer_valley_census_data, \n       aes(x = COUNTY, y = CEN_WORKERS, size = CEN_HOUSEHOLDS)) +\n  geom_point() +\n  coord_flip() +\n  labs(title = \"Number of Workers Age 16+ in Pioneer Valley, MA Municipalities, 2018\", x = \"County\", y = \"Workers Age 16+\", size = \"Households\")"
+  },
+  {
+    "objectID": "slides/Day5-ggplot.html#adjusting-data-on-plots-via-attributes",
+    "href": "slides/Day5-ggplot.html#adjusting-data-on-plots-via-attributes",
+    "title": "ggplot()",
+    "section": "Adjusting Data on Plots via Attributes",
+    "text": "Adjusting Data on Plots via Attributes\n\n# Add visual cue for size and attribute for transparency\nggplot(data = pioneer_valley_census_data, \n       aes(x = COUNTY, y = CEN_WORKERS, size = CEN_HOUSEHOLDS)) +\n  geom_point(alpha = 0.2) +\n  coord_flip() +\n  labs(title = \"Number of Workers Age 16+ in Pioneer Valley, MA Municipalities, 2018\", x = \"County\", y = \"Workers Age 16+\", size = \"Households\")"
   }
 ]
