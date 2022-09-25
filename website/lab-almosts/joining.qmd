@@ -1,0 +1,95 @@
+---
+title: "joining"
+format: html
+editor: visual
+---
+
+## North American Bird Breeding Survey Dataset
+
+nabbs_ma -\> nabbs routes (on state and route id) nabbs_ma -\> nabbs_species (on AOU) nabbs_ma -\> nabbs_weather (on routedataid) nabbs_ma -\> nabbs_vehicle (on routedataid)
+
+```{r}
+library(rtweet)
+
+
+```
+
+## Setting Up Your Environment
+
+```{r import}
+library(tidyverse)
+
+nabbs_ma <- read_csv("../data/nabbs/Massach.csv")
+nabbs_routes <- read_csv("../data/nabbs/routes.csv")
+nabbs_weather <- read_csv("../data/nabbs/weather.csv")
+species_colnames <- read_fwf("../data/nabbs/SpeciesList.txt", skip = 9, n_max = 1)
+nabbs_species <- read_fwf("../data/nabbs/SpeciesList.txt", skip = 11)
+names(nabbs_species) <- species_colnames[1,]
+rm(species_colnames)
+
+```
+
+```{r}
+nabbs_ma %>%
+  filter(Year == 2019) %>%
+  left_join(nabbs_species, by = "AOU") %>%
+  group_by(AOU, English_Common_Name) %>%
+  summarize(SpeciesTotal = sum(SpeciesTotal)) %>% 
+  arrange(desc(SpeciesTotal))
+
+nabbs_ma %>%
+  filter(Year == 1966) %>%
+  left_join(nabbs_species, by = "AOU") %>%
+  group_by(AOU, English_Common_Name) %>%
+  summarize(SpeciesTotal = sum(SpeciesTotal)) %>% 
+  arrange(desc(SpeciesTotal))
+```
+
+```{r}
+nabbs_ma %>%
+  left_join(nabbs_species, by = "AOU") %>%
+  filter(English_Common_Name == "Least Tern") %>%
+  group_by(Year) %>%
+  summarize(SpeciesTotal = sum(SpeciesTotal)) %>%
+  ggplot(aes(x = Year, y = SpeciesTotal, group = 1)) +
+  geom_line() +
+  theme_minimal() +
+  labs(title = "Annual NABBS Counts of Least Tern Population, MA", x = "Year", y = "Species Total")
+```
+
+```{r}
+nabbs_species %>%
+  anti_join(nabbs_ma, by = "AOU") %>%
+  distinct(English_Common_Name) %>% nrow()
+
+test <-nabbs_ma %>% filter(Route == "019")
+
+```
+
+Filtering Joins
+
+Anti
+
+Which bird species have never been counted in MA?
+
+```{r}
+nabbs_species %>%
+  anti_join(nabbs_ma, by = "AOU") %>%
+  select(English_Common_Name) %>%
+  unique()
+```
+
+```{r}
+library(leaflet)
+library(sf)
+routes <-
+nabbs_routes %>%
+  filter(StateNum == 47) %>%
+  st_as_sf(coords = c("Longitude", "Latitude"), crs = 4269) %>%
+  st_transform(4326)
+leaflet(width = "100%") %>%
+  setView(lat = 42.40, lng = -71.38, zoom = 10) %>%
+  addProviderTiles(providers$Stamen.Toner) %>%
+  addCircleMarkers(data = routes, label = ~RouteName)
+  
+```

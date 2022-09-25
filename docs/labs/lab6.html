@@ -8,7 +8,7 @@
 
 <meta name="author" content="Lindsay Poirier">
 
-<title>Lab 6: Joining Data</title>
+<title>Lab 6: Joining Datasets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -164,7 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals">Learning Goals</a></li>
   </ul></li>
   <li><a href="#review-of-key-terms" id="toc-review-of-key-terms" class="nav-link" data-scroll-target="#review-of-key-terms">Review of Key Terms</a></li>
-  <li><a href="#twitter-dataset" id="toc-twitter-dataset" class="nav-link" data-scroll-target="#twitter-dataset">Twitter Dataset</a></li>
+  <li><a href="#north-american-bird-breeding-survey-dataset" id="toc-north-american-bird-breeding-survey-dataset" class="nav-link" data-scroll-target="#north-american-bird-breeding-survey-dataset">North American Bird Breeding Survey Dataset</a></li>
   <li><a href="#setting-up-your-environment" id="toc-setting-up-your-environment" class="nav-link" data-scroll-target="#setting-up-your-environment">Setting Up Your Environment</a></li>
   </ul>
 </nav>
@@ -174,7 +174,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 6: Joining Data</h1>
+<h1 class="title">Lab 6: Joining Datasets</h1>
 </div>
 
 
@@ -227,54 +227,44 @@ Tip
 <p>outer</p>
 <p>anti</p>
 </section>
-<section id="twitter-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="twitter-dataset">Twitter Dataset</h2>
+<section id="north-american-bird-breeding-survey-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="north-american-bird-breeding-survey-dataset">North American Bird Breeding Survey Dataset</h2>
 </section>
 <section id="setting-up-your-environment" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-your-environment">Setting Up Your Environment</h2>
-<ol type="1">
-<li><p>Install the TwitteR package by entering the following into your Console: <code>install.packages("twitteR")</code></p></li>
-<li><p>API Key and Secret</p></li>
-<li><p>Configure App</p></li>
-<li><p>http://127.0.0.1:1410</p></li>
-<li><p>https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto</p></li>
-</ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rtweet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'rtweet' was built under R version 4.1.2</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">auth_setup_default</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Using default authentication available.
-Reading auth from '/Users/lpoirier_1/Library/Preferences/org.R-project.R/R/rtweet/default.rds'</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rt <span class="ot">&lt;-</span> <span class="fu">search_tweets</span>(<span class="st">'"Smith College"'</span>, <span class="at">n =</span> <span class="dv">1000</span>, <span class="at">include_rts =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">users_data</span>(rt)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>in_reply <span class="ot">&lt;-</span> <span class="fu">lookup_tweets</span>(rt<span class="sc">$</span>in_reply_to_status_id)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>users_reply <span class="ot">&lt;-</span> <span class="fu">users_data</span>(in_reply)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>useRs <span class="ot">&lt;-</span> <span class="fu">search_users</span>(<span class="st">"#smithies"</span>, <span class="at">n =</span> <span class="dv">200</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>useRs_twt <span class="ot">&lt;-</span> <span class="fu">tweets_data</span>(useRs)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>R_foundation_flw <span class="ot">&lt;-</span> <span class="fu">get_followers</span>(<span class="st">"lindsaypoirier"</span>, <span class="at">n =</span> <span class="dv">30000</span>, </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">retryonratelimit =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>R_foundation_flw_data <span class="ot">&lt;-</span> <span class="fu">lookup_users</span>(<span class="fu">head</span>(R_foundation_flw<span class="sc">$</span>from_id, <span class="dv">100</span>), <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>R_foundation_tweets <span class="ot">&lt;-</span> <span class="fu">get_timelines</span>(<span class="fu">head</span>(R_foundation_flw<span class="sc">$</span>from_id, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: `get_timelines()` was deprecated in rtweet 1.0.0.
-Please use `get_timeline()` instead.
-This warning is displayed once every 8 hours.
-Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
+<pre><code>Warning: package 'tidyverse' was built under R version 4.1.2</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Skipping unauthorized account: 1193337545461030912</code></pre>
+<pre><code>Warning: package 'ggplot2' was built under R version 4.1.2</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: Skipping unauthorized account: 1559563476401635328</code></pre>
+<pre><code>Warning: package 'tibble' was built under R version 4.1.2</code></pre>
 </div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.1.2</code></pre>
 </div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.1.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'stringr' was built under R version 4.1.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">"https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/StormEvents_details-ftp_v1.0_d2021_c20220921.csv.gz"</span>, temp)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>storm_events_2021 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">gzfile</span>(temp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: One or more parsing issues, see `problems()` for details</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">"https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/StormEvents_fatalities-ftp_v1.0_d2021_c20220921.csv.gz"</span>, temp)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>storm_fatalities_2021 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">gzfile</span>(temp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>left vs.&nbsp;right vs.&nbsp;full</p>
+<p>anti vs semi</p>
+<p>Join by two variables = route and state</p>
+<p>How many counted in</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

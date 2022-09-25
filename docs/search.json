@@ -60,7 +60,7 @@
     "href": "schedule.html#september-26-2022",
     "title": "Schedule",
     "section": "September 26, 2022",
-    "text": "September 26, 2022\n\nFrequency Plots\nPLOTTING FREQUENCIES AND DISTRIBUTIONS\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 2. Data Visualization , Ismay, Chester and Albert Y. Kim (2021). Modern Dive: Statistical Inference via Data Science. CRC Press. URL: https://moderndive.com/ (visited on Jan. 14, 2022).\n Complete CATME Survey"
+    "text": "September 26, 2022\n\nFrequency Plots\nPLOTTING FREQUENCIES AND DISTRIBUTIONS\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 2. Data Visualization , Ismay, Chester and Albert Y. Kim (2021). Modern Dive: Statistical Inference via Data Science. CRC Press. URL: https://moderndive.com/ (visited on Jan. 14, 2022).\n Complete CATME Survey\n\n\n Day 6 Slides\n ggplot2 cheatsheet\n Navigate to RStudio and switch the project called class-activities. Then click the blue downward arrow in the Git tab to pull the new activity into your environment."
   },
   {
     "objectID": "schedule.html#september-28-2022",
@@ -1818,5 +1818,159 @@
     "title": "ggplot()",
     "section": "Adjusting Data on Plots via Attributes",
     "text": "Adjusting Data on Plots via Attributes\n\n# Add visual cue for size and attribute for transparency\nggplot(data = pioneer_valley_census_data, \n       aes(x = COUNTY, y = CEN_WORKERS, size = CEN_HOUSEHOLDS)) +\n  geom_point(alpha = 0.2) +\n  coord_flip() +\n  labs(title = \"Number of Workers Age 16+ in Pioneer Valley, MA Municipalities, 2018\", x = \"County\", y = \"Workers Age 16+\", size = \"Households\")"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#for-today",
+    "href": "slides/Day6-Frequency.html#for-today",
+    "title": "Plotting Frequencies",
+    "section": "For Today",
+    "text": "For Today\n\nFill out CATME Survey\nHistograms\nBar plots\nMultivariate Frequencies"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#lets-create-the-following-data-frame-to-motivate-todays-lecture.",
+    "href": "slides/Day6-Frequency.html#lets-create-the-following-data-frame-to-motivate-todays-lecture.",
+    "title": "Plotting Frequencies",
+    "section": "Let’s create the following data frame to motivate today’s lecture.",
+    "text": "Let’s create the following data frame to motivate today’s lecture.\n\nlibrary(tidyverse)\ncounties <- read_csv(\"https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/a8b64e3070ca2543b904d4d92780b09e6062ced6/website/data/nbi_counties.csv\")\nroute_prefixes <- read_csv(\"https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/a8b64e3070ca2543b904d4d92780b09e6062ced6/website/data/nbi_route_pre.csv\")\nmaintenance <- read_csv(\"https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/a8b64e3070ca2543b904d4d92780b09e6062ced6/website/data/nbi_maintenance.csv\")\nkinds <- read_csv(\"https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/a8b64e3070ca2543b904d4d92780b09e6062ced6/website/data/nbi_kind.csv\")\n\nnbi_ma <- read.delim(\"https://www.fhwa.dot.gov/bridge/nbi/2022/delimited/MA22.txt\", sep = \",\") |>\n  left_join(counties) |>\n  left_join(route_prefixes) |>\n  left_join(maintenance) |>\n  left_join(kinds) |>\n  filter(SERVICE_ON_042A == 1) |>\n  select(STRUCTURE_NUMBER_008, COUNTY_CODE_003_L, ROUTE_PREFIX_005B_L, MAINTENANCE_021_L, YEAR_BUILT_027, ADT_029, STRUCTURE_KIND_043A_L, STRUCTURAL_EVAL_067, BRIDGE_IMP_COST_094) |>\n  mutate(STRUCTURE_KIND_043A_L = \n           case_when(\n             STRUCTURE_KIND_043A_L == \"Concrete continuous\" ~ \"Concrete\",\n             STRUCTURE_KIND_043A_L == \"Steel continuous\" ~ \"Steel\",\n             STRUCTURE_KIND_043A_L == \"Prestressed concrete continuous\" ~ \"Prestressed concrete\",\n             TRUE ~ STRUCTURE_KIND_043A_L)) |>\n  mutate(BRIDGE_IMP_COST_094 = BRIDGE_IMP_COST_094 * 1000)\n\nnbi_hampshire <- nbi_ma |> filter(COUNTY_CODE_003_L == \"Hampshire\")\n\nrm(counties, kinds, maintenance, route_prefixes)"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#ggplot",
+    "href": "slides/Day6-Frequency.html#ggplot",
+    "title": "Plotting Frequencies",
+    "section": "ggplot",
+    "text": "ggplot\n\nMost plots we create in this course will rely on package called ggplot2\nggplot2 is included in the Tidyverse, which you installed in SDS 100\nLoad ggplot2 in your environment.\n\n\nlibrary(ggplot2)"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#histogram",
+    "href": "slides/Day6-Frequency.html#histogram",
+    "title": "Plotting Frequencies",
+    "section": "Histogram",
+    "text": "Histogram\n\n\n\nVisualizes distribution of a numeric variable\n\nWhat are maximum and minimum values?\nHow spread out are the values?\nWhat is the center of the values."
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#histogram-1",
+    "href": "slides/Day6-Frequency.html#histogram-1",
+    "title": "Plotting Frequencies",
+    "section": "Histogram",
+    "text": "Histogram\n\n\n\nCreate bins for numbers, each with the same range of values [i.e. 0-10, >10-20, >20-30, and so on]\n\nConverts the linear scale to a categorical scale\n\nCount the numbers in each bin\nSet the height of a bar for that bin to the count"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#bar-plot",
+    "href": "slides/Day6-Frequency.html#bar-plot",
+    "title": "Plotting Frequencies",
+    "section": "Bar Plot",
+    "text": "Bar Plot\n\n\n\nVisualizes counts of a categorical variable\n\nWhich value appears the most?\nWhich appears the least?\nHow evenly distributed are the counts?\n\n\n\n\n\n [1] \"a\" \"b\" \"c\" \"a\" \"c\" \"a\" \"a\" \"b\" \"c\" \"a\" \"b\" \"c\""
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#histogram-2",
+    "href": "slides/Day6-Frequency.html#histogram-2",
+    "title": "Plotting Frequencies",
+    "section": "Histogram",
+    "text": "Histogram\n\n\n\nDetermine the unique values and places them on the x-axis\nCount the number of times each value appears\nSet the height of a bar for that category to the count\n\n\n\n\n [1] \"a\" \"b\" \"c\" \"a\" \"c\" \"a\" \"a\" \"b\" \"c\" \"a\" \"b\" \"c\""
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#distribution-in-ma-bridges-years-built",
+    "href": "slides/Day6-Frequency.html#distribution-in-ma-bridges-years-built",
+    "title": "Plotting Frequencies",
+    "section": "Distribution in MA Bridge’s Years Built",
+    "text": "Distribution in MA Bridge’s Years Built\n\nggplot(nbi_ma, aes(x = YEAR_BUILT_027)) +\n  geom_histogram()  +\n  theme(text = element_text(size = 20))"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#distribution-in-ma-bridges-years-built-1",
+    "href": "slides/Day6-Frequency.html#distribution-in-ma-bridges-years-built-1",
+    "title": "Plotting Frequencies",
+    "section": "Distribution in MA Bridge’s Years Built",
+    "text": "Distribution in MA Bridge’s Years Built\n\n\n\nBinwidth indicates the width of the buckets we’d like to categorize our data into.\nBins indicates the number of bins to create.\nWe choose one or the other when creating histograms.\n\n\n\nggplot(nbi_ma, aes(x = YEAR_BUILT_027)) +\n  geom_histogram(binwidth = 10, color = \"white\")"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#how-would-we-describe-this-plot",
+    "href": "slides/Day6-Frequency.html#how-would-we-describe-this-plot",
+    "title": "Plotting Frequencies",
+    "section": "How would we describe this plot?",
+    "text": "How would we describe this plot?\n\nggplot(nbi_ma, aes(x = YEAR_BUILT_027)) +\n  geom_histogram(binwidth = 10, color = \"white\") +\n  labs(title = \"Distribution in the Years MA Bridges were Built, 2021\", \n       x = \"Year Built\",\n       y = \"Number of Bridges\")"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#faceting-a-histogram",
+    "href": "slides/Day6-Frequency.html#faceting-a-histogram",
+    "title": "Plotting Frequencies",
+    "section": "Faceting a Histogram",
+    "text": "Faceting a Histogram\n\nggplot(nbi_ma, aes(x = YEAR_BUILT_027)) +\n  geom_histogram(binwidth = 10, color = \"white\") +\n  labs(title = \"Distribution in the Years MA Bridges were Built, 2021\", \n       x = \"Year Built\",\n       y = \"Number of Bridges\") +\n  facet_wrap(vars(ROUTE_PREFIX_005B_L))"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#frequency-of-structure-kinds",
+    "href": "slides/Day6-Frequency.html#frequency-of-structure-kinds",
+    "title": "Plotting Frequencies",
+    "section": "Frequency of Structure Kinds",
+    "text": "Frequency of Structure Kinds\n\nggplot(nbi_ma, aes(x = STRUCTURE_KIND_043A_L)) +\n  geom_bar()"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#labels-for-this-plot",
+    "href": "slides/Day6-Frequency.html#labels-for-this-plot",
+    "title": "Plotting Frequencies",
+    "section": "Labels for this Plot",
+    "text": "Labels for this Plot\n\nggplot(nbi_ma, aes(x = STRUCTURE_KIND_043A_L)) +\n  geom_bar() +\n  coord_flip() +\n  labs(title = \"Frequency of Different Kinds of MA Bridge Structures, 2021\", \n       x = \"Structure Kind\",\n       y = \"Number of Bridges\")"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#stacked-bar-plot",
+    "href": "slides/Day6-Frequency.html#stacked-bar-plot",
+    "title": "Plotting Frequencies",
+    "section": "Stacked Bar Plot",
+    "text": "Stacked Bar Plot\n\nggplot(nbi_ma, aes(x = STRUCTURE_KIND_043A_L, fill = ROUTE_PREFIX_005B_L)) +\n  geom_bar() +\n  coord_flip() +\n  labs(title = \"Frequency of Different Kinds of MA Bridge Structures, 2021\", \n       x = \"Structure Kind\",\n       y = \"Number of Bridges\",\n       fill = \"Route Prefix\") +\n  scale_fill_brewer(palette = 'Set3')"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#learning-check-why-not-this",
+    "href": "slides/Day6-Frequency.html#learning-check-why-not-this",
+    "title": "Plotting Frequencies",
+    "section": "Learning Check: Why not this?",
+    "text": "Learning Check: Why not this?"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#dodging",
+    "href": "slides/Day6-Frequency.html#dodging",
+    "title": "Plotting Frequencies",
+    "section": "Dodging",
+    "text": "Dodging\n\nggplot(nbi_ma, aes(x = STRUCTURE_KIND_043A_L, fill = ROUTE_PREFIX_005B_L)) +\n  geom_bar(position = \"dodge\") +\n  coord_flip() +\n  labs(title = \"Frequency of Different Kinds of MA Bridge Structures, 2021\", \n       x = \"Structure Kind\",\n       y = \"Number of Bridges\",\n       fill = \"Route Prefix\") +\n  scale_fill_brewer(palette = 'Set3')"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#converting-the-percentages",
+    "href": "slides/Day6-Frequency.html#converting-the-percentages",
+    "title": "Plotting Frequencies",
+    "section": "Converting the Percentages",
+    "text": "Converting the Percentages\n\nggplot(nbi_ma, aes(x = STRUCTURE_KIND_043A_L, fill = ROUTE_PREFIX_005B_L)) +\n  geom_bar(position = \"fill\") +\n  coord_flip() +\n  labs(title = \"Frequency of Different Kinds of MA Bridge Structures, 2021\", \n       x = \"Structure Kind\",\n       y = \"Number of Bridges\",\n       fill = \"Route Prefix\") +\n  scale_fill_brewer(palette = 'Set3')"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#bar-plot-1",
+    "href": "slides/Day6-Frequency.html#bar-plot-1",
+    "title": "Plotting Frequencies",
+    "section": "Bar Plot",
+    "text": "Bar Plot\n\n\n\nDetermine the unique values and places them on the x-axis\nCount the number of times each value appears\nSet the height of a bar for that category to the count\n\n\n\n\n [1] \"a\" \"b\" \"c\" \"a\" \"c\" \"a\" \"a\" \"b\" \"c\" \"a\" \"b\" \"c\""
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#bidwidth-vs.-bins",
+    "href": "slides/Day6-Frequency.html#bidwidth-vs.-bins",
+    "title": "Plotting Frequencies",
+    "section": "Bidwidth vs. Bins",
+    "text": "Bidwidth vs. Bins\n\n\n\nBinwidth indicates the width of the buckets we’d like to categorize our data into.\nBins indicates the number of bins to create.\nWe choose one or the other when creating histograms.\n\n\n\nggplot(nbi_ma, \n       aes(x = YEAR_BUILT_027)) +\n  geom_histogram(binwidth = 10, \n                 color = \"white\")"
+  },
+  {
+    "objectID": "slides/Day6-Frequency.html#converting-to-percentages",
+    "href": "slides/Day6-Frequency.html#converting-to-percentages",
+    "title": "Plotting Frequencies",
+    "section": "Converting to Percentages",
+    "text": "Converting to Percentages\n\nggplot(nbi_ma, aes(x = STRUCTURE_KIND_043A_L, fill = ROUTE_PREFIX_005B_L)) +\n  geom_bar(position = \"fill\") +\n  coord_flip() +\n  labs(title = \"Frequency of Different Kinds of MA Bridge Structures, 2021\", \n       x = \"Structure Kind\",\n       y = \"Number of Bridges\",\n       fill = \"Route Prefix\") +\n  scale_fill_brewer(palette = 'Set3')"
+  },
+  {
+    "objectID": "lab-almosts/joining.html",
+    "href": "lab-almosts/joining.html",
+    "title": "joining",
+    "section": "",
+    "text": "nabbs_ma -> nabbs routes (on state and route id) nabbs_ma -> nabbs_species (on AOU) nabbs_ma -> nabbs_weather (on routedataid) nabbs_ma -> nabbs_vehicle (on routedataid)\n\nlibrary(rtweet)\n\nWarning: package 'rtweet' was built under R version 4.1.2"
+  },
+  {
+    "objectID": "lab-almosts/joining.html#setting-up-your-environment",
+    "href": "lab-almosts/joining.html#setting-up-your-environment",
+    "title": "joining",
+    "section": "Setting Up Your Environment",
+    "text": "Setting Up Your Environment\n\nlibrary(tidyverse)\n\nWarning: package 'tidyverse' was built under R version 4.1.2\n\n\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.3.6      ✔ purrr   0.3.4 \n✔ tibble  3.1.8      ✔ dplyr   1.0.10\n✔ tidyr   1.2.1      ✔ stringr 1.4.1 \n✔ readr   2.1.2      ✔ forcats 0.5.1 \n\n\nWarning: package 'ggplot2' was built under R version 4.1.2\n\n\nWarning: package 'tibble' was built under R version 4.1.2\n\n\nWarning: package 'readr' was built under R version 4.1.2\n\n\nWarning: package 'dplyr' was built under R version 4.1.2\n\n\nWarning: package 'stringr' was built under R version 4.1.2\n\n\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter()  masks stats::filter()\n✖ purrr::flatten() masks rtweet::flatten()\n✖ dplyr::lag()     masks stats::lag()\n\nnabbs_ma <- read_csv(\"../data/nabbs/Massach.csv\")\n\nRows: 56311 Columns: 14\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (2): Route, AOU\ndbl (12): RouteDataID, CountryNum, StateNum, RPID, Year, Count10, Count20, C...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nnabbs_routes <- read_csv(\"../data/nabbs/routes.csv\")\n\nRows: 5756 Columns: 11\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (3): StateNum, Route, RouteName\ndbl (8): CountryNum, Active, Latitude, Longitude, Stratum, BCR, RouteTypeID,...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nnabbs_weather <- read_csv(\"../data/nabbs/weather.csv\")\n\nRows: 129644 Columns: 22\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr  (8): StateNum, Route, StartTemp, EndTemp, TempScale, StartTime, EndTime...\ndbl (14): RouteDataID, CountryNum, RPID, Year, Month, Day, ObsN, TotalSpp, S...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nspecies_colnames <- read_fwf(\"../data/nabbs/SpeciesList.txt\", skip = 9, n_max = 1)\n\nRows: 1 Columns: 9\n── Column specification ────────────────────────────────────────────────────────\n\nchr (9): X1, X2, X3, X4, X5, X6, X7, X8, X9\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nnabbs_species <- read_fwf(\"../data/nabbs/SpeciesList.txt\", skip = 11)\n\nRows: 756 Columns: 9\n── Column specification ────────────────────────────────────────────────────────\n\nchr (8): X2, X3, X4, X5, X6, X7, X8, X9\ndbl (1): X1\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nnames(nabbs_species) <- species_colnames[1,]\n\nWarning: The `value` argument of `names<-` must be a character vector as of\ntibble 3.0.0.\n\nrm(species_colnames)\n\n\nnabbs_ma %>%\n  filter(Year == 2019) %>%\n  left_join(nabbs_species, by = \"AOU\") %>%\n  group_by(AOU, English_Common_Name) %>%\n  summarize(SpeciesTotal = sum(SpeciesTotal)) %>% \n  arrange(desc(SpeciesTotal))\n\n`summarise()` has grouped output by 'AOU'. You can override using the `.groups`\nargument.\n\n\n# A tibble: 128 × 3\n# Groups:   AOU [128]\n   AOU   English_Common_Name    SpeciesTotal\n   <chr> <chr>                         <dbl>\n 1 07610 American Robin                 1180\n 2 05600 Chipping Sparrow                730\n 3 07040 Gray Catbird                    676\n 4 06240 Red-eyed Vireo                  607\n 5 05930 Northern Cardinal               564\n 6 06740 Ovenbird                        510\n 7 07310 Tufted Titmouse                 508\n 8 04980 Red-winged Blackbird            500\n 9 07350 Black-capped Chickadee          491\n10 05810 Song Sparrow                    487\n# … with 118 more rows\n\nnabbs_ma %>%\n  filter(Year == 1966) %>%\n  left_join(nabbs_species, by = \"AOU\") %>%\n  group_by(AOU, English_Common_Name) %>%\n  summarize(SpeciesTotal = sum(SpeciesTotal)) %>% \n  arrange(desc(SpeciesTotal))\n\n`summarise()` has grouped output by 'AOU'. You can override using the `.groups`\nargument.\n\n\n# A tibble: 76 × 3\n# Groups:   AOU [76]\n   AOU   English_Common_Name  SpeciesTotal\n   <chr> <chr>                       <dbl>\n 1 04930 European Starling             762\n 2 05110 Common Grackle                351\n 3 07610 American Robin                317\n 4 05870 Eastern Towhee                182\n 5 04980 Red-winged Blackbird          178\n 6 06882 House Sparrow                 159\n 7 04770 Blue Jay                      123\n 8 07040 Gray Catbird                  121\n 9 05810 Song Sparrow                  107\n10 00510 Herring Gull                   98\n# … with 66 more rows\n\n\n\nnabbs_ma %>%\n  left_join(nabbs_species, by = \"AOU\") %>%\n  filter(English_Common_Name == \"Least Tern\") %>%\n  group_by(Year) %>%\n  summarize(SpeciesTotal = sum(SpeciesTotal)) %>%\n  ggplot(aes(x = Year, y = SpeciesTotal, group = 1)) +\n  geom_line() +\n  theme_minimal() +\n  labs(title = \"Annual NABBS Counts of Least Tern Population, MA\", x = \"Year\", y = \"Species Total\")\n\n\n\n\n\nnabbs_species %>%\n  anti_join(nabbs_ma, by = \"AOU\") %>%\n  distinct(English_Common_Name) %>% nrow()\n\n[1] 571\n\ntest <-nabbs_ma %>% filter(Route == \"019\")\n\nFiltering Joins\nAnti\nWhich bird species have never been counted in MA?\n\nnabbs_species %>%\n  anti_join(nabbs_ma, by = \"AOU\") %>%\n  select(English_Common_Name) %>%\n  unique()\n\n# A tibble: 571 × 1\n   English_Common_Name         \n   <chr>                       \n 1 Black-bellied Whistling-Duck\n 2 Fulvous Whistling-Duck      \n 3 Emperor Goose               \n 4 Snow Goose                  \n 5 (Blue Goose) Snow Goose     \n 6 Ross's Goose                \n 7 Greater White-fronted Goose \n 8 Brant                       \n 9 (Black Brant) Brant         \n10 Cackling Goose              \n# … with 561 more rows\n\n\n\nlibrary(leaflet)\n\nWarning: package 'leaflet' was built under R version 4.1.2\n\nlibrary(sf)\n\nLinking to GEOS 3.9.1, GDAL 3.3.1, PROJ 8.1.0; sf_use_s2() is TRUE\n\nroutes <-\nnabbs_routes %>%\n  filter(StateNum == 47) %>%\n  st_as_sf(coords = c(\"Longitude\", \"Latitude\"), crs = 4269) %>%\n  st_transform(4326)\nleaflet(width = \"100%\") %>%\n  setView(lat = 42.40, lng = -71.38, zoom = 10) %>%\n  addProviderTiles(providers$Stamen.Toner) %>%\n  addCircleMarkers(data = routes, label = ~RouteName)"
   }
 ]
