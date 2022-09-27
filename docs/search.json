@@ -67,7 +67,7 @@
     "href": "schedule.html#september-28-2022",
     "title": "Schedule",
     "section": "September 28, 2022",
-    "text": "September 28, 2022\n\nBoxplots\nPLOTTING FREQUENCIES AND DISTRIBUTIONS\n\nDue TodayFurther Resources\n\n\n Lab 2 Due"
+    "text": "September 28, 2022\n\nBoxplots\nPLOTTING FREQUENCIES AND DISTRIBUTIONS\n\nDue TodayFurther Resources\n\n\n Lab 2 Due\n\n\n Day 7 Slides\n Check team number at CATME.org\n Project 1"
   },
   {
     "objectID": "schedule.html#september-30-2022",
@@ -1979,5 +1979,117 @@
     "title": "Lab 6: Joining Datasets",
     "section": "North American Bird Breeding Survey Dataset",
     "text": "North American Bird Breeding Survey Dataset"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#for-today",
+    "href": "slides/Day7-Boxplots.html#for-today",
+    "title": "Boxplots",
+    "section": "For Today",
+    "text": "For Today\n\nMeasures of Central Tendency and Dispersion\nBoxplots\nProject 1 Assigned"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#lets-create-the-following-data-frame-to-motivate-todays-lecture.",
+    "href": "slides/Day7-Boxplots.html#lets-create-the-following-data-frame-to-motivate-todays-lecture.",
+    "title": "Boxplots",
+    "section": "Let’s create the following data frame to motivate today’s lecture.",
+    "text": "Let’s create the following data frame to motivate today’s lecture.\n\nlibrary(tidyverse)\ncounties <- read_csv(\"https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/a8b64e3070ca2543b904d4d92780b09e6062ced6/website/data/nbi_counties.csv\")\nroute_prefixes <- read_csv(\"https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/a8b64e3070ca2543b904d4d92780b09e6062ced6/website/data/nbi_route_pre.csv\")\nmaintenance <- read_csv(\"https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/a8b64e3070ca2543b904d4d92780b09e6062ced6/website/data/nbi_maintenance.csv\")\nkinds <- read_csv(\"https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/a8b64e3070ca2543b904d4d92780b09e6062ced6/website/data/nbi_kind.csv\")\n\nnbi_ma <- read.delim(\"https://www.fhwa.dot.gov/bridge/nbi/2022/delimited/MA22.txt\", sep = \",\") |>\n  left_join(counties) |>\n  left_join(route_prefixes) |>\n  left_join(maintenance) |>\n  left_join(kinds) |>\n  filter(SERVICE_ON_042A == 1) |>\n  select(STRUCTURE_NUMBER_008, COUNTY_CODE_003_L, ROUTE_PREFIX_005B_L, MAINTENANCE_021_L, YEAR_BUILT_027, ADT_029, STRUCTURE_KIND_043A_L, STRUCTURAL_EVAL_067, BRIDGE_IMP_COST_094) |>\n  mutate(STRUCTURE_KIND_043A_L = \n           case_when(\n             STRUCTURE_KIND_043A_L == \"Concrete continuous\" ~ \"Concrete\",\n             STRUCTURE_KIND_043A_L == \"Steel continuous\" ~ \"Steel\",\n             STRUCTURE_KIND_043A_L == \"Prestressed concrete continuous\" ~ \"Prestressed concrete\",\n             TRUE ~ STRUCTURE_KIND_043A_L)) |>\n  mutate(BRIDGE_IMP_COST_094 = BRIDGE_IMP_COST_094 * 1000)\n\nnbi_hampshire <- nbi_ma |> filter(COUNTY_CODE_003_L == \"Hampshire\")\n\nrm(counties, kinds, maintenance, route_prefixes)"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#mean",
+    "href": "slides/Day7-Boxplots.html#mean",
+    "title": "Boxplots",
+    "section": "Mean",
+    "text": "Mean\n\n\n\nSum of values divided by number of values summed\nTakes every value into consideration\nModel of entire dataset\nHeavily influenced by outliers"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#median",
+    "href": "slides/Day7-Boxplots.html#median",
+    "title": "Boxplots",
+    "section": "Median",
+    "text": "Median\n\n\n\nMiddle value(s) of the dataset when all values are lined from smallest to largest\nDoes not model entire dataset\nLimited influence from outliers"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#normal-distributions",
+    "href": "slides/Day7-Boxplots.html#normal-distributions",
+    "title": "Boxplots",
+    "section": "Normal Distributions",
+    "text": "Normal Distributions\n\n\n\nMore values huddle around some center line and taper off as we move away from center\nHistogram is symmetrical with a perfectly normal distribution\nMedian and mean should be about the same; mean is a good measure of central tendency"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#skew",
+    "href": "slides/Day7-Boxplots.html#skew",
+    "title": "Boxplots",
+    "section": "Skew",
+    "text": "Skew\n\n\n\nHistogram is non-symmetrical when there is skew\nLong trail to the right of center indicates a right skew\nMedian becomes more representative measure of central tendency than mean"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#summarizing-data",
+    "href": "slides/Day7-Boxplots.html#summarizing-data",
+    "title": "Boxplots",
+    "section": "Summarizing Data",
+    "text": "Summarizing Data\n\nMeasures of central tendency summarize swaths of information into single value\nCan be reductionist\n\nExample: Measures of central tendency related to wealth in the US only tell us about those in the middle\nHide the experiences of the most impoverished communities.\n\nDegree of spread or dispersion is just as important as center"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#range",
+    "href": "slides/Day7-Boxplots.html#range",
+    "title": "Boxplots",
+    "section": "Range",
+    "text": "Range\n\n\n\nMaximum value minus the minimum value\nEvaluates the spread of the entire dataset"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#interquartile-range",
+    "href": "slides/Day7-Boxplots.html#interquartile-range",
+    "title": "Boxplots",
+    "section": "Interquartile Range",
+    "text": "Interquartile Range\n\n\n\n1st quartile is middle value between minimum and median\n3rd quartile is middle value between median and maximum\nIQR is the difference between the 1st and 3rd quartile\nRepresents the middle 50% of values"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#boxplot",
+    "href": "slides/Day7-Boxplots.html#boxplot",
+    "title": "Boxplots",
+    "section": "Boxplot",
+    "text": "Boxplot"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#grouped-boxplots",
+    "href": "slides/Day7-Boxplots.html#grouped-boxplots",
+    "title": "Boxplots",
+    "section": "Grouped Boxplots",
+    "text": "Grouped Boxplots\n\nggplot(nbi_hampshire, aes(x = ADT_029, y = ROUTE_PREFIX_005B_L)) +\n  geom_boxplot() +\n  labs(title = \"Distribution in the Average Daily Traffic of Hampshire County, MA Bridges, 2021\", \n       x = \"Average Daily Traffic\",\n       y = \"Route Prefix\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#interpreting-boxplots-step-1-check-for-outliers",
+    "href": "slides/Day7-Boxplots.html#interpreting-boxplots-step-1-check-for-outliers",
+    "title": "Boxplots",
+    "section": "Interpreting Boxplots Step 1: Check for Outliers",
+    "text": "Interpreting Boxplots Step 1: Check for Outliers\n\nHow many are there? What do they indicate? Do you assume they are errors in teh data? Or do they represent extremes that are important for us to take into consideration?"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#interpreting-boxplots-step-2-compare-medians",
+    "href": "slides/Day7-Boxplots.html#interpreting-boxplots-step-2-compare-medians",
+    "title": "Boxplots",
+    "section": "Interpreting Boxplots Step 2: Compare Medians",
+    "text": "Interpreting Boxplots Step 2: Compare Medians\n\nDo the medians line up? If not, in which groups are the medians higher and in which are they lower?"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#interpreting-boxplots-step-3-compare-range",
+    "href": "slides/Day7-Boxplots.html#interpreting-boxplots-step-3-compare-range",
+    "title": "Boxplots",
+    "section": "Interpreting Boxplots Step 3: Compare Range",
+    "text": "Interpreting Boxplots Step 3: Compare Range\n\nDo certain groups have a wider range of values represented than others? In other words, are the values more distributed for certain groups than for others? This might indicate a greater degree of disparity in some groups than others."
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#interpreting-boxplots-step-4-compare-iqr",
+    "href": "slides/Day7-Boxplots.html#interpreting-boxplots-step-4-compare-iqr",
+    "title": "Boxplots",
+    "section": "Interpreting Boxplots Step 4: Compare IQR",
+    "text": "Interpreting Boxplots Step 4: Compare IQR\n\nIn which groups do the middle 50% of values tend to huddle around a central value? In which are they more spread out from the center?"
+  },
+  {
+    "objectID": "slides/Day7-Boxplots.html#interpreting-boxplots-step-5-compare-symmetry",
+    "href": "slides/Day7-Boxplots.html#interpreting-boxplots-step-5-compare-symmetry",
+    "title": "Boxplots",
+    "section": "Interpreting Boxplots Step 5: Compare Symmetry",
+    "text": "Interpreting Boxplots Step 5: Compare Symmetry\n\nDoes the median appear to be in the center of the range and IQR? Is the median closer to the minimum – or the bottom whisker? Or the top whisker?"
   }
 ]
