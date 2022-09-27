@@ -12,6 +12,8 @@ knitr:
 ```{r}
 #| document: show
 library(spotifyr)
+# DON'T FORGET TO REMOVE THE COMMENTS BELOW. THIS MEANS THAT YOU WILL NEED TO REMOVE THE '#' IN FRONT OF EACH OF THE FOLLOWING LINES.
+
 # id <- 'FILL CLIENT ID HERE'
 # secret <- 'FILL CLIENT SECRET HERE'
 # Sys.setenv(SPOTIFY_CLIENT_ID = id)
@@ -29,7 +31,7 @@ spotify_playlists <- get_playlist_audio_features(
                     "3DYUw0nHB9o8tLZKQup4zp",
                     "37i9dQZF1DXdOEFt9ZX0dh"),
   authorization = get_spotify_access_token()
-) %>%
+) |>
   select(-c(track.artists, 
             track.available_markets, 
             track.album.artists, 

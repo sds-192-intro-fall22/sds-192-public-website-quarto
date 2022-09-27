@@ -4005,7 +4005,7 @@ margin-left: 10px;
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"3DYUw0nHB9o8tLZKQup4zp"</span>,</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"37i9dQZF1DXdOEFt9ZX0dh"</span>),</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">authorization =</span> <span class="fu">get_spotify_access_token</span>()</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(track.artists, </span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            track.available_markets, </span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            track.album.artists, </span>

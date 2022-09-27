@@ -253,7 +253,7 @@ Tip
 </div>
 <ol type="1">
 <li><p>Install the Spotify R package by entering the following into your Console: <code>install.packages("spotifyr")</code></p></li>
-<li><p>Log-in to Spotify’s Developer Dashboard <a href="https://developer.spotify.com/dashboard/">here</a>. If you have a Spotify account, you can log-in with that account. Otherwise, you should create one. <img src=".png" class="img-fluid"></p></li>
+<li><p>Log-in to Spotify’s Developer Dashboard <a href="https://developer.spotify.com/dashboard/">here</a>. If you have a Spotify account, you can log-in with that account. Otherwise, you should create one.</p></li>
 <li><p>Click the ‘Create an App’ button to create an app named “SDS 192 Class Project”. You can indicate that this is a “Project for SDS 192 class”</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -305,7 +305,7 @@ Tip
 <p></p><figcaption aria-hidden="true" class="figure-caption">You should see this if you’ve successfully added a user.</figcaption><p></p>
 </figure>
 </div></li>
-<li><p>Click “Show Client Secret”. Copy <strong>client id</strong> and <strong>secret</strong> into the code below, remove the comments in the code chunk, and then run the code chunk.</p>
+<li><p>Click “Show Client Secret”. Copy <strong>client id</strong> and <strong>secret</strong> into the code below, <strong>remove the comments in the code chunk</strong>, and then run the code chunk.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="img/spotify-secret.png" class="img-fluid figure-img" width="500"></p>
@@ -315,16 +315,18 @@ Tip
 </ol>
 <div class="cell" data-document="show">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spotifyr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># id &lt;- 'FILL CLIENT ID HERE'</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># secret &lt;- 'FILL CLIENT SECRET HERE'</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sys.setenv(SPOTIFY_CLIENT_ID = id)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Sys.setenv(SPOTIFY_CLIENT_SECRET = secret)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># DON'T FORGET TO REMOVE THE COMMENTS BELOW. THIS MEANS THAT YOU WILL NEED TO REMOVE THE '#' IN FRONT OF EACH OF THE FOLLOWING LINES.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># id &lt;- 'FILL CLIENT ID HERE'</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># secret &lt;- 'FILL CLIENT SECRET HERE'</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Sys.setenv(SPOTIFY_CLIENT_ID = id)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Sys.setenv(SPOTIFY_CLIENT_SECRET = secret)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="7" type="1">
 <li><p>Navigate to <a href="https://open.spotify.com/" class="uri">https://open.spotify.com/</a>. Below replace <code>poiril</code> with your Spotify username. This is the ID that appears in the upper right hand corner when you log into your Spotify account (not your developer account.)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/spotify-user.png" width="800" height="35" class="figure-img"></p>
+<p><img src="img/spotify-user.png" class="img-fluid figure-img" width="700"></p>
 <p></p><figcaption aria-hidden="true" class="figure-caption">This is where you will find the Spotify username.</figcaption><p></p>
 </figure>
 </div></li>
