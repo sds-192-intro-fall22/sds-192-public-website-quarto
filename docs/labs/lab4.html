@@ -225,7 +225,13 @@ ul.task-list{list-style: none;}
 <p>Why can’t we just do everything at GitHub.com or everything on our local machines?? Well GitHub.com doesn’t have the nice environment for writing and running code that you have in RStudio, so we need to be able to move things to your local computers so that you can work on the code in RStudio. On the other hand, if all the work was done on your local computer and never pushed to GitHub.com, I (your instructor) would never see it! So the first important consideration in the GitHub Flow is how do we move changes made on our local machines to GitHub.com and vice versa.</p>
 <p>The great news is that you’ve already been doing this! The primary way that we move changes between remote and local is through two <code>git</code> commands: <em>pull</em> and <em>push</em>. Pull copies changes from a remote repository to our local machines. Push pushes changes from our local machines to a remote repository. It looks like this:</p>
 <p><img src="img/remote_local.png" class="img-fluid" width="400"></p>
-<p>Typically, we want to make sure that we always follow this flow: Pull changes from GitHub.com (remote) to local. Make changes locally, and then push changes to GitHub.com. As we are going to see later in the lab, the most frustrating issues with GitHub emerge when we break this flow.</p>
+<p>Typically, we want to make sure that we always follow this flow:</p>
+<ol type="1">
+<li>Pull changes from GitHub.com (remote) to local.</li>
+<li>Make changes locally,</li>
+<li>Push changes to GitHub.com.</li>
+</ol>
+<p>As we are going to see later in the lab, the most frustrating issues with GitHub emerge when we break this flow.</p>
 </section>
 <section id="to-branch-or-not-to-branch" class="level3">
 <h3 class="anchored" data-anchor-id="to-branch-or-not-to-branch">To Branch or Not to Branch?</h3>
@@ -264,7 +270,7 @@ ul.task-list{list-style: none;}
 </tr>
 </tbody>
 </table>
-<p>Typically I recommend the long and elegant version for group work as it is designed to avoid errors and ensure that collaborators are all on the same page regarding changes to files. However, occasionally when you have to make small, quick changes to a file, and it won’t impact your team mate’s work, it will make more sense to follow the quick and dirty workflow. The goal for today is to get practice in the long and elegant version.</p>
+<p>Typically I recommend the long and elegant version for group work as it is designed to avoid errors and ensure that collaborators are all on the same page regarding changes to files. However, occasionally when you have to make small, quick changes to a file, and it won’t impact your teammate’s work, it will make more sense to follow the quick and dirty workflow. The goal for today is to get practice in the long and elegant version.</p>
 </section>
 <section id="repo" class="level3">
 <h3 class="anchored" data-anchor-id="repo">Repo</h3>
@@ -281,10 +287,11 @@ ul.task-list{list-style: none;}
 </section>
 <section id="clone" class="level3">
 <h3 class="anchored" data-anchor-id="clone">Clone</h3>
+<p><em>Cloning</em> is a <code>git</code> command that copies a remote repository to your local machine. In other words, it will copy all of the project files in the remote GitHub.com folder to your local computer.</p>
 <section id="question-1" class="level6">
 <h6 class="anchored" data-anchor-id="question-1">Question</h6>
 <div class="question">
-<p><em>Cloning</em> is a git command that copies a remote repository to your local machine. In other words, it will copy all of the project files in the remote GitHub.com folder to your local computer. All group members should clone the repo to their RStudio environment. To do so, copy the repo’s URL at GitHub.com. You will want to make sure you are in the main project folder when you copy this URL; it won’t work if you’ve clicked through to any of the files. Then in RStudio click on File &gt; New Project &gt; Version Control &gt; Git, and paste the copied URL into the window that appears. Note what you see in the RStudio files pane after cloning the repo.</p>
+<p>All group members should clone the repo to their RStudio environment. To do so, copy the repo’s URL at GitHub.com. You will want to make sure you are in the main project folder when you copy this URL; it won’t work if you’ve clicked through to any of the files. Then in RStudio click on File &gt; New Project &gt; Version Control &gt; Git, and paste the copied URL into the window that appears. Note what you see in the RStudio files pane after cloning the repo.</p>
 </div>
 <section id="section-1" class="level7">
 <p class="heading"></p>
@@ -323,9 +330,9 @@ Tip
 <section id="branch" class="level3">
 <h3 class="anchored" data-anchor-id="branch">Branch</h3>
 <p>When you first create a repository, all of the code will be stored in the <em>main</em> branch of the repository. If you were to think of a project like a tree growing up from the ground, then the main branch would be the like the trunk of the tree. We don’t want the main branch to break because the whole tree could come down. One goal of a branching workflow in GitHub is to keep the most stable and polished versions of code in the main branch.</p>
-<p>So what do we do in the meantime - when we’re editing code and trying to sort out its bugs, and it’s not quite in that stable and polished state yet? That’s where branching comes in.</p>
+<p>So what do we do in the meantime - when we’re editing code, potentially breaking things, trying to sort out its bugs, and it’s not quite in that stable and polished state yet? That’s where branching comes in.</p>
 <p>When we create a branch of our repo, GitHub creates a separate copy of the repo where you can make changes without impacting what’s in the main branch. Later, once we’re done making changes and things are stable and polished, we will have the opportunity to merge those changes back into the main branch.</p>
-<p>Think of it another way: You write a rockstar first draft of a final paper, and you decide to send it to a few friends to review. You could just share the document with them and tell them “Have at it! Edit away!” The problem is that you could lose some of that awesome original text. A better option would be to create separate copies for each teammate to edit and then figure out how to layer in their edits later. This is like branching. The original document would be the main branch, and each copy send to a friend would be a branch off of main. Friends can make as many edits as they want in their branch because you still have the original stable and polished copy. Later, we can merge their changes back into the main branch.</p>
+<p>Think of it another way: You write a rockstar first draft of a final paper, and you decide to send it to a few friends to review. You could just share the original document with them and tell them “Have at it! Edit away!” The problem is that, if they are making changes directly to the original document, you could lose some of that awesome original text. A better option would be to create separate copies for each teammate to edit, send them those copies, and then figure out how to layer in their edits later. This is like branching. The original document would be the main branch, and each copy sent to a friend would be a branch off of main. Friends can make as many edits as they want in their branch because you still have the original stable and polished copy. Later, we can merge their changes back into the main branch.</p>
 <p><img src="img/branching.png" class="img-fluid" alt="This shows how branches stem from the main branch and then merge back in."></p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -350,11 +357,11 @@ Tip
 </section>
 <section id="pull" class="level3">
 <h3 class="anchored" data-anchor-id="pull">Pull</h3>
-<p>As of right now, the branches that were created in the previous step only exist on GitHub.com, they don’t exist yet on your local machine. To get these changes to your local machine, you need to <strong>Pull</strong> the changes. Remember how we said that the super fancy git folder knows that there is a remote version of the repository somewhere that you might want to keep it consistent with? When we pull changes to our local machines, we are basically saying, check that remote version for changes, and then pull them into the repo on my computer.</p>
+<p>As of right now, the branches that were created in the previous step only exist on GitHub.com, they don’t exist yet on your local machine. To get these changes to your local machine, you need to <strong>Pull</strong> the changes. Remember how we said that the super fancy <code>git</code> folder knows that there is a remote version of the repository somewhere that you might want to keep it consistent with? When we pull changes to our local machines, we are basically saying, check that remote version for changes, and then pull them into the repo on my computer.</p>
 <section id="question-4" class="level6">
 <h6 class="anchored" data-anchor-id="question-4">Question</h6>
 <div class="question">
-<p>Head back to RStudio. In the Environment pane, you will notice a tab labeled “Git.” It’s important to note that this tab will only appear in projects that are built from super fancy git folders. This is your RStudio command center for Git and GitHub. When you click on this tab, you will see a few buttons in the navigation bar. To pull changes, you should click the blue downward arrow. Click this button to pull the branches created remotely to your local machine.</p>
+<p>Head back to RStudio. In the Environment pane, you will notice a tab labeled “Git.” It’s important to note that this tab will only appear in projects that are built from super fancy <code>git</code> folders. This is your RStudio command center for Git and GitHub. When you click on this tab, you will see a few buttons in the navigation bar. To pull changes, you should click the blue downward arrow. Click this button to pull the branches created remotely to your local machine.</p>
 <p><img src="img/pull-button.png" class="img-fluid" alt="This highlights the pull button." width="400"></p>
 </div>
 </section>
@@ -375,7 +382,7 @@ Tip
 <section id="question-6" class="level6">
 <h6 class="anchored" data-anchor-id="question-6">Question</h6>
 <div class="question">
-<p>Once in your branch, open github-practice.Rmd from the files pane. Decide within your group who will be Group member 1, 2, 3, and so on. Each group member should edit this file on their own machines by adding their name and only their group name to the appropriate location in the document (line 5, 7, or 9) based on their group member. <strong>It’s very important that this be the only section of the document you edit.</strong> Save the file by clicking File&gt;Save.</p>
+<p>Once in your branch, open <code>github-practice.Rmd</code> from the files pane. Decide within your group who will be Group member 1, 2, 3, and so on. Each group member should edit this file on their own local machines by adding their name <strong>and only their name</strong> to the appropriate location in the document (line 5, 7, or 9) based on their assigned number. <strong>It’s very important that this be the only section of the document you edit.</strong> Save the file by clicking File&gt;Save.</p>
 </div>
 </section>
 </section>
@@ -392,7 +399,7 @@ Tip
 </section>
 <section id="commit" class="level3">
 <h3 class="anchored" data-anchor-id="commit">Commit</h3>
-<p>As we just noted, committing changes basically means taking a snapshot of a repo at a particular moment in time. Commits are given unique hashes - sort of like a unique identifier that enables us to access the snapshot of the repo at a later date. In collaborative projects, it is typically recommended to commit often - after any major changes are made to a file. This ensures that we can eventually go back to look at very specific changes. It’s also important to label commits with descriptive titles so that we can recall what changes within that commit.</p>
+<p>As we just noted, committing changes basically means taking a snapshot of a repo at a particular moment in time. Commits are given unique hashes - sort of like a unique identifier that enables us to access the snapshot of the repo at a later date. In collaborative projects, it is typically recommended to commit often - after any major changes are made to a file. This ensures that we can eventually go back to look at very specific changes. It’s also important to label commits with descriptive titles so that we can recall what changes within that commit. Descriptive titles should detail what changes were made in the last round of edits.</p>
 <p>To help put this into context, think back to our photograph metaphor. Let’s say that we are a photographer assigned to document how a baby develops in the first year of its life. If the photographer only took one photograph when the baby was 1 year old, we wouldn’t have a lot of documentation regarding how the baby developed! …so instead, let’s say that the photographer took a snapshot of the baby after every major milestone - their first laugh, their first solid food, their first crawl, their first word. We would have a lot more to go by when trying to understand how the baby developed. Same goes for committing code often.</p>
 <p>Now let’s say the photographer handed the batch of photos to the parents, and said - “look, here’s how your baby developed over time.” The parents might not remember which photograph was taken after which milestone. …but if the photographer were to label each photograph with things like “baby had first laugh,” the parents would be able to easily go back to specific moments in their baby’s development. This is why we want descriptive commit messages. We want to later be able to go back and scan through what changes were made after each commit.</p>
 <section id="question-8" class="level6">
@@ -404,13 +411,13 @@ Tip
 </section>
 <section id="push" class="level3">
 <h3 class="anchored" data-anchor-id="push">Push</h3>
-<p>Only your local machine knows that a change has been made to the code. Remember again how we said that the super fancy git folder knows that there is a remote version of the repository somewhere that you might want to keep it consistent with? Now we want to do the opposite of pulling changes from GitHub to our local machines. Instead, we want to push the changes on our local machines to GitHub.</p>
+<p>Only your local machine knows that a change has been made to the code. Remember again how we said that the super fancy <code>git</code> folder knows that there is a remote version of the repository somewhere that you might want to keep it consistent with? Now we want to do the opposite of pulling changes from GitHub to our local machines. Instead, we want to push the changes on our local machines to GitHub.</p>
 <section id="question-9" class="level6">
 <h6 class="anchored" data-anchor-id="question-9">Question</h6>
 <div class="question">
 <p>Click the Green upward arrow in the Git pane to push your changes to GitHub.</p>
 <p><img src="img/push-button.png" class="img-fluid" alt="This highlights the push button in RStudio." width="400"></p>
-<p>Once all group members have pushed their changes, head back over to GitHub. On the main code page, switch between branches and check out the contents of github-practice.Rmd in each branch. What differences do you notice?</p>
+<p>Once all group members have pushed their changes, head back over to GitHub. On the main code page, switch between branches and check out the contents of <code>github-practice.Rmd</code> in each branch. What differences do you notice?</p>
 </div>
 </section>
 </section>
