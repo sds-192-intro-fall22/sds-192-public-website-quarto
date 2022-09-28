@@ -103,6 +103,9 @@ ul.task-list{list-style: none;}
   <li><a href="#review-of-key-terms" id="toc-review-of-key-terms" class="nav-link" data-scroll-target="#review-of-key-terms">Review of Key Terms</a></li>
   <li><a href="#github-flow" id="toc-github-flow" class="nav-link" data-scroll-target="#github-flow">GitHub Flow</a>
   <ul class="collapse">
+  <li><a href="#git-vs.-github.com" id="toc-git-vs.-github.com" class="nav-link" data-scroll-target="#git-vs.-github.com"><code>git</code> vs.&nbsp;GitHub.com</a></li>
+  <li><a href="#remote-vs.-local" id="toc-remote-vs.-local" class="nav-link" data-scroll-target="#remote-vs.-local">Remote vs.&nbsp;Local</a></li>
+  <li><a href="#to-branch-or-not-to-branch" id="toc-to-branch-or-not-to-branch" class="nav-link" data-scroll-target="#to-branch-or-not-to-branch">To Branch or Not to Branch?</a></li>
   <li><a href="#repo" id="toc-repo" class="nav-link" data-scroll-target="#repo">Repo</a></li>
   <li><a href="#clone" id="toc-clone" class="nav-link" data-scroll-target="#clone">Clone</a></li>
   <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues">Issues</a></li>
@@ -156,7 +159,7 @@ ul.task-list{list-style: none;}
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>There are many reasons that Git and GitHub are essential infrastructures for collaborative coding projects. For one Git saves snapshots of a code repository at different stages of a project so that we can track how it has changed over time and revert back to an older version if we discover a more recent error. We call this <em>version control</em>. Certain Git features also facilitate many people working on a coding project at once, by providing a number of tools to help prevent collaborators from over-writing each other’s work. These features also make it possible for developers to simultaneously modify, extend, and test components of the code without jeopardizing the project’s current functionality. Further, GitHub supports code publication; by publishing code on GitHub, you contribute to an open access/free software community, enabling others to learn from and build off of your work.</p>
+<p>There are many reasons that Git and GitHub are essential infrastructures for collaborative coding projects. For one Git saves snapshots of a code repository at different stages of a project so that we can track how it has changed over time and revert back to an older version if we discover a more recent error. We call this <em>version control</em>. Certain Git features also facilitate many people working on a coding project at once, by providing a number of tools to help prevent collaborators from over-writing each other’s work. These features also make it possible for developers to simultaneously modify, extend, and test components of the code without jeopardizing the project’s current functionality. I use GitHub for assignment submission in this course because it offers a number of features for commenting on and making suggestions in your code, which will be super helpful when reviewing your group projects. Further, GitHub supports code publication; by publishing code on GitHub, you contribute to an open access/free software community, enabling others to learn from and build off of your work.</p>
 <p>Despite all of these awesome benefits, there can be a significant learning curve when getting started with Git and GitHub. There are new vocabularies, workflows, and error mitigation strategies to learn when getting started. This lab is designed to help you get acquainted with the concepts behind Git and GitHub, suggested workflows for collaborating on projects in this course, and error resolution strategies.</p>
 <section id="learning-goals" class="level3">
 <h3 class="anchored" data-anchor-id="learning-goals">Learning Goals</h3>
@@ -212,7 +215,21 @@ ul.task-list{list-style: none;}
 </section>
 <section id="github-flow" class="level2">
 <h2 class="anchored" data-anchor-id="github-flow">GitHub Flow</h2>
-<p>In my opinion, there are two kinds of workflows for GitHub. There’s the quick and dirty version, and there’s the long and elegant version. Below are the differences between these two workflows (don’t worry about if you don’t understand what the steps mean right now; we will learn all of them in the lab).</p>
+<section id="git-vs.-github.com" class="level3">
+<h3 class="anchored" data-anchor-id="git-vs.-github.com"><code>git</code> vs.&nbsp;GitHub.com</h3>
+<p>At the beginning of this semester, many of you installed <code>git</code> on your computers. <code>git</code> is a series of commands available in our computers to save snapshots of files at different moments in time. On the other hand, GitHub.com is a website where we can store projects that have been configured with <code>git</code> commands. As you’ve been accepting lab assignments for this course, project folders (what we will call <strong>repositories</strong>) have been created for you at GitHub.com. If you navigate to GitHub.com right now, you will see a list of these project folders, and you can click through each of the them to see changes that have been made. However, when you created projects for each of these repositories in RStudio, you were using <code>git</code> commands on your computer to copy the project from GitHub.com to your computer. Similarly, you were using <code>git</code> commands when you staged, committed, and pushed your changes back to GitHub.com. <strong>In sum, <code>git</code> is a series of command line tools to manage changes to files. GitHub.com is a Web hosting platform for storing <code>git</code> projects.</strong></p>
+</section>
+<section id="remote-vs.-local" class="level3">
+<h3 class="anchored" data-anchor-id="remote-vs.-local">Remote vs.&nbsp;Local</h3>
+<p>We can store, edit, and publish files on GitHub.com without ever copying them to our local computers. Files at GitHub.com are technically stored on a server somewhere, so we will refer to the projects stored at GitHub.com as <strong>remote</strong> (i.e.&nbsp;distant, far-off, etc). Similarly, we can use <code>git</code> commands to save snapshots of different versions of files on our local computers without ever pushing the changes to GitHub.com, so we will refer to the projects stored on on our computers as <strong>local</strong>. In this course, we need the ability to move changes to files between our local and remote repositories.</p>
+<p>Why can’t we just do everything at GitHub.com or everything on our local machines?? Well GitHub.com doesn’t have the nice environment for writing and running code that you have in RStudio, so we need to be able to move things to your local computers so that you can work on the code in RStudio. On the other hand, if all the work was done on your local computer and never pushed to GitHub.com, I (your instructor) would never see it! So the first important consideration in the GitHub Flow is how do we move changes made on our local machines to GitHub.com and vice versa.</p>
+<p>The great news is that you’ve already been doing this! The primary way that we move changes between remote and local is through two <code>git</code> commands: <em>pull</em> and <em>push</em>. Pull copies changes from a remote repository to our local machines. Push pushes changes from our local machines to a remote repository. It looks like this:</p>
+<p><img src="img/remote_local.png" class="img-fluid" width="400"></p>
+<p>Typically, we want to make sure that we always follow this flow: Pull changes from GitHub.com (remote) to local. Make changes locally, and then push changes to GitHub.com. As we are going to see later in the lab, the most frustrating issues with GitHub emerge when we break this flow.</p>
+</section>
+<section id="to-branch-or-not-to-branch" class="level3">
+<h3 class="anchored" data-anchor-id="to-branch-or-not-to-branch">To Branch or Not to Branch?</h3>
+<p>In my opinion, there are two kinds of workflows for GitHub. There’s the quick and dirty version, and there’s the long and elegant version. We just went over the Quick and Dirty version, and you’ve already had practice in it when submitting all of your labs for the course. Below are the differences between these two workflows (don’t worry about if you don’t understand what the steps mean right now; we will learn all of them in the lab).</p>
 <table class="table">
 <colgroup>
 <col style="width: 47%">
@@ -227,37 +244,38 @@ ul.task-list{list-style: none;}
 <tbody>
 <tr class="odd">
 <td><ol type="1">
-<li><p>Pull recent changes from GitHub to local machine.</p></li>
+<li><p><em>Pull</em> recent changes from GitHub to local machine.</p></li>
 <li><p>Make edits and save them</p></li>
-<li><p>Stage and commit changes.</p></li>
-<li><p>Push changes from local machine to GitHub.</p></li>
+<li><p><em>Stage</em> and <em>commit</em> changes.</p></li>
+<li><p><em>Push</em> changes from local machine to GitHub.</p></li>
 </ol>
 <em>In the quick and dirty version, all of this occurs in the main branch.</em></td>
 <td><ol type="1">
-<li><p>Create an issue at GitHub.com</p></li>
-<li><p>Branch the repo at GitHub.com.</p></li>
-<li><p>Pull recent changes from GitHub.com to local machine.</p></li>
+<li><p>Create an <em>issue</em> at GitHub.com</p></li>
+<li><p><em>Branch</em> the repo at GitHub.com.</p></li>
+<li><p><em>Pull</em> recent changes from GitHub.com to local machine.</p></li>
 <li><p>Make edits in the new branch and save them.</p></li>
-<li><p>Stage and commit changes.</p></li>
-<li><p>Push changes from local machine to GitHub.com.</p></li>
-<li><p>Create a pull request at GitHub.com</p></li>
+<li><p><em>Stage</em> and <em>commit</em> changes.</p></li>
+<li><p><em>Push</em> changes from local machine to GitHub.com.</p></li>
+<li><p>Create a <em>pull request</em> at GitHub.com</p></li>
 <li><p>Assign a reviewer to review the proposed changes and wait for their approval.</p></li>
-<li><p>Merge changes, while also closing the issue and deleting the branch.</p></li>
+<li><p><em>Merge</em> changes, while also closing the issue and deleting the branch.</p></li>
 </ol></td>
 </tr>
 </tbody>
 </table>
-<p>Typically I recommend the long and elegant version as it is designed to avoid errors and ensure that collaborators are all on the same page regarding changes to files. However, occasionally when you have to make small, quick changes to a file, and it won’t impact your team mate’s work, it will make more sense to follow the quick and dirty workflow. The goal for today is to get practice in the long and elegant version.</p>
+<p>Typically I recommend the long and elegant version for group work as it is designed to avoid errors and ensure that collaborators are all on the same page regarding changes to files. However, occasionally when you have to make small, quick changes to a file, and it won’t impact your team mate’s work, it will make more sense to follow the quick and dirty workflow. The goal for today is to get practice in the long and elegant version.</p>
+</section>
 <section id="repo" class="level3">
 <h3 class="anchored" data-anchor-id="repo">Repo</h3>
 <section id="question" class="level6">
 <h6 class="anchored" data-anchor-id="question">Question</h6>
 <div class="question">
-<p>Navigate to _____ to accept the assignment. Enter your project group members.</p>
+<p>Navigate to <a href="https://classroom.github.com/a/28PT6Nnm">GitHub Classroom</a> to accept the assignment. For this assignment, you will work with your Project 1 team members. You can find your group number at <a href="catme.org">CATME.org</a>.</p>
 </div>
 <section id="section" class="level7">
 <p class="heading"></p>
-<p>This will create a GitHub repository called github-lab. You’ll notice that the repository has a few files - README.md, github-practice.Rmd, .gitingore. You’ll also notice in the repo’s right sidebar that your group members are listed as collaborators. This means that you all have access to read and write to this repository.</p>
+<p>This will create a repository at GitHub.com called <code>github-practice</code>. You’ll notice that the repository has a few files - <code>README.md</code>, <code>github-practice.Rmd</code>, <code>.gitingore</code>. You’ll also notice in the repo’s right sidebar that your group members are listed as collaborators. This means that you all have access to read and write to this repository.</p>
 </section>
 </section>
 </section>
@@ -266,12 +284,12 @@ ul.task-list{list-style: none;}
 <section id="question-1" class="level6">
 <h6 class="anchored" data-anchor-id="question-1">Question</h6>
 <div class="question">
-<p>All group members should clone the repo to their RStudio environment. To do so, copy the repo’s URL. Then in RStudio click on File &gt; New Project &gt; Version Control &gt; Git, and enter then pasted the copied URL into the window that appears. Note what you see in the RStudio files pane after cloning the repo.</p>
+<p><em>Cloning</em> is a git command that copies a remote repository to your local machine. In other words, it will copy all of the project files in the remote GitHub.com folder to your local computer. All group members should clone the repo to their RStudio environment. To do so, copy the repo’s URL at GitHub.com. You will want to make sure you are in the main project folder when you copy this URL; it won’t work if you’ve clicked through to any of the files. Then in RStudio click on File &gt; New Project &gt; Version Control &gt; Git, and paste the copied URL into the window that appears. Note what you see in the RStudio files pane after cloning the repo.</p>
 </div>
 <section id="section-1" class="level7">
 <p class="heading"></p>
-<p>Remember that cloning creates a copy of a remote repo on a local machine. In creating this project, you’ve copied all of the files that make up the github-lab repo at GitHub.com to your local computer. This means that you will find all of the files associated with this repo by navigating to the folder where you created the project on your computer.</p>
-<p>It’s important to note that this is not just any old folder on your computer though. By cloning, you’ve created a git folder. This means that the folder has been set up in a way where git can track the changes that you make to it over time, and it knows that there is a remote version of the repository somewhere that you might want to keep it consistent with.</p>
+<p>Remember that cloning creates a copy of a remote repo on a local machine. In creating this project, you’ve copied all of the files that make up the <code>github-practice</code> repo at GitHub.com to your local computer. This means that you will find all of the files associated with this repo by navigating to the folder where you created the project on your computer.</p>
+<p>It’s important to note that this is not just any old folder on your computer though. By cloning, you’ve created a <code>git</code> folder. This means that the folder has been set up in a way where <code>git</code> can track the changes that you make to it over time, and it knows that there is a remote version of the repository somewhere that you might want to keep it consistent with. If you tried to just create a new folder on your computer, it wouldn’t necessarily have these nice features.</p>
 </section>
 </section>
 </section>
@@ -280,7 +298,8 @@ ul.task-list{list-style: none;}
 <section id="question-2" class="level6">
 <h6 class="anchored" data-anchor-id="question-2">Question</h6>
 <div class="question">
-<p>Navigate back to GitHub, and click on the repo’s Issues tab. Each member of your team should create an issue by clicking the ‘New Issue’ button. Title the issue: “Adding &lt;your name&gt; to the assignment.” Submit the issue, and to the left of the screen, assign the issue to yourself.</p>
+<p>Navigate back to GitHub.com, and click on the repo’s Issues tab. Each member of your team should create an issue by clicking the ‘New Issue’ button. Title the issue: “Adding &lt;your name&gt; to the assignment.” Submit the issue, and to the left of the screen, assign the issue to yourself.</p>
+<p><img src="img/issues.png" class="img-fluid" width="700"></p>
 </div>
 <section id="section-2" class="level7">
 <p class="heading"></p>
@@ -303,8 +322,10 @@ Tip
 </section>
 <section id="branch" class="level3">
 <h3 class="anchored" data-anchor-id="branch">Branch</h3>
-<p>When you first create a repository all of the code will be stored in the <em>main</em> branch of the repository. If you were to think of a project like a tree growing up from the ground, then the main branch would be the like the trunk of the tree. One goal of a branching workflow in GitHub is to keep the most stable and polished versions of code in the main branch. So what do we do in the meantime - when we’re editing code and trying to sort out its bugs, and it’s not quite in that stable and polished state yet? That’s where branching comes in.</p>
+<p>When you first create a repository, all of the code will be stored in the <em>main</em> branch of the repository. If you were to think of a project like a tree growing up from the ground, then the main branch would be the like the trunk of the tree. We don’t want the main branch to break because the whole tree could come down. One goal of a branching workflow in GitHub is to keep the most stable and polished versions of code in the main branch.</p>
+<p>So what do we do in the meantime - when we’re editing code and trying to sort out its bugs, and it’s not quite in that stable and polished state yet? That’s where branching comes in.</p>
 <p>When we create a branch of our repo, GitHub creates a separate copy of the repo where you can make changes without impacting what’s in the main branch. Later, once we’re done making changes and things are stable and polished, we will have the opportunity to merge those changes back into the main branch.</p>
+<p>Think of it another way: You write a rockstar first draft of a final paper, and you decide to send it to a few friends to review. You could just share the document with them and tell them “Have at it! Edit away!” The problem is that you could lose some of that awesome original text. A better option would be to create separate copies for each teammate to edit and then figure out how to layer in their edits later. This is like branching. The original document would be the main branch, and each copy send to a friend would be a branch off of main. Friends can make as many edits as they want in their branch because you still have the original stable and polished copy. Later, we can merge their changes back into the main branch.</p>
 <p><img src="img/branching.png" class="img-fluid" alt="This shows how branches stem from the main branch and then merge back in."></p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
