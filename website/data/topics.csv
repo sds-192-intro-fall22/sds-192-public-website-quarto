@@ -20,7 +20,7 @@ topic_id,topic_abbr,topic,date,standard_id,required_reading,req_chapter,optional
 19,joining_lab,Lab: Joining Datasets,10/19/22,7,baumerModernDataScience2021,5. Data wrangling on multiple tables,,,Quiz 1 Recommended Deadline; [Lab 5](labs/lab5.html) Due,Project 1 Due,,,
 20,fec,Work on Group Projects in Class,10/21/22,7,,,,,,Project 2 Assigned,,,
 21,tidying,Tidying Datasets,10/24/22,8,irizarryIntroductionDataScience2022,26. Parsing dates and times,,,,,,,
-22,pivoting,Pivoting Datasets,10/26/22,8,baumerModernDataScience2021,6. Tidy Data,,,[Lab 6](lab6.html) Due,Group Contract Due,,,
+22,pivoting,Pivoting Datasets,10/26/22,8,baumerModernDataScience2021,6. Tidy Data,,,[Lab 6](labs/lab6.html) Due,Group Contract Due,,,
 23,pivoting_lab,Lab: Pivoting Datasets,10/28/22,8,,,,,Quiz 1 Due,,,,
 24,programming,Programming in R,10/31/22,9,,,,,,,,,
 25,functions,Writing Functions,11/2/22,9,baumerModernDataScience2021,7. Iteration,,,Lab 7 Due,,,,
