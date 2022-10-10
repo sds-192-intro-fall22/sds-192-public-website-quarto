@@ -1,0 +1,294 @@
+---
+title: "Data Wrangling"
+subtitle: "SDS 192: Introduction to Data Science"
+author: |
+  Lindsay Poirier<br/>
+  </span>
+  <span style = 'font-size: 70%;'>
+  [Statistical & Data Sciences](http://www.smith.edu/sds), Smith College<br/>
+date: |
+  Fall 2022<br/>
+  `r sds::img_logo(width = 64)`
+format: 
+  revealjs:
+    scrollable: true
+    df-print: paged
+    theme: [default, custom.scss]
+    incremental: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
+editor: source
+execute:
+  echo: true
+  messages: false
+  warnings: false
+---
+
+## For Today
+
+-   Quiz 1
+-   Subsetting Data
+-   Aggregating Data
+-   Activity
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+library(spotifyr)
+library(tidyverse)
+spotify_playlists <- get_playlist_audio_features(
+  username = "poiril",
+  playlist_uris = c("7ryj1GwAWYUY36VQd4uXoq",
+                    "3DYUw0nHB9o8tLZKQup4zp",
+                    "37i9dQZF1DXdOEFt9ZX0dh"),
+  authorization = get_spotify_access_token()
+) |>
+  select(-c(track.artists, 
+            track.available_markets, 
+            track.album.artists, 
+            track.album.available_markets, 
+            track.album.images))
+```
+
+------------------------------------------------------------------------
+
+# Data wrangling is a process for transforming a dataset from its original form into a more relevant form.
+
+------------------------------------------------------------------------
+
+## Six "verbs" for data wrangling
+
+* `arrange()`
+* `select()`
+* `filter()`
+* `mutate()`
+* `summarize()`
+* `group_by()`
+
+------------------------------------------------------------------------
+
+## `arrange()`
+
+* `arrange()` sorts rows according to values in a column 
+* Defaults to sorting from smallest to largest (numeric) or first character to last character (character).
+
+------------------------------------------------------------------------
+
+```{r}
+spotify_playlists |>
+  arrange(desc(valence)) |>
+  select(playlist_name, track.name, track.album.name) |>
+  head()
+```
+
+------------------------------------------------------------------------
+
+## **Subsetting** data involves selecting relevant variables and observations for analysis. **Aggregating** data involves compiling and summarizing data. 
+
+------------------------------------------------------------------------
+
+# Subsetting Data
+
+------------------------------------------------------------------------
+
+
+## `select()`
+
+* `select()` enables us to select variables (columns) of interest.
+
+![](http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-select.png)
+
+------------------------------------------------------------------------
+
+```{r}
+spotify_playlists |>
+  select(playlist_name, valence, speechiness:instrumentalness , key_mode) |>
+  head() #Remember that head() shows the first six rows of data!
+```
+
+
+------------------------------------------------------------------------
+
+## `filter()`
+
+* `filter()` subsets observations (rows) according to a certain criteria that we provide.
+
+![](http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-filter.png) 
+
+------------------------------------------------------------------------
+
+```{r}
+spotify_playlists |>
+  filter(track.album.name == "Led Zeppelin IV") |>
+  select(playlist_name, track.name, track.album.name)
+```
+
+------------------------------------------------------------------------
+
+```{r}
+spotify_playlists |>
+  filter(playlist_name == "Classic Rock Drive" & 
+           track.popularity >= 80  & 
+           is.na(track.preview_url)) |>
+  select(track.name, track.album.name, track.popularity)
+```
+
+------------------------------------------------------------------------
+
+## `mutate()`
+
+* `mutate()` creates a new variable (column) in a data frame and fills values according to criteria we provide
+
+![](https://d33wubrfki0l68.cloudfront.net/baeec2f985b2ec36388ba4d18960eebe59911ff3/bce5f/images/cheatsheets/mutate.png) 
+
+------------------------------------------------------------------------
+
+
+```{r}
+spotify_playlists |>
+  mutate(track.duration_seconds = track.duration_ms/1000) |>
+  filter(track.album.name == "The Wall") |>
+  select(playlist_name, track.name, track.duration_seconds) |>
+  head()
+```
+
+------------------------------------------------------------------------
+
+# Aggregating Data
+
+------------------------------------------------------------------------
+
+## Summary functions
+
+![](https://d33wubrfki0l68.cloudfront.net/2b0d818e37178ef348ca8250a6112a2b13072e88/a810c/images/cheatsheets/summary.png)
+
+------------------------------------------------------------------------
+
+## `summarize()`
+
+* `summarize()` computes a value across a vector of values and stores it in a new data frame
+
+![](http://ohi-science.org/data-science-training/img/rstudio-cheatsheet-summarise.png)
+
+> How is this different than only applying a summary function to a vector?
+
+------------------------------------------------------------------------
+
+```{r}
+spotify_playlists |>
+  summarize(NUM_SONGS = n(),
+            MEAN_VALENCE = mean(valence),
+            MEDIAN_VALENCE = median(valence))
+
+```
+
+------------------------------------------------------------------------
+
+## `group_by()`
+
+* `group_by()` groups observations with a shared value in a variable
+* Grouping only changes the metadata of a data frame; we combine `group_by()` with other functions to transform the data frame
+* Values remain in groups unless we `ungroup()` it. This is important if we intend to run further operations on the resulting data.
+
+------------------------------------------------------------------------
+
+
+```{r}
+spotify_playlists |>
+  group_by(playlist_name) |>
+  select(playlist_name, track.name, track.album.name) |>
+  head()
+```
+
+------------------------------------------------------------------------
+
+## `group_by() |> summarize()`
+
+* `group_by()` groups observations with a shared value in a variable
+* When we combine `group_by()` and `summarize()` we can perform operations *within* groups
+
+------------------------------------------------------------------------
+
+
+```{r}
+spotify_playlists |>
+  group_by(playlist_name) |>
+  summarize(NUM_SONGS = n(),
+            MEAN_VALENCE = mean(valence),
+            MEDIAN_VALENCE = median(valence)) |>
+  ungroup()
+```
+
+------------------------------------------------------------------------
+
+## `group_by() |> filter()`
+
+* `group_by()` groups observations with a shared value in a variable
+* When we combine `group_by()` and `filter()` we can filter *within* groups
+
+------------------------------------------------------------------------
+
+## `group_by() |> filter()`
+
+```{r}
+spotify_playlists |>
+  group_by(playlist_name) |>
+  filter(valence == max(valence)) |>
+  select(playlist_name, track.name, valence) |>
+  head()
+```
+
+------------------------------------------------------------------------
+
+## `group_by() |> mutate()`
+
+* `group_by()` groups observations with a shared value in a variable
+* When we combine `group_by()` and `mutate()` we can perform operations *within* groups and add the resulting variable to the data frame
+
+
+------------------------------------------------------------------------
+
+```{r}
+spotify_playlists |>
+  group_by(playlist_name) |>
+  mutate(TOTAL_DURATION = sum(track.duration_ms),
+         PERCENT_DURATION = track.duration_ms/TOTAL_DURATION * 100) |>
+  select(playlist_name, track.name, track.duration_ms, TOTAL_DURATION, PERCENT_DURATION) |>
+  head()
+```
+
+------------------------------------------------------------------------
+
+## What's wrong with this code?
+
+> Which song has the duration that takes up the greatest percentage of time on any playlist?
+
+```{r}
+spotify_playlists |>
+  group_by(playlist_name) |>
+  mutate(TOTAL_DURATION = sum(track.duration_ms),
+         PERCENT_DURATION = track.duration_ms/TOTAL_DURATION * 100) |>
+  filter(PERCENT_DURATION == max(PERCENT_DURATION)) |>
+  select(playlist_name, track.name, track.duration_ms, TOTAL_DURATION, PERCENT_DURATION) |>
+  head()
+```
+
+------------------------------------------------------------------------
+
+## `ungroup()`
+
+```{r}
+spotify_playlists |>
+  group_by(playlist_name) |>
+  mutate(TOTAL_DURATION = sum(track.duration_ms),
+         PERCENT_DURATION = track.duration_ms/TOTAL_DURATION * 100) |>
+  ungroup() |>
+  filter(PERCENT_DURATION == max(PERCENT_DURATION)) |>
+  select(playlist_name, track.name, track.duration_ms, TOTAL_DURATION, PERCENT_DURATION) |>
+  head()
+```
+

@@ -12,9 +12,9 @@ topic_id,topic_abbr,topic,date,standard_id,required_reading,req_chapter,optional
 11,open1,Work on Group Projects in Class,9/30/22,4,,,,,,Project 1 Assigned,,Check team number at [CATME.org](catme.org);[Project 1](https://classroom.github.com/a/1beBfhke),
 12,github_lab,Lab: Collaborating via GitHub,10/3/22,5,,,,,Read Lab 4 in Perusall,,,,
 13,boxplots,Boxplots,10/5/22,5,,,,,,Group Contract Due,[Day 7 Slides](slides/Day7-Boxplots.html),,
-14,visualization_lab,Lab: Visualizing Data,10/7/22,,,,,,[Lab 4](labs/lab4.html) Due,,,,
+14,visualization_lab,Lab: Visualizing Data,10/7/22,,,,,,[Lab 4](labs/lab4.html) Due,,,[Lab 3 Instructions](labs/lab3.html),[Lab 3 Template](https://classroom.github.com/a/udH9RB6Q)
 15,no_class1,No Class,10/10/22,,,,,,,,,,
-16,wrangling_review,"Subsetting, Aggregating, and Summarizing Data",10/12/22,6,ismayModernDiveStatistical2021,3. Data Wrangling,,,[Lab 3](labs/lab3.html) Due,,,,
+16,wrangling_review,"Subsetting, Aggregating, and Summarizing Data",10/12/22,6,ismayModernDiveStatistical2021,3. Data Wrangling,,,[Lab 3](labs/lab3.html) Due,,[Day 8 Slides](slides/Day8-Wrangling.html),,
 17,wrangling_lab,Lab: Aggregating and Summarizing Data,10/14/22,6,,,,,,,,,
 18,joining,Joining Datasets,10/17/22,6,,,,,,,,,
 19,joining_lab,Lab: Joining Datasets,10/19/22,7,baumerModernDataScience2021,5. Data wrangling on multiple tables,,,Quiz 1 Recommended Deadline; [Lab 5](labs/lab5.html) Due,Project 1 Due,,,

@@ -95,7 +95,7 @@
     "href": "schedule.html#october-07-2022",
     "title": "Schedule",
     "section": "October 07, 2022",
-    "text": "October 07, 2022\n\nLab: Visualizing Data\n\nDue TodayFurther Resources\n\n\n Lab 4 Due"
+    "text": "October 07, 2022\n\nLab: Visualizing Data\n\nDue TodayFurther Resources\n\n\n Lab 4 Due\n\n\n Lab 3 Template\n Lab 3 Instructions"
   },
   {
     "objectID": "schedule.html#october-10-2022",
@@ -109,7 +109,7 @@
     "href": "schedule.html#october-12-2022",
     "title": "Schedule",
     "section": "October 12, 2022",
-    "text": "October 12, 2022\n\nSubsetting, Aggregating, and Summarizing Data\nTRANSFORMING DATA\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 3. Data Wrangling , Ismay, Chester and Albert Y. Kim (2021). Modern Dive: Statistical Inference via Data Science. CRC Press. URL: https://moderndive.com/ (visited on Jan. 14, 2022).\n Lab 3 Due"
+    "text": "October 12, 2022\n\nSubsetting, Aggregating, and Summarizing Data\nTRANSFORMING DATA\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 3. Data Wrangling , Ismay, Chester and Albert Y. Kim (2021). Modern Dive: Statistical Inference via Data Science. CRC Press. URL: https://moderndive.com/ (visited on Jan. 14, 2022).\n Lab 3 Due\n\n\n Day 8 Slides"
   },
   {
     "objectID": "schedule.html#october-14-2022",
@@ -2119,5 +2119,152 @@
     "title": "Lab 6: Joining Datasets",
     "section": "",
     "text": "echo_air_dd <- echoAirGetMeta() |>\n  filter(ColumnID %in% c(1,4,5,8,99,100,101,102)) |>\n  select(ColumnID, ObjectName, Description)\n\necho_water_dd <- echoWaterGetMeta() |>\n  filter(ColumnID %in% c(1,4,5,9,184,185,186,187)) |>\n  select(ColumnID, ObjectName, Description)\n\n\nQuestion\n\nReference the data dictionaries for these two data frames to determine the names of the variables that we will join on. Remember that these should be variables that we can use to uniquely identify each unit of observation across the data frames. Write code below to determine the number of unique values for the variables you identify in each of these data frames. (Hint: Remember how we counted unique values in a variable in lab 1?)\n\n\n# Write code here for echo_air_ca\n# Write code here for echo_water_ca\n\n\n\nQuestion\n\nIn the code below, for each of the data frames, you should group the data by RegistryID and then summarize by returning the max() value in CurrSvFlag, ViolFlag, CurrVioFlag, Insp5yrFlag for each group. Store the results in echo_air_ca_agg and echo_water_ca_agg respectively. Note how many rows in are in echo_air_ca_agg and echo_water_ca_agg. It should match the number of unique values in RegistryID that you calculated above.\n\n\necho_air_ca_agg <-\n  echo_air_ca |>\n  ______ |>             #group by RegistryID\n  _____(                #Summarize the following:\n    CurrSvFlag = _____, #Calculate max value in CurrSvFlag\n    ViolFlag = _____,   #Calculate max value in ViolFlag\n    CurrVioFlag = _____,#Calculate max value in CurrVioFlag\n    Insp5yrFlag = _____ #Calculate max value in Insp5yrFlag\n  )\n\necho_water_ca_agg <- #Copy and adjust code above to create echo_water_ca_agg\n\n\n\nQuestion\n\nWrite code below to perform four kinds of joins - a left join, a right join, and inner join, and a full join. echo_water_ca_agg should be in the first position, and echo_air_ca_agg should be joined onto it. I’ve started that for you in the commented code below.\n\n\n#joined_left <- echo_water_ca_agg |> \n\n#joined_right <- echo_water_ca_agg |> \n\n#joined_inner <- echo_water_ca_agg |> \n\n#joined_full <- echo_water_ca_agg |> \n\n\n\nQuestion\n\nThe three statements below are incorrect. Correct my statements below about the remaining joins.\n\n\npaste(nrow(joined_full), \"represents the number of Registry IDs present in echo_air_ca_agg\")\n\npaste(nrow(joined_left), \"represents the number of Registry IDs present in either echo_air_ca_agg or echo_water_ca_agg\")\n\npaste(nrow(joined_right), \"represents the number of Registry IDs present in echo_water_ca_agg\")\n\n\nrm(joined_full, joined_left, joined_right)\n\n\n\nQuestion\n\nIn my code below rename the remaining columns to differentiate between the column names from the two original data frames.\n\n\njoined_inner_renamed <-\n  joined_inner |>\n  rename(\n    CurrSvFlag_water = CurrSvFlag.x,\n    ViolFlag_water = ViolFlag.x \n    #Rename remaining columns here. Be sure to separate by comma. There are six more to go!\n  )\n\n\n\nQuestion\n\nNow that we have a cleaned up data frame, use a data wrangling verb to subset the data frame to the rows where a RegistryID has a current violation to both the Clean Water Act and Clean Air Act. Repeat these steps to determine which RegistryIDs have a significant violation to both Acts. I recommend running this on joined_inner_renamed.\nOnce you’ve run these codes, open both echo_air_ca and echo_water_ca by clicking on the data frames in your environment. Search for a few of the RegistryIDs that appeared in your analysis to identify the names and locations of the facilities.\n\n\n# Write wrangling code here for current violations. \n\n# Write wrangling code here for significant violations. \n\n\n\nQuestion\n\nUsing my code as an example, determine how many times facility 110000483619 appears in echo_air_ca and how many times it appears in echo_water_ca. How many times would this facility show up if we were to perform a many-to-many inner join for these two data frames? Write your response as a comment in the code chunk.\n\n\n#Write code here for echo_air_ca!\n\n#Write code here for echo_water_ca!\n\n#Write comment here!\n\n\n\nQuestion\n\nWrite code below to perform two anti_join()s. The first should tell me which facilities are regulated by the Clean Air Act and not the Clean Water Act, and the second should tell me which facilities are regulated by the Clean Water Act and not the Clean Air Act.\n\n\n#not_clean_water <- Write code here!\n\n#not_clean_air <- Write code here!"
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#for-today",
+    "href": "slides/Day8-Wrangling.html#for-today",
+    "title": "Data Wrangling",
+    "section": "For Today",
+    "text": "For Today\n\nQuiz 1\nSubsetting Data\nAggregating Data\nActivity"
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#select",
+    "href": "slides/Day8-Wrangling.html#select",
+    "title": "Data Wrangling",
+    "section": "select()",
+    "text": "select()\n\nselect() enables us to select variables (columns) of interest."
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#filter",
+    "href": "slides/Day8-Wrangling.html#filter",
+    "title": "Data Wrangling",
+    "section": "filter()",
+    "text": "filter()\n\nfilter() subsets observations (rows) according to a certain criteria that we provide."
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#arrange",
+    "href": "slides/Day8-Wrangling.html#arrange",
+    "title": "Data Wrangling",
+    "section": "arrange()",
+    "text": "arrange()\n\narrange() sorts rows according to values in a column\nDefaults to sorting from smallest to largest (numeric) or first character to last character (character)."
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#group_by",
+    "href": "slides/Day8-Wrangling.html#group_by",
+    "title": "Data Wrangling",
+    "section": "group_by()",
+    "text": "group_by()\n\ngroup_by() groups observations with a shared value in a variable\nGrouping only changes the metadata of a data frame; we combine group_by() with other functions to transform the data frame\nValues remain in groups unless we ungroup() it. This is important if we intend to run further operations on the resulting data."
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#summary-functions",
+    "href": "slides/Day8-Wrangling.html#summary-functions",
+    "title": "Data Wrangling",
+    "section": "Summary functions",
+    "text": "Summary functions"
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#summarize",
+    "href": "slides/Day8-Wrangling.html#summarize",
+    "title": "Data Wrangling",
+    "section": "summarize()",
+    "text": "summarize()\n\nsummarize() computes a value across a vector of values and stores it in a new data frame\n\n\n\nHow is this different than only applying a summary function to a vector?"
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#group_by-summarize",
+    "href": "slides/Day8-Wrangling.html#group_by-summarize",
+    "title": "Data Wrangling",
+    "section": "group_by() |> summarize()",
+    "text": "group_by() |> summarize()\n\ngroup_by() groups observations with a shared value in a variable\nWhen we combine group_by() and summarize() we can perform operations within groups"
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#mutate",
+    "href": "slides/Day8-Wrangling.html#mutate",
+    "title": "Data Wrangling",
+    "section": "mutate()",
+    "text": "mutate()\n\nmutate() creates a new variable (column) in a data frame and fills values according to criteria we provide"
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#group_by-filter",
+    "href": "slides/Day8-Wrangling.html#group_by-filter",
+    "title": "Data Wrangling",
+    "section": "group_by() |> filter()",
+    "text": "group_by() |> filter()\n\ngroup_by() groups observations with a shared value in a variable\nWhen we combine group_by() and filter() we can filter within groups"
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#group_by-filter-1",
+    "href": "slides/Day8-Wrangling.html#group_by-filter-1",
+    "title": "Data Wrangling",
+    "section": "group_by() |> filter()",
+    "text": "group_by() |> filter()\n\nspotify_playlists |>\n  group_by(playlist_name) |>\n  filter(valence == max(valence)) |>\n  select(playlist_name, track.name, valence) |>\n  head()"
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#group_by-mutate",
+    "href": "slides/Day8-Wrangling.html#group_by-mutate",
+    "title": "Data Wrangling",
+    "section": "group_by() |> mutate()",
+    "text": "group_by() |> mutate()\n\ngroup_by() groups observations with a shared value in a variable\nWhen we combine group_by() and mutate() we can perform operations within groups and add the resulting variable to the data frame"
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#whats-wrong-with-this-code",
+    "href": "slides/Day8-Wrangling.html#whats-wrong-with-this-code",
+    "title": "Data Wrangling",
+    "section": "What’s wrong with this code?",
+    "text": "What’s wrong with this code?\n\nWhich song has the duration that takes up the greatest percentage of time on any playlist?\n\n\nspotify_playlists |>\n  group_by(playlist_name) |>\n  mutate(TOTAL_DURATION = sum(track.duration_ms),\n         PERCENT_DURATION = track.duration_ms/TOTAL_DURATION * 100) |>\n  filter(PERCENT_DURATION == max(PERCENT_DURATION)) |>\n  select(playlist_name, track.name, track.duration_ms, TOTAL_DURATION, PERCENT_DURATION) |>\n  head()"
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#ungroup",
+    "href": "slides/Day8-Wrangling.html#ungroup",
+    "title": "Data Wrangling",
+    "section": "ungroup()",
+    "text": "ungroup()\n\nspotify_playlists |>\n  group_by(playlist_name) |>\n  mutate(TOTAL_DURATION = sum(track.duration_ms),\n         PERCENT_DURATION = track.duration_ms/TOTAL_DURATION * 100) |>\n  ungroup() |>\n  filter(PERCENT_DURATION == max(PERCENT_DURATION)) |>\n  select(playlist_name, track.name, track.duration_ms, TOTAL_DURATION, PERCENT_DURATION) |>\n  head()"
+  },
+  {
+    "objectID": "labs/lab7.html",
+    "href": "labs/lab7.html",
+    "title": "Lab 7: Tidying Data",
+    "section": "",
+    "text": "In this lab, we will create a few data visualizations documenting point-in-time counts of homelessness in the United States. Specifically, we are going visualize data collected in 2020 through various Continuums of Care (CoCs) programs. In order to produce these data visualizations, you will need to develop and execute a plan for how to wrangle the dataset into a “tidy” format.\n\n\n\nRecognize the differences between tidy and non-tidy data\nPivot datasets both longer and wider\nSeparate and unite columns"
+  },
+  {
+    "objectID": "labs/lab7.html#review-of-key-terms",
+    "href": "labs/lab7.html#review-of-key-terms",
+    "title": "Lab 7: Tidying Data",
+    "section": "Review of Key Terms",
+    "text": "Review of Key Terms\n\n\n\n\n\n\nTip\n\n\n\nYou may wish to reference this Data Wrangling Cheatsheet when completing this lab.\n\n\n\nTidy data\n\nA rectangular data table in which every row is an observation and every column is a variable describing something about that observation\n\nPivoting\n\nRotating data columns so that they are presented as rows or rotating data rows so that they are presented as columns"
+  },
+  {
+    "objectID": "labs/lab7.html#huds-point-in-time-counts",
+    "href": "labs/lab7.html#huds-point-in-time-counts",
+    "title": "Lab 7: Tidying Data",
+    "section": "HUD’s Point-in Time Counts",
+    "text": "HUD’s Point-in Time Counts\nThe U.S. Department of Housing and Urban Development…\nContinuums of Care are local planning organizations responsible for allocating resources and coordinating services to address homelessness."
+  },
+  {
+    "objectID": "labs/lab7.html#setting-up-your-environment",
+    "href": "labs/lab7.html#setting-up-your-environment",
+    "title": "Lab 7: Tidying Data",
+    "section": "Setting Up Your Environment",
+    "text": "Setting Up Your Environment\n\n. Run the code below to load today’s data frames into your environment.\n\n\nlibrary(tidyverse)\nlibrary(readxl)\n\npit_url <- \"https://www.huduser.gov/portal/sites/default/files/xls/2007-2021-PIT-Counts-by-CoC.xlsx\"\ntemp <- tempfile()\ndownload.file(pit_url, temp)\n\npit_2020 <- \n  read_excel(temp, sheet = \"2020\")"
+  },
+  {
+    "objectID": "labs/lab7.html#data-analysis",
+    "href": "labs/lab7.html#data-analysis",
+    "title": "Lab 7: Tidying Data",
+    "section": "Data Analysis",
+    "text": "Data Analysis\n\nReview Data Frame\n\nQuestion\n\nReference the data dictionaries for these two data frames to determine the names of the variables that we will join on. Remember that these should be variables that we can use to uniquely identify each unit of observation across the data frames. Write code below to determine the number of unique values for the variables you identify in each of these data frames. (Hint: Remember how we counted unique values in a variable in lab 1?)\n\n\n# Write code here for echo_air_ca\n# Write code here for echo_water_ca\n\n\n\n\n\n\n\n\n\n\n\n\nEthical Considerations\n\n\n\nIn March 2020, the Environmental Protection Agency published a memo that permitted industrial facilities impacted by the Covid-19 pandemic to temporarily suspend mandated pollution monitoring. Research published by the Environmental Data Governance Initiative (EDGI) (Nost et al. 2020) has indicated that, during this time, reported violations to the Clean Air Act and the Clean Water Act dropped considerably. However, EDGI’s report goes on to argue that violations were likely being under-counted at this time. …first, because facilities were not being required to monitor and report data to the same degree during Covid-19, and second, because the EPA was conducting fewer inspections during Covid-19. In sum, as they say, “the absence of data should not be taken as the absence of pollution.” What social harms emerge in the wake of these data absences? Who benefits from these policies, and who faces the greatest risks? How should we as data scientists think and act as we anaylze and present this data?"
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#six-verbs-for-data-wrangling",
+    "href": "slides/Day8-Wrangling.html#six-verbs-for-data-wrangling",
+    "title": "Data Wrangling",
+    "section": "Six “verbs” for data wrangling",
+    "text": "Six “verbs” for data wrangling\n\narrange()\nselect()\nfilter()\nmutate()\nsummarize()\ngroup_by()"
+  },
+  {
+    "objectID": "slides/Day8-Wrangling.html#subsetting-data-involves-selecting-relevant-variables-and-observations-for-analysis.-aggregating-data-involves-compiling-and-summarizing-data.",
+    "href": "slides/Day8-Wrangling.html#subsetting-data-involves-selecting-relevant-variables-and-observations-for-analysis.-aggregating-data-involves-compiling-and-summarizing-data.",
+    "title": "Data Wrangling",
+    "section": "Subsetting data involves selecting relevant variables and observations for analysis. Aggregating data involves compiling and summarizing data.",
+    "text": "Subsetting data involves selecting relevant variables and observations for analysis. Aggregating data involves compiling and summarizing data."
   }
 ]
