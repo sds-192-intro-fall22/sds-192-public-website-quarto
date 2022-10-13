@@ -109,28 +109,28 @@
     "href": "schedule.html#october-12-2022",
     "title": "Schedule",
     "section": "October 12, 2022",
-    "text": "October 12, 2022\n\nSubsetting, Aggregating, and Summarizing Data\nTRANSFORMING DATA\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 3. Data Wrangling , Ismay, Chester and Albert Y. Kim (2021). Modern Dive: Statistical Inference via Data Science. CRC Press. URL: https://moderndive.com/ (visited on Jan. 14, 2022).\n Lab 3 Due\n\n\n Day 8 Slides"
+    "text": "October 12, 2022\n\nSubsetting, Aggregating, and Summarizing Data\nTRANSFORMING DATA\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 3. Data Wrangling , Ismay, Chester and Albert Y. Kim (2021). Modern Dive: Statistical Inference via Data Science. CRC Press. URL: https://moderndive.com/ (visited on Jan. 14, 2022).\n Lab 3 Due\n\n\n Day 8 Slides\n dplyr Cheatsheet"
   },
   {
     "objectID": "schedule.html#october-14-2022",
     "href": "schedule.html#october-14-2022",
     "title": "Schedule",
     "section": "October 14, 2022",
-    "text": "October 14, 2022\n\nLab: Aggregating and Summarizing Data\nTRANSFORMING DATA\n\nDue TodayFurther Resources"
+    "text": "October 14, 2022\n\nLab: Aggregating and Summarizing Data\nTRANSFORMING DATA\n\nDue TodayFurther Resources\n\n\n\n\n\n Lab 5 Template\n Lab 5 Instructions"
   },
   {
     "objectID": "schedule.html#october-17-2022",
     "href": "schedule.html#october-17-2022",
     "title": "Schedule",
     "section": "October 17, 2022",
-    "text": "October 17, 2022\n\nJoining Datasets\nTRANSFORMING DATA\n\nDue TodayFurther Resources"
+    "text": "October 17, 2022\n\nJoining Datasets\nTRANSFORMING DATA\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 5. Data wrangling on multiple tables , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022)."
   },
   {
     "objectID": "schedule.html#october-19-2022",
     "href": "schedule.html#october-19-2022",
     "title": "Schedule",
     "section": "October 19, 2022",
-    "text": "October 19, 2022\n\nLab: Joining Datasets\nJOINING DATASETS\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 5. Data wrangling on multiple tables , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022).\n Project 1 Due\n Quiz 1 Recommended Deadline\n Lab 5 Due"
+    "text": "October 19, 2022\n\nLab: Joining Datasets\nJOINING DATASETS\n\nDue TodayFurther Resources\n\n\n Project 1 Due\n Quiz 1 Recommended Deadline\n Lab 5 Due"
   },
   {
     "objectID": "schedule.html#october-21-2022",
@@ -2223,7 +2223,7 @@
     "href": "labs/lab7.html",
     "title": "Lab 7: Tidying Data",
     "section": "",
-    "text": "In this lab, we will create a few data visualizations documenting point-in-time counts of homelessness in the United States. Specifically, we are going visualize data collected in 2020 through various Continuums of Care (CoCs) programs. In order to produce these data visualizations, you will need to develop and execute a plan for how to wrangle the dataset into a “tidy” format.\n\n\n\nRecognize the differences between tidy and non-tidy data\nPivot datasets both longer and wider\nSeparate and unite columns"
+    "text": "In this lab, we will create a few data visualizations documenting point-in-time counts of homelessness in the United States. Specifically, we are going visualize data collected in 2020 through various Continuums of Care (CoCs) programs. In order to produce these data visualizations, you will need to develop and execute a plan for how to wrangle the dataset into a “tidy” format.\n\n\n\nRecognize the differences between tidy and non-tidy data\nPivot datasets both longer and wider\nSeparate and unite columns\nConsider the ethical implications of analyzing homeless counts"
   },
   {
     "objectID": "labs/lab7.html#review-of-key-terms",

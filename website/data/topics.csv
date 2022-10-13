@@ -14,10 +14,10 @@ topic_id,topic_abbr,topic,date,standard_id,required_reading,req_chapter,optional
 13,boxplots,Boxplots,10/5/22,5,,,,,,Group Contract Due,[Day 7 Slides](slides/Day7-Boxplots.html),,
 14,visualization_lab,Lab: Visualizing Data,10/7/22,,,,,,[Lab 4](labs/lab4.html) Due,,,[Lab 3 Instructions](labs/lab3.html),[Lab 3 Template](https://classroom.github.com/a/udH9RB6Q)
 15,no_class1,No Class,10/10/22,,,,,,,,,,
-16,wrangling_review,"Subsetting, Aggregating, and Summarizing Data",10/12/22,6,ismayModernDiveStatistical2021,3. Data Wrangling,,,[Lab 3](labs/lab3.html) Due,,[Day 8 Slides](slides/Day8-Wrangling.html),,
-17,wrangling_lab,Lab: Aggregating and Summarizing Data,10/14/22,6,,,,,,,,,
-18,joining,Joining Datasets,10/17/22,6,,,,,,,,,
-19,joining_lab,Lab: Joining Datasets,10/19/22,7,baumerModernDataScience2021,5. Data wrangling on multiple tables,,,Quiz 1 Recommended Deadline; [Lab 5](labs/lab5.html) Due,Project 1 Due,,,
+16,wrangling_review,"Subsetting, Aggregating, and Summarizing Data",10/12/22,6,ismayModernDiveStatistical2021,3. Data Wrangling,,,[Lab 3](labs/lab3.html) Due,,[Day 8 Slides](slides/Day8-Wrangling.html),[dplyr Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf),
+17,wrangling_lab,Lab: Aggregating and Summarizing Data,10/14/22,6,,,,,,,,[Lab 5 Instructions](labs/lab5.html),[Lab 5 Template](https://classroom.github.com/a/MW8_qMK7)
+18,joining,Joining Datasets,10/17/22,6,baumerModernDataScience2021,5. Data wrangling on multiple tables,,,,,,,
+19,joining_lab,Lab: Joining Datasets,10/19/22,7,,,,,Quiz 1 Recommended Deadline; [Lab 5](labs/lab5.html) Due,Project 1 Due,,,
 20,fec,Work on Group Projects in Class,10/21/22,7,,,,,,Project 2 Assigned,,,
 21,tidying,Tidying Datasets,10/24/22,8,irizarryIntroductionDataScience2022,26. Parsing dates and times,,,,,,,
 22,pivoting,Pivoting Datasets,10/26/22,8,baumerModernDataScience2021,6. Tidy Data,,,[Lab 6](labs/lab6.html) Due,Group Contract Due,,,
