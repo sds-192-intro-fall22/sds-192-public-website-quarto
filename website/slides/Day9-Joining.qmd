@@ -1,0 +1,236 @@
+---
+title: "Joining Datasets"
+subtitle: "SDS 192: Introduction to Data Science"
+author: |
+  Lindsay Poirier<br/>
+  </span>
+  <span style = 'font-size: 70%;'>
+  [Statistical & Data Sciences](http://www.smith.edu/sds), Smith College<br/>
+date: |
+  Fall 2022<br/>
+  `r sds::img_logo(width = 64)`
+format: 
+  revealjs:
+    scrollable: true
+    df-print: paged
+    theme: [default, custom.scss]
+    incremental: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
+editor: source
+execute:
+  echo: true
+  messages: false
+  warnings: false
+---
+
+## For Today
+
+-   Reminder: Quiz 1 and Group Projects!
+-   MSA Recap
+-   Joining Datasets
+-   Mosaic Effect
+
+------------------------------------------------------------------------
+
+## Load the following two data frames into RStudio. 
+
+> What do you notice about them? Why might they be useful to consider together?
+
+```{r}
+
+library(tidyverse)
+ct_school_attendance <- read.csv("https://data.ct.gov/resource/t4hx-jd4c.csv?$limit=3000") %>%
+  filter(studentgroup == "All Students" & reportingdistrictname != "Connecticut")
+ct_school_learning_model <-
+  read.csv("https://data.ct.gov/resource/5q7h-u2ac.csv?$where=update_date=%272020-09-17%27") |>
+  rename(fully_remote = percent_students_fully_remote) 
+```
+
+------------------------------------------------------------------------
+
+## Joining Datasets
+
+- Up until this point, we have been working with data in single tables.
+- Sometimes related data can be spread across multiple tables that we wish to bring together for different kinds of analysis. 
+
+------------------------------------------------------------------------
+
+## Keys
+
+- A column shared across the tables that we can join on. 
+- What might be an issue with joining on this key?
+
+::: columns
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+ct_school_attendance %>% 
+  select(reportingdistrictcode) %>% 
+  head()
+```
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+ct_school_learning_model %>% 
+  select(district_code) %>% 
+  head()
+```
+
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Keys
+
+::: columns
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+ct_school_attendance <- ct_school_attendance |>
+  mutate(reportingdistrictcode = 
+           as.integer(reportingdistrictcode))
+
+ct_school_attendance |>
+  select(reportingdistrictcode) |>
+  head()
+```
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+ct_school_learning_model |>
+  select(district_code) |>
+  head()
+```
+
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Join
+
+```{r}
+ct_school_attendance |>
+  inner_join(ct_school_learning_model, 
+             by = c("reportingdistrictcode" = "district_code")) |>
+  select(reportingdistrictcode, attrate_202021, fully_remote) |>
+  head()
+```
+
+------------------------------------------------------------------------
+
+## Different Kinds of Joins
+
+- `inner_join()`
+- `left_join()`
+- `right_join()`
+- `full_join()`
+- `anti_join()`
+
+------------------------------------------------------------------------
+
+## Inner Join
+
+![](https://d33wubrfki0l68.cloudfront.net/3abea0b730526c3f053a3838953c35a0ccbe8980/7f29b/diagrams/join-inner.png)
+
+------------------------------------------------------------------------
+
+## Outer Joins
+
+```{r}
+#| echo: false
+#| out-width: "350"
+knitr::include_graphics("https://d33wubrfki0l68.cloudfront.net/9c12ca9e12ed26a7c5d2aa08e36d2ac4fb593f1e/79980/diagrams/join-outer.png")
+```
+
+------------------------------------------------------------------------
+
+## One-to-many relationships
+
+![](https://d33wubrfki0l68.cloudfront.net/6faac3e996263827cb57fc5803df6192541a9a4b/c7d74/diagrams/join-one-to-many.png)
+
+
+------------------------------------------------------------------------
+
+## Many-to-many relationships
+
+![](https://d33wubrfki0l68.cloudfront.net/d37530bbf7749f48c02684013ae72b2996b07e25/37510/diagrams/join-many-to-many.png)
+
+------------------------------------------------------------------------
+
+## Anti-joins
+
+::: columns
+::: {.column width="50%"}
+
+```{r}
+#| eval: false
+ct_school_attendance %>%
+  anti_join(ct_school_learning_model, by = c("reportingdistrictcode" = "district_code")) %>%
+  select(reportingdistrictcode)
+```
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+ct_school_learning_model %>%
+  anti_join(ct_school_attendance, by = c("district_code" = "reportingdistrictcode")) %>%
+  select(district_code) %>%
+  head()
+```
+
+:::
+:::
+
+
+------------------------------------------------------------------------
+
+## Ethics of Joining Data
+
+<iframe width="800" src="https://www.youtube.com/embed/tivCK_fBBfo?start=327" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+------------------------------------------------------------------------
+
+
+## Timeline of Healthcare Privacy Protections
+
+* 1996: Healthcare Insurance Portability and Accountability Act (HIPAA) signed into law
+* 1999: HIPAA Privacy Rule put out for public comment; first issued in 2002
+  * Establishes standards to secure "protected health information"
+  * Limits uses and disclosures of health information
+  * Establishes individual rights over protected health information
+
+------------------------------------------------------------------------
+
+
+## Survey 1 Link
+
+![](img/qrcode_docs.google.com.png)
+
+### [https://bit.ly/3wC3iAC](https://bit.ly/3wC3iAC)
+
+------------------------------------------------------------------------
+
+
+## Survey 2 Link
+
+![](img/qrcode_docs.google.com2.png)
+
+### [https://bit.ly/3tBE4QM](https://bit.ly/3wC3iAC)
+
+
+
+
