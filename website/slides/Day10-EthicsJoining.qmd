@@ -1,0 +1,74 @@
+---
+title: "Ethics of Joining Datasets"
+subtitle: "SDS 192: Introduction to Data Science"
+author: |
+  Lindsay Poirier<br/>
+  </span>
+  <span style = 'font-size: 70%;'>
+  [Statistical & Data Sciences](http://www.smith.edu/sds), Smith College<br/>
+date: |
+  Fall 2022<br/>
+  `r sds::img_logo(width = 64)`
+format: 
+  revealjs:
+    scrollable: true
+    df-print: paged
+    theme: [default, custom.scss]
+    incremental: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
+editor: source
+execute:
+  echo: true
+  messages: false
+  warnings: false
+---
+
+## For Today
+
+-   Reminder: Quiz 1 Due!
+-   Mosaic Effect
+-   Our Data Bodies Activity
+-   Groups for Project 2
+
+------------------------------------------------------------------------
+
+## Ethics of Joining Data
+
+<iframe width="800" src="https://www.youtube.com/embed/tivCK_fBBfo?start=327" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+------------------------------------------------------------------------
+
+
+## Timeline of Healthcare Privacy Protections
+
+* 1996: Healthcare Insurance Portability and Accountability Act (HIPAA) signed into law
+* 1999: HIPAA Privacy Rule put out for public comment; first issued in 2002
+  * Establishes standards to secure "protected health information"
+  * Limits uses and disclosures of health information
+  * Establishes individual rights over protected health information
+
+------------------------------------------------------------------------
+
+
+## Survey 1 Link
+
+![](img/qrcode_docs.google.com.png)
+
+### [https://bit.ly/3wC3iAC](https://bit.ly/3wC3iAC)
+
+------------------------------------------------------------------------
+
+
+## Survey 2 Link
+
+![](img/qrcode_docs.google.com2.png)
+
+### [https://bit.ly/3tBE4QM](https://bit.ly/3wC3iAC)
+
+------------------------------------------------------------------------
+
+
+
+
