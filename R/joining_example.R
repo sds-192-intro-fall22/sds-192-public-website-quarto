@@ -21,22 +21,21 @@ survey1 <- read_sheet("1pSOCQWXDn_Q4mLL4UyzXKx3Vs6plhXPbfQIcrwIVGsI",
 survey2 <- read_sheet("1cFzlO4pqzhZA8RQbZuAReJYYcJmkPmOl5IzSCQ4WM1Y", 
                       .name_repair = make.names)
 
-
 # Join Data
 
 joined_mosaic_surveys <-
   survey1 %>%
   left_join(survey2, 
-            by = c("Neighborhood.at.Smith", "Year.Started.at.Smith", "Birth.Month")) %>%
-  select(Full.Name, Favorite.Color, Favorite.Movie)
+            by = c("Neighborhood at Smith", "Year Started at Smith", "Birth Month")) %>%
+  select(`Full Name`, `Favorite Color`, `Favorite Movie`)
 
 # Calculate Percent ID'd
 
 survey1_rows <- nrow(survey1)
 
 joined_mosaic_surveys %>%
-  group_by(Full.Name) %>%
+  group_by(`Full Name`) %>%
   summarize(Count = n()) %>%
-  ungroup() %>%
-  filter(Count == 1) %>% 
+  #ungroup() %>%
+  filter(Count == max(Count)) %>% 
   nrow() / survey1_rows

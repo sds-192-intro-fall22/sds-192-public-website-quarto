@@ -18,7 +18,7 @@ topic_id,topic_abbr,topic,date,standard_id,required_reading,req_chapter,optional
 17,wrangling_lab,Lab: Aggregating and Summarizing Data,10/14/22,6,,,,,,,,[Lab 5 Instructions](labs/lab5.html),[Lab 5 Template](https://classroom.github.com/a/MW8_qMK7)
 18,joining,Joining Datasets,10/17/22,6,baumerModernDataScience2021,5. Data wrangling on multiple tables,,,Watch Lab 3 Recap in Perusall,,[Day 9 Slides](slides/Day9-Joining.html),[Link to Survey 1](https://bit.ly/3wC3iAC); [Link to Survey 2](https://bit.ly/3wC3iAC),
 19,ethics_joining,Ethics of Data Joining,10/19/22,6,,,,,Quiz 1 Recommended Deadline; [Lab 5](labs/lab5.html) Due,Project 1 Due,[Day 10 Slides](slides/Day10-EthicsJoining.html),,
-20,fec,Class will not meet in-person: Meet with project groups on Zoom,10/21/22,,,,,,,Project 2 Assigned,,,
+20,fec,Class will not meet in-person: Meet with project groups on Zoom,10/21/22,,,,,,,[Project 2](https://classroom.github.com/a/tPvWsJka) Assigned; Watch Project Intro Video in Perusall,,,
 21,project_shares,Project 1 Shares,10/24/22,,,,,,Watch Lab 5 Recap in Perusall,Zoom link for today's class has been sent via email and is posted on Moodle.,,,
 22,wrangling-practice,Data Wrangling Problem-Solving,10/26/22,,,,,,,Group Contract Due,,,
 23,joining_lab,Lab: Joining Datasets,10/28/22,7,,,,,Quiz 1 Due,,,[Lab 6 Instructions](labs/lab6.html),[Lab 6 Template](https://classroom.github.com/a/6ydxwiAa)
