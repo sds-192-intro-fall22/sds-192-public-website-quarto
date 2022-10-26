@@ -151,7 +151,7 @@
     "href": "schedule.html#october-26-2022",
     "title": "Schedule",
     "section": "October 26, 2022",
-    "text": "October 26, 2022\n\nData Wrangling Problem-Solving\n\nDue TodayFurther Resources\n\n\n Group Contract Due"
+    "text": "October 26, 2022\n\nData Wrangling Problem-Solving\n\nDue TodayFurther Resources\n\n\n Group Contract Due\n\n\n Problem Solving Tips"
   },
   {
     "objectID": "schedule.html#october-28-2022",
@@ -401,9 +401,9 @@
   {
     "objectID": "problem-solving.html",
     "href": "problem-solving.html",
-    "title": "Problem Solving",
+    "title": "Problem Solving with Data",
     "section": "",
-    "text": "This lab will introduce you to resources and techniques for problem solving in R. You should reference this lab often throughout the semester for reminders on best practices for addressing errors and getting help.\n\n\n\nInterpret error messages in R\nRead R cheatsheets\nAccess R help pages\nReference Stack Overflow and other online resources for help"
+    "text": "Read problem carefully.\nTake a deep breath!\nRead the problem again.\nDetermine the unit of observation in your available data and its relevance to the question.\nDetermine which variables in the available data are relevant to your question.\nDraw what your final data frame might look like.\nGet your data frame down to size! Compare the scope of what is requested in the question to what is requested in your data and subset accordingly.\nWrangle! (This is the most variable step, and you’ll need to have a handle on our data wrangling verbs.)\nSelect the most relevant variables for final presentation."
   },
   {
     "objectID": "problem-solving.html#interpreting-error-messages",
@@ -2434,5 +2434,19 @@
     "title": "Ethics of Joining Datasets",
     "section": "For Today",
     "text": "For Today\n\nReminder: Quiz 1 Due!\nMosaic Effect\nOur Data Bodies Activity\nGroups for Project 2"
+  },
+  {
+    "objectID": "labs/lab8.html",
+    "href": "labs/lab8.html",
+    "title": "Lab 8: Programming with Data",
+    "section": "",
+    "text": "In this lab…"
+  },
+  {
+    "objectID": "labs/lab8.html#review-of-key-terms",
+    "href": "labs/lab8.html#review-of-key-terms",
+    "title": "Lab 8: Programming with Data",
+    "section": "Review of Key Terms",
+    "text": "Review of Key Terms\n\n\n\n\n\n\nTip\n\n\n\nYou may wish to reference this purrr Cheatsheet when completing this lab.\n\n\n\nIteration\n\nmkjf;ad\n\nFunction\n\nRotating data columns so that they are presented as rows or rotating data rows so that they are presented as columns"
   }
 ]
