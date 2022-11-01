@@ -172,7 +172,7 @@
     "href": "schedule.html#november-02-2022",
     "title": "Schedule",
     "section": "November 02, 2022",
-    "text": "November 02, 2022\n\nPivoting Datasets\nTIDYING DATA\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 26. Parsing dates and times , Irizarry, Rafael A. (2022). Introduction to Data Science. Data Analysis and Prediction Algorithms with R. URL: https://rafalab.github.io/dsbook/ (visited on Jan. 14, 2022).\n Lab 6 Due"
+    "text": "November 02, 2022\n\nPivoting Datasets\nTIDYING DATA\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 26. Parsing dates and times , Irizarry, Rafael A. (2022). Introduction to Data Science. Data Analysis and Prediction Algorithms with R. URL: https://rafalab.github.io/dsbook/ (visited on Jan. 14, 2022).\n Lab 6 Due\n\n\n Day 12 Slides: Tidying Datasets\n tidyr Cheatsheet"
   },
   {
     "objectID": "schedule.html#november-04-2022",
@@ -2448,5 +2448,138 @@
     "title": "Lab 8: Programming with Data",
     "section": "Review of Key Terms",
     "text": "Review of Key Terms\n\n\n\n\n\n\nTip\n\n\n\nYou may wish to reference this purrr Cheatsheet when completing this lab.\n\n\n\nIteration\n\nmkjf;ad\n\nFunction\n\nRotating data columns so that they are presented as rows or rotating data rows so that they are presented as columns"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#for-today",
+    "href": "slides/Day12-Cleaning.html#for-today",
+    "title": "Tidying Datasets",
+    "section": "For Today",
+    "text": "For Today\n\nFormatting up Columns and Values\nParsing Dates\nConditionals\nPivoting\nSeparating Columns"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#converting-types",
+    "href": "slides/Day12-Cleaning.html#converting-types",
+    "title": "Tidying Datasets",
+    "section": "Converting Types",
+    "text": "Converting Types\n\nas.character(), as.numeric(), as.logical() all convert a variable from an original type to a new type\n\n\nBeforeCodeAfter\n\n\n\ntypeof(prisons$COUNTYFIPS)\n\n[1] \"character\"\n\n\n\n\n\nprisons <- \n  prisons |> \n  mutate(COUNTYFIPS = as.numeric(COUNTYFIPS))\n\n\n\n\ntypeof(prisons$COUNTYFIPS)\n\n[1] \"character\""
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#parsing-dates",
+    "href": "slides/Day12-Cleaning.html#parsing-dates",
+    "title": "Tidying Datasets",
+    "section": "Parsing Dates",
+    "text": "Parsing Dates\n\nDates can be converted to a date format using the lubridate package\n\nStep 1: Check how dates are formatted\nStep 2: Find corresponding conversion code on lubridate cheatsheet"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#setting-dates",
+    "href": "slides/Day12-Cleaning.html#setting-dates",
+    "title": "Tidying Datasets",
+    "section": "Setting Dates",
+    "text": "Setting Dates\n\nymd_hms() will take a date formatted as year, month, day, hour, minute, second and convert it to a date time format\n\n\nBeforeCodeAfter\n\n\n\nprisons |> \n  select(NAME, SOURCEDATE) |> \n  head(3)\n\n# A tibble: 3 × 2\n  NAME              SOURCEDATE            \n  <chr>             <chr>                 \n1 BALDWIN PARK JAIL 2018/05/16 00:00:00+00\n2 CLAREMONT JAIL    2018/05/25 00:00:00+00\n3 CONCORD JAIL      2018/05/25 00:00:00+00\n\n\n\n\n\nlibrary(lubridate)\n\nprisons <- \n  prisons |> \n  mutate(SOURCEDATE = ymd_hms(SOURCEDATE))\n\n\n\n\n\n# A tibble: 3 × 2\n  NAME              SOURCEDATE            \n  <chr>             <chr>                 \n1 BALDWIN PARK JAIL 2018/05/16 00:00:00+00\n2 CLAREMONT JAIL    2018/05/25 00:00:00+00\n3 CONCORD JAIL      2018/05/25 00:00:00+00"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#setting-na-values",
+    "href": "slides/Day12-Cleaning.html#setting-na-values",
+    "title": "Tidying Datasets",
+    "section": "Setting NA values",
+    "text": "Setting NA values\n\nna_if() will take a variable and set specified values to NA\n\n\nBeforeCodeAfter\n\n\n\nprisons |> \n  select(NAME, POPULATION) |> \n  head(3)\n\n# A tibble: 3 × 2\n  NAME              POPULATION\n  <chr>                  <dbl>\n1 BALDWIN PARK JAIL       -999\n2 CLAREMONT JAIL          -999\n3 CONCORD JAIL            -999\n\nsum(is.na(prisons$POPULATION))\n\n[1] 0\n\n\n\n\n\nprisons <- \n  prisons |> \n  mutate(POPULATION = na_if(POPULATION, -999))\n\n\n\n\nprisons |> \n  select(NAME, POPULATION) |> \n  head(3)\n\n# A tibble: 3 × 2\n  NAME              POPULATION\n  <chr>                  <dbl>\n1 BALDWIN PARK JAIL       -999\n2 CLAREMONT JAIL          -999\n3 CONCORD JAIL            -999\n\nsum(is.na(prisons$POPULATION))\n\n[1] 0"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#replacing-strings",
+    "href": "slides/Day12-Cleaning.html#replacing-strings",
+    "title": "Tidying Datasets",
+    "section": "Replacing Strings",
+    "text": "Replacing Strings\n\nstr_replace() will take a variable and replace an existing string with a new string\n\n\nBeforeCodeAfter\n\n\n\nprisons |> \n  select(NAME, ADDRESS) |> \n  head(3)\n\n# A tibble: 3 × 2\n  NAME              ADDRESS                  \n  <chr>             <chr>                    \n1 BALDWIN PARK JAIL 14403 EAST PACIFIC AVENUE\n2 CLAREMONT JAIL    570 W BONITA AVE         \n3 CONCORD JAIL      1350 GALINDO STREET      \n\n\n\n\n\nprisons <- \n  prisons |> \n  mutate(ADDRESS = str_replace(ADDRESS, \n                               \"AVENUE\", \n                               \"AVE\"))\n\n\n\n\n\n# A tibble: 3 × 2\n  NAME              ADDRESS                  \n  <chr>             <chr>                    \n1 BALDWIN PARK JAIL 14403 EAST PACIFIC AVENUE\n2 CLAREMONT JAIL    570 W BONITA AVE         \n3 CONCORD JAIL      1350 GALINDO STREET"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#removing-strings",
+    "href": "slides/Day12-Cleaning.html#removing-strings",
+    "title": "Tidying Datasets",
+    "section": "Removing Strings",
+    "text": "Removing Strings\n\nstr_replace() will take a variable and replace an existing string with a new string\n\n\nBeforeCodeAfter\n\n\n\nprisons |> select(NAME, Creator) |> head(3)\n\n# A tibble: 3 × 2\n  NAME              Creator      \n  <chr>             <chr>        \n1 BALDWIN PARK JAIL HostedByHIFLD\n2 CLAREMONT JAIL    HostedByHIFLD\n3 CONCORD JAIL      HostedByHIFLD\n\n\n\n\n\nprisons <- \n  prisons |> \n  mutate(Creator = str_replace(Creator, \n                               \"HostedBy\", \n                               \"\"))\n\n\n\n\n\n# A tibble: 3 × 2\n  NAME              Creator      \n  <chr>             <chr>        \n1 BALDWIN PARK JAIL HostedByHIFLD\n2 CLAREMONT JAIL    HostedByHIFLD\n3 CONCORD JAIL      HostedByHIFLD"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#conditionals",
+    "href": "slides/Day12-Cleaning.html#conditionals",
+    "title": "Tidying Datasets",
+    "section": "Conditionals",
+    "text": "Conditionals\n\ncase_when() allows us to set values when conditions are met\n\n\nBeforeCodeAfter\n\n\n\nprisons |> \n  select(SECURELVL) |> \n  distinct()\n\n# A tibble: 5 × 1\n  SECURELVL    \n  <chr>        \n1 NOT AVAILABLE\n2 MINIMUM      \n3 MEDIUM       \n4 JUVENILE     \n5 MAXIMUM      \n\n\n\n\n\nprisons <- \n  prisons |> \n  mutate(JUVENILE = \n           case_when(\n             SECURELVL == \"JUVENILE\" ~ \"Juvenile\",\n             TRUE ~ \"Not Juvenile\")) \n\n\n\n\n\n# A tibble: 3 × 3\n  NAME              SECURELVL     JUVENILE    \n  <chr>             <chr>         <chr>       \n1 BALDWIN PARK JAIL NOT AVAILABLE Not Juvenile\n2 CLAREMONT JAIL    NOT AVAILABLE Not Juvenile\n3 CONCORD JAIL      NOT AVAILABLE Not Juvenile"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#section",
+    "href": "slides/Day12-Cleaning.html#section",
+    "title": "Cleaning Datasets",
+    "section": ":::",
+    "text": ":::"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#what-is-tidy-data",
+    "href": "slides/Day12-Cleaning.html#what-is-tidy-data",
+    "title": "Tidying Datasets",
+    "section": "What is tidy data?",
+    "text": "What is tidy data?\n\nEvery observation has its own row.\nEvery variable has its own columns.\nEvery value has its own cell."
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#is-this-tidy",
+    "href": "slides/Day12-Cleaning.html#is-this-tidy",
+    "title": "Tidying Datasets",
+    "section": "Is this tidy?",
+    "text": "Is this tidy?\n\nWhat variables are displayed on this plot?\n\n\n\n        Date Nrthmptn_AQI NYC_AQI Bstn_AQI\n1 03/19/2022           70      72       43\n2 03/18/2022           69      60       59"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#what-will-it-look-like-when-tidy",
+    "href": "slides/Day12-Cleaning.html#what-will-it-look-like-when-tidy",
+    "title": "Tidying Datasets",
+    "section": "What will it look like when tidy?",
+    "text": "What will it look like when tidy?\n\ndf |> pivot_longer(-Date, \n                    names_to = \"City\", \n                    values_to = \"AQI\")\n\n# A tibble: 6 × 3\n  Date       City           AQI\n  <chr>      <chr>        <dbl>\n1 03/19/2022 Nrthmptn_AQI    70\n2 03/19/2022 NYC_AQI         72\n3 03/19/2022 Bstn_AQI        43\n4 03/18/2022 Nrthmptn_AQI    69\n5 03/18/2022 NYC_AQI         60\n6 03/18/2022 Bstn_AQI        59"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#pivoting-longer",
+    "href": "slides/Day12-Cleaning.html#pivoting-longer",
+    "title": "Tidying Datasets",
+    "section": "Pivoting Longer",
+    "text": "Pivoting Longer\n\nWe use pivot_longer() to pivot a datasets from wider to longer format:\npivot_longer() takes the following arguments:\n\n\ncols =: Identify a series of columns to pivot - The names of those columns will become repeated rows in the pivoted data frame, and the values in those columns will be stored in a new column.\nnames_to =: Identify a name for the column where the column names will be store\nvalues_to =: Identify a name for the column were the values associated with those names will be stored\nVarious arguments to support transformations to names"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#example",
+    "href": "slides/Day12-Cleaning.html#example",
+    "title": "Tidying Datasets",
+    "section": "Example",
+    "text": "Example\n\nBeforeCodeAfter\n\n\n\n\n        Date Nrthmptn_AQI NYC_AQI Bstn_AQI\n1 03/19/2022           70      72       43\n2 03/18/2022           69      60       59\n\n\n\n\n\ndf |> pivot_longer(cols = -Date, \n                    names_to = \"City\", \n                    values_to = \"AQI\") |>\n  mutate(City = str_replace(City, \"_AQI\", \"\"))\n\n\n\n\n\n# A tibble: 6 × 3\n  Date       City       AQI\n  <chr>      <chr>    <dbl>\n1 03/19/2022 Nrthmptn    70\n2 03/19/2022 NYC         72\n3 03/19/2022 Bstn        43\n4 03/18/2022 Nrthmptn    69\n5 03/18/2022 NYC         60\n6 03/18/2022 Bstn        59"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#pivoting-wider",
+    "href": "slides/Day12-Cleaning.html#pivoting-wider",
+    "title": "Tidying Datasets",
+    "section": "Pivoting Wider",
+    "text": "Pivoting Wider\n\nNote: I use this far less often than pivot_longer()\n\n\nWe use pivot_wider() to pivot a datasets from longer to wider format:\npivot_wider() takes the following arguments:\n\n\nnames_from =: Identify the column to get the new column names from\nvalues_from =: Identify the column to get the cell values from\nVarious arguments to support transformations to names"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#example-1",
+    "href": "slides/Day12-Cleaning.html#example-1",
+    "title": "Tidying Datasets",
+    "section": "Example",
+    "text": "Example\n\nBeforeCodeAfter\n\n\n\n\n# A tibble: 6 × 3\n  Date       City       AQI\n  <chr>      <chr>    <dbl>\n1 03/19/2022 Nrthmptn    70\n2 03/19/2022 NYC         72\n3 03/19/2022 Bstn        43\n4 03/18/2022 Nrthmptn    69\n5 03/18/2022 NYC         60\n6 03/18/2022 Bstn        59\n\n\n\n\n\ndf |> pivot_wider(names_from = \"Date\", \n                   values_from = \"AQI\", \n                   names_repair = make.names)\n\n\n\n\n\n# A tibble: 3 × 3\n  City     X03.19.2022 X03.18.2022\n  <chr>          <dbl>       <dbl>\n1 Nrthmptn          70          69\n2 NYC               72          60\n3 Bstn              43          59"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#separating-columns",
+    "href": "slides/Day12-Cleaning.html#separating-columns",
+    "title": "Tidying Datasets",
+    "section": "Separating Columns",
+    "text": "Separating Columns\n\nWe use separate() to split a column into multiple columns:\nseparate() takes the following arguments:\n\n\ncol: Identify the existing column to separate\ninto = c(): Identify the names of the new columns\nsep =: Identify the characters or numeric position that indicate where to separate columns"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html#example-2",
+    "href": "slides/Day12-Cleaning.html#example-2",
+    "title": "Tidying Datasets",
+    "section": "Example",
+    "text": "Example\n\nBeforeCodeAfter\n\n\n\n\n  Nrthmptn_3_19 Nrthamtn_3_18  Bstn_3_19 Bstn_3_18\n1            70            69 Unrecorded        59\n\n\n\n\n\ndf |> \n  pivot_longer(\n    cols = everything(), \n    names_to = \"Measure\",\n    values_to = \"AQI\") |>\n  separate(Measure, into = c(\"City\", \"Date\"), sep = \"_\", extra = \"merge\")\n\n\n\n\n\n# A tibble: 4 × 3\n  City     Date  AQI       \n  <chr>    <chr> <chr>     \n1 Nrthmptn 3_19  70        \n2 Nrthamtn 3_18  69        \n3 Bstn     3_19  Unrecorded\n4 Bstn     3_18  59"
+  },
+  {
+    "objectID": "slides/Day12-Cleaning.html",
+    "href": "slides/Day12-Cleaning.html",
+    "title": "Tidying Datasets",
+    "section": "",
+    "text": "Formatting up Columns and Values\nParsing Dates\nConditionals\nPivoting\nSeparating Columns"
   }
 ]

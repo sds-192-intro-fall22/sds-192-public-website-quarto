@@ -1,0 +1,482 @@
+---
+title: "Tidying Datasets"
+subtitle: "SDS 192: Introduction to Data Science"
+author: |
+  Lindsay Poirier<br/>
+  </span>
+  <span style = 'font-size: 70%;'>
+  [Statistical & Data Sciences](http://www.smith.edu/sds), Smith College<br/>
+date: |
+  Fall 2022<br/>
+  `r sds::img_logo(width = 64)`
+format: 
+  revealjs:
+    scrollable: true
+    df-print: paged
+    theme: [default, custom.scss]
+    incremental: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
+editor: source
+execute:
+  echo: true
+  messages: false
+  warnings: false
+---
+
+## For Today
+
+-   Formatting up Columns and Values
+-   Parsing Dates
+-   Conditionals
+-   Pivoting
+-   Separating Columns
+
+------------------------------------------------------------------------
+
+# Whenever formatting columns, we will use `mutate` to overwrite a variable with a new cleaned up variable. 
+
+------------------------------------------------------------------------
+
+```{r}
+library(tidyverse)
+prisons <- read_csv("../data/Prison_Boundaries.csv")
+```
+
+
+------------------------------------------------------------------------
+
+## Converting Types
+
+- `as.character()`, `as.numeric()`, `as.logical()` all convert a variable from an original type to a new type
+
+::: panel-tabset
+### Before
+
+```{r}
+typeof(prisons$COUNTYFIPS)
+```
+
+### Code
+
+```{r eval=FALSE}
+prisons <- 
+  prisons |> 
+  mutate(COUNTYFIPS = as.numeric(COUNTYFIPS))
+```
+
+### After
+
+```{r}
+typeof(prisons$COUNTYFIPS)
+```
+
+
+:::
+
+------------------------------------------------------------------------
+
+## Parsing Dates
+
+-   Dates can be converted to a date format using the `lubridate` package
+    -   Step 1: Check how dates are formatted
+    -   Step 2: Find corresponding conversion code on `lubridate` cheatsheet
+
+::: columns
+::: {.column width="50%"}
+
+![](img/dates.png) 
+
+:::
+
+::: {.column width="50%"}
+
+![](img/lubridate.png)
+
+:::
+:::
+------------------------------------------------------------------------
+
+
+## Setting Dates
+
+-   `ymd_hms()` will take a date formatted as year, month, day, hour, minute, second and convert it to a date time format
+
+::: panel-tabset
+### Before
+
+```{r}
+prisons |> 
+  select(NAME, SOURCEDATE) |> 
+  head(3)
+```
+
+### Code
+
+```{r eval=FALSE}
+library(lubridate)
+
+prisons <- 
+  prisons |> 
+  mutate(SOURCEDATE = ymd_hms(SOURCEDATE))
+```
+
+### After
+
+```{r echo=FALSE}
+prisons |> 
+  select(NAME, SOURCEDATE) |> 
+  head(3)
+```
+
+:::
+
+------------------------------------------------------------------------
+
+
+## Setting `NA` values
+
+- `na_if()` will take a variable and set specified values to `NA`
+
+::: panel-tabset
+### Before
+
+```{r}
+prisons |> 
+  select(NAME, POPULATION) |> 
+  head(3)
+
+sum(is.na(prisons$POPULATION))
+```
+
+### Code
+
+```{r eval=FALSE}
+prisons <- 
+  prisons |> 
+  mutate(POPULATION = na_if(POPULATION, -999))
+```
+
+### After
+
+```{r}
+prisons |> 
+  select(NAME, POPULATION) |> 
+  head(3)
+
+sum(is.na(prisons$POPULATION))
+```
+
+:::
+
+------------------------------------------------------------------------
+
+
+## Replacing Strings
+
+- `str_replace()` will take a variable and replace an *existing* string with a *new* string
+
+::: panel-tabset
+### Before
+
+```{r}
+prisons |> 
+  select(NAME, ADDRESS) |> 
+  head(3)
+```
+
+### Code
+
+```{r eval=FALSE}
+prisons <- 
+  prisons |> 
+  mutate(ADDRESS = str_replace(ADDRESS, 
+                               "AVENUE", 
+                               "AVE"))
+```
+
+### After
+
+```{r echo=FALSE}
+prisons |> 
+  select(NAME, ADDRESS) |> 
+  head(3)
+```
+
+:::
+
+
+------------------------------------------------------------------------
+
+## Removing Strings
+
+- `str_replace()` will take a variable and replace an *existing* string with a *new* string
+
+::: panel-tabset
+### Before
+
+```{r}
+prisons |> select(NAME, Creator) |> head(3)
+```
+
+### Code
+
+```{r eval=FALSE}
+prisons <- 
+  prisons |> 
+  mutate(Creator = str_replace(Creator, 
+                               "HostedBy", 
+                               ""))
+```
+
+### After
+
+```{r echo=FALSE}
+prisons |> 
+  select(NAME, Creator) |> 
+  head(3)
+```
+
+:::
+
+------------------------------------------------------------------------
+
+## Conditionals
+
+-   `case_when()` allows us to set values when conditions are met
+
+::: panel-tabset
+### Before
+
+```{r}
+prisons |> 
+  select(SECURELVL) |> 
+  distinct()
+```
+
+### Code
+
+```{r eval=FALSE}
+prisons <- 
+  prisons |> 
+  mutate(JUVENILE = 
+           case_when(
+             SECURELVL == "JUVENILE" ~ "Juvenile",
+             TRUE ~ "Not Juvenile")) 
+```
+
+### After
+
+```{r echo=FALSE}
+
+prisons <- 
+  prisons |> 
+  mutate(JUVENILE = 
+           case_when(
+             SECURELVL == "JUVENILE" ~ "Juvenile",
+             TRUE ~ "Not Juvenile")) 
+
+prisons |> 
+  select(NAME, SECURELVL, JUVENILE) |> 
+  head(3)
+```
+
+:::
+
+------------------------------------------------------------------------
+
+## What is tidy data?
+
+-   Every observation has its own row.
+-   Every variable has its own columns.
+-   Every value has its own cell. 
+
+------------------------------------------------------------------------
+
+## Is this tidy?
+
+> What variables are displayed on this plot?
+
+```{r echo=FALSE}
+df <- data.frame(
+  Date = c("03/19/2022", "03/18/2022"),
+  Nrthmptn_AQI = c(70, 69),
+  NYC_AQI = c(72, 60),
+  Bstn_AQI = c(43, 59)
+)
+df
+```
+
+------------------------------------------------------------------------
+
+## What will it look like when tidy?
+
+```{r}
+df |> pivot_longer(-Date, 
+                    names_to = "City", 
+                    values_to = "AQI")
+```
+
+------------------------------------------------------------------------
+
+# Learning Check: What function would I use to remove "_AQI" from the `City` column on the previous slide?
+
+------------------------------------------------------------------------
+
+## Pivoting Longer {.smaller}
+
+-   We use `pivot_longer()` to pivot a datasets from wider to longer format:
+-   `pivot_longer()` takes the following arguments: 
+  1. `cols = `: Identify a series of columns to pivot
+    -   The names of those columns will become repeated rows in the pivoted data frame, and the values in those columns will be stored in a new column.
+  2. `names_to = `: Identify a name for the column where the column names will be store
+  3. `values_to = `: Identify a name for the column were the values associated with those names will be stored
+  4. Various arguments to support transformations to names
+
+------------------------------------------------------------------------
+
+## Example
+
+::: panel-tabset
+### Before
+
+```{r echo=FALSE}
+df <- data.frame(
+  Date = c("03/19/2022", "03/18/2022"),
+  Nrthmptn_AQI = c(70, 69),
+  NYC_AQI = c(72, 60),
+  Bstn_AQI = c(43, 59)
+)
+df
+```
+
+### Code
+
+```{r eval=FALSE}
+df |> pivot_longer(cols = -Date, 
+                    names_to = "City", 
+                    values_to = "AQI") |>
+  mutate(City = str_replace(City, "_AQI", ""))
+```
+
+### After
+
+```{r echo=FALSE}
+df |> pivot_longer(cols = -Date, 
+                    names_to = "City", 
+                    values_to = "AQI") |>
+  mutate(City = str_replace(City, "_AQI", ""))
+```
+
+:::
+
+------------------------------------------------------------------------
+
+# Learning Check: How would I convert the dates on the previous slide to a date-time format?
+
+------------------------------------------------------------------------
+
+## Pivoting Wider {.smaller}
+
+> Note: I use this far less often than `pivot_longer()`
+
+-   We use `pivot_wider()` to pivot a datasets from longer to wider format:
+-   `pivot_wider()` takes the following arguments: 
+  1. `names_from = `: Identify the column to get the new column names from
+  2. `values_from = `: Identify the column to get the cell values from
+  3. Various arguments to support transformations to names
+
+------------------------------------------------------------------------
+
+## Example
+
+::: panel-tabset
+### Before
+
+```{r echo=FALSE}
+df <- data.frame(
+  Date = c("03/19/2022", "03/18/2022"),
+  Nrthmptn_AQI = c(70, 69),
+  NYC_AQI = c(72, 60),
+  Bstn_AQI = c(43, 59)) |> 
+  pivot_longer(cols = -Date, 
+                    names_to = "City", 
+                    values_to = "AQI") |>
+  mutate(City = str_replace(City, "_AQI", ""))
+df
+```
+
+### Code
+
+```{r eval=FALSE}
+df |> pivot_wider(names_from = "Date", 
+                   values_from = "AQI", 
+                   names_repair = make.names)
+```
+
+### After
+
+```{r echo=FALSE}
+df |> pivot_wider(names_from = "Date", 
+                   values_from = "AQI", 
+                   names_repair = make.names)
+```
+
+:::
+
+------------------------------------------------------------------------
+
+## Separating Columns {.smaller}
+
+-   We use `separate()` to split a column into multiple columns:
+-   `separate()` takes the following arguments: 
+  1. `col `: Identify the existing column to separate
+  2. `into = c()`: Identify the names of the new columns
+  3. `sep =`: Identify the characters or numeric position that indicate where to separate columns
+
+------------------------------------------------------------------------
+
+## Example
+
+
+
+::: panel-tabset
+### Before
+
+```{r echo=FALSE}
+df <- data.frame(
+  Nrthmptn_3_19 = c("70"),
+  Nrthamtn_3_18 = c("69"),
+  Bstn_3_19 = c("Unrecorded"),
+  Bstn_3_18 = c("59"))
+df
+```
+
+### Code
+
+```{r eval=FALSE}
+df |> 
+  pivot_longer(
+    cols = everything(), 
+    names_to = "Measure",
+    values_to = "AQI") |>
+  separate(Measure, into = c("City", "Date"), sep = "_", extra = "merge")
+```
+
+### After
+
+```{r echo=FALSE}
+df |> 
+  pivot_longer(
+    cols = everything(), 
+    names_to = "Measure",
+    values_to = "AQI") |>
+  separate(Measure, into = c("City", "Date"), sep = "_", extra = "merge")
+```
+
+:::
+
+------------------------------------------------------------------------
+
+# Learning Check: What would we need to do to convert `AQI` on the previous slide into a numeric variable?

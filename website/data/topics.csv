@@ -23,7 +23,7 @@ topic_id,topic_abbr,topic,date,standard_id,required_reading,req_chapter,optional
 22,wrangling-practice,Data Wrangling Problem-Solving,10/26/22,,,,,,,Group Contract Due,[Problem Solving Tips](problem-solving.html),,
 23,joining_lab,Lab: Joining Datasets,10/28/22,7,,,,,Quiz 1 Due,,,[Lab 6 Instructions](labs/lab6.html),[Lab 6 Template](https://classroom.github.com/a/6ydxwiAa)
 24,tidying,Tidying Datasets,10/31/22,8,baumerModernDataScience2021,6. Tidy Data,,,,,,,
-25,pivoting,Pivoting Datasets,11/2/22,8,irizarryIntroductionDataScience2022,26. Parsing dates and times,,,[Lab 6](labs/lab6.html) Due,,,,
+25,pivoting,Pivoting Datasets,11/2/22,8,irizarryIntroductionDataScience2022,26. Parsing dates and times,,,[Lab 6](labs/lab6.html) Due,,[Day 12 Slides: Tidying Datasets](slides/Day12-Cleaning.html),[tidyr Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf),
 26,pivoting_lab,Lab: Pivoting Datasets,11/4/22,8,,,,,,,,,
 27,functions,Writing Functions,11/7/22,9,baumerModernDataScience2021,7. Iteration,,,Study Plan Assessment Due; Watch Lab 6 Recap in Perusall,,,,
 28,iteration,Iteration,11/9/22,9,,,,,[Lab 7](lab7.html) Due,Project 2 Due,,,
