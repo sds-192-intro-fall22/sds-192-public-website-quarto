@@ -60,7 +60,7 @@ typeof(prisons$COUNTYFIPS)
 
 ### Code
 
-```{r eval=FALSE}
+```{r}
 prisons <- 
   prisons |> 
   mutate(COUNTYFIPS = as.numeric(COUNTYFIPS))
@@ -114,7 +114,7 @@ prisons |>
 
 ### Code
 
-```{r eval=FALSE}
+```{r}
 library(lubridate)
 
 prisons <- 
@@ -152,7 +152,7 @@ sum(is.na(prisons$POPULATION))
 
 ### Code
 
-```{r eval=FALSE}
+```{r}
 prisons <- 
   prisons |> 
   mutate(POPULATION = na_if(POPULATION, -999))
@@ -188,7 +188,7 @@ prisons |>
 
 ### Code
 
-```{r eval=FALSE}
+```{r}
 prisons <- 
   prisons |> 
   mutate(ADDRESS = str_replace(ADDRESS, 
@@ -222,11 +222,11 @@ prisons |> select(NAME, Creator) |> head(3)
 
 ### Code
 
-```{r eval=FALSE}
+```{r}
 prisons <- 
   prisons |> 
   mutate(Creator = str_replace(Creator, 
-                               "HostedBy", 
+                               "Hostedby", 
                                ""))
 ```
 
@@ -257,7 +257,7 @@ prisons |>
 
 ### Code
 
-```{r eval=FALSE}
+```{r}
 prisons <- 
   prisons |> 
   mutate(JUVENILE = 
@@ -272,14 +272,15 @@ prisons <-
 
 prisons <- 
   prisons |> 
-  mutate(JUVENILE = 
+  mutate(SECURELVL = 
            case_when(
              SECURELVL == "JUVENILE" ~ "Juvenile",
+             SECURELVL == "NOT AVAILABLE" ~ "NOT AVAILABLE", 
              TRUE ~ "Not Juvenile")) 
 
 prisons |> 
   select(NAME, SECURELVL, JUVENILE) |> 
-  head(3)
+  head(10)
 ```
 
 :::
@@ -354,7 +355,7 @@ df
 ### Code
 
 ```{r eval=FALSE}
-df |> pivot_longer(cols = -Date, 
+df |> pivot_longer(cols = ends_with("AQI"), 
                     names_to = "City", 
                     values_to = "AQI") |>
   mutate(City = str_replace(City, "_AQI", ""))
@@ -461,7 +462,7 @@ df |>
     cols = everything(), 
     names_to = "Measure",
     values_to = "AQI") |>
-  separate(Measure, into = c("City", "Date"), sep = "_", extra = "merge")
+  separate(Measure, into = c("City", "Month", "Date"), sep = "_")
 ```
 
 ### After
