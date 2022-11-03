@@ -21,6 +21,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -112,6 +175,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals">Learning Goals</a></li>
   </ul></li>
   <li><a href="#review-of-key-terms" id="toc-review-of-key-terms" class="nav-link" data-scroll-target="#review-of-key-terms">Review of Key Terms</a></li>
+  <li><a href="#cmss-open-payments-dataset" id="toc-cmss-open-payments-dataset" class="nav-link" data-scroll-target="#cmss-open-payments-dataset">CMS’s Open Payments Dataset</a></li>
+  <li><a href="#setting-up-your-environment" id="toc-setting-up-your-environment" class="nav-link" data-scroll-target="#setting-up-your-environment">Setting Up Your Environment</a></li>
+  <li><a href="#cleaning-up-this-data-frame" id="toc-cleaning-up-this-data-frame" class="nav-link" data-scroll-target="#cleaning-up-this-data-frame">Cleaning up this Data Frame</a></li>
+  <li><a href="#which-doctors-received-the-most-money-from-medical-drug-and-device-companies-in-2021" id="toc-which-doctors-received-the-most-money-from-medical-drug-and-device-companies-in-2021" class="nav-link" data-scroll-target="#which-doctors-received-the-most-money-from-medical-drug-and-device-companies-in-2021">Which doctors received the most money from medical drug and device companies in 2021?</a></li>
   </ul>
 </nav>
     </div>
@@ -142,11 +209,13 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this lab…</p>
+<p>In this lab, we will program some custom <code>R</code> functions that allow us to analyze data related to medical conflicts of interest. Specifically, we will determine which ten Massachusetts-based doctors received the most money from pharmaceutical or medical device companies in 2021. Then we will leverage our custom functions to produce a number of tables and plots documenting information about the payments made to each of these doctors. In doing so, we will update a similar analysis produced by ProPublica in 2018 called <a href="https://projects.propublica.org/docdollars/"><em>Dollars for Docs</em></a>.</p>
 <section id="learning-goals" class="level3">
 <h3 class="anchored" data-anchor-id="learning-goals">Learning Goals</h3>
 <ul>
-<li></li>
+<li>Write custom <code>R</code> functions</li>
+<li>Iterate a function over the values in a vector</li>
+<li>Practice data cleaning and wrangling</li>
 </ul>
 </section>
 </section>
@@ -166,15 +235,511 @@ Tip
 </div>
 </div>
 <dl>
-<dt>Iteration</dt>
-<dd>
-<p>mkjf;ad</p>
-</dd>
 <dt>Function</dt>
 <dd>
-<p>Rotating data columns so that they are presented as rows or rotating data rows so that they are presented as columns</p>
+<p>a series of statements that returns a value or performs a task</p>
+</dd>
+<dt>Iteration</dt>
+<dd>
+<p>repeating a task over a series of values, vectors, or lists</p>
 </dd>
 </dl>
+</section>
+<section id="cmss-open-payments-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="cmss-open-payments-dataset">CMS’s Open Payments Dataset</h2>
+<p>In 2010, the the Physician Payments Sunshine Act (2010) was passed, requiring medical drug and device companies to disclose payments and other transfers of value made to physicians, non-physician practitioners, and teaching hospitals. This law was put into place to promote transparency in our medical system - enabling the U.S. government and citizens to monitor for potential medical conflicts of interest.</p>
+<p>Today, every time a drug or medical device company makes a payment to a covered recipient, they must disclose the nature of that payment and the amount to the U.S. Centers for Medicare &amp; Medicaid. Data about payments is then aggregated, reviewed by (and sometimes disputed by) recipients, corrected, and then published as an open government dataset.</p>
+<p>Definitions for what counts as a reporting entity, a covered recipient, and a reportable activity have been expanding since the passing of the Physician Payments Sunshine Act as legislators have raised concerns over the degree of transparency of diversifying financial arrangements in the healthcare system. In 2020, the first settlement for violations to the Sunshine Act was announced, requiring Medtronic Inc.&nbsp;to pay $9.2 million to resolve allegations for failure to report. This served as a signal that enforcement is ramping up in the coming years. In 2022, the state of California passed a law requiring that medical practitioners disclose to patients that this data resource exists.</p>
+</section>
+<section id="setting-up-your-environment" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-your-environment">Setting Up Your Environment</h2>
+<ol type="1">
+<li>Run the code below to load today’s data frames into your environment.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>open_payments_original <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/open_payments_ma.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(covered_recipient_npi, </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>         covered_recipient_first_name<span class="sc">:</span>covered_recipient_last_name, </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>         applicable_manufacturer_or_applicable_gpo_making_payment_id,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>         applicable_manufacturer_or_applicable_gpo_making_payment_name, </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>         recipient_city,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>         recipient_state,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>         covered_recipient_specialty_1,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>         total_amount_of_payment_usdollars,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>         indicate_drug_or_biological_or_device_or_medical_supply_1,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>         product_category_or_therapeutic_area_1,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>         name_of_drug_or_biological_or_device_or_medical_supply_1,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>         date_of_payment,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>         nature_of_payment_or_transfer_of_value,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>         number_of_payments_included_in_total_amount,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>         form_of_payment_or_transfer_of_value,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>         dispute_status_for_publication)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="cleaning-up-this-data-frame" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning-up-this-data-frame">Cleaning up this Data Frame</h2>
+<p>You should first note that the unit of observation in this dataset is not one medical practitioner, and it is not one company. Instead it is one payment from a company to a medical practitioner. That means that a medical practitioner can appear multiple times in the dataset if they’ve received multiple payments, and a medical drug or device company can appear multiple times in the dataset if they’ve disbursed multiple payments. We can identify medical practitioners with the <code>covered_recipient_npi</code> column and companies with the <code>applicable_manufacturer_or_applicable_gpo_making_payment_id</code> column.</p>
+<p>…but we want to know more than just the ID of a medical practitioner. To identify which doctors are receiving the most money, we also want to know that practitioner’s name. Because practitioners’ names are manually entered into a database every time a payment is made to them, sometimes the formatting of a practitioner’s name entered for one payment can differ from how that same practitioner’s name is formatted when entered for another payment. For instance, check out how the capitalization differs for the practitioner below. In some cases, there is a middle initial, while in others, there is a full middle name; in some cases, the practitioner’s name is all capitalized, and in other cases it is not.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>open_payments_original <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> <span class="dv">1003040676</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(covered_recipient_first_name, covered_recipient_middle_name, covered_recipient_last_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["covered_recipient_first_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["covered_recipient_middle_name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["covered_recipient_last_name"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"CHARLES","2":"NA","3":"RESOR"},{"1":"CHARLES","2":"D.","3":"RESOR"},{"1":"CHARLES","2":"D.","3":"RESOR"},{"1":"Charles","2":"Donohue","3":"Resor"},{"1":"CHARLES","2":"D","3":"RESOR"},{"1":"CHARLES","2":"D","3":"RESOR"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>This issue with formatting exists across this entire dataset. To ensure that similar entities appear in the right buckets when we aggregate the data, we are going to standardize capitalization across the whole dataset. We’re also going to leave out the practitioner’s middle initial since it is not always included (or included in the same way).</p>
+<section id="question" class="level6">
+<h6 class="anchored" data-anchor-id="question">Question</h6>
+<div class="question">
+<p>Write code to mutate across all <em>character</em> columns such that strings in these columns are converted to <strong>title case</strong>. Title case refers to casing where the first letter in each word is capitalized and all other letters are lowercase. Strings can be converted to title case with the function <code>str_to_title</code>. After you’ve done this, mutate a new column called <code>covered_recipient_full_name</code> that concatenates (hint: i.e.&nbsp;<em>pastes</em>) together <code>covered_recipient_first_name</code> and <code>covered_recipient_last_name</code>. Store the result in <code>open_payments_cleaned</code>.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>open_payments_cleaned <span class="ot">&lt;-</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  open_payments_original <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), str_to_title)) <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">covered_recipient_full_name =</span> <span class="fu">paste</span>(covered_recipient_first_name,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                                             covered_recipient_last_name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="question-1" class="level6">
+<h6 class="anchored" data-anchor-id="question-1">Question</h6>
+<div class="question">
+<p>Write code to convert the <code>date_of_payment</code> column to date-time format. You should first determine the format of the date in <code>date_of_payment</code> and then reference the <a href="https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_lubridate.pdf">lubridate</a> to determine the corresponding function for parsing that date format.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>open_payments <span class="ot">&lt;-</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  open_payments_cleaned <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date_of_payment =</span> <span class="fu">mdy</span>(date_of_payment))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that we have a final cleaned up <code>open_payments</code> data frame, let’s remove the other data frames from our environment.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(open_payments_original, open_payments_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="which-doctors-received-the-most-money-from-medical-drug-and-device-companies-in-2021" class="level2">
+<h2 class="anchored" data-anchor-id="which-doctors-received-the-most-money-from-medical-drug-and-device-companies-in-2021">Which doctors received the most money from medical drug and device companies in 2021?</h2>
+<p>Ultimately, our aim is to produe a number of tables and plots <em>for each of the ten MA-based doctors that received the most money from medical drug and device companies in 2021.</em> This means that one of our first analysis steps is to identify those 10 doctors.</p>
+<div class="question">
+<p>Write code to determine the 10 medical practitioners that received the most money from drug and device companies in 2021, and store your results in <code>top_10_doctors</code>. Your final data frame should have 10 rows and columns for <code>covered_recipient_npi</code>, <code>covered_recipient_full_name</code>, <code>covered_recipient_specialty_1</code>, <code>recipient_city</code>, <code>sum_total_payments</code>.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>top_10_doctors <span class="ot">&lt;-</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  open_payments <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(covered_recipient_npi, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>           covered_recipient_full_name, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>           covered_recipient_specialty_1, </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>           recipient_city) <span class="sc">|&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sum_total_payments =</span> <span class="fu">sum</span>(total_amount_of_payment_usdollars)) <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sum_total_payments)) <span class="sc">|&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Right now the values that we will eventually want to iterate over in our analysis (such as the doctors’ id or specialty) are stored as columns in a dataframe. …but remember that the family of <code>purrr</code> functions allows us to apply a function to each element of a vector or list. We want to create a series of vectors from these columns that we can iterate over. We will use the <code>pull()</code> function to do this.</p>
+<div class="question">
+<p>Create four vectors from <code>top_10_doctors</code>: <code>top_10_doctors_ids</code>, <code>top_10_doctors_name</code>, <code>top_10_doctors_specialties</code>, <code>top_10_doctors_cities</code>. I’ve completed the first one for you.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>top_10_doctors_ids <span class="ot">&lt;-</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  top_10_doctors <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(covered_recipient_npi)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>top_10_doctors_names <span class="ot">&lt;-</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  top_10_doctors <span class="sc">|&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(covered_recipient_full_name)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>top_10_doctors_specialties <span class="ot">&lt;-</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  top_10_doctors <span class="sc">|&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(covered_recipient_specialty_1)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>top_10_doctors_cities <span class="ot">&lt;-</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  top_10_doctors <span class="sc">|&gt;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(recipient_city)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that we have the vectors we want to iterate over, we are ready to start defining our first functions. To get started, let’s define a function that filters <code>open_payments</code> to a given doctor ID, and then calculates how much of each kind of payment has been paid to that doctor. Here is an example of what that data wrangling code would look like for a specific <code>covered_recipient_npi</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>open_payments <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> <span class="dv">1194763482</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(covered_recipient_full_name, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>           nature_of_payment_or_transfer_of_value) <span class="sc">|&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">num_payments =</span> <span class="fu">sum</span>(number_of_payments_included_in_total_amount),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">total_payments =</span> <span class="fu">sum</span>(total_amount_of_payment_usdollars))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["covered_recipient_full_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["nature_of_payment_or_transfer_of_value"],"name":[2],"type":["chr"],"align":["left"]},{"label":["num_payments"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["total_payments"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"David Friedman","2":"Consulting Fee","3":"4","4":"5427.5"},{"1":"David Friedman","2":"Royalty Or License","3":"2","4":"18750000.0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="question">
+<p>Wrap the above code in a function named <code>calculate_payment_type_amts</code>. Rather than filtering to 1194763482, filter based on the value passed to an argument named <code>doctor_id</code>. Finally, use the <code>map()</code> function to apply <code>calculate_payment_type_amts</code> to each element in the <code>top_10_doctors_ids</code> vector. Running this code should return 10 data frames.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>calculate_payment_type_amts <span class="ot">&lt;-</span> <span class="cf">function</span>(doctor_id){</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  open_payments <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> doctor_id) <span class="sc">|&gt;</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(covered_recipient_full_name, </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>             nature_of_payment_or_transfer_of_value) <span class="sc">|&gt;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">num_payments =</span> <span class="fu">sum</span>(number_of_payments_included_in_total_amount),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">total_payments =</span> <span class="fu">sum</span>(total_amount_of_payment_usdollars))</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(top_10_doctors_ids, calculate_payment_type_amts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["covered_recipient_full_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["nature_of_payment_or_transfer_of_value"],"name":[2],"type":["chr"],"align":["left"]},{"label":["num_payments"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["total_payments"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"David Friedman","2":"Consulting Fee","3":"4","4":"5427.50"},{"1":"David Friedman","2":"Royalty Or License","3":"2","4":"18750000.00"},{"1":"Martin Pollak","2":"Consulting Fee","3":"1","4":"1435.00"},{"1":"Martin Pollak","2":"Royalty Or License","3":"2","4":"18750000.00"},{"1":"Paul Tornetta","2":"Compensation For Serving As Faculty Or As A Speaker For A Medical Education Program","3":"1","4":"250.00"},{"1":"Paul Tornetta","2":"Food And Beverage","3":"3","4":"70.92"},{"1":"Paul Tornetta","2":"Royalty Or License","3":"31","4":"2112476.53"},{"1":"Paul Tornetta","2":"Travel And Lodging","3":"1","4":"36.00"},{"1":"Thomas Thornhill","2":"Consulting Fee","3":"3","4":"4050.00"},{"1":"Thomas Thornhill","2":"Royalty Or License","3":"5","4":"1865800.98"},{"1":"Laurie Glimcher","2":"Compensation For Services Other Than Consulting, Including Serving As Faculty Or As A Speaker At A Venue Other Than A Continuing Education Program","3":"5","4":"971882.37"},{"1":"Ali Nasseh","2":"Food And Beverage","3":"6","4":"404.04"},{"1":"Ali Nasseh","2":"Royalty Or License","3":"12","4":"970886.64"},{"1":"Alan Garber","2":"Compensation For Services Other Than Consulting, Including Serving As Faculty Or As A Speaker At A Venue Other Than A Continuing Education Program","3":"5","4":"423120.00"},{"1":"Alan Garber","2":"Consulting Fee","3":"4","4":"125000.00"},{"1":"Alan Garber","2":"Current Or Prospective Ownership Or Investment Interest","3":"1","4":"400058.00"},{"1":"Alan Garber","2":"Food And Beverage","3":"23","4":"2265.20"},{"1":"Alan Garber","2":"Travel And Lodging","3":"3","4":"4495.16"},{"1":"James Bono","2":"Consulting Fee","3":"3","4":"5500.00"},{"1":"James Bono","2":"Food And Beverage","3":"12","4":"985.60"},{"1":"James Bono","2":"Royalty Or License","3":"4","4":"810243.24"},{"1":"James Bono","2":"Travel And Lodging","3":"18","4":"3746.83"},{"1":"Stephen Murphy","2":"Compensation For Services Other Than Consulting, Including Serving As Faculty Or As A Speaker At A Venue Other Than A Continuing Education Program","3":"1","4":"2156.25"},{"1":"Stephen Murphy","2":"Consulting Fee","3":"2","4":"1725.00"},{"1":"Stephen Murphy","2":"Food And Beverage","3":"5","4":"489.34"},{"1":"Stephen Murphy","2":"Royalty Or License","3":"4","4":"798660.00"},{"1":"Michael Kaminer","2":"Acquisitions","3":"1","4":"748350.00"},{"1":"Michael Kaminer","2":"Consulting Fee","3":"5","4":"21810.00"},{"1":"Michael Kaminer","2":"Food And Beverage","3":"39","4":"765.18"},{"1":"Michael Kaminer","2":"Long Term Medical Supply Or Device Loan","3":"1","4":"437.26"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Let’s take a similar approach to define a function that filters <code>open_payments</code> to a given doctor ID, and determines how much doctors have been paid in relation to specific products they may be asked to endorse. To do so, we will need to aggregate the data by <code>name_of_drug_or_biological_or_device_or_medical_supply_1</code> and calculate the total payments associated with the mention of that product.</p>
+<div class="question">
+<p>Write a function named <code>calculate_drugs_and_devices_payments</code>. The function should take a <code>doctor_id</code>, and filter <code>open_payments</code> to that ID. Then it should aggregate the filtered data by <code>covered_recipient_full_name</code>, <code>name_of_drug_or_biological_or_device_or_medical_supply_1</code>, and <code>indicate_drug_or_biological_or_device_or_medical_supply_1</code>, calculate the total amount of payments, and sort the resulting data frame in descending order by the total amount of payments. Finally, use the <code>map()</code> function to apply <code>calculate_drugs_and_devices_payments</code> to each element in the <code>top_10_doctors_ids</code> vector. Running this code should return 10 data frames.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>calculate_drugs_and_devices_payments <span class="ot">&lt;-</span> <span class="cf">function</span>(doctor_id){</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  open_payments <span class="sc">|&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> doctor_id) <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(covered_recipient_full_name, </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>             name_of_drug_or_biological_or_device_or_medical_supply_1,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>             indicate_drug_or_biological_or_device_or_medical_supply_1) <span class="sc">|&gt;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">total_amount_of_payment_usdollars =</span> <span class="fu">sum</span>(total_amount_of_payment_usdollars)) <span class="sc">|&gt;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total_amount_of_payment_usdollars))</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(top_10_doctors_ids, calculate_drugs_and_devices_payments)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+# A tibble: 1 × 4
+# Groups:   covered_recipient_full_name,
+#   name_of_drug_or_biological_or_device_or_medical_supply_1 [1]
+  covered_recipient_full_name name_of_drug_or_biological_or_de…¹ indic…² total…³
+  &lt;chr&gt;                       &lt;chr&gt;                              &lt;chr&gt;     &lt;dbl&gt;
+1 David Friedman              &lt;NA&gt;                               &lt;NA&gt;     1.88e7
+# … with abbreviated variable names
+#   ¹​name_of_drug_or_biological_or_device_or_medical_supply_1,
+#   ²​indicate_drug_or_biological_or_device_or_medical_supply_1,
+#   ³​total_amount_of_payment_usdollars
+
+[[2]]
+# A tibble: 1 × 4
+# Groups:   covered_recipient_full_name,
+#   name_of_drug_or_biological_or_device_or_medical_supply_1 [1]
+  covered_recipient_full_name name_of_drug_or_biological_or_de…¹ indic…² total…³
+  &lt;chr&gt;                       &lt;chr&gt;                              &lt;chr&gt;     &lt;dbl&gt;
+1 Martin Pollak               &lt;NA&gt;                               &lt;NA&gt;     1.88e7
+# … with abbreviated variable names
+#   ¹​name_of_drug_or_biological_or_device_or_medical_supply_1,
+#   ²​indicate_drug_or_biological_or_device_or_medical_supply_1,
+#   ³​total_amount_of_payment_usdollars
+
+[[3]]
+# A tibble: 6 × 4
+# Groups:   covered_recipient_full_name,
+#   name_of_drug_or_biological_or_device_or_medical_supply_1 [6]
+  covered_recipient_full_name name_of_drug_or_biological_or_de…¹ indic…² total…³
+  &lt;chr&gt;                       &lt;chr&gt;                              &lt;chr&gt;     &lt;dbl&gt;
+1 Paul Tornetta               Evos                               Device   1.69e6
+2 Paul Tornetta               Trigen Femoral (Fan/Tan/Meta Nail) Device   3.73e5
+3 Paul Tornetta               Vlp Mini Mod                       Device   2.36e4
+4 Paul Tornetta               D-Rad Smart Pak                    Device   1.78e4
+5 Paul Tornetta               Peri-Loc                           Device   1.08e4
+6 Paul Tornetta               &lt;NA&gt;                               &lt;NA&gt;     3.57e2
+# … with abbreviated variable names
+#   ¹​name_of_drug_or_biological_or_device_or_medical_supply_1,
+#   ²​indicate_drug_or_biological_or_device_or_medical_supply_1,
+#   ³​total_amount_of_payment_usdollars
+
+[[4]]
+# A tibble: 1 × 4
+# Groups:   covered_recipient_full_name,
+#   name_of_drug_or_biological_or_device_or_medical_supply_1 [1]
+  covered_recipient_full_name name_of_drug_or_biological_or_de…¹ indic…² total…³
+  &lt;chr&gt;                       &lt;chr&gt;                              &lt;chr&gt;     &lt;dbl&gt;
+1 Thomas Thornhill            Attune                             Device   1.87e6
+# … with abbreviated variable names
+#   ¹​name_of_drug_or_biological_or_device_or_medical_supply_1,
+#   ²​indicate_drug_or_biological_or_device_or_medical_supply_1,
+#   ³​total_amount_of_payment_usdollars
+
+[[5]]
+# A tibble: 1 × 4
+# Groups:   covered_recipient_full_name,
+#   name_of_drug_or_biological_or_device_or_medical_supply_1 [1]
+  covered_recipient_full_name name_of_drug_or_biological_or_de…¹ indic…² total…³
+  &lt;chr&gt;                       &lt;chr&gt;                              &lt;chr&gt;     &lt;dbl&gt;
+1 Laurie Glimcher             &lt;NA&gt;                               &lt;NA&gt;    971882.
+# … with abbreviated variable names
+#   ¹​name_of_drug_or_biological_or_device_or_medical_supply_1,
+#   ²​indicate_drug_or_biological_or_device_or_medical_supply_1,
+#   ³​total_amount_of_payment_usdollars
+
+[[6]]
+# A tibble: 3 × 4
+# Groups:   covered_recipient_full_name,
+#   name_of_drug_or_biological_or_device_or_medical_supply_1 [3]
+  covered_recipient_full_name name_of_drug_or_biological_or_de…¹ indic…² total…³
+  &lt;chr&gt;                       &lt;chr&gt;                              &lt;chr&gt;     &lt;dbl&gt;
+1 Ali Nasseh                  &lt;NA&gt;                               &lt;NA&gt;     9.71e5
+2 Ali Nasseh                  Channels Obturator                 Device   1.08e2
+3 Ali Nasseh                  Cao Group Inc Precise Ltm Complet… Device   9.68e1
+# … with abbreviated variable names
+#   ¹​name_of_drug_or_biological_or_device_or_medical_supply_1,
+#   ²​indicate_drug_or_biological_or_device_or_medical_supply_1,
+#   ³​total_amount_of_payment_usdollars
+
+[[7]]
+# A tibble: 1 × 4
+# Groups:   covered_recipient_full_name,
+#   name_of_drug_or_biological_or_device_or_medical_supply_1 [1]
+  covered_recipient_full_name name_of_drug_or_biological_or_de…¹ indic…² total…³
+  &lt;chr&gt;                       &lt;chr&gt;                              &lt;chr&gt;     &lt;dbl&gt;
+1 Alan Garber                 &lt;NA&gt;                               &lt;NA&gt;    954938.
+# … with abbreviated variable names
+#   ¹​name_of_drug_or_biological_or_device_or_medical_supply_1,
+#   ²​indicate_drug_or_biological_or_device_or_medical_supply_1,
+#   ³​total_amount_of_payment_usdollars
+
+[[8]]
+# A tibble: 5 × 4
+# Groups:   covered_recipient_full_name,
+#   name_of_drug_or_biological_or_device_or_medical_supply_1 [5]
+  covered_recipient_full_name name_of_drug_or_biological_or_de…¹ indic…² total…³
+  &lt;chr&gt;                       &lt;chr&gt;                              &lt;chr&gt;     &lt;dbl&gt;
+1 James Bono                  Accolade                           Device  810243.
+2 James Bono                  Mako                               Device    5319.
+3 James Bono                  Triathlon                          Device    2500 
+4 James Bono                  &lt;NA&gt;                               &lt;NA&gt;      1415.
+5 James Bono                  Surpass Evolve                     Device     999.
+# … with abbreviated variable names
+#   ¹​name_of_drug_or_biological_or_device_or_medical_supply_1,
+#   ²​indicate_drug_or_biological_or_device_or_medical_supply_1,
+#   ³​total_amount_of_payment_usdollars
+
+[[9]]
+# A tibble: 4 × 4
+# Groups:   covered_recipient_full_name,
+#   name_of_drug_or_biological_or_device_or_medical_supply_1 [4]
+  covered_recipient_full_name name_of_drug_or_biological_or_de…¹ indic…² total…³
+  &lt;chr&gt;                       &lt;chr&gt;                              &lt;chr&gt;     &lt;dbl&gt;
+1 Stephen Murphy              Mpo Hip System                     Device  801074.
+2 Stephen Murphy              &lt;NA&gt;                               &lt;NA&gt;      1725 
+3 Stephen Murphy              Endurance                          Device     120 
+4 Stephen Murphy              Hips-None                          Device     112.
+# … with abbreviated variable names
+#   ¹​name_of_drug_or_biological_or_device_or_medical_supply_1,
+#   ²​indicate_drug_or_biological_or_device_or_medical_supply_1,
+#   ³​total_amount_of_payment_usdollars
+
+[[10]]
+# A tibble: 14 × 4
+# Groups:   covered_recipient_full_name,
+#   name_of_drug_or_biological_or_device_or_medical_supply_1 [14]
+   covered_recipient_full_name name_of_drug_or_biological_or_d…¹ indic…² total…³
+   &lt;chr&gt;                       &lt;chr&gt;                             &lt;chr&gt;     &lt;dbl&gt;
+ 1 Michael Kaminer             &lt;NA&gt;                              &lt;NA&gt;     7.71e5
+ 2 Michael Kaminer             Cosentyx                          Biolog…  1.23e2
+ 3 Michael Kaminer             Cimzia                            Drug     9.51e1
+ 4 Michael Kaminer             Humira                            Biolog…  7.59e1
+ 5 Michael Kaminer             Enstilar                          Drug     6.77e1
+ 6 Michael Kaminer             Dupixent                          Biolog…  5.64e1
+ 7 Michael Kaminer             Taltz                             Drug     5.06e1
+ 8 Michael Kaminer             Skyrizi                           Biolog…  4.88e1
+ 9 Michael Kaminer             Ilumya                            Biolog…  4.71e1
+10 Michael Kaminer             Otezla                            Drug     4.08e1
+11 Michael Kaminer             Duobrii                           Drug     3.56e1
+12 Michael Kaminer             Tremfya                           Drug     2.77e1
+13 Michael Kaminer             Arazlo                            Drug     1.96e1
+14 Michael Kaminer             Enbrel                            Biolog…  1.79e1
+# … with abbreviated variable names
+#   ¹​name_of_drug_or_biological_or_device_or_medical_supply_1,
+#   ²​indicate_drug_or_biological_or_device_or_medical_supply_1,
+#   ³​total_amount_of_payment_usdollars</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(top_10_doctors_ids, calculate_drugs_and_devices_payments) <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(covered_recipient_full_name) <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Count_Drugs =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["covered_recipient_full_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Count_Drugs"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Alan Garber","2":"1"},{"1":"Ali Nasseh","2":"3"},{"1":"David Friedman","2":"1"},{"1":"James Bono","2":"5"},{"1":"Laurie Glimcher","2":"1"},{"1":"Martin Pollak","2":"1"},{"1":"Michael Kaminer","2":"14"},{"1":"Paul Tornetta","2":"6"},{"1":"Stephen Murphy","2":"4"},{"1":"Thomas Thornhill","2":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>doctor_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(doctor_id){</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  open_payments <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> doctor_id) <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(covered_recipient_npi, </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>             covered_recipient_full_name) <span class="sc">|&gt;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">num_payments =</span> <span class="fu">sum</span>(number_of_payments_included_in_total_amount),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">payment_total =</span> <span class="fu">sum</span>(total_amount_of_payment_usdollars),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">num_companies =</span> <span class="fu">length</span>(<span class="fu">unique</span>(applicable_manufacturer_or_applicable_gpo_making_payment_id)))</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(top_10_doctors_ids, doctor_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["covered_recipient_npi"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["covered_recipient_full_name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["num_payments"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["payment_total"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["num_companies"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"1194763482","2":"David Friedman","3":"6","4":"18755427.5","5":"1"},{"1":"1720096738","2":"Martin Pollak","3":"3","4":"18751435.0","5":"1"},{"1":"1073561973","2":"Paul Tornetta","3":"36","4":"2112833.4","5":"2"},{"1":"1699732065","2":"Thomas Thornhill","3":"8","4":"1869851.0","5":"1"},{"1":"1952351488","2":"Laurie Glimcher","3":"5","4":"971882.4","5":"2"},{"1":"1194860205","2":"Ali Nasseh","3":"18","4":"971290.7","5":"2"},{"1":"1225124787","2":"Alan Garber","3":"36","4":"954938.4","5":"2"},{"1":"1164598801","2":"James Bono","3":"37","4":"820475.7","5":"1"},{"1":"1144267899","2":"Stephen Murphy","3":"12","4":"803030.6","5":"3"},{"1":"1568424042","2":"Michael Kaminer","3":"46","4":"771362.4","5":"14"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>payment_calendar <span class="ot">&lt;-</span> <span class="cf">function</span>(doctor_id, doctor_name, doctor_specialty){</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  open_payments <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> doctor_id) <span class="sc">|&gt;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">day</span>(date_of_payment), <span class="at">y =</span> <span class="st">""</span>, <span class="at">col =</span> total_amount_of_payment_usdollars)) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> doctor_name, </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> doctor_specialty,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">""</span>, </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"Day"</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> <span class="st">"Payment Amount"</span>) <span class="sc">+</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_discrete</span>(<span class="at">limits =</span> rev) <span class="sc">+</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_distiller</span>(<span class="at">palette =</span> <span class="st">"BuPu"</span>, <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(<span class="fu">month</span>(date_of_payment, <span class="at">label =</span> <span class="cn">TRUE</span>)), <span class="at">nrow =</span> <span class="dv">4</span>) </span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(<span class="fu">list</span>(top_10_doctors_ids, top_10_doctors_names, top_10_doctors_specialties), payment_calendar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="lab8_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[2]]</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="lab8_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[3]]</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="lab8_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[4]]</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="lab8_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[5]]</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="lab8_files/figure-html/unnamed-chunk-13-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[6]]</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="lab8_files/figure-html/unnamed-chunk-13-6.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[7]]</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="lab8_files/figure-html/unnamed-chunk-13-7.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[8]]</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="lab8_files/figure-html/unnamed-chunk-13-8.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[9]]</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="lab8_files/figure-html/unnamed-chunk-13-9.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[[10]]</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="lab8_files/figure-html/unnamed-chunk-13-10.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unused code</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># top_20_companies &lt;-</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   open_payments |&gt;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   group_by(applicable_manufacturer_or_applicable_gpo_making_payment_name) |&gt;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   summarize(total_payments = sum(total_amount_of_payment_usdollars)) |&gt;</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   arrange(desc(total_payments)) |&gt;</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   head(20) |&gt;</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(applicable_manufacturer_or_applicable_gpo_making_payment_name) |&gt;</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   pull()</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co"># total_doctors_receiving_payment &lt;- function(company){</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   num_payments &lt;-  </span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co">#     open_payments |&gt;</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co">#     filter(applicable_manufacturer_or_applicable_gpo_making_payment_name == company) |&gt;</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="co">#     select(covered_recipient_npi) |&gt;</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co">#     n_distinct()</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="co">#   return(num_payments)</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="co"># drugs_and_devices &lt;- function(company){</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="co">#   open_payments |&gt;</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a><span class="co">#     filter(applicable_manufacturer_or_applicable_gpo_making_payment_name == company) |&gt;</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="co">#     group_by(name_of_drug_or_biological_or_device_or_medical_supply_1) |&gt;</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="co">#     summarize(num_payments = n(),</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="co">#               total_amount_of_payment_usdollars = sum(total_amount_of_payment_usdollars)) |&gt;</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="co">#     arrange(desc(total_amount_of_payment_usdollars)) |&gt;</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="co">#     head(10)</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a><span class="co"># doctors_receiving_payment &lt;- function(company){</span></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a><span class="co">#   open_payments |&gt;</span></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a><span class="co">#     filter(applicable_manufacturer_or_applicable_gpo_making_payment_name == company) |&gt;</span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a><span class="co">#     mutate(covered_recipient_first_name = toupper(covered_recipient_first_name),</span></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a><span class="co">#            covered_recipient_last_name = toupper(covered_recipient_last_name)) |&gt;</span></span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a><span class="co">#     group_by(covered_recipient_npi, covered_recipient_first_name, covered_recipient_last_name, recipient_city) |&gt;</span></span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a><span class="co">#     summarize(total_amount_of_payment_usdollars = sum(total_amount_of_payment_usdollars)) |&gt;</span></span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a><span class="co">#     arrange(desc(total_amount_of_payment_usdollars)) |&gt;</span></span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a><span class="co">#     head(10)</span></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a><span class="co"># set_names(top_20_companies) |&gt; map_int(total_doctors_receiving_payment)</span></span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a><span class="co"># set_names(top_20_companies) |&gt; map(drugs_and_devices)  </span></span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a><span class="co"># set_names(top_20_companies) |&gt; map(doctors_receiving_payment) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
