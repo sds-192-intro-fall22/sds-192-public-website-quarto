@@ -11,7 +11,6 @@ get_pit <- function(pit_year){
   read_excel(temp, sheet = pit_year) |> 
     select(State, starts_with("Sheltered Total Homeless -"), starts_with("Unsheltered Homeless -")) |>
     select(-contains("Age 18"), -contains("Under 18"), -contains("24"), -contains("Hispanic"))
-  print("success")
 }
 
 pit <- map(c("2015", "2016", "2017", "2018", "2019", "2020"), get_pit) |>
