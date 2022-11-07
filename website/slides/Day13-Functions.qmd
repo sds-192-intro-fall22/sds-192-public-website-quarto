@@ -1,0 +1,227 @@
+---
+title: "Functions"
+subtitle: "SDS 192: Introduction to Data Science"
+author: |
+  Lindsay Poirier<br/>
+  </span>
+  <span style = 'font-size: 70%;'>
+  [Statistical & Data Sciences](http://www.smith.edu/sds), Smith College<br/>
+date: |
+  Fall 2022<br/>
+  `r sds::img_logo(width = 64)`
+format: 
+  revealjs:
+    scrollable: true
+    df-print: paged
+    theme: [default, custom.scss]
+    incremental: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
+editor: source
+execute:
+  echo: true
+  messages: false
+  warnings: false
+---
+
+## For Today
+
+-   Quiz 2 Posted!
+-   Don't forget about the Study Plan Assessment
+-   Writing Functions
+-   Code Along
+
+------------------------------------------------------------------------
+
+## Why write functions?
+
+```{r echo=FALSE}
+library(tidyverse)
+pit <- read_csv("https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/main/website/data/pit_2015_2020.csv") |>
+  pivot_longer(-State, names_to = "Measure", values_to = "Count") |>
+  separate(Measure, into = c("Shel_Unshel", "Demographic"), sep = " - ") |>
+  separate(Demographic, into = c("Demographic", "Year"), sep = ", ") |>
+  filter(Demographic %in% c("Male", "Female", "Transgender"))
+```
+
+```{r}
+pit %>%
+  filter(State == "AK" & Year == 2015) |>
+  summarize(Total = sum(Count))
+
+pit %>%
+  filter(State == "AL" & Year == 2015) |>
+  summarize(Total = sum(Count))
+
+pit %>%
+  filter(State == "AR" & Year == 2015) |>
+  summarize(Total = sum(Count))
+```
+
+------------------------------------------------------------------------
+
+## Why write functions?
+
+-   Reduces the amount of code to write
+-   Lowers the chances of errors in code
+-   Supports reproducibility
+
+------------------------------------------------------------------------
+
+## Functions
+
+-   Statements organized to perform a specific task
+-   Take arguments as *inputs*
+    -   Arguments can be required or optional
+-   Return a value or set of values as *outputs*
+    -   Default value is output of last line of function if not specified
+  
+------------------------------------------------------------------------
+
+# User-defined Functions
+
+::: panel-tabset
+
+### Basic format
+
+```{r eval=FALSE}
+function_name <- function(arg1, arg2) {
+  
+  x <- #Some code goes here referencing arg1 and arg2
+  
+  return(x)
+}
+```
+
+### Example
+
+```{r}
+calculate_difference <- function(arg1, arg2) {
+  
+  x <- arg1 - arg2
+  
+  return(x)
+}
+```
+
+:::
+
+------------------------------------------------------------------------
+
+## Calling Functions
+
+
+-   This is the same way you'd call functions built-in to `R`
+
+
+::: panel-tabset
+
+### Basic format
+
+```{r eval = FALSE}
+function_name(value_for_arg1, value_for_arg2)
+```
+
+### Example
+
+```{r}
+calculate_difference(7, 3)
+```
+
+:::
+
+
+------------------------------------------------------------------------
+
+## User-defined Functions
+
+-   `state_name` is a required argument here. 
+
+```{r}
+calculate_state_total <- function(state_name) {
+  
+  x <- pit %>%
+    filter(State == state_name & Year == 2015) |>
+    summarize(Total = sum(Count))
+  
+  return(x)
+}
+```
+
+```{r}
+calculate_state_total("AL")
+```
+
+
+------------------------------------------------------------------------
+
+## Making Arguments Optional
+
+-   Because we provide a deafult value for year, it is optional in the function call. 
+
+::: panel-tabset
+
+### Setting Variable Defaults
+
+```{r}
+calculate_state_total <- function(state_name, year = 2020) {
+  
+  x <- pit %>%
+    filter(State == state_name & Year == year) |>
+    summarize(Total = sum(Count))
+  
+  return(x)
+}
+```
+
+```{r}
+calculate_state_total("AL")
+```
+
+### Overriding Variable Defaults
+
+```{r}
+calculate_state_total <- function(state_name, year = 2020) {
+  
+  x <- pit %>%
+    filter(State == state_name & Year == year) |>
+    summarize(Total = sum(Count))
+  
+  return(x)
+}
+```
+
+```{r}
+calculate_state_total("AL", 2019)
+```
+
+:::
+
+
+
+
+------------------------------------------------------------------------
+
+
+## Naming Arguments
+
+-   Naming helps to differentiate between arguments. Order matters if arguments aren't named!
+
+```{r}
+calculate_state_total <- function(state_name, year = 2020) {
+  
+  x <- pit %>%
+    filter(State == state_name & Year == year) |>
+    summarize(Total = sum(Count))
+  
+  return(x)
+}
+```
+
+```{r}
+calculate_state_total(state_name = "AL", year = 2019)
+```
+
+
+
