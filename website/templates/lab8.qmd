@@ -1,0 +1,224 @@
+---
+title: 'Lab 8: Programming with Data'
+format:
+  html:
+    self-contained: true
+editor: source
+knitr:
+  opts_chunk:
+    message: false
+    warning: false
+---
+
+###### Question
+
+::: question
+
+Write code to convert the `date_of_payment` and the `payment_publication_date` column to date-time format. You should first determine the format of the date in `date_of_payment` and `payment_publication_date` and then reference the [lubridate](https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_lubridate.pdf) to determine the corresponding function for parsing that date format. Finally, you will mutate the two columns. 
+
+> Optional challenge: Rather than mutating each column, see if you can `mutate()` `across()` the two columns to complete this step. 
+
+:::
+
+
+```{r}
+# Uncomment below to write code to convert to date-time format here. 
+
+# open_payments_dates_cleaned <- open_payments_original |>
+
+```
+
+###### Question
+
+::: question
+
+The `is.Date` function returns `TRUE` if a vector is in date-time format, and `FALSE` if it is not. Below, I've selected the two columns in `open_payments` that contain the word "date" in the column header. Determine which `map()` function to use in order to return a **vector** that indicates whether these columns are in a date-time format. If you've done everything correctly, you should get the output below. 
+:::
+
+
+```{r}
+#| eval: false
+# Select the appropriate map function below
+
+open_payments_dates_cleaned |>
+  select(contains("date")) |>
+  _____(is.Date)
+
+```
+
+###### Question
+
+::: question
+
+Write code to `mutate` `across` all *character* columns such that strings in these columns are converted to **title case**. Title case refers to casing where the first letter in each word is capitalized and all other letters are lowercase.  Strings can be converted to title case with the function `str_to_title`. 
+
+After you've done this, mutate a new column called `covered_recipient_full_name` that concatenates (hint: i.e. `paste()`) together `covered_recipient_first_name` and `covered_recipient_last_name`. 
+
+Store the resulting data frame in `open_payments_cleaned`. 
+
+:::
+
+
+```{r}
+# Uncomment below to clean up strings
+
+# open_payments <- open_payments_dates_cleaned |>
+```
+
+###### Question
+
+::: question
+
+Write a function below called `num_unique`. The function should calculate the length of unique values in the vector passed to the argument `x`. 
+
+Below, I've selected the two columns in `open_payments` that we want to iterate this function over. Determine which `map()` function to use in order to return a **numeric vector** that indicates the length of unique values in each of these columns. If you've done everything correctly, you should get the output below. 
+:::
+
+
+```{r}
+#| eval: false
+
+num_unique <- function(x) {
+ # Write function here.
+}
+
+open_payments |>
+  select(covered_recipient_npi, covered_recipient_full_name) |>
+  _____(_____) # Determine which map function to call here.
+```
+
+```{r}
+#| document: show
+
+rm(open_payments_original, open_payments_dates_cleaned)
+```
+
+###### Question
+
+::: question
+
+Write code to determine the 10 medical practitioners that received the most money from drug and device manufacturers in 2021, and store your results in `top_10_doctors`. Your final data frame should have 10 rows and columns for `covered_recipient_npi` and `sum_total_payments`. 
+:::
+
+
+```{r}
+# Uncomment below and write data wrangling code
+
+#top_10_doctors <- open_payments |>
+```
+
+###### Question
+
+::: question
+
+Create a vector of `top_10_doctors_ids` from `top_10_doctors`, using the `pull()` function. 
+
+:::
+
+
+```{r}
+# Uncomment and write code below to pull the top 10 doctor IDs into a vector
+
+# top_10_doctors_ids <- top_10_doctors |>
+```
+
+###### Question
+
+::: question
+
+Create a vector containing the names of the doctors associated with the IDs in `top_10_doctors_ids`. First, define the function `get_doctor_name`. This function will:
+
+  1.  take a `doctor_id` as an argument, 
+  2.  filter `open_payments` to that ID, 
+  3.  summarize the `first()` `covered_recipient_full_name` listed for that ID,
+  4. `pull()` the name value
+  
+Once this function has been defined, select the appropriate `map()` function to iterate `top_10_doctors_ids` through `get_doctor_name` and store the resulting **character vector** in `top_10_doctors_names`. 
+
+:::
+
+
+```{r}
+get_doctor_name <- function(doctor_id){
+  # Write function code here
+}
+
+# Iterate the top_10_doctors_ids vector through get_doctor_name and store the results in a character vector
+
+# top_10_doctors_names <- 
+```
+
+###### Question
+
+::: question
+
+Wrap the above code in a function named `calculate_payment_type_amts`. Rather than filtering to 1194763482, filter based on the value passed to an argument named `doctor_id`.
+
+Then, use the `map()` function to apply `calculate_payment_type_amts` to each element in the `top_10_doctors_ids` vector. Running this code should return a list of 10 data frames. 
+
+Finally, pipe in `set_names(top_10_doctors_names)` to set the names for each data frame in the list to the doctor's name.
+
+:::
+
+
+```{r}
+# Write calculate_payment_type_amts function here
+
+# Iterate calculate_payment_type_amts over top_10_doctors_ids and set names to top_10_doctors_names
+```
+
+###### Question
+
+::: question
+
+Write a function named `payments_calendar`. The function should:
+
+  1. Take a `doctor_id` and `doctor_name` as arguments
+  2. Filter `open_payments` to the doctor's ID
+  3. Create payment calendar plot modeled after the one above. 
+  4. Set the title of the plot to the doctor's name
+  
+After you've written this function, select the appropriate map function to apply `payments_calendar` to each element in the `top_10_doctors_ids` vector and `top_10_doctors_names` vector. 
+
+> Optional Challenge: Extend your code to include the first listed specialty for each top 10 doctor as a subtitle in each plot. 
+
+:::
+
+
+```{r}
+# Write payments_calendar function here
+
+# Iterate payments_calendar over top_10_doctors_ids and top_10_doctors_ids to create 10 plots
+```
+
+###### Question
+
+::: question
+
+Write a function named `calculate_manufacturer_payments`. The function should:
+
+  1. Take a `doctor_id` as an argument
+  2. Filter `open_payments` to that ID
+  3. Aggregate the filtered data by `covered_recipient_npi`,
+             `applicable_manufacturer_or_applicable_gpo_making_payment_name`, and
+             `form_of_payment_or_transfer_of_value `
+  4. Calculate the total amount of payments for each grouping
+  5. Sort the resulting data frame in descending order by the total amount of payments. 
+
+After you've written this function, use the `map_df()` function to apply `calculate_manufacturer_payments` to each element in the `top_10_doctors_ids` vector. Note how this returns one data frame rather than a list of 10 data frames. 
+
+Plot your resulting data frame as a column plot, attempting (to the best of your ability) to match the formatting of the plot below.
+
+> Optional Challenge: List the doctor's full name in each facet band, rather than the the doctor's ID. 
+
+:::
+
+
+```{r}
+# Write calculate_manufacturer_payments function here
+
+# Iterate calculate_manufacturer_payments over top_10_doctors_ids here
+
+# Plot resulting data frame here
+```
+

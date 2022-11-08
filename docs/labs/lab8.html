@@ -178,7 +178,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#cmss-open-payments-dataset" id="toc-cmss-open-payments-dataset" class="nav-link" data-scroll-target="#cmss-open-payments-dataset">CMS’s Open Payments Dataset</a></li>
   <li><a href="#setting-up-your-environment" id="toc-setting-up-your-environment" class="nav-link" data-scroll-target="#setting-up-your-environment">Setting Up Your Environment</a></li>
   <li><a href="#cleaning-up-this-data-frame" id="toc-cleaning-up-this-data-frame" class="nav-link" data-scroll-target="#cleaning-up-this-data-frame">Cleaning up this Data Frame</a></li>
-  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis">Data Analysis</a></li>
+  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis">Data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#what-kind-of-payments-did-ma-based-doctors-receive-in-2021" id="toc-what-kind-of-payments-did-ma-based-doctors-receive-in-2021" class="nav-link" data-scroll-target="#what-kind-of-payments-did-ma-based-doctors-receive-in-2021">What kind of payments did MA-based doctors receive in 2021?</a></li>
+  <li><a href="#when-were-payments-made-to-each-of-these-doctors-in-2021" id="toc-when-were-payments-made-to-each-of-these-doctors-in-2021" class="nav-link" data-scroll-target="#when-were-payments-made-to-each-of-these-doctors-in-2021">When were payments made to each of these doctors in 2021?</a></li>
+  <li><a href="#which-manufacturers-paid-ma-based-doctors-in-2021-and-through-what-forms-of-payment" id="toc-which-manufacturers-paid-ma-based-doctors-in-2021-and-through-what-forms-of-payment" class="nav-link" data-scroll-target="#which-manufacturers-paid-ma-based-doctors-in-2021-and-through-what-forms-of-payment">Which manufacturers paid MA-based doctors in 2021, and through what forms of payment?</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -209,12 +214,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this lab, we will program some custom <code>R</code> functions that allow us to analyze data related to medical conflicts of interest. Specifically, we will determine which ten Massachusetts-based doctors received the most money from pharmaceutical or medical device companies in 2021. Then we will leverage our custom functions to produce a number of tables and plots documenting information about the payments made to each of these doctors. In doing so, we will update a similar analysis produced by ProPublica in 2018 called <a href="https://projects.propublica.org/docdollars/"><em>Dollars for Docs</em></a>.</p>
+<p>In this lab, we will program some custom <code>R</code> functions that allow us to analyze data related to medical conflicts of interest. Specifically, we will determine which ten Massachusetts-based doctors received the most money from pharmaceutical or medical device manufacturers in 2021. Then we will leverage our custom functions to produce a number of tables and plots documenting information about the payments made to each of these doctors. In doing so, we will update a similar analysis produced by ProPublica in 2018 called <a href="https://projects.propublica.org/docdollars/"><em>Dollars for Docs</em></a>.</p>
 <section id="learning-goals" class="level3">
 <h3 class="anchored" data-anchor-id="learning-goals">Learning Goals</h3>
 <ul>
 <li>Write custom <code>R</code> functions</li>
-<li>Iterate a function over the values in a vector, using family of map functions</li>
+<li>Iterate a function over the values in a vector, using the family of map functions</li>
 <li>Practice data cleaning and wrangling</li>
 </ul>
 </section>
@@ -247,8 +252,8 @@ Tip
 </section>
 <section id="cmss-open-payments-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="cmss-open-payments-dataset">CMS’s Open Payments Dataset</h2>
-<p>In 2010, the the Physician Payments Sunshine Act (2010) was passed, requiring medical drug and device companies to disclose payments and other transfers of value made to physicians, non-physician practitioners, and teaching hospitals. This law was put into place to promote transparency in our medical system - enabling the U.S. government and citizens to monitor for potential medical conflicts of interest.</p>
-<p>Today, every time a drug or medical device company makes a payment to a covered recipient, they must disclose the nature of that payment and the amount to the U.S. Centers for Medicare &amp; Medicaid. Data about payments is then aggregated, reviewed by (and sometimes disputed by) recipients, corrected, and then published as an open government dataset.</p>
+<p>In 2010, the the Physician Payments Sunshine Act (2010) was passed, requiring medical drug and device manufacturers to disclose payments and other transfers of value made to physicians, non-physician practitioners, and teaching hospitals. This law was put into place to promote transparency in our medical system - enabling the U.S. government and citizens to monitor for potential medical conflicts of interest.</p>
+<p>Today, every time a drug or medical device manufacturer makes a payment to a covered recipient, they must disclose the nature of that payment and the amount to the U.S. Centers for Medicare &amp; Medicaid. Data about payments is then aggregated, reviewed by (and sometimes disputed by) recipients, corrected, and then published as an open government dataset.</p>
 <p>Definitions for what counts as a reporting entity, a covered recipient, and a reportable activity have been expanding since the passing of the Physician Payments Sunshine Act as legislators have raised concerns over the degree of transparency of diversifying financial arrangements in the healthcare system. In 2020, the first settlement for violations to the Sunshine Act was announced, requiring Medtronic Inc.&nbsp;to pay $9.2 million to resolve allegations for failure to report. This served as a signal that enforcement is ramping up in the coming years. In 2022, the state of California passed a law requiring that medical practitioners disclose to patients that this data resource exists.</p>
 </section>
 <section id="setting-up-your-environment" class="level2">
@@ -283,7 +288,7 @@ Tip
 </section>
 <section id="cleaning-up-this-data-frame" class="level2">
 <h2 class="anchored" data-anchor-id="cleaning-up-this-data-frame">Cleaning up this Data Frame</h2>
-<p>Eventually we are going to plot some timelines of payments to specific doctors, and we will need the <code>date_of_payment</code> column to be in a date-time format to do so. To get started with cleaning up this dataset, let’s convert the date columns in <code>open_payments_original</code> to a date-time format.</p>
+<p>Eventually we are going to plot some timelines of payments to specific doctors, and we will need the <code>date_of_payment</code> column to be in a date-time format to do so. Right now however, these columns are strings. To get started with cleaning up this dataset, let’s convert the date columns in <code>open_payments_original</code> to a date-time format.</p>
 <section id="question" class="level6">
 <h6 class="anchored" data-anchor-id="question">Question</h6>
 <div class="question">
@@ -293,11 +298,17 @@ Tip
 </blockquote>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>open_payments_dates_cleaned <span class="ot">&lt;-</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  open_payments_original <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">contains</span>(<span class="st">"date"</span>), mdy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment below to write code to convert to date-time format here. </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># open_payments_dates_cleaned &lt;- open_payments_original |&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To confirm that we’ve done this right, we can check whether both of the dates are in the date time format.</p>
+<div class="cell" data-document="solutions">
+
+</div>
+<section id="section" class="level7">
+<p class="heading"></p>
+<p>To confirm that we’ve done this right, we can check whether both of the dates are in the date-time format.</p>
+</section>
 </section>
 <section id="question-1" class="level6">
 <h6 class="anchored" data-anchor-id="question-1">Question</h6>
@@ -305,14 +316,20 @@ Tip
 <p>The <code>is.Date</code> function returns <code>TRUE</code> if a vector is in date-time format, and <code>FALSE</code> if it is not. Below, I’ve selected the two columns in <code>open_payments</code> that contain the word “date” in the column header. Determine which <code>map()</code> function to use in order to return a <strong>vector</strong> that indicates whether these columns are in a date-time format. If you’ve done everything correctly, you should get the output below.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>open_payments_dates_cleaned <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"date"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_lgl</span>(is.Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the appropriate map function below</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>open_payments_dates_cleaned <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">"date"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(is.Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-document="solutions">
 <div class="cell-output cell-output-stdout">
 <pre><code>         date_of_payment payment_publication_date 
                     TRUE                     TRUE </code></pre>
 </div>
 </div>
+<section id="section-1" class="level7">
+<p class="heading"></p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -326,7 +343,7 @@ Tip
 <p>Check out what happens if you swap out your map function above for <code>map</code>, <code>map_chr</code>, or <code>map_int</code>. Can you figure out the relationship between these values and the original values?</p>
 </div>
 </div>
-<p>It’s important to note that the unit of observation in this dataset is not one medical practitioner, and it is not one company. Instead it is one payment from a company to a medical practitioner. That means that a medical practitioner can appear multiple times in the dataset if they’ve received multiple payments, and a medical drug or device company can appear multiple times in the dataset if they’ve disbursed multiple payments. We can identify medical practitioners with the <code>covered_recipient_npi</code> column and companies with the <code>applicable_manufacturer_or_applicable_gpo_making_payment_id</code> column.</p>
+<p>It’s important to note that the unit of observation in this dataset is not one medical practitioner, and it is not one manufacturer. Instead it is one payment from a manufacturer to a medical practitioner. That means that a medical practitioner can appear multiple times in the dataset if they’ve received multiple payments, and a medical drug or device manufacturer can appear multiple times in the dataset if they’ve disbursed multiple payments. We can identify medical practitioners with the <code>covered_recipient_npi</code> column and manufacturers with the <code>applicable_manufacturer_or_applicable_gpo_making_payment_id</code> column.</p>
 <p>…but we want to know more than just the ID of a medical practitioner. To identify which doctors are receiving the most money, we also want to know that practitioner’s name, location, specialty, etc. Because practitioners’ names are manually entered into a database every time a payment is made to them, sometimes the formatting of a practitioner’s name entered for one payment can differ from how that same practitioner’s name is formatted when entered for another payment. The same goes for other variables related to that practitioner. For instance, check out how the capitalization differs for the practitioner below. In some cases, there is a middle initial, while in others, there is a full middle name; in some cases, the practitioner’s name is all capitalized, and in other cases it is not.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>open_payments_dates_cleaned <span class="sc">|&gt;</span></span>
@@ -343,38 +360,50 @@ Tip
 </div>
 <p>This issue with formatting exists across this entire dataset. To ensure that similar entities appear in the right buckets when we aggregate the data, we are going to standardize capitalization across the whole dataset. We’re also going to leave out the practitioner’s middle initial since it is not always included (or included in the same way).</p>
 </section>
+</section>
 <section id="question-2" class="level6">
 <h6 class="anchored" data-anchor-id="question-2">Question</h6>
 <div class="question">
-<p>Write code to <code>mutate</code> <code>across</code> all <em>character</em> columns such that strings in these columns are converted to <strong>title case</strong>. Title case refers to casing where the first letter in each word is capitalized and all other letters are lowercase. Strings can be converted to title case with the function <code>str_to_title</code>. After you’ve done this, mutate a new column called <code>covered_recipient_full_name</code> that concatenates (hint: i.e.&nbsp;<em>pastes</em>) together <code>covered_recipient_first_name</code> and <code>covered_recipient_last_name</code>. Store the result in <code>open_payments_cleaned</code>.</p>
+<p>Write code to <code>mutate</code> <code>across</code> all <em>character</em> columns such that strings in these columns are converted to <strong>title case</strong>. Title case refers to casing where the first letter in each word is capitalized and all other letters are lowercase. Strings can be converted to title case with the function <code>str_to_title</code>.</p>
+<p>After you’ve done this, mutate a new column called <code>covered_recipient_full_name</code> that concatenates (hint: i.e.&nbsp;<code>paste()</code>) together <code>covered_recipient_first_name</code> and <code>covered_recipient_last_name</code>.</p>
+<p>Store the resulting data frame in <code>open_payments_cleaned</code>.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>open_payments <span class="ot">&lt;-</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  open_payments_dates_cleaned <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), str_to_title)) <span class="sc">|&gt;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">covered_recipient_full_name =</span> <span class="fu">paste</span>(covered_recipient_first_name,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                                             covered_recipient_last_name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment below to clean up strings</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># open_payments &lt;- open_payments_dates_cleaned |&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-document="solutions">
+
+</div>
+<section id="section-2" class="level7">
+<p class="heading"></p>
 <p>As we saw before, one <code>covered_recipient_npi</code> was associated with multiple names if the names were capitalized in some cases and not others. Now that we’ve standardized the formatting of these names, there ideally should be one full name associated with every <code>covered_recipient_npi</code>. Let’s compare the length of unique <code>covered_recipient_npi</code> values to the length of unique <code>covered_recipient_npi</code> to check whether this is the case.</p>
+</section>
 </section>
 <section id="question-3" class="level6">
 <h6 class="anchored" data-anchor-id="question-3">Question</h6>
 <div class="question">
-<p>Write a function below called <code>num_unique</code>. The function should calculate the length of unique values in the vector passed to the argument <code>x</code>. Below, I’ve selected the two columns in <code>open_payments</code> that we want to iterate this function over. Determine which <code>map()</code> function to use in order to return a numeric <strong>vector</strong> that indicates the length of unique values in each of these columns. If you’ve done everything correctly, you should get the output below.</p>
+<p>Write a function below called <code>num_unique</code>. The function should calculate the length of unique values in the vector passed to the argument <code>x</code>.</p>
+<p>Below, I’ve selected the two columns in <code>open_payments</code> that we want to iterate this function over. Determine which <code>map()</code> function to use in order to return a <strong>numeric vector</strong> that indicates the length of unique values in each of these columns. If you’ve done everything correctly, you should get the output below.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>num_unique <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">length</span>(<span class="fu">unique</span>(x))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> <span class="co"># Write function here.</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>open_payments <span class="sc">|&gt;</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(covered_recipient_npi, covered_recipient_full_name) <span class="sc">|&gt;</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_int</span>(num_unique)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">_____</span>(_____) <span class="co"># Determine which map function to call here.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-document="solutions">
 <div class="cell-output cell-output-stdout">
 <pre><code>      covered_recipient_npi covered_recipient_full_name 
                       11837                       11858 </code></pre>
 </div>
 </div>
+<section id="section-3" class="level7">
+<p class="heading"></p>
 <p>Notice that there are still more full names than <code>covered_recipient_npi</code>s, which means that certain doctors have multiple names in this dataset. Below I’ve written some code to calculate the number unique full names listed for each <code>covered_recipient_npi</code> and filter to the rows with more than one name. Can you identify some reasons why we might have multiple names listed for this same medical practitioner in this data frame?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>open_payments <span class="sc">|&gt;</span></span>
@@ -396,29 +425,33 @@ Tip
 </div>
 <p>Because of these issues, it is important that we use the <code>covered_recipient_npi</code> to identify doctors vs.&nbsp;the full name.</p>
 <p>Now that we have a final cleaned up <code>open_payments</code> data frame, let’s remove the other data frames from our environment.</p>
-<div class="cell">
+<div class="cell" data-document="show">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(open_payments_original, open_payments_dates_cleaned)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>…and on to analysis.</p>
 </section>
 </section>
+</section>
 <section id="data-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="data-analysis">Data Analysis</h2>
-<p>Ultimately, our aim is to produce a number of tables and plots <em>for each of the ten MA-based doctors that received the most money from medical drug and device companies in 2021.</em> This means that one of our first analysis steps is to identify those 10 medical practitioners.</p>
+<p>Ultimately, our aim is to produce a number of tables and plots <em>for each of the ten MA-based doctors that received the most money from medical drug and device manufacturers in 2021.</em> This means that one of our first analysis steps is to identify those 10 medical practitioners.</p>
 <section id="question-4" class="level6">
 <h6 class="anchored" data-anchor-id="question-4">Question</h6>
 <div class="question">
-<p>Write code to determine the 10 medical practitioners that received the most money from drug and device companies in 2021, and store your results in <code>top_10_doctors</code>. Your final data frame should have 10 rows and columns for <code>covered_recipient_npi</code> and <code>sum_total_payments</code>.</p>
+<p>Write code to determine the 10 medical practitioners that received the most money from drug and device manufacturers in 2021, and store your results in <code>top_10_doctors</code>. Your final data frame should have 10 rows and columns for <code>covered_recipient_npi</code> and <code>sum_total_payments</code>.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>top_10_doctors <span class="ot">&lt;-</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  open_payments <span class="sc">|&gt;</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(covered_recipient_npi) <span class="sc">|&gt;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sum_total_payments =</span> <span class="fu">sum</span>(total_amount_of_payment_usdollars)) <span class="sc">|&gt;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(sum_total_payments)) <span class="sc">|&gt;</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment below and write data wrangling code</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#top_10_doctors &lt;- open_payments |&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-document="solutions">
+
+</div>
+<section id="section-4" class="level7">
+<p class="heading"></p>
 <p>Right now the values that we will eventually want to iterate over in our analysis are stored as columns in a dataframe. …but remember that the family of <code>purrr</code> functions allows us to apply a function to each element of a vector or list. We want to create a series of vectors from these columns that we can iterate over. We will use the <code>pull()</code> function to do this.</p>
+</section>
 </section>
 <section id="question-5" class="level6">
 <h6 class="anchored" data-anchor-id="question-5">Question</h6>
@@ -426,29 +459,50 @@ Tip
 <p>Create a vector of <code>top_10_doctors_ids</code> from <code>top_10_doctors</code>, using the <code>pull()</code> function.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>top_10_doctors_ids <span class="ot">&lt;-</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  top_10_doctors <span class="sc">|&gt;</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(covered_recipient_npi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment and write code below to pull the top 10 doctor IDs into a vector</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># top_10_doctors_ids &lt;- top_10_doctors |&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We also want a vector of doctor names associated with each of these IDs, but remember that there can be multiple names for a single doctor in this dataset. With this in mind, we are going to create a vector of the <strong>first listed name</strong> for a given <code>covered_recipient_npi</code> in the dataset. Taking the first listed name as the doctor’s name is an imperfect solution. The first listed name could be a misspelling. It could be a doctor’s maiden name that they have since changed. We would want to confirm that we have the correct name for each doctor before publishing any of these findings.</p>
+<div class="cell" data-document="solutions">
+
+</div>
+<section id="section-5" class="level7">
+<p class="heading"></p>
+<p>We also want a vector of doctor names associated with each of these IDs, but remember that there can be multiple names for a single doctor in this dataset. With this in mind, we are going to create a vector of the <strong>first listed name</strong> for a given <code>covered_recipient_npi</code> in the dataset. Taking the first listed name as the doctor’s name is an imperfect solution. The first listed name could be a misspelling. It could be a doctor’s maiden name that they have since changed. This is a temporary solution, and we would want to confirm that we have the correct name for each doctor before publishing any of these findings.</p>
+</section>
 </section>
 <section id="question-6" class="level6">
 <h6 class="anchored" data-anchor-id="question-6">Question</h6>
 <div class="question">
-<p>Create a vector containing the names of the doctors associated with the IDs in <code>top_10_doctors_ids</code>. First, define the function <code>get_doctor_name</code>. This function will: - take a <code>doctor_id</code> as an argument, - filter <code>open_payments</code> to that ID, - summarize the <code>first()</code> <code>covered_recipient_full_name</code> listed for that ID, - <code>pull()</code> the name value</p>
+<p>Create a vector containing the names of the doctors associated with the IDs in <code>top_10_doctors_ids</code>. First, define the function <code>get_doctor_name</code>. This function will:</p>
+<ol type="1">
+<li>take a <code>doctor_id</code> as an argument,</li>
+<li>filter <code>open_payments</code> to that ID,</li>
+<li>summarize the <code>first()</code> <code>covered_recipient_full_name</code> listed for that ID,</li>
+<li><code>pull()</code> the name value</li>
+</ol>
 <p>Once this function has been defined, select the appropriate <code>map()</code> function to iterate <code>top_10_doctors_ids</code> through <code>get_doctor_name</code> and store the resulting <strong>character vector</strong> in <code>top_10_doctors_names</code>.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>get_doctor_name <span class="ot">&lt;-</span> <span class="cf">function</span>(doctor_id){</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  open_payments <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> doctor_id) <span class="sc">|&gt;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">name =</span> <span class="fu">first</span>(covered_recipient_full_name)) <span class="sc">|&gt;</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>()</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>top_10_doctors_names <span class="ot">&lt;-</span> <span class="fu">map_chr</span>(top_10_doctors_ids, get_doctor_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Write function code here</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate the top_10_doctors_ids vector through get_doctor_name and store the results in a character vector</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># top_10_doctors_names &lt;- </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now that we have the vectors we want to iterate over, we are ready to start defining our first functions. To get started, let’s define a function that filters <code>open_payments</code> to a given doctor ID, and then calculates how much of each kind of payment has been paid to that doctor. Here is an example of what that data wrangling code would look like for a specific <code>covered_recipient_npi</code>:</p>
+<div class="cell" data-document="solutions">
+
+</div>
+</section>
+<section id="section-6" class="level6">
+<h6 class="anchored" data-anchor-id="section-6"></h6>
+<p>Now that we have the vectors we want to iterate over, we are ready to start defining our first functions.</p>
+</section>
+<section id="what-kind-of-payments-did-ma-based-doctors-receive-in-2021" class="level3">
+<h3 class="anchored" data-anchor-id="what-kind-of-payments-did-ma-based-doctors-receive-in-2021">What kind of payments did MA-based doctors receive in 2021?</h3>
+<p>To get started, let’s define a function that filters <code>open_payments</code> to a given doctor ID, and then calculates how much of each kind of payment has been paid to that doctor. Here is an example of what that data wrangling code would look like for a specific <code>covered_recipient_npi</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>open_payments <span class="sc">|&gt;</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> <span class="dv">1194763482</span>) <span class="sc">|&gt;</span></span>
@@ -465,374 +519,127 @@ Tip
 </div>
 </div>
 </div>
-</section>
 <section id="question-7" class="level6">
 <h6 class="anchored" data-anchor-id="question-7">Question</h6>
 <div class="question">
-<p>Wrap the above code in a function named <code>calculate_payment_type_amts</code>. Rather than filtering to 1194763482, filter based on the value passed to an argument named <code>doctor_id</code>. Finally, use the <code>map()</code> function to apply <code>calculate_payment_type_amts</code> to each element in the <code>top_10_doctors_ids</code> vector. Running this code should return a list of 10 data frames.</p>
+<p>Wrap the above code in a function named <code>calculate_payment_type_amts</code>. Rather than filtering to 1194763482, filter based on the value passed to an argument named <code>doctor_id</code>.</p>
+<p>Then, use the <code>map()</code> function to apply <code>calculate_payment_type_amts</code> to each element in the <code>top_10_doctors_ids</code> vector. Running this code should return a list of 10 data frames.</p>
+<p>Finally, pipe in <code>set_names(top_10_doctors_names)</code> to set the names for each data frame in the list to the doctor’s name.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>calculate_payment_type_amts <span class="ot">&lt;-</span> <span class="cf">function</span>(doctor_id){</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  open_payments <span class="sc">|&gt;</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> doctor_id) <span class="sc">|&gt;</span> </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(nature_of_payment_or_transfer_of_value) <span class="sc">|&gt;</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">num_payments =</span> </span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                <span class="fu">sum</span>(number_of_payments_included_in_total_amount),</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">total_payments =</span> <span class="fu">sum</span>(total_amount_of_payment_usdollars))</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(top_10_doctors_ids, calculate_payment_type_amts) <span class="sc">|&gt;</span> <span class="fu">set_names</span>(top_10_doctors_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$`David Friedman`
-# A tibble: 2 × 3
-  nature_of_payment_or_transfer_of_value num_payments total_payments
-  &lt;chr&gt;                                         &lt;dbl&gt;          &lt;dbl&gt;
-1 Consulting Fee                                    4          5428.
-2 Royalty Or License                                2      18750000 
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write calculate_payment_type_amts function here</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate calculate_payment_type_amts over top_10_doctors_ids and set names to top_10_doctors_names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-document="solutions">
 
-$`Martin Pollak`
-# A tibble: 2 × 3
-  nature_of_payment_or_transfer_of_value num_payments total_payments
-  &lt;chr&gt;                                         &lt;dbl&gt;          &lt;dbl&gt;
-1 Consulting Fee                                    1           1435
-2 Royalty Or License                                2       18750000
-
-$`Paul Tornetta`
-# A tibble: 4 × 3
-  nature_of_payment_or_transfer_of_value                         num_p…¹ total…²
-  &lt;chr&gt;                                                            &lt;dbl&gt;   &lt;dbl&gt;
-1 Compensation For Serving As Faculty Or As A Speaker For A Med…       1  2.5 e2
-2 Food And Beverage                                                    3  7.09e1
-3 Royalty Or License                                                  31  2.11e6
-4 Travel And Lodging                                                   1  3.6 e1
-# … with abbreviated variable names ¹​num_payments, ²​total_payments
-
-$`Thomas Thornhill`
-# A tibble: 2 × 3
-  nature_of_payment_or_transfer_of_value num_payments total_payments
-  &lt;chr&gt;                                         &lt;dbl&gt;          &lt;dbl&gt;
-1 Consulting Fee                                    3          4050 
-2 Royalty Or License                                5       1865801.
-
-$`Laurie Glimcher`
-# A tibble: 1 × 3
-  nature_of_payment_or_transfer_of_value                         num_p…¹ total…²
-  &lt;chr&gt;                                                            &lt;dbl&gt;   &lt;dbl&gt;
-1 Compensation For Services Other Than Consulting, Including Se…       5 971882.
-# … with abbreviated variable names ¹​num_payments, ²​total_payments
-
-$`Ali Nasseh`
-# A tibble: 2 × 3
-  nature_of_payment_or_transfer_of_value num_payments total_payments
-  &lt;chr&gt;                                         &lt;dbl&gt;          &lt;dbl&gt;
-1 Food And Beverage                                 6           404.
-2 Royalty Or License                               12        970887.
-
-$`Alan Garber`
-# A tibble: 5 × 3
-  nature_of_payment_or_transfer_of_value                         num_p…¹ total…²
-  &lt;chr&gt;                                                            &lt;dbl&gt;   &lt;dbl&gt;
-1 Compensation For Services Other Than Consulting, Including Se…       5 423120 
-2 Consulting Fee                                                       4 125000 
-3 Current Or Prospective Ownership Or Investment Interest              1 400058 
-4 Food And Beverage                                                   23   2265.
-5 Travel And Lodging                                                   3   4495.
-# … with abbreviated variable names ¹​num_payments, ²​total_payments
-
-$`James Bono`
-# A tibble: 4 × 3
-  nature_of_payment_or_transfer_of_value num_payments total_payments
-  &lt;chr&gt;                                         &lt;dbl&gt;          &lt;dbl&gt;
-1 Consulting Fee                                    3          5500 
-2 Food And Beverage                                12           986.
-3 Royalty Or License                                4        810243.
-4 Travel And Lodging                               18          3747.
-
-$`Stephen Murphy`
-# A tibble: 4 × 3
-  nature_of_payment_or_transfer_of_value                         num_p…¹ total…²
-  &lt;chr&gt;                                                            &lt;dbl&gt;   &lt;dbl&gt;
-1 Compensation For Services Other Than Consulting, Including Se…       1   2156.
-2 Consulting Fee                                                       2   1725 
-3 Food And Beverage                                                    5    489.
-4 Royalty Or License                                                   4 798660 
-# … with abbreviated variable names ¹​num_payments, ²​total_payments
-
-$`Michael Kaminer`
-# A tibble: 4 × 3
-  nature_of_payment_or_transfer_of_value  num_payments total_payments
-  &lt;chr&gt;                                          &lt;dbl&gt;          &lt;dbl&gt;
-1 Acquisitions                                       1        748350 
-2 Consulting Fee                                     5         21810 
-3 Food And Beverage                                 39           765.
-4 Long Term Medical Supply Or Device Loan            1           437.</code></pre>
+</div>
+<section id="section-7" class="level7">
+<p class="heading"></p>
+</section>
+</section>
+</section>
+<section id="when-were-payments-made-to-each-of-these-doctors-in-2021" class="level3">
+<h3 class="anchored" data-anchor-id="when-were-payments-made-to-each-of-these-doctors-in-2021">When were payments made to each of these doctors in 2021?</h3>
+<p>Here’s an example of a plot we could create to answer this question for one doctor.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>  open_payments <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> <span class="dv">1194763482</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">day</span>(date_of_payment), </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">y =</span> <span class="st">""</span>, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> total_amount_of_payment_usdollars)) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">pch =</span> <span class="dv">21</span>, <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"David Friedman"</span>, </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">""</span>, </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"Day"</span>,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">fill =</span> <span class="st">"Payment Amount"</span>) <span class="sc">+</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_discrete</span>(<span class="at">limits =</span> rev) <span class="sc">+</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_distiller</span>(<span class="at">palette =</span> <span class="st">"BuPu"</span>, <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(<span class="fu">month</span>(date_of_payment, <span class="at">label =</span> <span class="cn">TRUE</span>)), <span class="at">nrow =</span> <span class="dv">4</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="lab8_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Let’s take a similar approach to define a function that filters <code>open_payments</code> to a given doctor ID and determines how much doctors have been paid in relation to specific products they may be asked to endorse. To do so, we will need to aggregate the data by <code>name_of_drug_or_biological_or_device_or_medical_supply_1</code> and calculate the total payments associated with the mention of that product.</p>
+<section id="question-8" class="level6">
+<h6 class="anchored" data-anchor-id="question-8">Question</h6>
 <div class="question">
-<p>Write a function named <code>calculate_drugs_and_devices_payments</code>. The function should take a <code>doctor_id</code>, and filter <code>open_payments</code> to that ID. Then it should aggregate the filtered data by <code>covered_recipient_full_name</code>, <code>name_of_drug_or_biological_or_device_or_medical_supply_1</code>, and <code>indicate_drug_or_biological_or_device_or_medical_supply_1</code>, calculate the total amount of payments, and sort the resulting data frame in descending order by the total amount of payments. Finally, use the <code>map()</code> function to apply <code>calculate_drugs_and_devices_payments</code> to each element in the <code>top_10_doctors_ids</code> vector. Running this code should return 10 data frames.</p>
+<p>Write a function named <code>payments_calendar</code>. The function should:</p>
+<ol type="1">
+<li>Take a <code>doctor_id</code> and <code>doctor_name</code> as arguments</li>
+<li>Filter <code>open_payments</code> to the doctor’s ID</li>
+<li>Create payment calendar plot modeled after the one above.</li>
+<li>Set the title of the plot to the doctor’s name</li>
+</ol>
+<p>After you’ve written this function, select the appropriate map function to apply <code>payments_calendar</code> to each element in the <code>top_10_doctors_ids</code> vector and <code>top_10_doctors_names</code> vector.</p>
+<blockquote class="blockquote">
+<p>Optional Challenge: Extend your code to include the first listed specialty for each top 10 doctor as a subtitle in each plot.</p>
+</blockquote>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>calculate_drugs_and_devices_payments <span class="ot">&lt;-</span> <span class="cf">function</span>(doctor_id){</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  open_payments <span class="sc">|&gt;</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> doctor_id) <span class="sc">|&gt;</span> </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(name_of_drug_or_biological_or_device_or_medical_supply_1,</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>             indicate_drug_or_biological_or_device_or_medical_supply_1) <span class="sc">|&gt;</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">total_amount_of_payment_usdollars =</span> <span class="fu">sum</span>(total_amount_of_payment_usdollars)) <span class="sc">|&gt;</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total_amount_of_payment_usdollars))</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(top_10_doctors_ids, calculate_drugs_and_devices_payments) <span class="sc">|&gt;</span> <span class="fu">set_names</span>(top_10_doctors_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$`David Friedman`
-# A tibble: 1 × 3
-# Groups:   name_of_drug_or_biological_or_device_or_medical_supply_1 [1]
-  name_of_drug_or_biological_or_device_or_medical_supply_1 indicate_dr…¹ total…²
-  &lt;chr&gt;                                                    &lt;chr&gt;           &lt;dbl&gt;
-1 &lt;NA&gt;                                                     &lt;NA&gt;           1.88e7
-# … with abbreviated variable names
-#   ¹​indicate_drug_or_biological_or_device_or_medical_supply_1,
-#   ²​total_amount_of_payment_usdollars
-
-$`Martin Pollak`
-# A tibble: 1 × 3
-# Groups:   name_of_drug_or_biological_or_device_or_medical_supply_1 [1]
-  name_of_drug_or_biological_or_device_or_medical_supply_1 indicate_dr…¹ total…²
-  &lt;chr&gt;                                                    &lt;chr&gt;           &lt;dbl&gt;
-1 &lt;NA&gt;                                                     &lt;NA&gt;           1.88e7
-# … with abbreviated variable names
-#   ¹​indicate_drug_or_biological_or_device_or_medical_supply_1,
-#   ²​total_amount_of_payment_usdollars
-
-$`Paul Tornetta`
-# A tibble: 6 × 3
-# Groups:   name_of_drug_or_biological_or_device_or_medical_supply_1 [6]
-  name_of_drug_or_biological_or_device_or_medical_supply_1 indicate_dr…¹ total…²
-  &lt;chr&gt;                                                    &lt;chr&gt;           &lt;dbl&gt;
-1 Evos                                                     Device         1.69e6
-2 Trigen Femoral (Fan/Tan/Meta Nail)                       Device         3.73e5
-3 Vlp Mini Mod                                             Device         2.36e4
-4 D-Rad Smart Pak                                          Device         1.78e4
-5 Peri-Loc                                                 Device         1.08e4
-6 &lt;NA&gt;                                                     &lt;NA&gt;           3.57e2
-# … with abbreviated variable names
-#   ¹​indicate_drug_or_biological_or_device_or_medical_supply_1,
-#   ²​total_amount_of_payment_usdollars
-
-$`Thomas Thornhill`
-# A tibble: 1 × 3
-# Groups:   name_of_drug_or_biological_or_device_or_medical_supply_1 [1]
-  name_of_drug_or_biological_or_device_or_medical_supply_1 indicate_dr…¹ total…²
-  &lt;chr&gt;                                                    &lt;chr&gt;           &lt;dbl&gt;
-1 Attune                                                   Device         1.87e6
-# … with abbreviated variable names
-#   ¹​indicate_drug_or_biological_or_device_or_medical_supply_1,
-#   ²​total_amount_of_payment_usdollars
-
-$`Laurie Glimcher`
-# A tibble: 1 × 3
-# Groups:   name_of_drug_or_biological_or_device_or_medical_supply_1 [1]
-  name_of_drug_or_biological_or_device_or_medical_supply_1 indicate_dr…¹ total…²
-  &lt;chr&gt;                                                    &lt;chr&gt;           &lt;dbl&gt;
-1 &lt;NA&gt;                                                     &lt;NA&gt;          971882.
-# … with abbreviated variable names
-#   ¹​indicate_drug_or_biological_or_device_or_medical_supply_1,
-#   ²​total_amount_of_payment_usdollars
-
-$`Ali Nasseh`
-# A tibble: 3 × 3
-# Groups:   name_of_drug_or_biological_or_device_or_medical_supply_1 [3]
-  name_of_drug_or_biological_or_device_or_medical_supply_1 indicate_dr…¹ total…²
-  &lt;chr&gt;                                                    &lt;chr&gt;           &lt;dbl&gt;
-1 &lt;NA&gt;                                                     &lt;NA&gt;           9.71e5
-2 Channels Obturator                                       Device         1.08e2
-3 Cao Group Inc Precise Ltm Complete Kit                   Device         9.68e1
-# … with abbreviated variable names
-#   ¹​indicate_drug_or_biological_or_device_or_medical_supply_1,
-#   ²​total_amount_of_payment_usdollars
-
-$`Alan Garber`
-# A tibble: 1 × 3
-# Groups:   name_of_drug_or_biological_or_device_or_medical_supply_1 [1]
-  name_of_drug_or_biological_or_device_or_medical_supply_1 indicate_dr…¹ total…²
-  &lt;chr&gt;                                                    &lt;chr&gt;           &lt;dbl&gt;
-1 &lt;NA&gt;                                                     &lt;NA&gt;          954938.
-# … with abbreviated variable names
-#   ¹​indicate_drug_or_biological_or_device_or_medical_supply_1,
-#   ²​total_amount_of_payment_usdollars
-
-$`James Bono`
-# A tibble: 5 × 3
-# Groups:   name_of_drug_or_biological_or_device_or_medical_supply_1 [5]
-  name_of_drug_or_biological_or_device_or_medical_supply_1 indicate_dr…¹ total…²
-  &lt;chr&gt;                                                    &lt;chr&gt;           &lt;dbl&gt;
-1 Accolade                                                 Device        810243.
-2 Mako                                                     Device          5319.
-3 Triathlon                                                Device          2500 
-4 &lt;NA&gt;                                                     &lt;NA&gt;            1415.
-5 Surpass Evolve                                           Device           999.
-# … with abbreviated variable names
-#   ¹​indicate_drug_or_biological_or_device_or_medical_supply_1,
-#   ²​total_amount_of_payment_usdollars
-
-$`Stephen Murphy`
-# A tibble: 4 × 3
-# Groups:   name_of_drug_or_biological_or_device_or_medical_supply_1 [4]
-  name_of_drug_or_biological_or_device_or_medical_supply_1 indicate_dr…¹ total…²
-  &lt;chr&gt;                                                    &lt;chr&gt;           &lt;dbl&gt;
-1 Mpo Hip System                                           Device        801074.
-2 &lt;NA&gt;                                                     &lt;NA&gt;            1725 
-3 Endurance                                                Device           120 
-4 Hips-None                                                Device           112.
-# … with abbreviated variable names
-#   ¹​indicate_drug_or_biological_or_device_or_medical_supply_1,
-#   ²​total_amount_of_payment_usdollars
-
-$`Michael Kaminer`
-# A tibble: 14 × 3
-# Groups:   name_of_drug_or_biological_or_device_or_medical_supply_1 [14]
-   name_of_drug_or_biological_or_device_or_medical_supply_1 indicate_d…¹ total…²
-   &lt;chr&gt;                                                    &lt;chr&gt;          &lt;dbl&gt;
- 1 &lt;NA&gt;                                                     &lt;NA&gt;          7.71e5
- 2 Cosentyx                                                 Biological    1.23e2
- 3 Cimzia                                                   Drug          9.51e1
- 4 Humira                                                   Biological    7.59e1
- 5 Enstilar                                                 Drug          6.77e1
- 6 Dupixent                                                 Biological    5.64e1
- 7 Taltz                                                    Drug          5.06e1
- 8 Skyrizi                                                  Biological    4.88e1
- 9 Ilumya                                                   Biological    4.71e1
-10 Otezla                                                   Drug          4.08e1
-11 Duobrii                                                  Drug          3.56e1
-12 Tremfya                                                  Drug          2.77e1
-13 Arazlo                                                   Drug          1.96e1
-14 Enbrel                                                   Biological    1.79e1
-# … with abbreviated variable names
-#   ¹​indicate_drug_or_biological_or_device_or_medical_supply_1,
-#   ²​total_amount_of_payment_usdollars</code></pre>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write payments_calendar function here</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate payments_calendar over top_10_doctors_ids and top_10_doctors_ids to create 10 plots</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-document="solutions">
+
+</div>
+<section id="section-8" class="level7">
+<p class="heading"></p>
+</section>
+</section>
+</section>
+<section id="which-manufacturers-paid-ma-based-doctors-in-2021-and-through-what-forms-of-payment" class="level3">
+<h3 class="anchored" data-anchor-id="which-manufacturers-paid-ma-based-doctors-in-2021-and-through-what-forms-of-payment">Which manufacturers paid MA-based doctors in 2021, and through what forms of payment?</h3>
+<p>Finally, let’s define a function that filters <code>open_payments</code> to a given doctor ID and determines how much the doctor received in compensation from different manufacturers, along with the forms of payment from each manufacturer. To do so, we will need to aggregate the data by <code>covered_recipient_npi</code>, <code>applicable_manufacturer_or_applicable_gpo_making_payment_name</code>, and <code>form_of_payment_or_transfer_of_value</code> and calculate the total payments associated with each grouping.</p>
+<section id="question-9" class="level6">
+<h6 class="anchored" data-anchor-id="question-9">Question</h6>
+<div class="question">
+<p>Write a function named <code>calculate_manufacturer_payments</code>. The function should:</p>
+<ol type="1">
+<li>Take a <code>doctor_id</code> as an argument</li>
+<li>Filter <code>open_payments</code> to that ID</li>
+<li>Aggregate the filtered data by <code>covered_recipient_npi</code>, <code>applicable_manufacturer_or_applicable_gpo_making_payment_name</code>, and <code>form_of_payment_or_transfer_of_value</code></li>
+<li>Calculate the total amount of payments for each grouping</li>
+<li>Sort the resulting data frame in descending order by the total amount of payments.</li>
+</ol>
+<p>After you’ve written this function, use the <code>map_df()</code> function to apply <code>calculate_manufacturer_payments</code> to each element in the <code>top_10_doctors_ids</code> vector. Note how this returns one data frame rather than a list of 10 data frames.</p>
+<p>Plot your resulting data frame as a column plot, attempting (to the best of your ability) to match the formatting of the plot below.</p>
+<blockquote class="blockquote">
+<p>Optional Challenge: List the doctor’s full name in each facet band, rather than the the doctor’s ID.</p>
+</blockquote>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>doctor_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(doctor_id){</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  open_payments <span class="sc">|&gt;</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> doctor_id) <span class="sc">|&gt;</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(covered_recipient_npi, </span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>             covered_recipient_full_name) <span class="sc">|&gt;</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">num_payments =</span> <span class="fu">sum</span>(number_of_payments_included_in_total_amount),</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">payment_total =</span> <span class="fu">sum</span>(total_amount_of_payment_usdollars),</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">num_companies =</span> <span class="fu">length</span>(<span class="fu">unique</span>(applicable_manufacturer_or_applicable_gpo_making_payment_id)))</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="fu">map_df</span>(top_10_doctors_ids, doctor_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write calculate_manufacturer_payments function here</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate calculate_manufacturer_payments over top_10_doctors_ids here</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot resulting data frame here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-document="solutions">
 <div class="cell-output-display">
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["covered_recipient_npi"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["covered_recipient_full_name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["num_payments"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["payment_total"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["num_companies"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"1194763482","2":"David Friedman","3":"6","4":"18755427.5","5":"1"},{"1":"1720096738","2":"Martin Pollak","3":"3","4":"18751435.0","5":"1"},{"1":"1073561973","2":"Paul Tornetta","3":"36","4":"2112833.4","5":"2"},{"1":"1699732065","2":"Thomas Thornhill","3":"8","4":"1869851.0","5":"1"},{"1":"1952351488","2":"Laurie Glimcher","3":"5","4":"971882.4","5":"2"},{"1":"1194860205","2":"Ali Nasseh","3":"18","4":"971290.7","5":"2"},{"1":"1225124787","2":"Alan Garber","3":"36","4":"954938.4","5":"2"},{"1":"1164598801","2":"James Bono","3":"37","4":"820475.7","5":"1"},{"1":"1144267899","2":"Stephen Murphy","3":"12","4":"803030.6","5":"3"},{"1":"1568424042","2":"Michael Kaminer","3":"46","4":"771362.4","5":"14"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<p><img src="lab8_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="960"></p>
 </div>
 </div>
+<section id="section-9" class="level7">
+<p class="heading"></p>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>payment_calendar <span class="ot">&lt;-</span> <span class="cf">function</span>(doctor_id, doctor_name){</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  doctor_specialty <span class="ot">&lt;-</span> open_payments <span class="sc">|&gt;</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> doctor_id) <span class="sc">|&gt;</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">specialty =</span> <span class="fu">first</span>(covered_recipient_specialty_1)) <span class="sc">|&gt;</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>()</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  open_payments <span class="sc">|&gt;</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(covered_recipient_npi <span class="sc">==</span> doctor_id) <span class="sc">|&gt;</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">day</span>(date_of_payment), <span class="at">y =</span> <span class="st">""</span>, <span class="at">col =</span> total_amount_of_payment_usdollars)) <span class="sc">+</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> doctor_name, </span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">subtitle =</span> doctor_specialty,</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">""</span>, </span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"Day"</span>,</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> <span class="st">"Payment Amount"</span>) <span class="sc">+</span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_discrete</span>(<span class="at">limits =</span> rev) <span class="sc">+</span></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_distiller</span>(<span class="at">palette =</span> <span class="st">"BuPu"</span>, <span class="at">direction =</span> <span class="dv">1</span>, <span class="at">labels =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(<span class="fu">month</span>(date_of_payment, <span class="at">label =</span> <span class="cn">TRUE</span>)), <span class="at">nrow =</span> <span class="dv">4</span>) </span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(top_10_doctors_ids, top_10_doctors_names, payment_calendar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]</code></pre>
+<div class="callout-caption-container flex-fill">
+Ethical Considerations
 </div>
-<div class="cell-output-display">
-<p><img src="lab8_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-[[2]]</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="lab8_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-[[3]]</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="lab8_files/figure-html/unnamed-chunk-16-3.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-[[4]]</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="lab8_files/figure-html/unnamed-chunk-16-4.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-[[5]]</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="lab8_files/figure-html/unnamed-chunk-16-5.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-[[6]]</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="lab8_files/figure-html/unnamed-chunk-16-6.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-[[7]]</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="lab8_files/figure-html/unnamed-chunk-16-7.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-[[8]]</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="lab8_files/figure-html/unnamed-chunk-16-8.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-[[9]]</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="lab8_files/figure-html/unnamed-chunk-16-9.png" class="img-fluid" width="672"></p>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-[[10]]</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="lab8_files/figure-html/unnamed-chunk-16-10.png" class="img-fluid" width="672"></p>
+<div class="callout-body-container callout-body">
+<p>On September 29, 2022, California Governor Gavin Newsom signed a bill requiring that all physicians and surgeons notify patients about the Open Payments database on their initial visit. Specifically, patients will be given the following notice: “The Open Payments database is a federal tool used to search payments made by drug and device companies to physicians and teaching hospitals. It can be found at https://openpaymentsdata.cms.gov,” and will be prompted to sign and date that they have received the notice. This policy was developed in response to concerns that, while the Open Payments database includes a great deal of information that might impact how citizens make decisions about their healthcare, very few people knew of the database. Do you think this is a good solution to this problem? Should other states follow suit? Do you see any drawbacks to this policy? Share your ideas on our <code>sds-192-discussions</code> Slack channel.</p>
 </div>
 </div>
 
 
+</section>
+</section>
 </section>
 </section>
 
