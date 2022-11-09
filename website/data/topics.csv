@@ -26,7 +26,7 @@ topic_id,topic_abbr,topic,date,standard_id,required_reading,req_chapter,optional
 25,pivoting,Pivoting Datasets,11/2/22,8,irizarryIntroductionDataScience2022,26. Parsing dates and times,,,[Lab 6](labs/lab6.html) Due,,[Day 12 Slides: Tidying Datasets](slides/Day12-Cleaning.html),[tidyr Cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf),
 26,pivoting_lab,Lab: Pivoting Datasets,11/4/22,8,,,,,,,,[Lab 7 Instructions](labs/lab7.html),[Lab 7 Template](https://classroom.github.com/a/VsBBpVLU)
 27,functions,Writing Functions,11/7/22,9,baumerModernDataScience2021,7. Iteration,,,Study Plan Assessment Due; Watch Lab 6 Recap in Perusall,,[Day 13 Slides: Functions](slides/Day13-Functions.html),,
-28,iteration,Iteration,11/9/22,9,,,,,[Lab 7](labs/lab7.html) Due,Project 2 Due,,,
+28,iteration,Iteration,11/9/22,9,,,,,[Lab 7](labs/lab7.html) Due,Project 2 Due,[Day 14 Slides: Iteration](slides/Day14-Iteration.html),[`purrr` cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf),
 29,coding_lab,Lab: Programming in R,11/11/22,9,,,,,,Project 3 Assigned,,[Lab 8 Instructions](labs/lab8.html),[Lab 8 Template](https://classroom.github.com/a/-FIIrQto)
 30,projections,Map Projections and Spatial Thinking,11/14/22,10,baumerModernDataScience2021,17. Working with geospatial data  (17.1-17.3),,,Watch Lab 7 Recap in Perusall,,,,
 31,leaflet,Mapping Point Data in Leaflet,11/16/22,10,,,,,[Lab 8](labs/lab8.html) Due,Group Contract Due,,,

@@ -193,7 +193,7 @@
     "href": "schedule.html#november-09-2022",
     "title": "Schedule",
     "section": "November 09, 2022",
-    "text": "November 09, 2022\n\nIteration\nPROGRAMMING IN R\n\nDue TodayFurther Resources\n\n\n Project 2 Due\n Lab 7 Due"
+    "text": "November 09, 2022\n\nIteration\nPROGRAMMING IN R\n\nDue TodayFurther Resources\n\n\n Project 2 Due\n Lab 7 Due\n\n\n Day 14 Slides: Iteration\n purrr cheatsheet"
   },
   {
     "objectID": "schedule.html#november-11-2022",
@@ -2679,5 +2679,75 @@
     "title": "Lab 8: Programming with Data",
     "section": "",
     "text": "Question\n\nThe is.Date function returns TRUE if a vector is in date-time format, and FALSE if it is not. Below, I’ve selected the two columns in open_payments that contain the word “date” in the column header. Determine which map() function to use in order to return a vector that indicates whether these columns are in a date-time format. If you’ve done everything correctly, you should get the output below.\n\n\n# Select the appropriate map function below\n\nopen_payments_dates_cleaned |>\n  select(contains(\"date\")) |>\n  _____(is.Date)\n\n\n\nQuestion\n\nWrite code to mutate across all character columns such that strings in these columns are converted to title case. Title case refers to casing where the first letter in each word is capitalized and all other letters are lowercase. Strings can be converted to title case with the function str_to_title.\nAfter you’ve done this, mutate a new column called covered_recipient_full_name that concatenates (hint: i.e. paste()) together covered_recipient_first_name and covered_recipient_last_name.\nStore the resulting data frame in open_payments_cleaned.\n\n\n# Uncomment below to clean up strings\n\n# open_payments <- open_payments_dates_cleaned |>\n\n\n\nQuestion\n\nWrite a function below called num_unique. The function should calculate the length of unique values in the vector passed to the argument x.\nBelow, I’ve selected the two columns in open_payments that we want to iterate this function over. Determine which map() function to use in order to return a numeric vector that indicates the length of unique values in each of these columns. If you’ve done everything correctly, you should get the output below.\n\n\nnum_unique <- function(x) {\n # Write function here.\n}\n\nopen_payments |>\n  select(covered_recipient_npi, covered_recipient_full_name) |>\n  _____(_____) # Determine which map function to call here.\n\n\nrm(open_payments_original, open_payments_dates_cleaned)\n\n\n\nQuestion\n\nWrite code to determine the 10 medical practitioners that received the most money from drug and device manufacturers in 2021, and store your results in top_10_doctors. Your final data frame should have 10 rows and columns for covered_recipient_npi and sum_total_payments.\n\n\n# Uncomment below and write data wrangling code\n\n#top_10_doctors <- open_payments |>\n\n\n\nQuestion\n\nCreate a vector of top_10_doctors_ids from top_10_doctors, using the pull() function.\n\n\n# Uncomment and write code below to pull the top 10 doctor IDs into a vector\n\n# top_10_doctors_ids <- top_10_doctors |>\n\n\n\nQuestion\n\nCreate a vector containing the names of the doctors associated with the IDs in top_10_doctors_ids. First, define the function get_doctor_name. This function will:\n\ntake a doctor_id as an argument,\nfilter open_payments to that ID,\nsummarize the first() covered_recipient_full_name listed for that ID,\npull() the name value\n\nOnce this function has been defined, select the appropriate map() function to iterate top_10_doctors_ids through get_doctor_name and store the resulting character vector in top_10_doctors_names.\n\n\nget_doctor_name <- function(doctor_id){\n  # Write function code here\n}\n\n# Iterate the top_10_doctors_ids vector through get_doctor_name and store the results in a character vector\n\n# top_10_doctors_names <- \n\n\n\nQuestion\n\nWrap the above code in a function named calculate_payment_type_amts. Rather than filtering to 1194763482, filter based on the value passed to an argument named doctor_id.\nThen, use the map() function to apply calculate_payment_type_amts to each element in the top_10_doctors_ids vector. Running this code should return a list of 10 data frames.\nFinally, pipe in set_names(top_10_doctors_names) to set the names for each data frame in the list to the doctor’s name.\n\n\n# Write calculate_payment_type_amts function here\n\n# Iterate calculate_payment_type_amts over top_10_doctors_ids and set names to top_10_doctors_names\n\n\n\nQuestion\n\nWrite a function named payments_calendar. The function should:\n\nTake a doctor_id and doctor_name as arguments\nFilter open_payments to the doctor’s ID\nCreate payment calendar plot modeled after the one above.\nSet the title of the plot to the doctor’s name\n\nAfter you’ve written this function, select the appropriate map function to apply payments_calendar to each element in the top_10_doctors_ids vector and top_10_doctors_names vector.\n\nOptional Challenge: Extend your code to include the first listed specialty for each top 10 doctor as a subtitle in each plot.\n\n\n\n# Write payments_calendar function here\n\n# Iterate payments_calendar over top_10_doctors_ids and top_10_doctors_ids to create 10 plots\n\n\n\nQuestion\n\nWrite a function named calculate_manufacturer_payments. The function should:\n\nTake a doctor_id as an argument\nFilter open_payments to that ID\nAggregate the filtered data by covered_recipient_npi, applicable_manufacturer_or_applicable_gpo_making_payment_name, and form_of_payment_or_transfer_of_value\nCalculate the total amount of payments for each grouping\nSort the resulting data frame in descending order by the total amount of payments.\n\nAfter you’ve written this function, use the map_df() function to apply calculate_manufacturer_payments to each element in the top_10_doctors_ids vector. Note how this returns one data frame rather than a list of 10 data frames.\nPlot your resulting data frame as a column plot, attempting (to the best of your ability) to match the formatting of the plot below.\n\nOptional Challenge: List the doctor’s full name in each facet band, rather than the the doctor’s ID.\n\n\n\n# Write calculate_manufacturer_payments function here\n\n# Iterate calculate_manufacturer_payments over top_10_doctors_ids here\n\n# Plot resulting data frame here"
+  },
+  {
+    "objectID": "slides/Day14-Iteration.html#for-today",
+    "href": "slides/Day14-Iteration.html#for-today",
+    "title": "Iteration",
+    "section": "For Today",
+    "text": "For Today\n\nQuiz 2 Posted!\nProject 2 Due Today\nFor Loops\nPerforming operations across() variables\nFamily of map functions"
+  },
+  {
+    "objectID": "slides/Day14-Iteration.html#for-loops",
+    "href": "slides/Day14-Iteration.html#for-loops",
+    "title": "Iteration",
+    "section": "For Loops",
+    "text": "For Loops\n\n\n\n\n  \n\n\n\n\nfor (i in df$var_a) {\n  print(i + 1)\n}\n\n[1] 3\n[1] 4\n[1] 5\n[1] 6"
+  },
+  {
+    "objectID": "slides/Day14-Iteration.html#for-loops-1",
+    "href": "slides/Day14-Iteration.html#for-loops-1",
+    "title": "Iteration",
+    "section": "For Loops",
+    "text": "For Loops\n\n\n\n\n  \n\n\n\n\nfor (i in df |> select(var_a:var_c)) {\n  print(sum(i))\n}\n\n[1] 14\n[1] 14\n[1] 18"
+  },
+  {
+    "objectID": "slides/Day14-Iteration.html#across",
+    "href": "slides/Day14-Iteration.html#across",
+    "title": "Iteration",
+    "section": "across()",
+    "text": "across()\n\nApplies a function across multiple columns in a data frame\nTakes as arguments: the columns to perform the function across and the function name\n\n\nExample 1Example 2Example 3\n\n\n\ndf |>\n  summarize(across(var_a:var_c, sum))\n\n\n\n  \n\n\n\n\n\n\ndf |>\n  summarize(across(contains(\"var\"), mean))\n\n\n\n  \n\n\n\n\n\n\ndf |>\n  mutate(across(where(is.numeric), as.character))"
+  },
+  {
+    "objectID": "slides/Day14-Iteration.html#purrr-package",
+    "href": "slides/Day14-Iteration.html#purrr-package",
+    "title": "Iteration",
+    "section": "purrr package",
+    "text": "purrr package\n\nIncluded in tidyverse\nPackage for working with functions and vectors\nProvides a family of map() functions\nmap() functions allow us to apply a function to each element of a list or vector"
+  },
+  {
+    "objectID": "slides/Day14-Iteration.html#single-column-data-frames-vs.-vectors",
+    "href": "slides/Day14-Iteration.html#single-column-data-frames-vs.-vectors",
+    "title": "Iteration",
+    "section": "Single Column Data Frames vs. Vectors",
+    "text": "Single Column Data Frames vs. Vectors\n\nTo extract a column from a data frame, we use pull()\n\n\nData FrameVector ($)Vector (pull())\n\n\n\ndf |> select(var_a)\n\n\n\n  \n\n\n\n\n\n\ndf$var_a\n\n[1] 2 3 4 5\n\n\n\n\n\ndf |> select(var_a) |> pull()\n\n[1] 2 3 4 5"
+  },
+  {
+    "objectID": "slides/Day14-Iteration.html#setting-names",
+    "href": "slides/Day14-Iteration.html#setting-names",
+    "title": "Iteration",
+    "section": "Setting Names",
+    "text": "Setting Names\n\nset_names() sets the names of elements in a vector\n\n\nadd_five <- function(x){\n  x + 5\n}\n\nmap(df$var_a, add_five) |>\n  set_names(df$name)\n\n$obs1\n[1] 7\n\n$obs2\n[1] 8\n\n$obs3\n[1] 9\n\n$obs1\n[1] 10"
+  },
+  {
+    "objectID": "slides/Day14-Iteration.html#family-of-map-functions",
+    "href": "slides/Day14-Iteration.html#family-of-map-functions",
+    "title": "Iteration",
+    "section": "Family of Map Functions",
+    "text": "Family of Map Functions\n\nmap_int()map_chr()map_lgl()\n\n\n\nReturns a numeric vector\n\n\ndf |>\n  select(var_a:var_c) |>\n  map_int(is.numeric)\n\nvar_a var_b var_c \n    1     1     1 \n\n\n\n\n\nReturns a character vector\n\n\ndf |>\n  select(var_a:var_c) |>\n  map_chr(is.numeric)\n\n var_a  var_b  var_c \n\"TRUE\" \"TRUE\" \"TRUE\" \n\n\n\n\n\nReturns a logical vector\n\n\ndf |>\n  select(var_a:var_c) |>\n  map_lgl(is.numeric)\n\nvar_a var_b var_c \n TRUE  TRUE  TRUE"
+  },
+  {
+    "objectID": "slides/Day14-Iteration.html#returning-a-data-frame",
+    "href": "slides/Day14-Iteration.html#returning-a-data-frame",
+    "title": "Iteration",
+    "section": "Returning a Data Frame",
+    "text": "Returning a Data Frame\n\nmap()map_df()\n\n\n\nReturns a list\n\n\ncreate_total_col <- function(x){\n  df |>\n    filter(name == x) |>\n    mutate(total = var_a + var_b + var_c)\n    \n}\n\nmap(unique(df$name), create_total_col)\n\n[[1]]\n  name var_a var_b var_c total\n1 obs1     2     4     4    10\n2 obs1     5     1     2     8\n\n[[2]]\n  name var_a var_b var_c total\n1 obs2     3     7     9    19\n\n[[3]]\n  name var_a var_b var_c total\n1 obs3     4     2     3     9\n\n\n\n\n\nReturns a data frame (binding rows of list)\n\n\ncreate_total_col <- function(x){\n  df |>\n    filter(name == x) |>\n    mutate(total = var_a + var_b + var_c)\n    \n}\n\nmap_df(unique(df$name), create_total_col)"
+  },
+  {
+    "objectID": "slides/Day14-Iteration.html#iterating-over-multiple-vectors",
+    "href": "slides/Day14-Iteration.html#iterating-over-multiple-vectors",
+    "title": "Iteration",
+    "section": "Iterating Over Multiple Vectors",
+    "text": "Iterating Over Multiple Vectors\n\nadd_two_vectors <- function(x, y){\n  x + y\n}\n\nmap2(df$var_a, df$var_b, add_two_vectors)\n\n[[1]]\n[1] 6\n\n[[2]]\n[1] 10\n\n[[3]]\n[1] 6\n\n[[4]]\n[1] 6"
   }
 ]
