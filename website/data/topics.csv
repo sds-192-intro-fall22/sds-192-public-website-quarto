@@ -29,9 +29,9 @@ topic_id,topic_abbr,topic,date,standard_id,required_reading,req_chapter,optional
 28,iteration,Iteration,11/9/22,9,,,,,[Lab 7](labs/lab7.html) Due,Project 2 Due,[Day 14 Slides: Iteration](slides/Day14-Iteration.html),[`purrr` cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/purrr.pdf),
 29,coding_lab,Lab: Programming in R,11/11/22,9,,,,,,Project 3 Assigned,,[Lab 8 Instructions](labs/lab8.html),[Lab 8 Template](https://classroom.github.com/a/-FIIrQto)
 30,projections,Map Projections and Spatial Thinking,11/14/22,10,baumerModernDataScience2021,17. Working with geospatial data  (17.1-17.3),,,Watch Lab 7 Recap in Perusall,,,,
-31,leaflet,Mapping Point Data in Leaflet,11/16/22,10,,,,,[Lab 8](labs/lab8.html) Due,Group Contract Due,,,
+31,leaflet,Mapping Point Data in Leaflet,11/16/22,10,,,,,[Lab 8](labs/lab8.html) Due,,,[Lab 9 Instructions](labs/lab9.html),
 32,leaflet_lab,Lab: Mapping in Leaflet,11/18/22,10,,,,,Quiz 2 Recommended Deadline,,,,
-33,chloropleth,Chloropleth Maps,11/21/22,10,baumerModernDataScience2021,17. Working with geospatial data  (17.4-17.8),,,Watch Lab 8 Recap in Perusall,,,,
+33,chloropleth,Chloropleth Maps,11/21/22,10,baumerModernDataScience2021,17. Working with geospatial data  (17.4-17.8),,,Watch Lab 8 Recap in Perusall,Group Contract Due,,,
 34,no_class2,No Class,11/23/22,,,,,,,,,,
 35,no_class3,No Class,11/25/22,,,,,,,,,,
 36,apis,Working with APIs,11/28/22,2,,,,,Quiz 2 Due; [Lab 9](labs/lab9.html) Due,,,,

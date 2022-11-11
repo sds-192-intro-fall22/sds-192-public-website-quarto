@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Lindsay Poirier">
+
+<title>Lab 9: Mapping with Leaflet</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script src="../site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="../site_libs/jquery-1.12.4/jquery.min.js"></script>
+<link href="../site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="../site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="../site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="../site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="../site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="../site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="../site_libs/leaflet-binding-2.1.1/leaflet.js"></script>
+<script src="../site_libs/leaflet-providers-1.9.0/leaflet-providers_1.9.0.js"></script>
+<script src="../site_libs/leaflet-providers-plugin-2.1.1/leaflet-providers-plugin.js"></script>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">SDS 192: Intro to Data Science</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Syllabus</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../grading_contract.html">Standards Grading</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html">Schedule</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link" data-scroll-target="#learning-goals">Learning Goals</a></li>
+  </ul></li>
+  <li><a href="#review-of-key-terms" id="toc-review-of-key-terms" class="nav-link" data-scroll-target="#review-of-key-terms">Review of Key Terms</a></li>
+  <li><a href="#nyc-public-advocates-worst-landlords-watchlist" id="toc-nyc-public-advocates-worst-landlords-watchlist" class="nav-link" data-scroll-target="#nyc-public-advocates-worst-landlords-watchlist">NYC Public Advocate’s Worst Landlords Watchlist</a></li>
+  <li><a href="#setting-up-your-environment" id="toc-setting-up-your-environment" class="nav-link" data-scroll-target="#setting-up-your-environment">Setting Up Your Environment</a></li>
+  <li><a href="#mapping-in-leaflet" id="toc-mapping-in-leaflet" class="nav-link" data-scroll-target="#mapping-in-leaflet">Mapping in Leaflet</a></li>
+  <li><a href="#initialize-your-map" id="toc-initialize-your-map" class="nav-link" data-scroll-target="#initialize-your-map">Initialize your Map</a></li>
+  <li><a href="#set-geometry-and-transform-data-crs" id="toc-set-geometry-and-transform-data-crs" class="nav-link" data-scroll-target="#set-geometry-and-transform-data-crs">Set Geometry and Transform Data CRS</a></li>
+  <li><a href="#add-layers" id="toc-add-layers" class="nav-link" data-scroll-target="#add-layers">Add Layers</a></li>
+  <li><a href="#styling-the-map" id="toc-styling-the-map" class="nav-link" data-scroll-target="#styling-the-map">Styling the Map</a>
+  <ul class="collapse">
+  <li><a href="#creating-color-palettes" id="toc-creating-color-palettes" class="nav-link" data-scroll-target="#creating-color-palettes">Creating Color Palettes</a></li>
+  <li><a href="#sizing-the-circles" id="toc-sizing-the-circles" class="nav-link" data-scroll-target="#sizing-the-circles">Sizing the Circles</a></li>
+  <li><a href="#legends-and-labels" id="toc-legends-and-labels" class="nav-link" data-scroll-target="#legends-and-labels">Legends and Labels</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 9: Mapping with Leaflet</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Lindsay Poirier </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this lab, we will build a map that visualizes unaddressed housing violations in NYC in order to identify some of the city’s worst landlords. In doing so, we will gain practice in producing point maps in Leaflet. This analysis is based off of a similar analysis conducted by the <a href="https://advocate.nyc.gov/press/nyc-public-advocate-unveils-2021-worst-landlord-watchlist/">NYC Public Advocate’s Office</a>.</p>
+<section id="learning-goals" class="level3">
+<h3 class="anchored" data-anchor-id="learning-goals">Learning Goals</h3>
+<ul>
+<li>Transform point data to an appropriate CRS</li>
+<li>Map point data in Leaflet</li>
+<li>Create palettes for points on maps</li>
+<li>Add legends and labels to a map</li>
+</ul>
+</section>
+</section>
+<section id="review-of-key-terms" class="level2">
+<h2 class="anchored" data-anchor-id="review-of-key-terms">Review of Key Terms</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You may wish to reference this <a href="https://rstudio.github.io/leaflet/">reference guide</a> when completing this lab.</p>
+</div>
+</div>
+<dl>
+<dt>Coordinate Reference System (CRS)</dt>
+<dd>
+<p>a system used to locate geographic points on different spatial projections</p>
+</dd>
+</dl>
+</section>
+<section id="nyc-public-advocates-worst-landlords-watchlist" class="level2">
+<h2 class="anchored" data-anchor-id="nyc-public-advocates-worst-landlords-watchlist">NYC Public Advocate’s Worst Landlords Watchlist</h2>
+<p>The NYC Public Advocate (currently Jumaane D. Willaims) publishes a list of <a href="https://landlordwatchlist.com/landlords">NYC’s worst landlords</a> every year by tracking the number of class B and C Housing Preservation and Development (HPD) violations in buildings owned by various people and companies in the City.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JodhQODUZF0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
+<p>From the Public Advocate’s website:</p>
+<blockquote class="blockquote">
+<p>Examples of Class B violations include: failing to provide self-closing public doors or adequate lighting in public areas, lack of posted Certificates of Occupancy, or failure to remove vermin. Class C violations include: immediately hazardous violations such as rodents, lead-based paint, and lack of heat, hot water, electricity, or gas.<sup>1</sup> <sup>1</sup>See more <a href="https://landlordwatchlist.com/about">here</a>.</p>
+</blockquote>
+<p>I have already constructed a dataset documenting the 100 rental properties with the most average housing violations approved in 2021. If you want to check out the code to construct that dataset, you can review the code in <code>data-import.R</code> in <a href="https://github.com/SDS-192-Intro/sds-192-labs/blob/main/Day30-Leaflet/data-import.R">this directory</a>. Run the code below to import the dataset.</p>
+</section>
+<section id="setting-up-your-environment" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up-your-environment">Setting Up Your Environment</h2>
+<ol type="1">
+<li>Install the following packages in your Environment:</li>
+</ol>
+<ul>
+<li><code>install.packages("leaflet")</code></li>
+<li><code>install.packages("sf")</code></li>
+</ul>
+<ol start="2" type="1">
+<li>Run the code below to load today’s data frames into your environment.</li>
+</ol>
+<div class="cell" data-document="show">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>worst_buildings <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/SDS-192-Intro/sds-192-labs/main/Day30-Leaflet/datasets/worst_buildings.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="mapping-in-leaflet" class="level2">
+<h2 class="anchored" data-anchor-id="mapping-in-leaflet">Mapping in Leaflet</h2>
+<p>We are going to work with the <code>leaflet()</code> package to design a map of worst 100 NYC rental properties in terms of housing violations. The map will color the points by the average number of violations and size the points by the number of units in the building. At any point during these exercises, you can reference the <a href="https://rstudio.github.io/leaflet/">leaflet documentation</a> to help you build out these maps.</p>
+</section>
+<section id="initialize-your-map" class="level2">
+<h2 class="anchored" data-anchor-id="initialize-your-map">Initialize your Map</h2>
+<p>There are three steps to initializing a map in leaflet:</p>
+<ol type="1">
+<li>Call the <code>leaflet()</code> function to create a map widget.</li>
+<li>Call the <code>setView(lat = 0.00, lng = 0.00, zoom = 0)</code>. This function determines where the map will initially focus. We provide a set of coordinates that will be the map’s center point when we load it, and a number (from 1 to 16) to indicate the level at which to zoom in on the map.<br>
+</li>
+<li>Call <code>addProviderTiles()</code> to load up provider tiles that constitute a base map. A number of different map providers have provider tiles that we can reference here. A few examples of the arguments we can supply to this function include include:</li>
+</ol>
+<ul>
+<li><code>providers$OpenStreetMap</code></li>
+<li><code>providers$Stamen.Toner</code></li>
+<li><code>providers$CartoDB.Positron</code></li>
+<li><code>providers$Esri.NatGeoWorldMap</code></li>
+</ul>
+<p>Run the code below to initialize a map.</p>
+<div class="cell" data-document="show">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>map1 <span class="ot">&lt;-</span> <span class="fu">leaflet</span>(<span class="at">width =</span> <span class="st">"100%"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setView</span>(<span class="at">lat =</span> <span class="fl">0.00</span>, <span class="at">lng =</span> <span class="fl">0.00</span>, <span class="at">zoom =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>Stamen.Toner)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>map1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="htmlwidget-59cf51b5c1b31bfa845a" style="width:100%;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-59cf51b5c1b31bfa845a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[0,0],0,[]],"calls":[{"method":"addProviderTiles","args":["Stamen.Toner",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}]},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<section id="question" class="level6">
+<h6 class="anchored" data-anchor-id="question">Question</h6>
+<div class="question">
+<p>Adjust the code below to center the map on NYC. You’ll need to look up the coordinates for NYC, keeping in mind that South and West coordinates will be negative. Adjust the <code>zoom</code> to keep the whole city in view (setting the zoom level between 1 and 16). When you are happy with the View, switch out the provider tiles to a base map that won’t distract from the data points we will layer on top of this map. Keep in mind our discussions regarding <em>Visualization Aesthetics</em> here.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>nyc_map <span class="ot">&lt;-</span> <span class="fu">leaflet</span>(<span class="at">width =</span> <span class="st">"100%"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setView</span>(<span class="at">lat =</span> <span class="fl">0.00</span>, <span class="at">lng =</span> <span class="fl">0.00</span>, <span class="at">zoom =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addProviderTiles</span>(providers<span class="sc">$</span>Stamen.Toner)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment below to view the map!</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># nyc_map</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-document="solutions">
+<div class="cell-output-display">
+<div id="htmlwidget-c02115438d2263ba54be" style="width:100%;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c02115438d2263ba54be">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.7128,-74.006],10,[]],"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}]},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<section id="section" class="level7">
+<p class="heading"></p>
+</section>
+</section>
+</section>
+<section id="set-geometry-and-transform-data-crs" class="level2">
+<h2 class="anchored" data-anchor-id="set-geometry-and-transform-data-crs">Set Geometry and Transform Data CRS</h2>
+<p>We will be looking to convert our data into an object with coordinate-based geometry so that we can map it. We can use the <code>st_as_sf()</code> function to do this. <code>st_as_sf()</code> takes two arguments:</p>
+<ol type="1">
+<li>The names of the columns in our data frame containing geographic coodinates in the format <code>coords = c("&lt;longitude column names&gt;", "&lt;latitude column name&gt;")</code></li>
+<li>The coordinate reference system that the dataset currently uses in the format <code>crs = &lt;crs number&gt;</code>.</li>
+</ol>
+<p>After adding this geometry column with <code>st_as_sf()</code>, we need to make sure that the CRS for our coordinates is consistent with the CRS of the basemap we will be placing the points on. The coordinates in <code>worst_buildings</code> data are in NAD 83 (EPSG:4269) and our basemap is in WGS 84 (EPSG:4326).</p>
+<section id="question-1" class="level6">
+<h6 class="anchored" data-anchor-id="question-1">Question</h6>
+<div class="question">
+<p>In the code block below, create a new <code>geometry</code> column with the given coordinates, using the function <code>st_as_sf()</code>. The column for longitude will go in the first coordinate position, and latitude will go in the second. Be sure to set the data’s current CRS (4269) in that function. Then transform the CRS to 4326 using <code>st_transform()</code>.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment and fill in the blanks below. The column for longitude will go in the first coordinate position, and latitude will go in the second. </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#worst_buildings &lt;- worst_buildings %&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#  st_as_sf(coords = c("____", "____"), crs = ____) %&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#  st_transform(____)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-document="solutions">
+
+</div>
+</section>
+</section>
+<section id="add-layers" class="level2">
+<h2 class="anchored" data-anchor-id="add-layers">Add Layers</h2>
+<p>Once we have our initial map, we can add layers to the map that display different forms of geospatial data. There are a number of different functions in leaflet that we can use to add layers. For instance, we can add markers to the map at a certain geo-coordinates using the <a href="https://rstudio.github.io/leaflet/markers.html"><code>addMarkers()</code> function</a>. We can also add polygons and rectangles to the map using the <code>addRectangles()</code> function or the <code>addPolygons()</code> function. Today we are going to work exclusively with the <code>addCircleMarkers()</code> function. This allows us to add a circle at the latitude and longitude for each row in our dataset. It also allows us to adjust the circle’s color and size according to values in our dataset.</p>
+<section id="question-2" class="level6">
+<h6 class="anchored" data-anchor-id="question-2">Question</h6>
+<div class="question">
+<p>In the code block below, pipe <code>addCircleMarkers()</code> onto the basemap and list <code>data = worst_buildings</code> as an argument in that function. It should look like my map below.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment and add the function</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#nyc_map %&gt;%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-document="solutions">
+<div class="cell-output-display">
+<div id="htmlwidget-4a00b7761a21246d423f" style="width:100%;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4a00b7761a21246d423f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.7128,-74.006],10,[]],"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[40.827911,40.76809,40.836734,40.689512,40.863955,40.814015,40.824975,40.818035,40.825678,40.812821,40.679718,40.676181,40.696177,40.826287,40.818868,40.791649,40.803813,40.861234,40.832613,40.748297,40.700651,40.812883,40.813175,40.803336,40.875282,40.601257,40.671074,40.687118,40.877059,40.906152,40.863869,40.800206,40.808439,40.860924,40.675365,40.848784,40.722929,40.839424,40.862552,40.6768,40.665478,40.832489,40.818535,40.662243,40.686955,40.672452,40.676246,40.829399,40.721349,40.681988,40.664145,40.848792,40.831364,40.670086,40.65372,40.819155,40.855583,40.824936,40.829116,40.841773,40.829462,40.840612,40.685362,40.879615,40.681304,40.671121,40.691424,40.671453,40.677841,40.847043,40.826066,40.804618,40.824107,40.668874,40.652365,40.784694,40.758433,40.855329,40.6859,40.612466,40.808533,40.674142,40.576105,40.825105,40.843515,40.831084,40.811258,40.666075,40.817996,40.836472,40.630096,40.685309,40.873731,40.652807,40.851035,40.831448,40.644221,40.815372,40.61634,40.861702],[-73.904195,-73.986148,-73.937683,-73.857982,-73.919313,-73.915475,-73.949104,-73.940323,-73.948637,-73.908226,-73.937018,-73.95133,-73.93574,-73.941938,-73.954214,-73.93857,-73.95391,-73.906291,-73.904676,-73.874949,-73.914642,-73.943915,-73.95231,-73.964707,-73.847547,-73.747921,-73.866042,-73.949336,-73.909248,-73.848258,-73.921883,-73.952489,-73.956139,-73.906598,-73.867137,-73.930392,-73.868922,-73.845226,-73.918367,-73.948319,-73.955938,-73.940859,-73.941356,-73.887989,-73.918027,-73.932526,-73.909287,-73.922802,-73.979852,-73.943632,-73.887907,-73.934613,-73.870121,-73.954767,-73.957221,-73.95274,-73.897879,-73.946918,-73.939876,-73.834707,-73.940797,-73.912796,-73.929527,-73.867354,-73.941289,-73.915941,-73.915465,-73.876308,-74.000909,-73.90557,-73.939568,-73.949817,-73.952801,-73.949317,-73.931451,-73.851041,-73.822248,-73.92865,-73.950667,-74.083175,-73.9407,-73.952871,-74.000922,-73.893894,-73.886672,-73.90702,-73.940004,-73.930305,-73.938032,-73.940874,-73.944757,-73.91945,-73.877906,-73.931519,-73.939307,-73.920162,-73.959887,-73.957345,-74.081184,-73.926969],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[40.576105,40.906152],"lng":[-74.083175,-73.747921]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<section id="section-1" class="level7">
+<p class="heading"></p>
+<p>Map isn’t so legible/beautiful at this point, right?</p>
+</section>
+</section>
+</section>
+<section id="styling-the-map" class="level2">
+<h2 class="anchored" data-anchor-id="styling-the-map">Styling the Map</h2>
+<section id="question-3" class="level6">
+<h6 class="anchored" data-anchor-id="question-3">Question</h6>
+<div class="question">
+<p>Map isn’t so legible/beautiful at this point, right? Copy the map you just created into the code chunk below, and pipe the <code>addCircleMarkers()</code> function onto your code. Check out the help pages for the <code>addCircleMarkers()</code> function, and add some arguments to help with the map’s legibility. At the very least, you should adjust the <code>radius</code>, <code>weight</code>, <code>color</code>, <code>fillColor</code>, and <code>fillOpacity</code>, and understand how each of these arguments will change the style of the map. For now you can set the <code>color</code> to “black” and the <code>fillColor</code> to “white”. See if you can get your map to match mine below.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy previous map here! </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-document="solutions">
+<div class="cell-output-display">
+<div id="htmlwidget-2bbbad32e116c3a827cd" style="width:100%;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2bbbad32e116c3a827cd">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.7128,-74.006],10,[]],"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[40.827911,40.76809,40.836734,40.689512,40.863955,40.814015,40.824975,40.818035,40.825678,40.812821,40.679718,40.676181,40.696177,40.826287,40.818868,40.791649,40.803813,40.861234,40.832613,40.748297,40.700651,40.812883,40.813175,40.803336,40.875282,40.601257,40.671074,40.687118,40.877059,40.906152,40.863869,40.800206,40.808439,40.860924,40.675365,40.848784,40.722929,40.839424,40.862552,40.6768,40.665478,40.832489,40.818535,40.662243,40.686955,40.672452,40.676246,40.829399,40.721349,40.681988,40.664145,40.848792,40.831364,40.670086,40.65372,40.819155,40.855583,40.824936,40.829116,40.841773,40.829462,40.840612,40.685362,40.879615,40.681304,40.671121,40.691424,40.671453,40.677841,40.847043,40.826066,40.804618,40.824107,40.668874,40.652365,40.784694,40.758433,40.855329,40.6859,40.612466,40.808533,40.674142,40.576105,40.825105,40.843515,40.831084,40.811258,40.666075,40.817996,40.836472,40.630096,40.685309,40.873731,40.652807,40.851035,40.831448,40.644221,40.815372,40.61634,40.861702],[-73.904195,-73.986148,-73.937683,-73.857982,-73.919313,-73.915475,-73.949104,-73.940323,-73.948637,-73.908226,-73.937018,-73.95133,-73.93574,-73.941938,-73.954214,-73.93857,-73.95391,-73.906291,-73.904676,-73.874949,-73.914642,-73.943915,-73.95231,-73.964707,-73.847547,-73.747921,-73.866042,-73.949336,-73.909248,-73.848258,-73.921883,-73.952489,-73.956139,-73.906598,-73.867137,-73.930392,-73.868922,-73.845226,-73.918367,-73.948319,-73.955938,-73.940859,-73.941356,-73.887989,-73.918027,-73.932526,-73.909287,-73.922802,-73.979852,-73.943632,-73.887907,-73.934613,-73.870121,-73.954767,-73.957221,-73.95274,-73.897879,-73.946918,-73.939876,-73.834707,-73.940797,-73.912796,-73.929527,-73.867354,-73.941289,-73.915941,-73.915465,-73.876308,-74.000909,-73.90557,-73.939568,-73.949817,-73.952801,-73.949317,-73.931451,-73.851041,-73.822248,-73.92865,-73.950667,-74.083175,-73.9407,-73.952871,-74.000922,-73.893894,-73.886672,-73.90702,-73.940004,-73.930305,-73.938032,-73.940874,-73.944757,-73.91945,-73.877906,-73.931519,-73.939307,-73.920162,-73.959887,-73.957345,-74.081184,-73.926969],3,null,null,{"interactive":true,"className":"","stroke":true,"color":"black","weight":0.5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.5},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[40.576105,40.906152],"lng":[-74.083175,-73.747921]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="creating-color-palettes" class="level3">
+<h3 class="anchored" data-anchor-id="creating-color-palettes">Creating Color Palettes</h3>
+<p>Now that our map is looking more legible, let’s color the circles by the 2021 average open violations at each property on the map. Remembering back to our lesson on <em>Understanding Datasets</em> and <em>Visualization Aesthetics</em>, we should keep in mind that <code>avg_violations_weighted</code> is a numeric variable, and therefore, we will create a sequential color palette to map it.</p>
+<p>There are three functions in leaflet for creating a sequential color palette:</p>
+<ol type="1">
+<li><code>colorNumeric()</code>: Creates a palette by assigning numbers to different colors on a spectrum</li>
+<li><code>colorBin()</code>: Creates a palette by grouping numbers into a specified number of <em>equally-spaced</em> intervals (e.g.&nbsp;0-10, &gt;10-20, &gt;20-30)</li>
+<li><code>colorQuantile()</code>: Creates a palette by grouping numbers into a specified number of <em>equally-sized</em> quantiles</li>
+</ol>
+<blockquote class="blockquote">
+<p>Note that we would use <code>colorFactor()</code> to create a categorical palette.</p>
+</blockquote>
+<p>Each function takes both of the following arguments:</p>
+<ul>
+<li><code>palette</code>: the colors we wish to map to the data. We will use preset palettes from the <code>RColorBrewer</code>. You can call <code>display.brewer.all()</code> to see the list of palettes or reference here: http://applied-r.com/rcolorbrewer-palettes/</li>
+<li><code>domain</code>: the values we wish to apply the palette to. Here we reference the column from the data frame we wish to color the points by using the accessor <code>$</code>.</li>
+</ul>
+<p>In addition, the <code>colorBin()</code> function takes the argument <code>bins</code>, which indicates the number of color intervals to be created. The <code>colorQuantile()</code> functions takes the argument <code>n</code>, which indicates the number of quantiles to map data into.</p>
+<section id="question-4" class="level6">
+<h6 class="anchored" data-anchor-id="question-4">Question</h6>
+<div class="question">
+<p>Create three palettes below (one using each function <code>colorNumeric()</code>, <code>colorBin()</code>, and <code>colorQuantile()</code>), setting the <code>palette</code> to “YlOrRd”, and the domain to <code>worst_buildings$avg_violations_weighted</code>. For <code>colorBin()</code>, set the <code>bins</code> to 4, and for <code>colorQuantile()</code>, set <code>n</code> to 4.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pal_num <span class="ot">&lt;-</span> <span class="fu">colorNumeric</span>(<span class="at">palette=</span><span class="st">"YlOrRd"</span>, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">domain =</span> worst_buildings<span class="sc">$</span>avg_violations_weighted)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Uncomment below to create the other two palettes.</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#pal_bin &lt;- </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#pal_quant &lt;- </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-document="solutions">
+
+</div>
+</section>
+<section id="question-5" class="level6">
+<h6 class="anchored" data-anchor-id="question-5">Question</h6>
+<div class="question">
+<p>Copy and paste the last map you created into the code chunk below, three times. For each, we are going to adjust the <code>fillColor</code> by setting it to the variable from the dataset that we wish to color (<code>avg_violations_weighted</code>), colored by one of the palettes that we created. We can do this by setting the fill color argument equal to:</p>
+<ul>
+<li><code>~pal_num(avg_violations_weighted)</code>: for coloring the points according the <code>pal_num()</code> palette we created on the <code>avg_violations_weighted</code> variable</li>
+<li><code>~pal_bin(avg_violations_weighted)</code>: for coloring the points according the <code>pal_bin()</code> palette we created on the <code>avg_violations_weighted</code> variable</li>
+<li><code>~pal_quant(avg_violations_weighted)</code>: for coloring the points according the <code>pal_quant</code> palette we created on the <code>avg_violations_weighted()</code> variable</li>
+</ul>
+<p>Your maps should look like mine below.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy map first time here!</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy map second time here!</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy map third time here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-document="solutions">
+<div class="cell-output-display">
+<div id="htmlwidget-dfa7b7d1f30213f9c747" style="width:100%;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dfa7b7d1f30213f9c747">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.7128,-74.006],10,[]],"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[40.827911,40.76809,40.836734,40.689512,40.863955,40.814015,40.824975,40.818035,40.825678,40.812821,40.679718,40.676181,40.696177,40.826287,40.818868,40.791649,40.803813,40.861234,40.832613,40.748297,40.700651,40.812883,40.813175,40.803336,40.875282,40.601257,40.671074,40.687118,40.877059,40.906152,40.863869,40.800206,40.808439,40.860924,40.675365,40.848784,40.722929,40.839424,40.862552,40.6768,40.665478,40.832489,40.818535,40.662243,40.686955,40.672452,40.676246,40.829399,40.721349,40.681988,40.664145,40.848792,40.831364,40.670086,40.65372,40.819155,40.855583,40.824936,40.829116,40.841773,40.829462,40.840612,40.685362,40.879615,40.681304,40.671121,40.691424,40.671453,40.677841,40.847043,40.826066,40.804618,40.824107,40.668874,40.652365,40.784694,40.758433,40.855329,40.6859,40.612466,40.808533,40.674142,40.576105,40.825105,40.843515,40.831084,40.811258,40.666075,40.817996,40.836472,40.630096,40.685309,40.873731,40.652807,40.851035,40.831448,40.644221,40.815372,40.61634,40.861702],[-73.904195,-73.986148,-73.937683,-73.857982,-73.919313,-73.915475,-73.949104,-73.940323,-73.948637,-73.908226,-73.937018,-73.95133,-73.93574,-73.941938,-73.954214,-73.93857,-73.95391,-73.906291,-73.904676,-73.874949,-73.914642,-73.943915,-73.95231,-73.964707,-73.847547,-73.747921,-73.866042,-73.949336,-73.909248,-73.848258,-73.921883,-73.952489,-73.956139,-73.906598,-73.867137,-73.930392,-73.868922,-73.845226,-73.918367,-73.948319,-73.955938,-73.940859,-73.941356,-73.887989,-73.918027,-73.932526,-73.909287,-73.922802,-73.979852,-73.943632,-73.887907,-73.934613,-73.870121,-73.954767,-73.957221,-73.95274,-73.897879,-73.946918,-73.939876,-73.834707,-73.940797,-73.912796,-73.929527,-73.867354,-73.941289,-73.915941,-73.915465,-73.876308,-74.000909,-73.90557,-73.939568,-73.949817,-73.952801,-73.949317,-73.931451,-73.851041,-73.822248,-73.92865,-73.950667,-74.083175,-73.9407,-73.952871,-74.000922,-73.893894,-73.886672,-73.90702,-73.940004,-73.930305,-73.938032,-73.940874,-73.944757,-73.91945,-73.877906,-73.931519,-73.939307,-73.920162,-73.959887,-73.957345,-74.081184,-73.926969],3,null,null,{"interactive":true,"className":"","stroke":true,"color":"black","weight":0.5,"opacity":0.5,"fill":true,"fillColor":["#800026","#8E0026","#D21021","#E41E1D","#EF3823","#F33F25","#F64427","#FD5B2D","#FD612E","#FD622F","#FD6D32","#FD7835","#FD873A","#FD883A","#FD8B3B","#FD903D","#FEA144","#FEA245","#FEA847","#FEA848","#FEAD4A","#FEB651","#FEB954","#FFC35E","#FFC763","#FFC864","#FFCC68","#FFCD69","#FED26E","#FED976","#FEDC7C","#FEDD7E","#FEDD7F","#FFDF82","#FFE085","#FFE085","#FFE085","#FFE288","#FFE289","#FFE38C","#FFE48E","#FFE48E","#FFE590","#FFE590","#FFE793","#FFE998","#FFE998","#FFE999","#FFEA9A","#FFEA9A","#FFEB9B","#FFEB9C","#FFEB9C","#FFEC9F","#FFEC9F","#FFED9F","#FFEEA3","#FFF0A7","#FFF0A8","#FFF0A8","#FFF0A8","#FFF1A9","#FFF1AA","#FFF1AB","#FFF1AB","#FFF1AB","#FFF2AC","#FFF2AC","#FFF3AF","#FFF3AF","#FFF3B0","#FFF6B7","#FFF7B8","#FFF7B8","#FFF7B8","#FFF7B9","#FFF8BB","#FFF8BB","#FFF8BC","#FFF8BC","#FFF9BD","#FFFABF","#FFFABF","#FFFBC1","#FFFBC2","#FFFBC2","#FFFBC3","#FFFCC4","#FFFCC5","#FFFDC7","#FFFDC7","#FFFDC8","#FFFDC8","#FFFDC8","#FFFEC9","#FFFEC9","#FFFEC9","#FFFECA","#FFFFCC","#FFFFCC"],"fillOpacity":0.5},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[40.576105,40.906152],"lng":[-74.083175,-73.747921]}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="cell-output-display">
+<div id="htmlwidget-ee78eaea196e3eface87" style="width:100%;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ee78eaea196e3eface87">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.7128,-74.006],10,[]],"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[40.827911,40.76809,40.836734,40.689512,40.863955,40.814015,40.824975,40.818035,40.825678,40.812821,40.679718,40.676181,40.696177,40.826287,40.818868,40.791649,40.803813,40.861234,40.832613,40.748297,40.700651,40.812883,40.813175,40.803336,40.875282,40.601257,40.671074,40.687118,40.877059,40.906152,40.863869,40.800206,40.808439,40.860924,40.675365,40.848784,40.722929,40.839424,40.862552,40.6768,40.665478,40.832489,40.818535,40.662243,40.686955,40.672452,40.676246,40.829399,40.721349,40.681988,40.664145,40.848792,40.831364,40.670086,40.65372,40.819155,40.855583,40.824936,40.829116,40.841773,40.829462,40.840612,40.685362,40.879615,40.681304,40.671121,40.691424,40.671453,40.677841,40.847043,40.826066,40.804618,40.824107,40.668874,40.652365,40.784694,40.758433,40.855329,40.6859,40.612466,40.808533,40.674142,40.576105,40.825105,40.843515,40.831084,40.811258,40.666075,40.817996,40.836472,40.630096,40.685309,40.873731,40.652807,40.851035,40.831448,40.644221,40.815372,40.61634,40.861702],[-73.904195,-73.986148,-73.937683,-73.857982,-73.919313,-73.915475,-73.949104,-73.940323,-73.948637,-73.908226,-73.937018,-73.95133,-73.93574,-73.941938,-73.954214,-73.93857,-73.95391,-73.906291,-73.904676,-73.874949,-73.914642,-73.943915,-73.95231,-73.964707,-73.847547,-73.747921,-73.866042,-73.949336,-73.909248,-73.848258,-73.921883,-73.952489,-73.956139,-73.906598,-73.867137,-73.930392,-73.868922,-73.845226,-73.918367,-73.948319,-73.955938,-73.940859,-73.941356,-73.887989,-73.918027,-73.932526,-73.909287,-73.922802,-73.979852,-73.943632,-73.887907,-73.934613,-73.870121,-73.954767,-73.957221,-73.95274,-73.897879,-73.946918,-73.939876,-73.834707,-73.940797,-73.912796,-73.929527,-73.867354,-73.941289,-73.915941,-73.915465,-73.876308,-74.000909,-73.90557,-73.939568,-73.949817,-73.952801,-73.949317,-73.931451,-73.851041,-73.822248,-73.92865,-73.950667,-74.083175,-73.9407,-73.952871,-74.000922,-73.893894,-73.886672,-73.90702,-73.940004,-73.930305,-73.938032,-73.940874,-73.944757,-73.91945,-73.877906,-73.931519,-73.939307,-73.920162,-73.959887,-73.957345,-74.081184,-73.926969],3,null,null,{"interactive":true,"className":"","stroke":true,"color":"black","weight":0.5,"opacity":0.5,"fill":true,"fillColor":["#BD0026","#BD0026","#F03B20","#F03B20","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2"],"fillOpacity":0.5},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[40.576105,40.906152],"lng":[-74.083175,-73.747921]}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="cell-output-display">
+<div id="htmlwidget-764d5de76c00378007d1" style="width:100%;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-764d5de76c00378007d1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.7128,-74.006],10,[]],"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[40.827911,40.76809,40.836734,40.689512,40.863955,40.814015,40.824975,40.818035,40.825678,40.812821,40.679718,40.676181,40.696177,40.826287,40.818868,40.791649,40.803813,40.861234,40.832613,40.748297,40.700651,40.812883,40.813175,40.803336,40.875282,40.601257,40.671074,40.687118,40.877059,40.906152,40.863869,40.800206,40.808439,40.860924,40.675365,40.848784,40.722929,40.839424,40.862552,40.6768,40.665478,40.832489,40.818535,40.662243,40.686955,40.672452,40.676246,40.829399,40.721349,40.681988,40.664145,40.848792,40.831364,40.670086,40.65372,40.819155,40.855583,40.824936,40.829116,40.841773,40.829462,40.840612,40.685362,40.879615,40.681304,40.671121,40.691424,40.671453,40.677841,40.847043,40.826066,40.804618,40.824107,40.668874,40.652365,40.784694,40.758433,40.855329,40.6859,40.612466,40.808533,40.674142,40.576105,40.825105,40.843515,40.831084,40.811258,40.666075,40.817996,40.836472,40.630096,40.685309,40.873731,40.652807,40.851035,40.831448,40.644221,40.815372,40.61634,40.861702],[-73.904195,-73.986148,-73.937683,-73.857982,-73.919313,-73.915475,-73.949104,-73.940323,-73.948637,-73.908226,-73.937018,-73.95133,-73.93574,-73.941938,-73.954214,-73.93857,-73.95391,-73.906291,-73.904676,-73.874949,-73.914642,-73.943915,-73.95231,-73.964707,-73.847547,-73.747921,-73.866042,-73.949336,-73.909248,-73.848258,-73.921883,-73.952489,-73.956139,-73.906598,-73.867137,-73.930392,-73.868922,-73.845226,-73.918367,-73.948319,-73.955938,-73.940859,-73.941356,-73.887989,-73.918027,-73.932526,-73.909287,-73.922802,-73.979852,-73.943632,-73.887907,-73.934613,-73.870121,-73.954767,-73.957221,-73.95274,-73.897879,-73.946918,-73.939876,-73.834707,-73.940797,-73.912796,-73.929527,-73.867354,-73.941289,-73.915941,-73.915465,-73.876308,-74.000909,-73.90557,-73.939568,-73.949817,-73.952801,-73.949317,-73.931451,-73.851041,-73.822248,-73.92865,-73.950667,-74.083175,-73.9407,-73.952871,-74.000922,-73.893894,-73.886672,-73.90702,-73.940004,-73.930305,-73.938032,-73.940874,-73.944757,-73.91945,-73.877906,-73.931519,-73.939307,-73.920162,-73.959887,-73.957345,-74.081184,-73.926969],3,null,null,{"interactive":true,"className":"","stroke":true,"color":"black","weight":0.5,"opacity":0.5,"fill":true,"fillColor":["#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#E31A1C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FECC5C","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2"],"fillOpacity":0.5},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[40.576105,40.906152],"lng":[-74.083175,-73.747921]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="question-6" class="level6">
+<h6 class="anchored" data-anchor-id="question-6">Question</h6>
+<div class="question">
+<p>In a comment below, explain the following: Why do the colors appear differently on each map? Which map best represents the distribution of values in <code>avg_violations_weighted</code>?</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add comment here. </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="sizing-the-circles" class="level3">
+<h3 class="anchored" data-anchor-id="sizing-the-circles">Sizing the Circles</h3>
+<section id="question-7" class="level6">
+<h6 class="anchored" data-anchor-id="question-7">Question</h6>
+<div class="question">
+<p>Copy and paste the code from above that colors <code>avg_violations_weighted</code> in bins into the code chunk below. We are going to size each circle by the number of rental units in that property. Number of units is stored in the column <code>legalclassa</code> in our dataset, so we could size the circles by setting the radius to <code>~legalclassa</code>. However, this would lead to some massive circles on our map as certain buildings have hundreds of units, and the value we supply to radius will determine the pixels of the circle on our map. To deal with this, we are going to take the square root of the units in each property using the <code>sqrt()</code> function. Set the radius to <code>~sqrt(legalclassa)</code> below.</p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy map colored by bins here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-document="solutions">
+<div class="cell-output-display">
+<div id="htmlwidget-e94e13cf604db0baf610" style="width:100%;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e94e13cf604db0baf610">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.7128,-74.006],10,[]],"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[40.827911,40.76809,40.836734,40.689512,40.863955,40.814015,40.824975,40.818035,40.825678,40.812821,40.679718,40.676181,40.696177,40.826287,40.818868,40.791649,40.803813,40.861234,40.832613,40.748297,40.700651,40.812883,40.813175,40.803336,40.875282,40.601257,40.671074,40.687118,40.877059,40.906152,40.863869,40.800206,40.808439,40.860924,40.675365,40.848784,40.722929,40.839424,40.862552,40.6768,40.665478,40.832489,40.818535,40.662243,40.686955,40.672452,40.676246,40.829399,40.721349,40.681988,40.664145,40.848792,40.831364,40.670086,40.65372,40.819155,40.855583,40.824936,40.829116,40.841773,40.829462,40.840612,40.685362,40.879615,40.681304,40.671121,40.691424,40.671453,40.677841,40.847043,40.826066,40.804618,40.824107,40.668874,40.652365,40.784694,40.758433,40.855329,40.6859,40.612466,40.808533,40.674142,40.576105,40.825105,40.843515,40.831084,40.811258,40.666075,40.817996,40.836472,40.630096,40.685309,40.873731,40.652807,40.851035,40.831448,40.644221,40.815372,40.61634,40.861702],[-73.904195,-73.986148,-73.937683,-73.857982,-73.919313,-73.915475,-73.949104,-73.940323,-73.948637,-73.908226,-73.937018,-73.95133,-73.93574,-73.941938,-73.954214,-73.93857,-73.95391,-73.906291,-73.904676,-73.874949,-73.914642,-73.943915,-73.95231,-73.964707,-73.847547,-73.747921,-73.866042,-73.949336,-73.909248,-73.848258,-73.921883,-73.952489,-73.956139,-73.906598,-73.867137,-73.930392,-73.868922,-73.845226,-73.918367,-73.948319,-73.955938,-73.940859,-73.941356,-73.887989,-73.918027,-73.932526,-73.909287,-73.922802,-73.979852,-73.943632,-73.887907,-73.934613,-73.870121,-73.954767,-73.957221,-73.95274,-73.897879,-73.946918,-73.939876,-73.834707,-73.940797,-73.912796,-73.929527,-73.867354,-73.941289,-73.915941,-73.915465,-73.876308,-74.000909,-73.90557,-73.939568,-73.949817,-73.952801,-73.949317,-73.931451,-73.851041,-73.822248,-73.92865,-73.950667,-74.083175,-73.9407,-73.952871,-74.000922,-73.893894,-73.886672,-73.90702,-73.940004,-73.930305,-73.938032,-73.940874,-73.944757,-73.91945,-73.877906,-73.931519,-73.939307,-73.920162,-73.959887,-73.957345,-74.081184,-73.926969],[7.14142842854285,2.44948974278318,4.69041575982343,2,5.8309518948453,3,5.47722557505166,8.48528137423857,3.87298334620742,5.74456264653803,15.7480157480236,4,1.73205080756888,5.91607978309962,4.89897948556636,19.8997487421324,4,3.3166247903554,17.9164728671689,1.73205080756888,2.44948974278318,null,5.56776436283002,9.53939201416946,1.73205080756888,6.557438524302,17.1464281994822,4.58257569495584,7.48331477354788,8.48528137423857,4.47213595499958,3.46410161513775,3.16227766016838,7.34846922834953,1.73205080756888,4.89897948556636,6.08276253029822,7.87400787401181,5.3851648071345,2.64575131106459,7.34846922834953,4.89897948556636,7.34846922834953,2.44948974278318,3,4.35889894354067,1.73205080756888,13.4536240470737,3,2.82842712474619,1.73205080756888,4.58257569495584,2,8.42614977317636,9,5,7.54983443527075,null,11.13552872566,2,5.56776436283002,7.61577310586391,1.73205080756888,9.21954445729289,2.82842712474619,1.73205080756888,1.73205080756888,2,4,1.73205080756888,6.6332495807108,4.47213595499958,5,7.21110255092798,5.8309518948453,2.44948974278318,8.88819441731559,4.47213595499958,null,11.7046999107196,2.23606797749979,3.46410161513775,2,6.48074069840786,8.54400374531753,3,3.16227766016838,2,4.79583152331272,null,25.219040425837,2.44948974278318,7.14142842854285,6.16441400296898,7,10.4880884817015,9.74679434480896,4.89897948556636,11.4891252930761,3.87298334620742],null,null,{"interactive":true,"className":"","stroke":true,"color":"black","weight":0.5,"opacity":0.5,"fill":true,"fillColor":["#BD0026","#BD0026","#F03B20","#F03B20","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2"],"fillOpacity":0.5},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[40.576105,40.906152],"lng":[-74.083175,-73.747921]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+</section>
+<section id="legends-and-labels" class="level3">
+<h3 class="anchored" data-anchor-id="legends-and-labels">Legends and Labels</h3>
+<section id="question-8" class="level6">
+<h6 class="anchored" data-anchor-id="question-8">Question</h6>
+<div class="question">
+<p>As a final step, we are going to add labels and legends to the map. Copy and paste the code from the previous step into the code chunk below. Then do the following:</p>
+<ol type="1">
+<li>Add the <code>label</code> argument to the <code>addCircleMarkers()</code> function, and set the value to the column in our dataset that indicates the landlord’s full name: <code>~fullname</code>. Run the code and check what happens when we hover over the circles.</li>
+<li>Add a pipe to the end of the <code>addCircleMarkers()</code> and then add the function <code>addLegend()</code>. Consult the help pages for the <code>addLegend()</code> function to determine how to add a legend for the meaning of the colors represented on the map. At the very least, you will need an argument for <code>data</code>, <code>pal</code>, and <code>values</code>.</li>
+</ol>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy previous map here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-document="solutions">
+<div class="cell-output-display">
+<div id="htmlwidget-4b474ef30e46fe34b528" style="width:100%;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4b474ef30e46fe34b528">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[[40.7128,-74.006],10,[]],"calls":[{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[40.827911,40.76809,40.836734,40.689512,40.863955,40.814015,40.824975,40.818035,40.825678,40.812821,40.679718,40.676181,40.696177,40.826287,40.818868,40.791649,40.803813,40.861234,40.832613,40.748297,40.700651,40.812883,40.813175,40.803336,40.875282,40.601257,40.671074,40.687118,40.877059,40.906152,40.863869,40.800206,40.808439,40.860924,40.675365,40.848784,40.722929,40.839424,40.862552,40.6768,40.665478,40.832489,40.818535,40.662243,40.686955,40.672452,40.676246,40.829399,40.721349,40.681988,40.664145,40.848792,40.831364,40.670086,40.65372,40.819155,40.855583,40.824936,40.829116,40.841773,40.829462,40.840612,40.685362,40.879615,40.681304,40.671121,40.691424,40.671453,40.677841,40.847043,40.826066,40.804618,40.824107,40.668874,40.652365,40.784694,40.758433,40.855329,40.6859,40.612466,40.808533,40.674142,40.576105,40.825105,40.843515,40.831084,40.811258,40.666075,40.817996,40.836472,40.630096,40.685309,40.873731,40.652807,40.851035,40.831448,40.644221,40.815372,40.61634,40.861702],[-73.904195,-73.986148,-73.937683,-73.857982,-73.919313,-73.915475,-73.949104,-73.940323,-73.948637,-73.908226,-73.937018,-73.95133,-73.93574,-73.941938,-73.954214,-73.93857,-73.95391,-73.906291,-73.904676,-73.874949,-73.914642,-73.943915,-73.95231,-73.964707,-73.847547,-73.747921,-73.866042,-73.949336,-73.909248,-73.848258,-73.921883,-73.952489,-73.956139,-73.906598,-73.867137,-73.930392,-73.868922,-73.845226,-73.918367,-73.948319,-73.955938,-73.940859,-73.941356,-73.887989,-73.918027,-73.932526,-73.909287,-73.922802,-73.979852,-73.943632,-73.887907,-73.934613,-73.870121,-73.954767,-73.957221,-73.95274,-73.897879,-73.946918,-73.939876,-73.834707,-73.940797,-73.912796,-73.929527,-73.867354,-73.941289,-73.915941,-73.915465,-73.876308,-74.000909,-73.90557,-73.939568,-73.949817,-73.952801,-73.949317,-73.931451,-73.851041,-73.822248,-73.92865,-73.950667,-74.083175,-73.9407,-73.952871,-74.000922,-73.893894,-73.886672,-73.90702,-73.940004,-73.930305,-73.938032,-73.940874,-73.944757,-73.91945,-73.877906,-73.931519,-73.939307,-73.920162,-73.959887,-73.957345,-74.081184,-73.926969],[7.14142842854285,2.44948974278318,4.69041575982343,2,5.8309518948453,3,5.47722557505166,8.48528137423857,3.87298334620742,5.74456264653803,15.7480157480236,4,1.73205080756888,5.91607978309962,4.89897948556636,19.8997487421324,4,3.3166247903554,17.9164728671689,1.73205080756888,2.44948974278318,null,5.56776436283002,9.53939201416946,1.73205080756888,6.557438524302,17.1464281994822,4.58257569495584,7.48331477354788,8.48528137423857,4.47213595499958,3.46410161513775,3.16227766016838,7.34846922834953,1.73205080756888,4.89897948556636,6.08276253029822,7.87400787401181,5.3851648071345,2.64575131106459,7.34846922834953,4.89897948556636,7.34846922834953,2.44948974278318,3,4.35889894354067,1.73205080756888,13.4536240470737,3,2.82842712474619,1.73205080756888,4.58257569495584,2,8.42614977317636,9,5,7.54983443527075,null,11.13552872566,2,5.56776436283002,7.61577310586391,1.73205080756888,9.21954445729289,2.82842712474619,1.73205080756888,1.73205080756888,2,4,1.73205080756888,6.6332495807108,4.47213595499958,5,7.21110255092798,5.8309518948453,2.44948974278318,8.88819441731559,4.47213595499958,null,11.7046999107196,2.23606797749979,3.46410161513775,2,6.48074069840786,8.54400374531753,3,3.16227766016838,2,4.79583152331272,null,25.219040425837,2.44948974278318,7.14142842854285,6.16441400296898,7,10.4880884817015,9.74679434480896,4.89897948556636,11.4891252930761,3.87298334620742],null,null,{"interactive":true,"className":"","stroke":true,"color":"black","weight":0.5,"opacity":0.5,"fill":true,"fillColor":["#BD0026","#BD0026","#F03B20","#F03B20","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FD8D3C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FEB24C","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FED976","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2","#FFFFB2"],"fillOpacity":0.5},null,null,null,null,["718.71 avg. open violations; 51 units; landlord: PHILIP SCHORR","705 avg. open violations; 6 units; landlord: MARK TRESS","629.67 avg. open violations; 22 units; landlord: SALVATORE D'AVOLA","602.08 avg. open violations; 4 units; landlord: LEONARDO SIRAGUSA","577.12 avg. open violations; 34 units; landlord: JULIAN RODRIGUEZ","567.5 avg. open violations; 9 units; landlord: MARIO OLIVERO","561.5 avg. open violations; 30 units; landlord: SIMONE ROSS","538 avg. open violations; 72 units; landlord: SIMONE ROSS","533.33 avg. open violations; 15 units; landlord: SALVATORE D'AVOLA","532.25 avg. open violations; 33 units; landlord: ALEJANDRO QUITO","522.33 avg. open violations; 248 units; landlord: ROBYN LUCAS-CORA","512.62 avg. open violations; 16 units; landlord: SHAWN MALDON","497 avg. open violations; 3 units; landlord: BETTY LUGO","496.38 avg. open violations; 35 units; landlord: CHARLIE WINSTON","493 avg. open violations; 24 units; landlord: SIMONE ROSS","486.75 avg. open violations; 396 units; landlord: TAMAR SMITH","461 avg. open violations; 16 units; landlord: SIMONE ROSS","458.67 avg. open violations; 11 units; landlord: JOHN REILLY","450.33 avg. open violations; 321 units; landlord: KARAN SINGH","449.42 avg. open violations; 3 units; landlord: REBECA CERECEDO","442 avg. open violations; 6 units; landlord: ISMENE SPELIOTIS","427.75 avg. open violations; NA units; landlord: ASTLEY GROVES","423.5 avg. open violations; 31 units; landlord: SIMONE ROSS","409.33 avg. open violations; 91 units; landlord: JUAN LARA","403.12 avg. open violations; 3 units; landlord: GEOFFREY SINCKLER","401.67 avg. open violations; 43 units; landlord: MICHAEL ROONEY","396.83 avg. open violations; 294 units; landlord: ALAN SULLIVAN","394.54 avg. open violations; 21 units; landlord: STEVEN KASHANIAN","387.58 avg. open violations; 56 units; landlord: RICHARD NUSSBAUM","377.08 avg. open violations; 72 units; landlord: SALVATORE D'AVOLA","369 avg. open violations; 20 units; landlord: SIMONE ROSS","366.38 avg. open violations; 12 units; landlord: MATTHEW ROONEY","365.17 avg. open violations; 10 units; landlord: MARLENE CHARLES","361.04 avg. open violations; 54 units; landlord: STEVE FINKELSTEIN","357.58 avg. open violations; 3 units; landlord: KENNETH AHN","357 avg. open violations; 24 units; landlord: RANDY APFELBAUM","356.42 avg. open violations; 37 units; landlord: JOHNATHAN SANTANA","352.79 avg. open violations; 62 units; landlord: RICHARD NUSSBAUM","351.5 avg. open violations; 29 units; landlord: MICHAEL SAPERSTEIN","347.62 avg. open violations; 7 units; landlord: EVERTON PIERRE","345.08 avg. open violations; 54 units; landlord: YITZCHAK SHWARTZ","345 avg. open violations; 24 units; landlord: SIMONE ROSS","342.54 avg. open violations; 54 units; landlord: CRAIG LIVINGSTON","342.5 avg. open violations; 6 units; landlord: SALVATORE D'AVOLA","337.71 avg. open violations; 9 units; landlord: URI MERMELSTEIN","331.83 avg. open violations; 19 units; landlord: ISMENE SPELIOTIS","330.58 avg. open violations; 3 units; landlord: SYED AHMED","330.5 avg. open violations; 181 units; landlord: JUDA STERN","329.12 avg. open violations; 9 units; landlord: FERNANDO ALFONSO","329.12 avg. open violations; 8 units; landlord: ISMENE SPELIOTIS","326.88 avg. open violations; 3 units; landlord: IRINI LASKARATOS","326.33 avg. open violations; 21 units; landlord: JULIAN RODRIGUEZ","326.21 avg. open violations; 4 units; landlord: MARYANN BROWN","322.33 avg. open violations; 71 units; landlord: MICHAEL CLEMAT","321.92 avg. open violations; 81 units; landlord: DAVID BLAU","321.5 avg. open violations; 25 units; landlord: SIMONE ROSS","316.62 avg. open violations; 57 units; landlord: LARRY HIRSCHFIELD","311.5 avg. open violations; NA units; landlord: JACOB HAROONI","310.5 avg. open violations; 124 units; landlord: NIKKI BERRYMAN","310.42 avg. open violations; 4 units; landlord: JOHN REALI","309.38 avg. open violations; 31 units; landlord: BRIAN RITTER","308.33 avg. open violations; 58 units; landlord: SALVATORE D'AVOLA","306.88 avg. open violations; 3 units; landlord: ARENZO MCEACHIN","306.62 avg. open violations; 85 units; landlord: LOUIS CALOS","306.62 avg. open violations; 8 units; landlord: DAWN MALONEY","306.08 avg. open violations; 3 units; landlord: MAYER KESSLER","305.42 avg. open violations; 3 units; landlord: JIMMY COHEN","304.12 avg. open violations; 4 units; landlord: ALFREDO LEM","301.29 avg. open violations; 16 units; landlord: CHANMATTIE PERSAUD","300.79 avg. open violations; 3 units; landlord: IHSAN SALEEM","300.17 avg. open violations; 44 units; landlord: CRAIG LIVINGSTON","290.29 avg. open violations; 20 units; landlord: JEROME WHITE","289.5 avg. open violations; 25 units; landlord: SIMONE ROSS","288.79 avg. open violations; 52 units; landlord: YOSSI HOROWITZ","288.71 avg. open violations; 34 units; landlord: ROBERT RAPHAEL","287.42 avg. open violations; 6 units; landlord: ALDORA FARFALLA","285.42 avg. open violations; 79 units; landlord: VINCENT GAROFALO","285 avg. open violations; 20 units; landlord: SIMONE ROSS","284.5 avg. open violations; NA units; landlord: ASAD ALI","284.46 avg. open violations; 137 units; landlord: LUCRECIA PEREZ","282.96 avg. open violations; 5 units; landlord: FERNANDO ALFONSO","280.25 avg. open violations; 12 units; landlord: WILLIAM THOMPSON","279.96 avg. open violations; 4 units; landlord: POPE BOODHAN","277.42 avg. open violations; 42 units; landlord: JUAN ANAYA","276.79 avg. open violations; 73 units; landlord: ALEXANDER HOFFMAN","276.5 avg. open violations; 9 units; landlord: SALVATORE D'AVOLA","275 avg. open violations; 10 units; landlord: SALVATORE D'AVOLA","274 avg. open violations; 4 units; landlord: SALLIE VINSON","273 avg. open violations; 23 units; landlord: RICARTE ECHEVARRIA","270.42 avg. open violations; NA units; landlord: ANGELINA KATES","270.38 avg. open violations; 636 units; landlord: DONALD ROBERTS III","269 avg. open violations; 6 units; landlord: BRIAN HODGE","268.88 avg. open violations; 51 units; landlord: ROBERT GOJCAJ","268.08 avg. open violations; 38 units; landlord: PINCUS SCHWIMMER","267.71 avg. open violations; 49 units; landlord: NATHAN SILVERSTEIN","267.62 avg. open violations; 110 units; landlord: PAUL LOZITO","266.96 avg. open violations; 95 units; landlord: DAVID BLAU","265.5 avg. open violations; 24 units; landlord: SIMONE ROSS","263.83 avg. open violations; 132 units; landlord: LUCRECIA PEREZ","263.38 avg. open violations; 15 units; landlord: SALVATORE D'AVOLA"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLegend","args":[{"colors":["#FFFFB2","#FED976","#FEB24C","#FD8D3C","#F03B20","#BD0026"],"labels":["200 &ndash; 300","300 &ndash; 400","400 &ndash; 500","500 &ndash; 600","600 &ndash; 700","700 &ndash; 800"],"na_color":null,"na_label":"NA","opacity":0.5,"position":"topright","type":"bin","title":"Avg. Open Housing Violations","extra":null,"layerId":null,"className":"info legend","group":null}]}],"limits":{"lat":[40.576105,40.906152],"lng":[-74.083175,-73.747921]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Ethical Considerations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the video linked at the top of the lab, news reporters and Jumaane Williams discuss the fact that several landlords have been on the list for several years. This calls into question whether publishing a list like this one is actually effective. What is the value of publishing a list of NYC worst landlords? Who does it benefit? Do you think it is an effective strategy for addressing housing inequities in the NYC? Should the city be doing more? Share your ideas on our <code>sds-192-discussions</code> Slack channel.</p>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
