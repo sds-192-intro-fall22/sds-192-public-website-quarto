@@ -207,28 +207,28 @@
     "href": "schedule.html#november-14-2022",
     "title": "Schedule",
     "section": "November 14, 2022",
-    "text": "November 14, 2022\n\nMap Projections and Spatial Thinking\nMAPPING\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 17. Working with geospatial data (17.1-17.3) , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022).\n Watch Lab 7 Recap in Perusall"
+    "text": "November 14, 2022\n\nMap Projections and Spatial Thinking\nMAPPING\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 17. Working with geospatial data (17.1-17.3) , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022).\n Watch Lab 7 Recap in Perusall\n\n\n Day 15 Slides: Point Mapping\n Leaflet Guide"
   },
   {
     "objectID": "schedule.html#november-16-2022",
     "href": "schedule.html#november-16-2022",
     "title": "Schedule",
     "section": "November 16, 2022",
-    "text": "November 16, 2022\n\nMapping Point Data in Leaflet\nMAPPING\n\nDue TodayFurther Resources\n\n\n Lab 8 Due\n\n\n Lab 9 Instructions"
+    "text": "November 16, 2022\n\nLab: Mapping Point Data in Leaflet\nMAPPING\n\nDue TodayFurther Resources\n\n\n Lab 8 Due\n\n\n Lab 9 Instructions"
   },
   {
     "objectID": "schedule.html#november-18-2022",
     "href": "schedule.html#november-18-2022",
     "title": "Schedule",
     "section": "November 18, 2022",
-    "text": "November 18, 2022\n\nLab: Mapping in Leaflet\nMAPPING\n\nDue TodayFurther Resources\n\n\n Quiz 2 Recommended Deadline"
+    "text": "November 18, 2022\n\nPolygon Mapping in Leaflet\nMAPPING\n\nDue TodayFurther Resources\n\n\n Quiz 2 Recommended Deadline"
   },
   {
     "objectID": "schedule.html#november-21-2022",
     "href": "schedule.html#november-21-2022",
     "title": "Schedule",
     "section": "November 21, 2022",
-    "text": "November 21, 2022\n\nChloropleth Maps\nMAPPING\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 17. Working with geospatial data (17.4-17.8) , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022).\n Group Contract Due\n Watch Lab 8 Recap in Perusall"
+    "text": "November 21, 2022\n\nHow to Lie with Maps\nMAPPING\n\nDue TodayFurther Resources\n\n\n (Read in Perusall; linked in Moodle) 17. Working with geospatial data (17.4-17.8) , Baumer, Benjamin S., Daniel T. Kaplan, and Nicholas J. Horton (2021). Modern Data Science with R. 2nd. CRC Press. URL: https://mdsr-book.github.io/mdsr2e/ (visited on Jan. 14, 2022).\n Group Contract Due\n Watch Lab 8 Recap in Perusall"
   },
   {
     "objectID": "schedule.html#november-23-2022",
@@ -2812,5 +2812,124 @@
     "title": "Lab 9: Mapping with Leaflet",
     "section": "Initialize your Map",
     "text": "Initialize your Map\nThere are three steps to initializing a map in leaflet:\n\nCall the leaflet() function to create a map widget.\nCall the setView(lat = 0.00, lng = 0.00, zoom = 0). This function determines where the map will initially focus. We provide a set of coordinates that will be the map’s center point when we load it, and a number (from 1 to 16) to indicate the level at which to zoom in on the map.\n\nCall addProviderTiles() to load up provider tiles that constitute a base map. A number of different map providers have provider tiles that we can reference here. A few examples of the arguments we can supply to this function include include:\n\n\nproviders$OpenStreetMap\nproviders$Stamen.Toner\nproviders$CartoDB.Positron\nproviders$Esri.NatGeoWorldMap\n\nRun the code below to initialize a map.\n\nmap1 <- leaflet(width = \"100%\") %>%\n  setView(lat = 0.00, lng = 0.00, zoom = 0) %>%\n  addProviderTiles(providers$Stamen.Toner)\n\nmap1\n\n\n\n\n\n\nQuestion\n\nAdjust the code below to center the map on NYC. You’ll need to look up the coordinates for NYC, keeping in mind that South and West coordinates will be negative. Adjust the zoom to keep the whole city in view (setting the zoom level between 1 and 16). When you are happy with the View, switch out the provider tiles to a base map that won’t distract from the data points we will layer on top of this map. Keep in mind our discussions regarding Visualization Aesthetics here.\n\n\nnyc_map <- leaflet(width = \"100%\") %>%\n  setView(lat = 0.00, lng = 0.00, zoom = 0) %>%\n  addProviderTiles(providers$Stamen.Toner)\n\n# Uncomment below to view the map!\n# nyc_map"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#for-today",
+    "href": "slides/Day15-PointMapping.html#for-today",
+    "title": "Point Mapping",
+    "section": "For Today",
+    "text": "For Today\n\nQuiz 2 Posted!\nProjections\nCoordinate Reference Systems\nPoint Mapping in Leaflet"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#why-analyze-spatial-data",
+    "href": "slides/Day15-PointMapping.html#why-analyze-spatial-data",
+    "title": "Point Mapping",
+    "section": "Why analyze spatial data?",
+    "text": "Why analyze spatial data?\n\nHow are features distributed across geographies, and what does this tell us about potential disparities?\nWhere are certain events or features concentrated, and what other conditions might implicate these patterns?\nWhat kinds of features are proximate, and what impact might this have?\nWhat is the best way to get from point A to point B?"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#geographic-comparisons",
+    "href": "slides/Day15-PointMapping.html#geographic-comparisons",
+    "title": "Point Mapping",
+    "section": "Geographic Comparisons",
+    "text": "Geographic Comparisons"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#concentrations-of-features",
+    "href": "slides/Day15-PointMapping.html#concentrations-of-features",
+    "title": "Point Mapping",
+    "section": "Concentrations of Features",
+    "text": "Concentrations of Features\n\nWhere are the most were Missed Collections on October 1, 2021?"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#proximity-analysis-carceral-ej-mapper",
+    "href": "slides/Day15-PointMapping.html#proximity-analysis-carceral-ej-mapper",
+    "title": "Point Mapping",
+    "section": "Proximity Analysis: Carceral EJ Mapper",
+    "text": "Proximity Analysis: Carceral EJ Mapper"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#projections",
+    "href": "slides/Day15-PointMapping.html#projections",
+    "title": "Point Mapping",
+    "section": "Projections",
+    "text": "Projections\n\nMeans by which we convert curved surface of the globe to 2D rectangle\nNecessarily distorts the surface (e.g. area, distance)\nMany projections exist, serving different purposes"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#orange-peel-example",
+    "href": "slides/Day15-PointMapping.html#orange-peel-example",
+    "title": "Point Mapping",
+    "section": "Orange Peel Example",
+    "text": "Orange Peel Example\n\n\n\nImagine that you peel an orange\n\nDatum is the original shape of the fruit (e.g. orange, lemon, apple, grapefruit)\nProjection is how we go about peeling and flattening the orange\n\n\n\n\n\nhttps://geohackweek.github.io/visualization/02-projections/"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#coordinate-reference-system-crs",
+    "href": "slides/Day15-PointMapping.html#coordinate-reference-system-crs",
+    "title": "Point Mapping",
+    "section": "Coordinate Reference System (CRS)",
+    "text": "Coordinate Reference System (CRS)\n\nPoints are in different locations depending on how we flatten Earth’s surface into 2D map\nCRS is a system for locating features on a certain map projection via coordinates\nThousands of CRSs but some are more common than others (e.g. WGS 84 most common)\nFor locations to appear correctly on maps, geographic features and underlying maps need to share same CRS"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#sf-package",
+    "href": "slides/Day15-PointMapping.html#sf-package",
+    "title": "Point Mapping",
+    "section": "sf Package",
+    "text": "sf Package\n\nEncodes spatial data into geometry objects\nLocates latitudes and longitudes according to a particular CRS\nEnables setting and transforming CRSs\n\n\nLat/LongX/Y Coordinates\n\n\n\nnyc_311_lat_long |>\n  st_as_sf(coords = c(\"longitude\", \"latitude\"), crs = 3857) |> head(4)\n\n\n\n  \n\n\n\n\n\n\nnyc_311_xy |>\n  st_as_sf(coords = c(\"x_coordinate_state_plane\", \"y_coordinate_state_plane\"), crs = 2263) |>\n  head(4)"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#how-do-i-know-which-to-use",
+    "href": "slides/Day15-PointMapping.html#how-do-i-know-which-to-use",
+    "title": "Point Mapping",
+    "section": "How do I know which to use?",
+    "text": "How do I know which to use?\n\nWe pray that it’s listed somewhere in data documentation.\nNot always the case."
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#leaflet",
+    "href": "slides/Day15-PointMapping.html#leaflet",
+    "title": "Point Mapping",
+    "section": "Leaflet",
+    "text": "Leaflet\n\nStart by calling leaflet() function, setting the original view, and adding basemap tiles\nNote that you need to look up the coordinates of the geography you wish to center in on.\n\n\n\n\nlibrary(leaflet)\nleaflet() |>\n  setView(lat = 40.7, lng = -100.0, zoom = 3) |> \n  addProviderTiles(\"OpenStreetMap\")"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#transforming-crs",
+    "href": "slides/Day15-PointMapping.html#transforming-crs",
+    "title": "Point Mapping",
+    "section": "Transforming CRS",
+    "text": "Transforming CRS\n\nWhy didn’t points appear?\nLeaflet assumes that coordinates will be in CRS:4326 (WGS84)\nWe can use st_transform() to convert points to a different CRS.\n\n\nBeforeAfter\n\n\n\nnyc_311_xy |>\n  st_as_sf(coords = c(\"x_coordinate_state_plane\", \"y_coordinate_state_plane\"), crs = 2263) |>\n  head(4)\n\n\n\n  \n\n\n\n\n\n\nnyc_311_xy |>\n  st_as_sf(coords = c(\"x_coordinate_state_plane\", \"y_coordinate_state_plane\"), crs = 2263) |>\n  st_transform(crs = 4326) |>\n  head(4)"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#leaflet-cont.",
+    "href": "slides/Day15-PointMapping.html#leaflet-cont.",
+    "title": "Point Mapping",
+    "section": "Leaflet, cont.",
+    "text": "Leaflet, cont.\n\nnyc_311_xy <- nyc_311_xy |>\n  st_transform(4326)\n\nleaflet() |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addCircleMarkers(data = nyc_311_xy)"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#leaflet-cont.-1",
+    "href": "slides/Day15-PointMapping.html#leaflet-cont.-1",
+    "title": "Point Mapping",
+    "section": "Leaflet, cont.",
+    "text": "Leaflet, cont.\n\nnyc_311_xy <- nyc_311_xy |>\n  st_transform(4326)\n\nleaflet() |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addCircleMarkers(data = nyc_311_xy)"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#layers",
+    "href": "slides/Day15-PointMapping.html#layers",
+    "title": "Point Mapping",
+    "section": "Layers",
+    "text": "Layers\n\nNYC Rodent and Litter Complaints on April 4, 2022\n\n\nleaflet() |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addCircleMarkers(data = nyc_311_rodent,\n                   fillColor = \"red\",\n                   stroke = FALSE) |>\n  addCircleMarkers(data = nyc_311_litter,\n                   fillColor = \"blue\",\n                   stroke = FALSE)"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#adding-markers",
+    "href": "slides/Day15-PointMapping.html#adding-markers",
+    "title": "Point Mapping",
+    "section": "Adding Markers",
+    "text": "Adding Markers\n\naddCircleMarkers()\naddMarkers()\naddPolygons\n\n\nleaflet() |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addCircleMarkers(data = nyc_311_xy)"
+  },
+  {
+    "objectID": "slides/Day15-PointMapping.html#creating-palettes-for-points",
+    "href": "slides/Day15-PointMapping.html#creating-palettes-for-points",
+    "title": "Point Mapping",
+    "section": "Creating Palettes for Points",
+    "text": "Creating Palettes for Points\n\ncolorNumeric(): Maps numbers to colors in a specified palette\ncolorBin(): Maps numbers into equally-spaced intervals (e.g. 0-10, >10-20, etc.)\ncolorQuantile(): Maps numbers into equally-sized intervals (same number of observations in each grouping)\ncolorFactor(): Maps categories into a specified number of categorical buckets"
   }
 ]
