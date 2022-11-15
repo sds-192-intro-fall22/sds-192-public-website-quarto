@@ -1,0 +1,183 @@
+---
+title: 'Lab 9: Mapping with Leaflet'
+format:
+  html:
+    self-contained: true
+editor: source
+knitr:
+  opts_chunk:
+    message: false
+    warning: false
+---
+
+```{r}
+#| document: show
+library(tidyverse)
+library(leaflet)
+library(RColorBrewer)
+library(sf)
+
+worst_buildings <- read_csv("https://raw.githubusercontent.com/SDS-192-Intro/sds-192-labs/main/Day30-Leaflet/datasets/worst_buildings.csv")
+```
+
+```{r}
+#| document: show
+map1 <- leaflet(width = "100%") %>%
+  setView(lat = 0.00, lng = 0.00, zoom = 0) %>%
+  addProviderTiles(providers$Stamen.Toner)
+
+map1
+```
+
+###### Question
+
+::: question
+
+Adjust the code below to center the map on NYC. You'll need to look up the coordinates for NYC, keeping in mind that South and West coordinates will be negative. Adjust the `zoom` to keep the whole city in view (setting the zoom level between 1 and 16). When you are happy with the View, switch out the provider tiles to a base map that won't distract from the data points we will layer on top of this map. Keep in mind our discussions regarding *Visualization Aesthetics* here. 
+
+:::
+
+
+```{r}
+nyc_map <- leaflet(width = "100%") %>%
+  setView(lat = 0.00, lng = 0.00, zoom = 0) %>%
+  addProviderTiles(providers$Stamen.Toner)
+
+# Uncomment below to view the map!
+# nyc_map
+```
+
+###### Question
+
+::: question
+
+In the code block below, create a new `geometry` column with the given coordinates, using the function `st_as_sf()`. The column for longitude will go in the first coordinate position, and latitude will go in the second. Be sure to set the data's current CRS (4269) in that function. 
+Then transform the CRS to 4326 using `st_transform()`. 
+
+:::
+
+
+
+```{r}
+# Uncomment and fill in the blanks below. The column for longitude will go in the first coordinate position, and latitude will go in the second. 
+
+#worst_buildings <- worst_buildings %>%
+#  st_as_sf(coords = c("____", "____"), crs = ____) %>%
+#  st_transform(____)
+```
+
+###### Question
+
+::: question
+
+In the code block below, pipe `addCircleMarkers()` onto the basemap and list `data = worst_buildings` as an argument in that function. It should look like my map below. 
+
+:::
+
+
+
+```{r}
+# Uncomment and add the function
+
+#nyc_map %>%
+```
+
+###### Question
+
+::: question
+
+Map isn't so legible/beautiful at this point, right? Copy the map you just created into the code chunk below, and pipe the `addCircleMarkers()` function onto your code. Check out the help pages for the `addCircleMarkers()` function, and add some arguments to help with the map's legibility. At the very least, you should adjust the `radius`, `weight`, `color`, `fillColor`, and `fillOpacity`, and understand how each of these arguments will change the style of the map. For now you can set the `color` to "black" and the `fillColor` to "white". See if you can get your map to match mine below. 
+
+:::
+
+
+```{r}
+# Copy previous map here! 
+```
+
+###### Question
+
+::: question
+
+Create three palettes below (one using each function `colorNumeric()`, `colorBin()`, and `colorQuantile()`), setting the `palette` to "YlOrRd", and the domain to `worst_buildings$avg_violations_weighted`. For `colorBin()`, set the `bins` to 4, and for `colorQuantile()`, set `n` to 4.
+
+:::
+
+
+```{r}
+pal_num <- colorNumeric(palette="YlOrRd", 
+                        domain = worst_buildings$avg_violations_weighted)
+#Uncomment below to create the other two palettes.
+
+#pal_bin <- 
+
+#pal_quant <- 
+
+```
+
+###### Question
+
+::: question
+
+Copy and paste the last map you created into the code chunk below, three times. For each, we are going to adjust the `fillColor` by setting it to the variable from the dataset that we wish to color (`avg_violations_weighted`), colored by one of the palettes that we created. We can do this by setting the fill color argument equal to:
+
+-   `~pal_num(avg_violations_weighted)`: for coloring the points according the `pal_num()` palette we created on the `avg_violations_weighted` variable
+-   `~pal_bin(avg_violations_weighted)`: for coloring the points according the `pal_bin()` palette we created on the `avg_violations_weighted` variable
+-   `~pal_quant(avg_violations_weighted)`: for coloring the points according the `pal_quant` palette we created on the `avg_violations_weighted()` variable
+
+Your maps should look like mine below. 
+
+:::
+
+
+```{r}
+# Copy map first time here!
+
+# Copy map second time here!
+
+# Copy map third time here!
+```
+
+###### Question
+
+::: question
+
+In a comment below, explain the following: Why do the colors appear differently on each map? Which map best represents the distribution of values in `avg_violations_weighted`?
+
+:::
+
+
+
+```{r}
+# Add comment here. 
+```
+
+###### Question
+
+::: question
+
+Copy and paste the code from above that colors `avg_violations_weighted` in bins into the code chunk below. We are going to size each circle by the number of rental units in that property. Number of units is stored in the column `legalclassa` in our dataset, so we could size the circles by setting the radius to `~legalclassa`. However, this would lead to some massive circles on our map as certain buildings have hundreds of units, and the value we supply to radius will determine the pixels of the circle on our map. To deal with this, we are going to take the square root of the units in each property using the `sqrt()` function. Set the radius to `~sqrt(legalclassa)` below.
+:::
+
+
+```{r}
+# Copy map colored by bins here!
+```
+
+###### Question
+
+::: question
+
+As a final step, we are going to add labels and legends to the map. Copy and paste the code from the previous step into the code chunk below. Then do the following:
+
+1. Add the `label` argument to the `addCircleMarkers()` function, and set the value to the column in our dataset that indicates the landlord's full name: `~fullname`. Run the code and check what happens when we hover over the circles. 
+2. Add a pipe to the end of the `addCircleMarkers()` and then add the function `addLegend()`. Consult the help pages for the `addLegend()` function to determine how to add a legend for the meaning of the colors represented on the map. At the very least, you will need an argument for `data`, `pal`, and `values`.
+:::
+
+
+
+```{r}
+# Copy previous map here!
+  
+```
+
