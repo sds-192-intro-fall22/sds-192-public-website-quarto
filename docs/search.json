@@ -221,7 +221,7 @@
     "href": "schedule.html#november-18-2022",
     "title": "Schedule",
     "section": "November 18, 2022",
-    "text": "November 18, 2022\n\nPolygon Mapping in Leaflet\nMAPPING\n\nDue TodayFurther Resources\n\n\n Quiz 2 Recommended Deadline"
+    "text": "November 18, 2022\n\nPolygon Mapping in Leaflet\nMAPPING\n\nDue TodayFurther Resources\n\n\n Quiz 2 Recommended Deadline\n\n\n Day 16 Slides\n MP3 Template Your team name should be a string with your team members’ last names."
   },
   {
     "objectID": "schedule.html#november-21-2022",
@@ -2938,5 +2938,138 @@
     "title": "Lab 9: Mapping with Leaflet",
     "section": "",
     "text": "map1 <- leaflet(width = \"100%\") %>%\n  setView(lat = 0.00, lng = 0.00, zoom = 0) %>%\n  addProviderTiles(providers$Stamen.Toner)\n\nmap1\n\n\n\n\n\n\nQuestion\n\nAdjust the code below to center the map on NYC. You’ll need to look up the coordinates for NYC, keeping in mind that South and West coordinates will be negative. Adjust the zoom to keep the whole city in view (setting the zoom level between 1 and 16). When you are happy with the View, switch out the provider tiles to a base map that won’t distract from the data points we will layer on top of this map. Keep in mind our discussions regarding Visualization Aesthetics here.\n\n\nnyc_map <- leaflet(width = \"100%\") %>%\n  setView(lat = 0.00, lng = 0.00, zoom = 0) %>%\n  addProviderTiles(providers$Stamen.Toner)\n\n# Uncomment below to view the map!\n# nyc_map\n\n\n\nQuestion\n\nIn the code block below, create a new geometry column with the given coordinates, using the function st_as_sf(). The column for longitude will go in the first coordinate position, and latitude will go in the second. Be sure to set the data’s current CRS (4269) in that function. Then transform the CRS to 4326 using st_transform().\n\n\n# Uncomment and fill in the blanks below. The column for longitude will go in the first coordinate position, and latitude will go in the second. \n\n#worst_buildings <- worst_buildings %>%\n#  st_as_sf(coords = c(\"____\", \"____\"), crs = ____) %>%\n#  st_transform(____)\n\n\n\nQuestion\n\nIn the code block below, pipe addCircleMarkers() onto the basemap and list data = worst_buildings as an argument in that function. It should look like my map below.\n\n\n# Uncomment and add the function\n\n#nyc_map %>%\n\n\n\nQuestion\n\nMap isn’t so legible/beautiful at this point, right? Copy the map you just created into the code chunk below, and pipe the addCircleMarkers() function onto your code. Check out the help pages for the addCircleMarkers() function, and add some arguments to help with the map’s legibility. At the very least, you should adjust the radius, weight, color, fillColor, and fillOpacity, and understand how each of these arguments will change the style of the map. For now you can set the color to “black” and the fillColor to “white”. See if you can get your map to match mine below.\n\n\n# Copy previous map here! \n\n\n\nQuestion\n\nCreate three palettes below (one using each function colorNumeric(), colorBin(), and colorQuantile()), setting the palette to “YlOrRd”, and the domain to worst_buildings$avg_violations_weighted. For colorBin(), set the bins to 4, and for colorQuantile(), set n to 4.\n\n\npal_num <- colorNumeric(palette=\"YlOrRd\", \n                        domain = worst_buildings$avg_violations_weighted)\n#Uncomment below to create the other two palettes.\n\n#pal_bin <- \n\n#pal_quant <- \n\n\n\nQuestion\n\nCopy and paste the last map you created into the code chunk below, three times. For each, we are going to adjust the fillColor by setting it to the variable from the dataset that we wish to color (avg_violations_weighted), colored by one of the palettes that we created. We can do this by setting the fill color argument equal to:\n\n~pal_num(avg_violations_weighted): for coloring the points according the pal_num() palette we created on the avg_violations_weighted variable\n~pal_bin(avg_violations_weighted): for coloring the points according the pal_bin() palette we created on the avg_violations_weighted variable\n~pal_quant(avg_violations_weighted): for coloring the points according the pal_quant palette we created on the avg_violations_weighted() variable\n\nYour maps should look like mine below.\n\n\n# Copy map first time here!\n\n# Copy map second time here!\n\n# Copy map third time here!\n\n\n\nQuestion\n\nIn a comment below, explain the following: Why do the colors appear differently on each map? Which map best represents the distribution of values in avg_violations_weighted?\n\n\n# Add comment here. \n\n\n\nQuestion\n\nCopy and paste the code from above that colors avg_violations_weighted in bins into the code chunk below. We are going to size each circle by the number of rental units in that property. Number of units is stored in the column legalclassa in our dataset, so we could size the circles by setting the radius to ~legalclassa. However, this would lead to some massive circles on our map as certain buildings have hundreds of units, and the value we supply to radius will determine the pixels of the circle on our map. To deal with this, we are going to take the square root of the units in each property using the sqrt() function. Set the radius to ~sqrt(legalclassa) below.\n\n\n# Copy map colored by bins here!\n\n\n\nQuestion\n\nAs a final step, we are going to add labels and legends to the map. Copy and paste the code from the previous step into the code chunk below. Then do the following:\n\nAdd the label argument to the addCircleMarkers() function, and set the value to the column in our dataset that indicates the landlord’s full name: ~fullname. Run the code and check what happens when we hover over the circles.\nAdd a pipe to the end of the addCircleMarkers() and then add the function addLegend(). Consult the help pages for the addLegend() function to determine how to add a legend for the meaning of the colors represented on the map. At the very least, you will need an argument for data, pal, and values.\n\n\n\n# Copy previous map here!"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#for-today",
+    "href": "slides/Day16-PolygonMapping.html#for-today",
+    "title": "Polygon Mapping",
+    "section": "For Today",
+    "text": "For Today\n\nQuiz 2 Posted!\nProject 3 Template Posted!\nReview: Projections and Coordinate Reference Systems\nMapping Geographic Boundaries\nImporting and Mapping Shapefiles\nChloropleth Maps"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#mapping-polygons",
+    "href": "slides/Day16-PolygonMapping.html#mapping-polygons",
+    "title": "Polygon Mapping",
+    "section": "Mapping Polygons",
+    "text": "Mapping Polygons\n\nNot all cartographic data is encoded as a latitude and longitude! Some cartographic data is encoded as regularly or irregularly shaped polygons\nCan demarcate:\n\nAdministrative boundaries (e.g. census tracts, zip codes, states),\nFeature boundaries (e.g. buildings, bodies of water, etc.)\nBuffers (e.g. areas at a specified distance from a point source)"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#administrative-boundaries-us-census",
+    "href": "slides/Day16-PolygonMapping.html#administrative-boundaries-us-census",
+    "title": "Polygon Mapping",
+    "section": "Administrative Boundaries: US Census",
+    "text": "Administrative Boundaries: US Census"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#administrative-boundaries-us-census-1",
+    "href": "slides/Day16-PolygonMapping.html#administrative-boundaries-us-census-1",
+    "title": "Polygon Mapping",
+    "section": "Administrative Boundaries: US Census",
+    "text": "Administrative Boundaries: US Census"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#administrative-boundaries-us-census-2",
+    "href": "slides/Day16-PolygonMapping.html#administrative-boundaries-us-census-2",
+    "title": "Polygon Mapping",
+    "section": "Administrative Boundaries: US Census",
+    "text": "Administrative Boundaries: US Census"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#administrative-boundary-soup",
+    "href": "slides/Day16-PolygonMapping.html#administrative-boundary-soup",
+    "title": "Polygon Mapping",
+    "section": "Administrative Boundary Soup",
+    "text": "Administrative Boundary Soup\n\nNYC Boundaries Map"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#feature-boundaries",
+    "href": "slides/Day16-PolygonMapping.html#feature-boundaries",
+    "title": "Polygon Mapping",
+    "section": "Feature Boundaries",
+    "text": "Feature Boundaries"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#feature-boundaries-1",
+    "href": "slides/Day16-PolygonMapping.html#feature-boundaries-1",
+    "title": "Polygon Mapping",
+    "section": "Feature Boundaries",
+    "text": "Feature Boundaries"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#shapefiles",
+    "href": "slides/Day16-PolygonMapping.html#shapefiles",
+    "title": "Polygon Mapping",
+    "section": "Shapefiles",
+    "text": "Shapefiles\n\nFile for storing geospatial feature data\nActually a series of files (.shp, .shx, and .dbf) that must all be present in the directory for the shapefile to import.\nImported file ends in .shp and contains feature geometry"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#importing-shapefiles",
+    "href": "slides/Day16-PolygonMapping.html#importing-shapefiles",
+    "title": "Polygon Mapping",
+    "section": "Importing Shapefiles",
+    "text": "Importing Shapefiles\n\nFunction st_read() from sf package used to read in shapefiles\n\n\n\n\n\n\nlibrary(sf)\nnyc_cd <- st_read(\"../data/nyc_community_districts/nycd.shp\")\n\nReading layer `nycd' from data source \n  `/Users/lpoirier_1/Documents/GitHub/sds-192-public-website-quarto/website/data/nyc_community_districts/nycd.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 71 features and 3 fields\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: 913175.1 ymin: 120128.4 xmax: 1067383 ymax: 272844.3\nProjected CRS: NAD83 / New York Long Island (ftUS)"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#importing-shapefiles-1",
+    "href": "slides/Day16-PolygonMapping.html#importing-shapefiles-1",
+    "title": "Polygon Mapping",
+    "section": "Importing Shapefiles",
+    "text": "Importing Shapefiles\n\nnyc_cd |> head(4)"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#mapping-polygons-with-leaflet",
+    "href": "slides/Day16-PolygonMapping.html#mapping-polygons-with-leaflet",
+    "title": "Polygon Mapping",
+    "section": "Mapping Polygons with Leaflet",
+    "text": "Mapping Polygons with Leaflet\n\nCodeOutput\n\n\n\nlibrary(leaflet)\nnyc_cd <- nyc_cd |>\n  st_transform(4326)\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd)"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#chloropleth-maps",
+    "href": "slides/Day16-PolygonMapping.html#chloropleth-maps",
+    "title": "Polygon Mapping",
+    "section": "Chloropleth Maps",
+    "text": "Chloropleth Maps\n\nPresents a numeric variable aggregated by a geospatial unit\nRepresents the value of the aggregated numeric variable via intensity of color\n\nValues presented via a sequential or diverging palette"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#mapping-population-how-to-join",
+    "href": "slides/Day16-PolygonMapping.html#mapping-population-how-to-join",
+    "title": "Polygon Mapping",
+    "section": "Mapping Population: How to Join?",
+    "text": "Mapping Population: How to Join?\n\nPop DataCD Data\n\n\n\nlibrary(tidyverse)\ncd_pop <- read_csv(\"https://data.cityofnewyork.us/resource/xi7c-iiu2.csv?$select=borough,cd_number,_2010_population%20as%20population_2010\")\n\ncd_pop |> \n  select(borough,cd_number) |> \n  head(5)\n\n\n\n  \n\n\n\n\n\n\nnyc_cd |> \n  select(BoroCD) |> \n  head(5)"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#cleaning-geographic-id-fields",
+    "href": "slides/Day16-PolygonMapping.html#cleaning-geographic-id-fields",
+    "title": "Polygon Mapping",
+    "section": "Cleaning Geographic ID Fields",
+    "text": "Cleaning Geographic ID Fields\n\ncd_pop <- cd_pop |>\n  mutate(borough_num = case_when( \n    borough == \"Manhattan\" ~ 1,\n    borough == \"Bronx\" ~ 2,\n    borough == \"Brooklyn\" ~ 3,\n    borough == \"Queens\" ~ 4,\n    borough == \"Staten Island\" ~ 5)) |>\n  mutate(cd = str_pad(cd_number, 2, side=\"left\", \"0\")) |>\n  mutate(BoroCD = paste0(borough_num, cd) |> as.numeric())\n\nnyc_cd <- \n  nyc_cd |>\n  left_join(cd_pop, by = c(\"BoroCD\" = \"BoroCD\"))"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#nyc-commmunity-district-chloropleth",
+    "href": "slides/Day16-PolygonMapping.html#nyc-commmunity-district-chloropleth",
+    "title": "Polygon Mapping",
+    "section": "NYC Commmunity District Chloropleth",
+    "text": "NYC Commmunity District Chloropleth\n\nCodeOutput\n\n\n\nlibrary(RColorBrewer)\npal_num <- colorNumeric(palette = \"YlOrRd\", \n                        domain = nyc_cd$population_2010)\n\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd,\n              fillColor = ~pal_num(population_2010), \n              stroke = FALSE,\n              fillOpacity = 0.5)"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#nyc-commmunity-district-chloropleth-numeric",
+    "href": "slides/Day16-PolygonMapping.html#nyc-commmunity-district-chloropleth-numeric",
+    "title": "Polygon Mapping",
+    "section": "NYC Commmunity District Chloropleth: Numeric",
+    "text": "NYC Commmunity District Chloropleth: Numeric\n\nCodeOutput\n\n\n\nlibrary(RColorBrewer)\npal_num <- colorNumeric(palette = \"YlOrRd\", \n                        domain = nyc_cd$population_2010)\n\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd,\n              fillColor = ~pal_num(population_2010), \n              stroke = FALSE,\n              fillOpacity = 0.5) |>\n  addLegend(data = nyc_cd, \n            values = ~population_2010,\n            pal = pal_num,\n            title = \"Population\")"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#nyc-commmunity-district-chloropleth-bin",
+    "href": "slides/Day16-PolygonMapping.html#nyc-commmunity-district-chloropleth-bin",
+    "title": "Polygon Mapping",
+    "section": "NYC Commmunity District Chloropleth: Bin",
+    "text": "NYC Commmunity District Chloropleth: Bin\n\nCodeOutput\n\n\n\nlibrary(RColorBrewer)\npal_bin <- colorBin(palette = \"YlOrRd\", \n                        domain = nyc_cd$population_2010, n = 4)\n\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd,\n              fillColor = ~pal_bin(population_2010), \n              stroke = FALSE,\n              fillOpacity = 0.5) |>\n  addLegend(data = nyc_cd, \n            values = ~population_2010,\n            pal = pal_bin,\n            title = \"Population\")"
+  },
+  {
+    "objectID": "slides/Day16-PolygonMapping.html#nyc-commmunity-district-chloropleth-quantile",
+    "href": "slides/Day16-PolygonMapping.html#nyc-commmunity-district-chloropleth-quantile",
+    "title": "Polygon Mapping",
+    "section": "NYC Commmunity District Chloropleth: Quantile",
+    "text": "NYC Commmunity District Chloropleth: Quantile\n\nCodeOutput\n\n\n\nlibrary(RColorBrewer)\npal_quant <- colorQuantile(palette = \"YlOrRd\", \n                        domain = nyc_cd$population_2010, n = 4)\n\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd,\n              fillColor = ~pal_quant(population_2010), \n              stroke = FALSE,\n              fillOpacity = 0.5) |>\n  addLegend(data = nyc_cd, \n            values = ~population_2010,\n            pal = pal_quant,\n            title = \"Population\")"
   }
 ]
