@@ -144,9 +144,11 @@ nyc_cd |> head(4)
 
 ::: panel-tabset
 
-### Code
 
-```{r eval=FALSE}
+
+### Output
+
+```{r echo=FALSE}
 library(leaflet)
 nyc_cd <- nyc_cd |>
   st_transform(4326)
@@ -156,9 +158,9 @@ leaflet(width = "100%") |>
   addPolygons(data = nyc_cd)
 ```
 
-### Output
+### Code
 
-```{r echo=FALSE}
+```{r eval=FALSE}
 library(leaflet)
 nyc_cd <- nyc_cd |>
   st_transform(4326)
@@ -232,26 +234,6 @@ nyc_cd <-
 
 ::: panel-tabset
 
-### Code
-
-```{r eval=FALSE}
-library(RColorBrewer)
-pal_num <- colorNumeric(palette = "YlOrRd", 
-                        domain = nyc_cd$population_2010)
-
-leaflet(width = "100%") |>
-  setView(lat = 40.7, lng = -74.0, zoom = 10) |> 
-  addProviderTiles("CartoDB.Positron") |>
-  addPolygons(data = nyc_cd,
-              fillColor = ~pal_num(population_2010), 
-              stroke = FALSE,
-              fillOpacity = 0.5) |>
-  addLegend(data = nyc_cd, 
-            values = ~population_2010,
-            pal = pal_num,
-            title = "Population")
-```
-
 ### Output
 
 ```{r echo=FALSE}
@@ -272,6 +254,28 @@ leaflet(width = "100%") |>
             title = "Population")
 ```
 
+### Code
+
+```{r eval=FALSE}
+library(RColorBrewer)
+pal_num <- colorNumeric(palette = "YlOrRd", 
+                        domain = nyc_cd$population_2010)
+
+leaflet(width = "100%") |>
+  setView(lat = 40.7, lng = -74.0, zoom = 10) |> 
+  addProviderTiles("CartoDB.Positron") |>
+  addPolygons(data = nyc_cd,
+              fillColor = ~pal_num(population_2010), 
+              stroke = FALSE,
+              fillOpacity = 0.5) |>
+  addLegend(data = nyc_cd, 
+            values = ~population_2010,
+            pal = pal_num,
+            title = "Population")
+```
+
+
+
 :::
 
 
@@ -280,26 +284,6 @@ leaflet(width = "100%") |>
 ## NYC Commmunity District Chloropleth: Bin
 
 ::: panel-tabset
-
-### Code
-
-```{r eval=FALSE}
-library(RColorBrewer)
-pal_bin <- colorBin(palette = "YlOrRd", 
-                        domain = nyc_cd$population_2010, n = 4)
-
-leaflet(width = "100%") |>
-  setView(lat = 40.7, lng = -74.0, zoom = 10) |> 
-  addProviderTiles("CartoDB.Positron") |>
-  addPolygons(data = nyc_cd,
-              fillColor = ~pal_bin(population_2010), 
-              stroke = FALSE,
-              fillOpacity = 0.5) |>
-  addLegend(data = nyc_cd, 
-            values = ~population_2010,
-            pal = pal_bin,
-            title = "Population")
-```
 
 ### Output
 
@@ -321,6 +305,28 @@ leaflet(width = "100%") |>
             title = "Population")
 ```
 
+### Code
+
+```{r eval=FALSE}
+library(RColorBrewer)
+pal_bin <- colorBin(palette = "YlOrRd", 
+                        domain = nyc_cd$population_2010, n = 4)
+
+leaflet(width = "100%") |>
+  setView(lat = 40.7, lng = -74.0, zoom = 10) |> 
+  addProviderTiles("CartoDB.Positron") |>
+  addPolygons(data = nyc_cd,
+              fillColor = ~pal_bin(population_2010), 
+              stroke = FALSE,
+              fillOpacity = 0.5) |>
+  addLegend(data = nyc_cd, 
+            values = ~population_2010,
+            pal = pal_bin,
+            title = "Population")
+```
+
+
+
 :::
 
 ------------------------------------------------------------------------
@@ -328,6 +334,26 @@ leaflet(width = "100%") |>
 ## NYC Commmunity District Chloropleth: Quantile
 
 ::: panel-tabset
+
+### Output
+
+```{r echo=FALSE}
+library(RColorBrewer)
+pal_quant <- colorQuantile(palette = "YlOrRd", 
+                        domain = nyc_cd$population_2010, n = 4)
+
+leaflet(width = "100%") |>
+  setView(lat = 40.7, lng = -74.0, zoom = 10) |> 
+  addProviderTiles("CartoDB.Positron") |>
+  addPolygons(data = nyc_cd,
+              fillColor = ~pal_quant(population_2010), 
+              stroke = FALSE,
+              fillOpacity = 0.5) |>
+  addLegend(data = nyc_cd, 
+            values = ~population_2010,
+            pal = pal_quant,
+            title = "Population")
+```
 
 ### Code
 
@@ -349,24 +375,6 @@ leaflet(width = "100%") |>
             title = "Population")
 ```
 
-### Output
 
-```{r echo=FALSE}
-library(RColorBrewer)
-pal_quant <- colorQuantile(palette = "YlOrRd", 
-                        domain = nyc_cd$population_2010, n = 4)
-
-leaflet(width = "100%") |>
-  setView(lat = 40.7, lng = -74.0, zoom = 10) |> 
-  addProviderTiles("CartoDB.Positron") |>
-  addPolygons(data = nyc_cd,
-              fillColor = ~pal_quant(population_2010), 
-              stroke = FALSE,
-              fillOpacity = 0.5) |>
-  addLegend(data = nyc_cd, 
-            values = ~population_2010,
-            pal = pal_quant,
-            title = "Population")
-```
 
 :::

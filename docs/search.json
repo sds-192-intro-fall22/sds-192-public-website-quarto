@@ -3021,7 +3021,7 @@
     "href": "slides/Day16-PolygonMapping.html#mapping-polygons-with-leaflet",
     "title": "Polygon Mapping",
     "section": "Mapping Polygons with Leaflet",
-    "text": "Mapping Polygons with Leaflet\n\nCodeOutput\n\n\n\nlibrary(leaflet)\nnyc_cd <- nyc_cd |>\n  st_transform(4326)\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd)"
+    "text": "Mapping Polygons with Leaflet\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\nlibrary(leaflet)\nnyc_cd <- nyc_cd |>\n  st_transform(4326)\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd)"
   },
   {
     "objectID": "slides/Day16-PolygonMapping.html#chloropleth-maps",
@@ -3056,20 +3056,20 @@
     "href": "slides/Day16-PolygonMapping.html#nyc-commmunity-district-chloropleth-numeric",
     "title": "Polygon Mapping",
     "section": "NYC Commmunity District Chloropleth: Numeric",
-    "text": "NYC Commmunity District Chloropleth: Numeric\n\nCodeOutput\n\n\n\nlibrary(RColorBrewer)\npal_num <- colorNumeric(palette = \"YlOrRd\", \n                        domain = nyc_cd$population_2010)\n\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd,\n              fillColor = ~pal_num(population_2010), \n              stroke = FALSE,\n              fillOpacity = 0.5) |>\n  addLegend(data = nyc_cd, \n            values = ~population_2010,\n            pal = pal_num,\n            title = \"Population\")"
+    "text": "NYC Commmunity District Chloropleth: Numeric\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\nlibrary(RColorBrewer)\npal_num <- colorNumeric(palette = \"YlOrRd\", \n                        domain = nyc_cd$population_2010)\n\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd,\n              fillColor = ~pal_num(population_2010), \n              stroke = FALSE,\n              fillOpacity = 0.5) |>\n  addLegend(data = nyc_cd, \n            values = ~population_2010,\n            pal = pal_num,\n            title = \"Population\")"
   },
   {
     "objectID": "slides/Day16-PolygonMapping.html#nyc-commmunity-district-chloropleth-bin",
     "href": "slides/Day16-PolygonMapping.html#nyc-commmunity-district-chloropleth-bin",
     "title": "Polygon Mapping",
     "section": "NYC Commmunity District Chloropleth: Bin",
-    "text": "NYC Commmunity District Chloropleth: Bin\n\nCodeOutput\n\n\n\nlibrary(RColorBrewer)\npal_bin <- colorBin(palette = \"YlOrRd\", \n                        domain = nyc_cd$population_2010, n = 4)\n\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd,\n              fillColor = ~pal_bin(population_2010), \n              stroke = FALSE,\n              fillOpacity = 0.5) |>\n  addLegend(data = nyc_cd, \n            values = ~population_2010,\n            pal = pal_bin,\n            title = \"Population\")"
+    "text": "NYC Commmunity District Chloropleth: Bin\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\nlibrary(RColorBrewer)\npal_bin <- colorBin(palette = \"YlOrRd\", \n                        domain = nyc_cd$population_2010, n = 4)\n\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd,\n              fillColor = ~pal_bin(population_2010), \n              stroke = FALSE,\n              fillOpacity = 0.5) |>\n  addLegend(data = nyc_cd, \n            values = ~population_2010,\n            pal = pal_bin,\n            title = \"Population\")"
   },
   {
     "objectID": "slides/Day16-PolygonMapping.html#nyc-commmunity-district-chloropleth-quantile",
     "href": "slides/Day16-PolygonMapping.html#nyc-commmunity-district-chloropleth-quantile",
     "title": "Polygon Mapping",
     "section": "NYC Commmunity District Chloropleth: Quantile",
-    "text": "NYC Commmunity District Chloropleth: Quantile\n\nCodeOutput\n\n\n\nlibrary(RColorBrewer)\npal_quant <- colorQuantile(palette = \"YlOrRd\", \n                        domain = nyc_cd$population_2010, n = 4)\n\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd,\n              fillColor = ~pal_quant(population_2010), \n              stroke = FALSE,\n              fillOpacity = 0.5) |>\n  addLegend(data = nyc_cd, \n            values = ~population_2010,\n            pal = pal_quant,\n            title = \"Population\")"
+    "text": "NYC Commmunity District Chloropleth: Quantile\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\nlibrary(RColorBrewer)\npal_quant <- colorQuantile(palette = \"YlOrRd\", \n                        domain = nyc_cd$population_2010, n = 4)\n\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd,\n              fillColor = ~pal_quant(population_2010), \n              stroke = FALSE,\n              fillOpacity = 0.5) |>\n  addLegend(data = nyc_cd, \n            values = ~population_2010,\n            pal = pal_quant,\n            title = \"Population\")"
   }
 ]
