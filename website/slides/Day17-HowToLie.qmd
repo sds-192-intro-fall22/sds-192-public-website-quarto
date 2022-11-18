@@ -122,19 +122,18 @@ library(tidyverse)
 library(leaflet)
 pal_numeric <- colorNumeric(palette = "YlOrRd",
                           domain = census_poverty_county$estimate)
-leaflet("width=90%, height=70%") %>%
+leaflet() %>%
   setView(lat = 42.4, lng = -71.4, zoom = 6) %>%
   addProviderTiles("CartoDB.Positron") %>%
+  addLegend(title = "Income below Poverty Level <br/>in Last 12 Months, 2020", 
+              data = census_poverty_county,
+              pal = pal_numeric, 
+              values = ~estimate) %>%
   addPolygons(
     data = census_poverty_county,
     fillColor = ~pal_numeric(estimate),
     fillOpacity = 0.7,
-    stroke = 0) %>%
-    addLegend(title = "Income below Poverty Level <br/>in Last 12 Months, 2020", 
-              data = census_poverty_county,
-              pal = pal_numeric, 
-              values = ~estimate, 
-              position = "topright")
+    stroke = 0)
 ```
 
 
@@ -148,7 +147,7 @@ census_poverty_county <-
   mutate(percent_pov = estimate/summary_est)
 pal_numeric <- colorNumeric(palette = "YlOrRd",
                           domain = census_poverty_county$percent_pov)
-leaflet("width=90%, height=70%") %>%
+leaflet() %>%
   setView(lat = 42.4, lng = -71.4, zoom = 6) %>%
   addProviderTiles("CartoDB.Positron") %>%
   addPolygons(
@@ -159,8 +158,7 @@ leaflet("width=90%, height=70%") %>%
     addLegend(title = "% Pop Income below Poverty Level <br/>in Last 12 Months, 2020", 
               data = census_poverty_county,
               pal = pal_numeric, 
-              values = ~percent_pov, 
-              position = "topright")
+              values = ~percent_pov)
 ```
 
 :::
