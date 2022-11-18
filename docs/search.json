@@ -3071,5 +3071,82 @@
     "title": "Polygon Mapping",
     "section": "NYC Commmunity District Chloropleth: Quantile",
     "text": "NYC Commmunity District Chloropleth: Quantile\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\nlibrary(RColorBrewer)\npal_quant <- colorQuantile(palette = \"YlOrRd\", \n                        domain = nyc_cd$population_2010, n = 4)\n\nleaflet(width = \"100%\") |>\n  setView(lat = 40.7, lng = -74.0, zoom = 10) |> \n  addProviderTiles(\"CartoDB.Positron\") |>\n  addPolygons(data = nyc_cd,\n              fillColor = ~pal_quant(population_2010), \n              stroke = FALSE,\n              fillOpacity = 0.5) |>\n  addLegend(data = nyc_cd, \n            values = ~population_2010,\n            pal = pal_quant,\n            title = \"Population\")"
+  },
+  {
+    "objectID": "slides/Day17-HowToLie.html#for-today",
+    "href": "slides/Day17-HowToLie.html#for-today",
+    "title": "How to Lie with Maps",
+    "section": "For Today",
+    "text": "For Today\n\nQuiz 2 Posted!\nProject 3 Template Posted!\nStrategies for Lying with Maps"
+  },
+  {
+    "objectID": "slides/Day17-HowToLie.html#all-maps-lie",
+    "href": "slides/Day17-HowToLie.html#all-maps-lie",
+    "title": "How to Lie with Maps",
+    "section": "All maps lie!",
+    "text": "All maps lie!"
+  },
+  {
+    "objectID": "slides/Day17-HowToLie.html#acknowledgements",
+    "href": "slides/Day17-HowToLie.html#acknowledgements",
+    "title": "How to Lie with Maps",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nToday’s lecture is almost entirely structured based on:\nDeluca, Eric, and Sara Nelson. 2017. “7. Lying With Maps.” In Mapping, Society, and Technology, edited by Steven Manson. Minneapolis, Minnesota: University of Minnesota Libraries Publishing. https://open.lib.umn.edu/mapping/chapter/7-lying-with-maps/."
+  },
+  {
+    "objectID": "slides/Day17-HowToLie.html#projections",
+    "href": "slides/Day17-HowToLie.html#projections",
+    "title": "How to Lie with Maps",
+    "section": "Projections",
+    "text": "Projections"
+  },
+  {
+    "objectID": "slides/Day17-HowToLie.html#symbolization",
+    "href": "slides/Day17-HowToLie.html#symbolization",
+    "title": "How to Lie with Maps",
+    "section": "Symbolization",
+    "text": "Symbolization"
+  },
+  {
+    "objectID": "slides/Day17-HowToLie.html#cartograms",
+    "href": "slides/Day17-HowToLie.html#cartograms",
+    "title": "How to Lie with Maps",
+    "section": "Cartograms",
+    "text": "Cartograms\n\n\nBenjamin Hennig, https://www.viewsoftheworld.net/"
+  },
+  {
+    "objectID": "slides/Day17-HowToLie.html#standardization",
+    "href": "slides/Day17-HowToLie.html#standardization",
+    "title": "How to Lie with Maps",
+    "section": "Standardization",
+    "text": "Standardization"
+  },
+  {
+    "objectID": "slides/Day17-HowToLie.html#classification",
+    "href": "slides/Day17-HowToLie.html#classification",
+    "title": "How to Lie with Maps",
+    "section": "Classification",
+    "text": "Classification\nClassification\n\n\nBinning creates equal interval breaks, and classifies the data into the intervals.\n\n\n\n\n\n\n\nQuantiles creates breaks so that there are the same number of observations classified into each bin."
+  },
+  {
+    "objectID": "slides/Day17-HowToLie.html#aggregation",
+    "href": "slides/Day17-HowToLie.html#aggregation",
+    "title": "How to Lie with Maps",
+    "section": "Aggregation",
+    "text": "Aggregation\n\nEcological fallacy: Assuming that a value calculated for a group is equivalent to the values for individual members of the group"
+  },
+  {
+    "objectID": "slides/Day17-HowToLie.html#zonation",
+    "href": "slides/Day17-HowToLie.html#zonation",
+    "title": "How to Lie with Maps",
+    "section": "Zonation",
+    "text": "Zonation\n\n\n\nModifiable Aerial Unit Problem\nThe boundaries we aggregate data into are often arbitrary (i.e. not meaningful for the analysis)\n\nIf I’m studying air quality effects of a facility on surrounding populations, air pollution doesn’t stop at a zip code even if I aggregate my data by zip code.\n\nDrawing boundaries in a different way would produce different results."
+  },
+  {
+    "objectID": "slides/Day17-HowToLie.html#gerrymandering",
+    "href": "slides/Day17-HowToLie.html#gerrymandering",
+    "title": "How to Lie with Maps",
+    "section": "Gerrymandering",
+    "text": "Gerrymandering"
   }
 ]
