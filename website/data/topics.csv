@@ -34,7 +34,7 @@ topic_id,topic_abbr,topic,date,standard_id,required_reading,req_chapter,optional
 33,chloropleth,How to Lie with Maps,11/21/22,10,baumerModernDataScience2021,17. Working with geospatial data  (17.4-17.8),,,Watch Lab 8 Recap in Perusall,Group Contract Due,[Day 17 Slides: How to Lie with Maps](slides/Day17-HowToLie.html),,
 34,no_class2,No Class,11/23/22,,,,,,,,,,
 35,no_class3,No Class,11/25/22,,,,,,,,,,
-36,apis,Working with APIs,11/28/22,2,,,,,Quiz 2 Due; [Lab 9](labs/lab9.html) Due,,,,
+36,apis,Working with APIs,11/28/22,2,,,,,Quiz 2 Due; [Lab 9](labs/lab9.html) Due,,[Day 18 Slides: APIs](slides/Day18-APIs.html),[SoQL Documentation](https://dev.socrata.com/docs/queries/),
 37,apis_adv,Advanced APIs,11/30/22,2,,,,,,,,,
 38,api_lab,Lab: Working with APIs,12/2/22,2,,,,,Quiz 3 Recommended Deadline; Watch Lab 9 Recap in Perusall,,,,
 39,TBD,tbd1,12/5/22,,delucaLyingMaps2017,,,,,,,,

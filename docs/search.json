@@ -249,7 +249,7 @@
     "href": "schedule.html#november-28-2022",
     "title": "Schedule",
     "section": "November 28, 2022",
-    "text": "November 28, 2022\n\nWorking with APIs\nDATA RETRIEVAL\n\nDue TodayFurther Resources\n\n\n Quiz 2 Due\n Lab 9 Due"
+    "text": "November 28, 2022\n\nWorking with APIs\nDATA RETRIEVAL\n\nDue TodayFurther Resources\n\n\n Quiz 2 Due\n Lab 9 Due\n\n\n Day 18 Slides: APIs\n SoQL Documentation"
   },
   {
     "objectID": "schedule.html#november-30-2022",
@@ -3148,5 +3148,152 @@
     "title": "How to Lie with Maps",
     "section": "Gerrymandering",
     "text": "Gerrymandering"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#for-today",
+    "href": "slides/Day18-APIs.html#for-today",
+    "title": "APIs",
+    "section": "For Today",
+    "text": "For Today\n\nQuiz 2 Due Today at 5PM!\nHTTP and Web Protocols\nWriting API Queries\nSQL"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#api-application-programming-interface",
+    "href": "slides/Day18-APIs.html#api-application-programming-interface",
+    "title": "APIs",
+    "section": "API (Application Programming Interface)",
+    "text": "API (Application Programming Interface)\n\nAllows programmers or other systems (or users) to communicate with an online data service\nClients (other programmers) expose part of the data service they’ve used to construct their databases\n\nThis is called an endpoint\nClients also publish documentation about how to communicate with the endpoint\n\nUsers build URLs or HTTP services to request computer-readable data from the endpoint"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#http-and-get-requests",
+    "href": "slides/Day18-APIs.html#http-and-get-requests",
+    "title": "APIs",
+    "section": "HTTP and GET Requests",
+    "text": "HTTP and GET Requests\n\nHypertext Transfer Protocol (HTTP) is what enables communication between servers hosting web pages and browsers\nGET requests enable us to access a resource from a server (only receives data; doesn’t change it on the server)\nEntering https://smith.edu into a browser issues a GET request to access the home page of the Smith website"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#api-calls",
+    "href": "slides/Day18-APIs.html#api-calls",
+    "title": "APIs",
+    "section": "API Calls",
+    "text": "API Calls\n\n\n\nSends an HTTP request URI for a certain resource to a server\n\nURI includes parameters about what data we wish receive and in what format (e.g. all colleges in MA in the format CSV)\n\nServers send that information back via HTTP via response\n\n\n\n\nFigure: REST API - Author: Seobility - License: CC BY-SA 4.0]"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#api-keys",
+    "href": "slides/Day18-APIs.html#api-keys",
+    "title": "APIs",
+    "section": "API Keys",
+    "text": "API Keys\n\nMany services require you to request and reference an API key before accessing data from their API\nAllows systems to track abuse of the service and sometimes limit requests\nUsually free\nAPI key gets included in call"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#motivating-example-nyc-311-service-requests",
+    "href": "slides/Day18-APIs.html#motivating-example-nyc-311-service-requests",
+    "title": "APIs",
+    "section": "Motivating Example: NYC 311 Service Requests",
+    "text": "Motivating Example: NYC 311 Service Requests"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#constructing-a-query",
+    "href": "slides/Day18-APIs.html#constructing-a-query",
+    "title": "APIs",
+    "section": "Constructing a Query",
+    "text": "Constructing a Query\nBase URL is the API Endpoint:https://data.cityofnewyork.us/resource/erm2-nwe9.csv"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#basic-filtering",
+    "href": "slides/Day18-APIs.html#basic-filtering",
+    "title": "APIs",
+    "section": "Basic Filtering",
+    "text": "Basic Filtering\nhttps://data.cityofnewyork.us/resource/erm2-nwe9.csv\n\nFilters appended after a ?\nMultiple filters combined with &\n$limit= limits the number of rows downloaded to a certain number\n\nhttps://data.cityofnewyork.us/resource/erm2-nwe9.csv?unique_key=10693408\nhttps://data.cityofnewyork.us/resource/erm2-nwe9.json?complaint_type=Obstruction&$limit=100"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#api-documentation",
+    "href": "slides/Day18-APIs.html#api-documentation",
+    "title": "APIs",
+    "section": "API Documentation",
+    "text": "API Documentation\n\nIndicates how to sign up for an API key\nIndicates possible output formats (e.g. CSV, JSON, XML, etc.)\nLists field names and descriptions\nProvides example API calls\nOutlines error messages and solutions\n\n\nhttps://dev.socrata.com/foundry/data.cityofnewyork.us/erm2-nwe9"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#spaces-and-special-characters",
+    "href": "slides/Day18-APIs.html#spaces-and-special-characters",
+    "title": "APIs",
+    "section": "Spaces and Special Characters",
+    "text": "Spaces and Special Characters\nInternet protocols don’t know how to interpret spaces or other special characters (i.e. non-ASCII), so we replace those characters with special codes that they do recognize:\n\n\n\nspace : %20\n!: %21\n\": %22\n\n\n\n%: %25\n': %27\n-: %2D\n\n\n\nThere are many resources online for identifying these."
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#example-request-with-special-characters",
+    "href": "slides/Day18-APIs.html#example-request-with-special-characters",
+    "title": "APIs",
+    "section": "Example Request with Special Characters",
+    "text": "Example Request with Special Characters\nhttps://data.cityofnewyork.us/resource/erm2-nwe9.csv?complaint_type=Noise%20%2D%20Commercial&$limit=200"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#reading-api-output-into-r",
+    "href": "slides/Day18-APIs.html#reading-api-output-into-r",
+    "title": "APIs",
+    "section": "Reading API Output into R",
+    "text": "Reading API Output into R\n\nWhen API data can be output as a CSV, the URL can be provided directly into read_csv()\n\n\nlibrary(readr)\nnyc_recent_noise <- read_csv(\"https://data.cityofnewyork.us/resource/erm2-nwe9.csv?complaint_type=Noise%20%2D%20Commercial&$limit=200\")\nhead(nyc_recent_noise)"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#what-is-a-relational-database",
+    "href": "slides/Day18-APIs.html#what-is-a-relational-database",
+    "title": "APIs",
+    "section": "What is a relational database?",
+    "text": "What is a relational database?\n\nSeries of tables (or rectangular datasets!)\nEvery table has an ID field for each unit of observation (row)\nIDs are referenced to map relations across related tables\nAccess data from individual tables or across multiple tables with Structured Query Language (SQL)"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#dplyr",
+    "href": "slides/Day18-APIs.html#dplyr",
+    "title": "APIs",
+    "section": "dplyr",
+    "text": "dplyr\n\nselect()\nfilter()\ngroup_by()\narrange()\nhead()"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#sql",
+    "href": "slides/Day18-APIs.html#sql",
+    "title": "APIs",
+    "section": "SQL",
+    "text": "SQL\n\nSELECT\nWHERE\nGROUP BY\nORDER BY\nLIMIT"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#sql-in-apis",
+    "href": "slides/Day18-APIs.html#sql-in-apis",
+    "title": "APIs",
+    "section": "SQL in APIs",
+    "text": "SQL in APIs\n\nDifferent flavors of SQL can be written in the URLs constructed for API calls\nSocrata’s API provides functionality for the Socrata Query Language (SoQL) - a flavor of SQL"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#soql",
+    "href": "slides/Day18-APIs.html#soql",
+    "title": "APIs",
+    "section": "SoQL",
+    "text": "SoQL"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#dplyr-vs.-sql",
+    "href": "slides/Day18-APIs.html#dplyr-vs.-sql",
+    "title": "APIs",
+    "section": "dplyr vs. SQL",
+    "text": "dplyr vs. SQL\n\n\n\nselect()\nfilter()\ngroup_by()\narrange()\nhead()\n\n\n\nSELECT\nWHERE\nGROUP BY\nORDER BY\nLIMIT"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#response-codes",
+    "href": "slides/Day18-APIs.html#response-codes",
+    "title": "APIs",
+    "section": "Response Codes",
+    "text": "Response Codes\n\n\n\n200: Success!\n403: Forbidden\n404: Not Found\n500: Internal Server Error\n502: Bad Gateway\n\n\n\n\nhttps://learn.onemonth.com/what-is-a-404-page/"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#soql-example-1",
+    "href": "slides/Day18-APIs.html#soql-example-1",
+    "title": "APIs",
+    "section": "SoQL Example 1",
+    "text": "SoQL Example 1\n\ndplyrSQLSoQL\n\n\n\ndf |>\n  select(unique_key, created_date, incident_address) |>\n  filter(descriptor == 'Pothole') |>\n  head(100)\n\n\n\nSELECT unique_key, created_date, incident_address \nWHERE descriptor = 'Pothole'\nLIMIT 100\n\n\n\nnyc_recent_potholes <- read_csv(\"https://data.cityofnewyork.us/resource/erm2-nwe9.csv?$select=unique_key,created_date,incident_address&$where=descriptor='Pothole'&$limit=100\")\nhead(nyc_recent_potholes)"
+  },
+  {
+    "objectID": "slides/Day18-APIs.html#soql-example-2",
+    "href": "slides/Day18-APIs.html#soql-example-2",
+    "title": "APIs",
+    "section": "SoQL Example 2",
+    "text": "SoQL Example 2\n\ndplyrSQLSoQL\n\n\n\ndf |>\n  filter(complaint_type == 'Traffic') |>\n  group_by(descriptor) |>\n  summarize(count = n()) |>\n  arrange(desc(count))\n\n\n\nWHERE complaint_type = 'Traffic'\nSELECT descriptor, count(*)\nGROUP BY descriptor\nORDER BY count DESC\n\n\n\n\nlibrary(readr)\nnyc_traffic_complaints <- read_csv(\"https://data.cityofnewyork.us/resource/erm2-nwe9.csv?$where=complaint_type='Traffic'&$select=descriptor,count(*)&$group=descriptor&$order=count%20DESC\")\nhead(nyc_traffic_complaints)"
   }
 ]
