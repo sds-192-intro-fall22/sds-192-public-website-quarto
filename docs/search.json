@@ -2244,7 +2244,7 @@
     "href": "labs/lab7.html#setting-up-your-environment",
     "title": "Lab 7: Tidying Data",
     "section": "Setting Up Your Environment",
-    "text": "Setting Up Your Environment\n\nRun the code below to load today’s data frames into your environment.\n\n\nlibrary(tidyverse)\npit <- read_csv(\"../../website/data/pit_2015_2020.csv\") \n\n#Note for future reference how adding the following could remove unreliable counts:\n# mutate_at(vars(2:97), funs(case_when(. < 20 ~ as.numeric(NA), TRUE ~ .)))\n\ngender <- read_csv(\"../../website/data/gender_state_2015_2020.csv\")\nrace <- read_csv(\"../../website/data/race_state_2015_2020.csv\")"
+    "text": "Setting Up Your Environment\n\nRun the code below to load today’s data frames into your environment.\n\n\nlibrary(tidyverse)\npit <- read_csv(\"https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/main/website/data/pit_2015_2020.csv\") \n\n#Note for future reference how adding the following could remove unreliable counts:\n# mutate_at(vars(2:97), funs(case_when(. < 20 ~ as.numeric(NA), TRUE ~ .)))\n\ngender <- read_csv(\"https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/main/website/data/gender_state_2015_2020.csv\")\nrace <- read_csv(\"https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192-public-website-quarto/main/website/data/race_state_2015_2020.csv\")"
   },
   {
     "objectID": "labs/lab7.html#data-analysis",
@@ -3350,6 +3350,6 @@
     "href": "labs.html",
     "title": "Labs",
     "section": "",
-    "text": "Lab 1: Understanding Datasets\n\nLab 1 Instructions\n\n\n\n\nLab 2: Visualization Aesthetics\n\nLab 2 Instructions\n\n\n\nLab 3: Plotting Freqencies\n\nLab 3 Instructions\n\n\n\nLab 4: GitHub\n\nLab 4 Instructions\n\n\n\nLab 5: Data Wrangling\n\nLab 5 Instructions\n\n\n\nLab 6: Joining Datasets\n\nLab 6 Instructions\n\n\n\nLab 7: Tidying Datasets\n\nLab 7 Instructions\n\n\n\nLab 8: Programming with Data\n\nLab 8 Instructions\n\n\n\nLab 9: Mapping with Leaflet\n\nLab 9 Instructions\n\n\n\nLab 10: Working with APIs\n\nLab 10 Instructions"
+    "text": "Lab 1: Understanding Datasets\n\nLab 1 Instructions\nTemplate\n\n\n\nLab 2: Visualization Aesthetics\n\nLab 2 Instructions\nTemplate\n\n\n\nLab 3: Plotting Freqencies\n\nLab 3 Instructions\nTemplate\n\n\n\nLab 4: GitHub\n\nLab 4 Instructions\n\n\n\nLab 5: Data Wrangling\n\nLab 5 Instructions\nTemplate\n\n\n\nLab 6: Joining Datasets\n\nLab 6 Instructions\nTemplate\n\n\n\nLab 7: Tidying Datasets\n\nLab 7 Instructions\nTemplate\n\n\n\nLab 8: Programming with Data\n\nLab 8 Instructions\nTemplate\n\n\n\nLab 9: Mapping with Leaflet\n\nLab 9 Instructions\nTemplate\n\n\n\nLab 10: Working with APIs\n\nLab 10 Instructions\nTemplate"
   }
 ]

@@ -9,19 +9,22 @@ knitr::opts_chunk$set(echo = FALSE)
 ### Problem Solving
 
 -   [Problem Solving Lab Instructions](labs/problem-solving.html)
+-   [Template](https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/problem-solving.qmd)
 
 ### Lab 1: Understanding Datasets
 
 -   [Lab 1 Instructions](labs/lab1.html)
--   
+-   [Template](https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab1.qmd)
 
 ### Lab 2: Visualization Aesthetics
 
 -   [Lab 2 Instructions](labs/lab2.html)
+-   [Template](https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab2.qmd)
 
 ### Lab 3: Plotting Freqencies
 
 -   [Lab 3 Instructions](labs/lab3.html)
+-   [Template](https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab3.qmd)
 
 ### Lab 4: GitHub
 
@@ -30,23 +33,29 @@ knitr::opts_chunk$set(echo = FALSE)
 ### Lab 5: Data Wrangling
 
 -   [Lab 5 Instructions](labs/lab5.html)
+-   [Template](https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab5.qmd)
 
 ### Lab 6: Joining Datasets
 
 -   [Lab 6 Instructions](labs/lab6.html)
+-   [Template](https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab6.qmd)
 
 ### Lab 7: Tidying Datasets
 
 -   [Lab 7 Instructions](labs/lab7.html)
+-   [Template](https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab7.qmd)
 
 ### Lab 8: Programming with Data
 
 -   [Lab 8 Instructions](labs/lab8.html)
+-   [Template](https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab8.qmd)
 
 ### Lab 9: Mapping with Leaflet
 
 -   [Lab 9 Instructions](labs/lab9.html)
+-   [Template](https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab9.qmd)
 
 ### Lab 10: Working with APIs
 
 -   [Lab 10 Instructions](labs/lab10.html)
+-   [Template](https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab10.qmd)
