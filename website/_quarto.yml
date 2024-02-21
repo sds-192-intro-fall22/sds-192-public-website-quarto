@@ -11,6 +11,8 @@ website:
         href: index.html
       - text: "Standards Grading"
         href: grading_contract.html
+      - text: "Labs"
+        href: labs.html
       - text: "Schedule"
         href: schedule.html
 
