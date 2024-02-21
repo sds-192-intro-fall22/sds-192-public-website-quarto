@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.342">
+<meta name="generator" content="quarto-1.1.251">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -54,7 +59,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -67,7 +72,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -81,22 +86,23 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -127,9 +133,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">SDS 192: Intro to Data Science</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -140,6 +148,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../grading_contract.html">Standards Grading</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../labs.html">Labs</a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../schedule.html">Schedule</a>
@@ -155,7 +166,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -185,8 +196,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title">
 <h1 class="title">Lab 1: Understanding Datasets</h1>
 </div>
-
-
 
 
 
@@ -297,39 +306,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(scorecard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 15
-  unitid instnm       city  highdeg control  ugds adm_r…¹ costt…² costt…³ pcip27
-   &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;   &lt;int&gt;   &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt;  &lt;dbl&gt;
-1 164368 Hult Intern… Camb…       4       2   574   0.571   60090      NA 0     
-2 164447 American In… Spri…       4       2  1307   0.684   47742      NA 0     
-3 164465 Amherst Col… Amhe…       3       2  1855   0.128   71300      NA 0.110 
-4 164492 Anna Maria … Paxt…       4       2  1131   0.736   51109      NA 0     
-5 164535 Assabet Val… Marl…       1       1    50   0.452      NA   19703 0     
-6 164562 Assumption … Worc…       4       2  2014   0.811   53303      NA 0.0162
-# … with 5 more variables: pctfloan &lt;dbl&gt;, admcon7 &lt;int&gt;,
-#   wdraw_orig_yr2_rt &lt;dbl&gt;, cdr3 &lt;dbl&gt;, year &lt;dbl&gt;, and abbreviated variable
-#   names ¹​adm_rate, ²​costt4_a, ³​costt4_p</code></pre>
+  unitid instnm    city  highdeg control  ugds adm_rate costt4_a costt4_p pcip27
+   &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;int&gt;   &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;  &lt;dbl&gt;
+1 164368 Hult Int… Camb…       4       2   574    0.571    60090       NA 0     
+2 164447 American… Spri…       4       2  1307    0.684    47742       NA 0     
+3 164465 Amherst … Amhe…       3       2  1855    0.128    71300       NA 0.110 
+4 164492 Anna Mar… Paxt…       4       2  1131    0.736    51109       NA 0     
+5 164535 Assabet … Marl…       1       1    50    0.452       NA    19703 0     
+6 164562 Assumpti… Worc…       4       2  2014    0.811    53303       NA 0.0162
+# ℹ 5 more variables: pctfloan &lt;dbl&gt;, admcon7 &lt;int&gt;, wdraw_orig_yr2_rt &lt;dbl&gt;,
+#   cdr3 &lt;dbl&gt;, year &lt;dbl&gt;</code></pre>
 </div>
 </div>
 <p><code>str()</code> provides a great deal of information about the observations in the data frame, including the number of variables, the number of observations, the column names, their data types, and a list of observations.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(scorecard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tibble [153 × 15] (S3: tbl_df/tbl/data.frame)
- $ unitid           : int [1:153] 164368 164447 164465 164492 164535 164562 164580 164599 164614 164632 ...
- $ instnm           : chr [1:153] "Hult International Business School" "American International College" "Amherst College" "Anna Maria College" ...
- $ city             : chr [1:153] "Cambridge" "Springfield" "Amherst" "Paxton" ...
- $ highdeg          : int [1:153] 4 4 3 4 1 4 4 1 3 4 ...
- $ control          : int [1:153] 2 2 2 2 1 2 2 3 2 2 ...
- $ ugds             : int [1:153] 574 1307 1855 1131 50 2014 2361 45 56 1921 ...
- $ adm_rate         : num [1:153] 0.571 0.684 0.128 0.736 0.452 ...
- $ costt4_a         : int [1:153] 60090 47742 71300 51109 NA 53303 68482 NA 26691 46315 ...
- $ costt4_p         : int [1:153] NA NA NA NA 19703 NA NA NA NA NA ...
- $ pcip27           : num [1:153] 0 0 0.11 0 0 ...
- $ pctfloan         : num [1:153] 0.0566 0.8333 0.1661 0.7464 0.4286 ...
- $ admcon7          : int [1:153] 3 5 1 3 3 3 1 NA 1 5 ...
- $ wdraw_orig_yr2_rt: num [1:153] NA 0.181 0.124 0.129 NA ...
- $ cdr3             : num [1:153] 0.043 0.073 0.014 0.073 0.065 0.044 0.019 0.06 0.024 0.048 ...
- $ year             : num [1:153] 2018 2018 2018 2018 2018 ...</code></pre>
+<pre><code>tibble [150 × 15] (S3: tbl_df/tbl/data.frame)
+ $ unitid           : int [1:150] 164368 164447 164465 164492 164535 164562 164580 164599 164614 164632 ...
+ $ instnm           : chr [1:150] "Hult International Business School" "American International College" "Amherst College" "Anna Maria College" ...
+ $ city             : chr [1:150] "Cambridge" "Springfield" "Amherst" "Paxton" ...
+ $ highdeg          : int [1:150] 4 4 3 4 1 4 4 1 3 4 ...
+ $ control          : int [1:150] 2 2 2 2 1 2 2 3 2 2 ...
+ $ ugds             : int [1:150] 574 1307 1855 1131 50 2014 2361 45 56 1921 ...
+ $ adm_rate         : num [1:150] 0.571 0.684 0.128 0.736 0.452 ...
+ $ costt4_a         : int [1:150] 60090 47742 71300 51109 NA 53303 68482 NA 26691 46315 ...
+ $ costt4_p         : int [1:150] NA NA NA NA 19703 NA NA NA NA NA ...
+ $ pcip27           : num [1:150] 0 0 0.11 0 0 ...
+ $ pctfloan         : num [1:150] 0.0566 0.8333 0.1661 0.7464 0.4286 ...
+ $ admcon7          : int [1:150] 3 5 1 3 3 3 1 NA 1 5 ...
+ $ wdraw_orig_yr2_rt: num [1:150] NA 0.181 0.124 0.129 NA ...
+ $ cdr3             : num [1:150] 0.043 0.073 0.014 0.073 0.065 0.044 0.019 0.06 0.024 0.048 ...
+ $ year             : num [1:150] 2018 2018 2018 2018 2018 ...</code></pre>
 </div>
 </div>
 <p>You can also click on the name of your data frame in your Environment panel in RStudio, and it will open a new tab in RStudio that displays the data in a tabular format. Try clicking on <code>scorecard</code> in your Environment panel.</p>
@@ -486,31 +494,31 @@ Why not use name as a unique key?
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(scorecard<span class="sc">$</span>wdraw_orig_yr2_rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE
- [13] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE
- [25] FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE
- [37] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
- [49] FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
- [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE
- [73]  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE
- [85] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE
- [97] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE
-[109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE
-[121]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE
-[133]  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
-[145] FALSE  TRUE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE</code></pre>
+ [13] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+ [25] FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE
+ [37] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+ [49] FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+ [61] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE
+ [73] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE
+ [85] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+ [97] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE
+[109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE  TRUE
+[121]  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE
+[133]  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE
+[145]  TRUE  TRUE FALSE  TRUE  TRUE FALSE</code></pre>
 </div>
 </div>
 <p>When we <code>sum()</code> across a logical vector, <code>R</code> will calculate the number of <code>TRUE</code> values in the vector.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(scorecard<span class="sc">$</span>wdraw_orig_yr2_rt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 48</code></pre>
+<pre><code>[1] 49</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that this is the same as:</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>scorecard<span class="sc">$</span>wdraw_orig_yr2_rt <span class="sc">|&gt;</span> <span class="fu">is.na</span>() <span class="sc">|&gt;</span> <span class="fu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 48</code></pre>
+<pre><code>[1] 49</code></pre>
 </div>
 </div>
 <section id="question-4" class="level6">
@@ -559,6 +567,24 @@ Ethical Considerations
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -608,7 +634,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
