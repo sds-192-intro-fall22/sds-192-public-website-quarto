@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -45,7 +45,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -54,8 +60,10 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -67,33 +75,39 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">SDS 192: Intro to Data Science</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html">Syllabus</a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./grading_contract.html">Standards Grading</a>
+    <a class="nav-link" href="./grading_contract.html"> 
+<span class="menu-text">Standards Grading</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./labs.html" aria-current="page">Labs</a>
+    <a class="nav-link active" href="./labs.html" aria-current="page"> 
+<span class="menu-text">Labs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./schedule.html">Schedule</a>
+    <a class="nav-link" href="./schedule.html"> 
+<span class="menu-text">Schedule</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -112,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#lab-3-plotting-freqencies" id="toc-lab-3-plotting-freqencies" class="nav-link" data-scroll-target="#lab-3-plotting-freqencies">Lab 3: Plotting Freqencies</a></li>
   <li><a href="#lab-4-github" id="toc-lab-4-github" class="nav-link" data-scroll-target="#lab-4-github">Lab 4: GitHub</a></li>
   <li><a href="#lab-5-data-wrangling" id="toc-lab-5-data-wrangling" class="nav-link" data-scroll-target="#lab-5-data-wrangling">Lab 5: Data Wrangling</a></li>
-  <li><a href="#lab-6-joining-datasets" id="toc-lab-6-joining-datasets" class="nav-link" data-scroll-target="#lab-6-joining-datasets">Lab 6: Joining Datasets</a></li>
+  <li><a href="#lab-6-joining-datasets-broken-due-to-api-change-as-of-02-22-24" id="toc-lab-6-joining-datasets-broken-due-to-api-change-as-of-02-22-24" class="nav-link" data-scroll-target="#lab-6-joining-datasets-broken-due-to-api-change-as-of-02-22-24">Lab 6: Joining Datasets (broken due to API change as of 02-22-24)</a></li>
   <li><a href="#lab-7-tidying-datasets" id="toc-lab-7-tidying-datasets" class="nav-link" data-scroll-target="#lab-7-tidying-datasets">Lab 7: Tidying Datasets</a></li>
   <li><a href="#lab-8-programming-with-data" id="toc-lab-8-programming-with-data" class="nav-link" data-scroll-target="#lab-8-programming-with-data">Lab 8: Programming with Data</a></li>
   <li><a href="#lab-9-mapping-with-leaflet" id="toc-lab-9-mapping-with-leaflet" class="nav-link" data-scroll-target="#lab-9-mapping-with-leaflet">Lab 9: Mapping with Leaflet</a></li>
@@ -133,27 +147,31 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
 
+
 </header>
 
-<div class="callout-tip callout callout-style-default callout-captioned">
+
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>These labs were written and rendered correctly in Fall 2022. They pull in public data that might have changed in in content and format since then. I can’t guarantee the labs will render in perpetuity, but if you run into an issue, please feel free to record it via <a href="https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/issues">this GitHub repo</a>.</p>
+<p>These labs were written and rendered correctly in Fall 2022. They pull in public data that might have changed in content and format since then. I can’t guarantee the labs will render in perpetuity, but if you run into an issue, please feel free to record it via <a href="https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/issues">this GitHub repo</a>.</p>
 </div>
 </div>
 <section id="problem-solving" class="level3">
 <h3 class="anchored" data-anchor-id="problem-solving">Problem Solving</h3>
+<p>This lab will introduce you to resources and techniques for problem solving in <code>R</code>. You should reference this lab often throughout the semester for reminders on best practices for addressing errors and getting help.</p>
 <ul>
 <li><a href="labs/problem-solving.html">Problem Solving Lab Instructions</a></li>
 <li><a href="https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/problem-solving.qmd">Template</a></li>
@@ -161,6 +179,7 @@ Tip
 </section>
 <section id="lab-1-understanding-datasets" class="level3">
 <h3 class="anchored" data-anchor-id="lab-1-understanding-datasets">Lab 1: Understanding Datasets</h3>
+<p>This lab is all about learning to understand the context and parts of a dataset by referencing and interpreting data dictionaries and technical data documentation. We will get to know the U.S. Department of Education’s College Scorecard data, which includes over 3000 variables characterizing colleges in the U.S.</p>
 <ul>
 <li><a href="labs/lab1.html">Lab 1 Instructions</a></li>
 <li><a href="https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab1.qmd">Template</a></li>
@@ -168,6 +187,7 @@ Tip
 </section>
 <section id="lab-2-visualization-aesthetics" class="level3">
 <h3 class="anchored" data-anchor-id="lab-2-visualization-aesthetics">Lab 2: Visualization Aesthetics</h3>
+<p>This week we will practice mapping variables in the U.S. National Bridge Inventory onto different plot aesthetics in order to tell different stories with the data. We’re going to look at what kinds of variables might contribute to poor bridge conditions, where there are poor bridge conditions, and which entities are responsible for maintaining them. We will only be creating one type of plot today - a scatterplot. However, we are going to show how we can use different visual cues to plot a number of different variables onto a scatterplot.</p>
 <ul>
 <li><a href="labs/lab2.html">Lab 2 Instructions</a></li>
 <li><a href="https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab2.qmd">Template</a></li>
@@ -175,6 +195,7 @@ Tip
 </section>
 <section id="lab-3-plotting-freqencies" class="level3">
 <h3 class="anchored" data-anchor-id="lab-3-plotting-freqencies">Lab 3: Plotting Freqencies</h3>
+<p>In this lab, you will practice plotting both frequencies and distributions by analyzing data about Spotify playlists representing your favorite music genre. Specifically, we are going to produce visualizatations that allow us to consider: How joyful are popular Spotify playlists in my favorite music genre?</p>
 <ul>
 <li><a href="labs/lab3.html">Lab 3 Instructions</a></li>
 <li><a href="https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab3.qmd">Template</a></li>
@@ -182,19 +203,22 @@ Tip
 </section>
 <section id="lab-4-github" class="level3">
 <h3 class="anchored" data-anchor-id="lab-4-github">Lab 4: GitHub</h3>
+<p>This lab is designed to help you get acquainted with the concepts behind Git and GitHub, suggested workflows for collaborating on projects in this course, and error resolution strategies.</p>
 <ul>
 <li><a href="labs/lab4.html">Lab 4 Instructions</a></li>
 </ul>
 </section>
 <section id="lab-5-data-wrangling" class="level3">
 <h3 class="anchored" data-anchor-id="lab-5-data-wrangling">Lab 5: Data Wrangling</h3>
+<p>In this lab, you will apply 6 data wrangling verbs in order to analyze data regarding NYPD stop, question, and frisk. Specifically, we will replicate <a href="https://www.nyclu.org/en/stop-and-frisk-data">data analysis performed by the NYCLU</a> in 2011 to demonstrate how the practice was being carried out unconstitutionally in New York.</p>
 <ul>
 <li><a href="labs/lab5.html">Lab 5 Instructions</a></li>
 <li><a href="https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab5.qmd">Template</a></li>
 </ul>
 </section>
-<section id="lab-6-joining-datasets" class="level3">
-<h3 class="anchored" data-anchor-id="lab-6-joining-datasets">Lab 6: Joining Datasets</h3>
+<section id="lab-6-joining-datasets-broken-due-to-api-change-as-of-02-22-24" class="level3">
+<h3 class="anchored" data-anchor-id="lab-6-joining-datasets-broken-due-to-api-change-as-of-02-22-24">Lab 6: Joining Datasets (broken due to API change as of 02-22-24)</h3>
+<p>In terms of data analysis, this lab has one goal: to determine the number of industrial facilities that are currently in violation of <strong>both</strong> the Clean Air Act and the Clean Water Act in California. To achieve this goal, we’re going to have to do some data wrangling and join together some datasets published by the EPA. We’re going to practice applying different types of joins to this data and consider what we learn with each.</p>
 <ul>
 <li><a href="labs/lab6.html">Lab 6 Instructions</a></li>
 <li><a href="https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab6.qmd">Template</a></li>
@@ -202,6 +226,7 @@ Tip
 </section>
 <section id="lab-7-tidying-datasets" class="level3">
 <h3 class="anchored" data-anchor-id="lab-7-tidying-datasets">Lab 7: Tidying Datasets</h3>
+<p>In this lab, we will create a few data visualizations documenting point-in-time counts of homelessness in the United States. Specifically, we are going visualize data collected in 2020 through various Continuums of Care (CoCs) programs. In order to produce these data visualizations, you will need to join homelessness data with census population data and develop and execute a plan for how to wrangle the dataset into a “tidy” format.</p>
 <ul>
 <li><a href="labs/lab7.html">Lab 7 Instructions</a></li>
 <li><a href="https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab7.qmd">Template</a></li>
@@ -209,6 +234,7 @@ Tip
 </section>
 <section id="lab-8-programming-with-data" class="level3">
 <h3 class="anchored" data-anchor-id="lab-8-programming-with-data">Lab 8: Programming with Data</h3>
+<p>In this lab, we will program some custom <code>R</code> functions that allow us to analyze data related to medical conflicts of interest. Specifically, we will determine which ten Massachusetts-based doctors received the most money from pharmaceutical or medical device manufacturers in 2021. Then we will leverage our custom functions to produce a number of tables and plots documenting information about the payments made to each of these doctors. In doing so, we will update a similar analysis produced by ProPublica in 2018 called <a href="https://projects.propublica.org/docdollars/"><em>Dollars for Docs</em></a>.</p>
 <ul>
 <li><a href="labs/lab8.html">Lab 8 Instructions</a></li>
 <li><a href="https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab8.qmd">Template</a></li>
@@ -216,6 +242,7 @@ Tip
 </section>
 <section id="lab-9-mapping-with-leaflet" class="level3">
 <h3 class="anchored" data-anchor-id="lab-9-mapping-with-leaflet">Lab 9: Mapping with Leaflet</h3>
+<p>In this lab, we will build a map that visualizes unaddressed housing violations in NYC in order to identify some of the city’s worst landlords. In doing so, we will gain practice in producing point maps in Leaflet. This analysis is based off of a similar analysis conducted by the <a href="https://advocate.nyc.gov/press/nyc-public-advocate-unveils-2021-worst-landlord-watchlist/">NYC Public Advocate’s Office</a>.</p>
 <ul>
 <li><a href="labs/lab9.html">Lab 9 Instructions</a></li>
 <li><a href="https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab9.qmd">Template</a></li>
@@ -223,6 +250,7 @@ Tip
 </section>
 <section id="lab-10-working-with-apis" class="level3">
 <h3 class="anchored" data-anchor-id="lab-10-working-with-apis">Lab 10: Working with APIs</h3>
+<p>In this lab, we will write queries to access subsets of a very large dataset on the NYC Open Data Portal. We will practice all of the standards we have learned in the course so far in visualizing and wrangling the resulting data.</p>
 <ul>
 <li><a href="labs/lab10.html">Lab 10 Instructions</a></li>
 <li><a href="https://github.com/sds-192-intro-fall22/sds-192-public-website-quarto/blob/main/website/templates/lab10.qmd">Template</a></li>
@@ -259,9 +287,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -273,17 +315,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -293,8 +351,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -309,28 +376,279 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
