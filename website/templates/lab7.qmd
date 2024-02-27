@@ -26,7 +26,7 @@ race <- read_csv("https://raw.githubusercontent.com/sds-192-intro-fall22/sds-192
 
 ::: question
 
-Write code to pivot longer columns 2 through 97 (i.e. all columns except the first state column) in `pit`. Store the names in column called "Measure" and store the values in a column called "Value." Store the resulting data frame in in `pit_pivoted`.
+Write code to pivot longer columns 2 through 117 (i.e. all columns except the first state column) in `pit`. Store the names in column called "Measure" and store the values in a column called "Value." Store the resulting data frame in in `pit_pivoted`.
 
 :::
 
